@@ -2,6 +2,7 @@ import React from 'react';
 import {Input} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
 import Layout from 'blocks/layout/layout';
+import api from 'blocks/api/api';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -10,9 +11,27 @@ class Registration extends React.Component {
     constructor(p_) {
         super(p_);
 
-        this.state = {}
+        this.state = {
+            name: '',
+            login: '',
+            password: '',
+            passwordRepeat: ''
+        };
     }
-    onSubmit(e) {}
+    onSubmit(e) {
+        e.preventDefault();
+        const self = this;
+
+        api.post('users/registration', this.state)
+            .then((response) => {
+                if (response.error) {
+                    self.setState({errorMsg: response.error.msg});
+                }
+            });
+    }
+    onChange(value, field) {
+        this.setState({[field]: value})
+    }
     render() {
         const s_ = this.state;
 
@@ -35,14 +54,14 @@ class Registration extends React.Component {
                         <Input
                             placeholder="Имя"
                             value={s_.name}
-                            onChange={(value) => this.onChangeLogin(value)}
+                            onChange={(value) => this.onChange(value, 'name')}
                         />
                     </div>
                     <div className={grid.mbMini}>
                         <Input
                             placeholder="E-mail"
                             value={s_.login}
-                            onChange={(value) => this.onChangeLogin(value)}
+                            onChange={(value) => this.onChange(value, 'login')}
                         />
                     </div>
                     <div className={grid.mbMini}>
@@ -50,15 +69,15 @@ class Registration extends React.Component {
                             placeholder="Пароль"
                             value={s_.password}
                             type="password"
-                            onChange={(value) => this.onChangePassword(value)}
+                            onChange={(value) => this.onChange(value, 'password')}
                         />
                     </div>
                     <div className={grid.mbMini}>
                         <Input
                             placeholder="Повторите пароль"
-                            value={s_.password}
+                            value={s_.passwordRepeat}
                             type="password"
-                            onChange={(value) => this.onChangePassword(value)}
+                            onChange={(value) => this.onChange(value, 'passwordRepeat')}
                         />
                     </div>
                     <div className={text.right}>

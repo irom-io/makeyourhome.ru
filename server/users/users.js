@@ -52,4 +52,8 @@ router.post('/', function(req, res) {
     }
 });
 
+router.post('/registration', function(req, res) {
+    res.send(usersModel.registration(req.body));
+});
+
 module.exports = router;

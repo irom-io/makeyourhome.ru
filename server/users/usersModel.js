@@ -1,7 +1,14 @@
 const fs = require('fs');
 const path = require('path');
+
 const loginError = {error: {msg: 'loginError'}};
 const serverError = {error: {msg: 'serverError'}};
+
+const emptyName = {error: {msg: 'emptyName'}};
+const notValidEmail = {error: {msg: 'notValidEmail'}};
+const userExist = {error: {msg: 'userExist'}};
+const emptyPassword = {error: {msg: 'emptyPassword'}};
+const passwordsDoNotMatch = {error: {msg: 'passwordsDoNotMatch'}};
 
 const usersModel = {
     validate: (insertUser) => {
@@ -52,6 +59,16 @@ const usersModel = {
         users = JSON.parse(users);
 
         return (typeof users[insertUser.login] == 'object');
+    },
+    registration: (body) => {
+        if (!body.name) { return emptyName; }
+        if (!body.password) { 
+            return emptyPassword; 
+        } else if (body.password !== body.passwordRepeat) {
+            return passwordsDoNotMatch;
+        }
+
+        return {};
     }
 };
 
