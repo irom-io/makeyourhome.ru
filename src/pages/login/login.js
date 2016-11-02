@@ -19,12 +19,15 @@ class Login extends React.Component {
             browserHistory.push('/projects');
         }
     }
-    onResponse(response) {
+    onResponseAuth(response) {
         this.setState({loading: false});
 
         if (!response.error) {
             browserHistory.push('/projects');
         }
+    }
+    onResponseRegistration() {
+        this.setState({loading: false});
     }
     render() {
         const s_ = this.state;
@@ -38,7 +41,8 @@ class Login extends React.Component {
                 <div className={`${grid.w65} ${grid.w100_tabMini}`}>
                     <BlockLogin
                         onSubmit={() => {this.setState({loading: true})}}
-                        onResponse={(response) => this.onResponse(response)}
+                        onResponseAuth={(response) => this.onResponseAuth(response)}
+                        onResponseRegistration={(response) => this.onResponseRegistration(response)}
                     />
                 </div>
             </Layout>

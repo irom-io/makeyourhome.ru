@@ -10,7 +10,6 @@ import Project from 'pages/project/project';
 import Styles from 'pages/styles/styles';
 import Collections from 'pages/collections/collections';
 import Questions from 'pages/questions/questions';
-import Registration from 'pages/registration/registration';
 import Login from 'pages/login/login';
 import NotFound from 'pages/notFound/notFound';
 
@@ -27,7 +26,6 @@ ReactDOM.render(
             <Route path="/questions" component={Questions}/>
             <Route path="/projects" component={Projects}/>
             <Route path="/projects/:projectId" component={Project}/>
-            <Route path="/registration" component={Registration}/>
             <Route path="/login" component={Login}/>
             <Route path="*" component={NotFound}/>
         </Route>
