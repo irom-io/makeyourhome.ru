@@ -1,55 +1,18 @@
 import React from 'react';
 import {Input} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
-import Link from 'blocks/link/link';
 import Layout from 'blocks/layout/layout';
-import {loginUser} from 'blocks/auth/auth';
-import {browserHistory} from 'react-router';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
 
-class Auth extends React.Component {
+class Registration extends React.Component {
     constructor(p_) {
         super(p_);
 
-        this.state = {
-            loading: false,
-            login: '',
-            password: '',
-            errorMsg: null
-        };
+        this.state = {}
     }
-    componentDidMount() {
-        let user = localStorage.getItem('user');
-
-        if (user) {
-            browserHistory.push('/projects');
-        }
-    }
-    onChangeLogin(value) {
-        this.setState({login: value});
-    }
-    onChangePassword(value) {
-        this.setState({password: value});
-    }
-    onSubmit(e) {
-        let self = this;
-        
-        e.preventDefault();
-        self.setState({loading: true});
-        loginUser({login: this.state.login, password: this.state.password})
-            .then(res => {
-                if (res.error) {
-                    self.setState({
-                        errorMsg: res.error.msg,
-                        loading: false
-                    });
-                } else {
-                    browserHistory.push('/projects');
-                }
-            });
-    }
+    onSubmit(e) {}
     render() {
         const s_ = this.state;
 
@@ -61,20 +24,20 @@ class Auth extends React.Component {
             >
                 <form onSubmit={(e) => this.onSubmit(e)} className={`${grid.w65} ${grid.w100_tabMini}`}>
                     <div className={`${grid.mbMini} ${text.colored} ${text.normal}`}>
-                        Авторизуйтесь или <span />
-                        <span className={text.underline}>
-                            <Link
-                                to="/registration"
-                            >
-                                зарегистрируйтесь
-                            </Link>
-                        </span>
+                        Регистрация
                     </div>
                     {s_.errorMsg &&
                         <div className={grid.mbMini}>
                             {s_.errorMsg}
                         </div>
                     }
+                    <div className={grid.mbMini}>
+                        <Input
+                            placeholder="Имя"
+                            value={s_.name}
+                            onChange={(value) => this.onChangeLogin(value)}
+                        />
+                    </div>
                     <div className={grid.mbMini}>
                         <Input
                             placeholder="E-mail"
@@ -85,6 +48,14 @@ class Auth extends React.Component {
                     <div className={grid.mbMini}>
                         <Input
                             placeholder="Пароль"
+                            value={s_.password}
+                            type="password"
+                            onChange={(value) => this.onChangePassword(value)}
+                        />
+                    </div>
+                    <div className={grid.mbMini}>
+                        <Input
+                            placeholder="Повторите пароль"
                             value={s_.password}
                             type="password"
                             onChange={(value) => this.onChangePassword(value)}
@@ -104,4 +75,4 @@ class Auth extends React.Component {
     }
 }
 
-export default Auth;
+export default Registration;
