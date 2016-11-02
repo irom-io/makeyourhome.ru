@@ -2,6 +2,7 @@ import React from 'react';
 import {Input} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
 import Layout from 'blocks/layout/layout';
+import {browserHistory} from 'react-router';
 import api from 'blocks/api/api';
 
 import grid from 'blocks/grid/grid.css';
@@ -12,6 +13,7 @@ class Registration extends React.Component {
         super(p_);
 
         this.state = {
+            loading: false,
             name: '',
             login: '',
             password: '',
@@ -22,10 +24,16 @@ class Registration extends React.Component {
         e.preventDefault();
         const self = this;
 
+        this.setState({loading: true});
         api.post('users/registration', this.state)
             .then((response) => {
                 if (response.error) {
-                    self.setState({errorMsg: response.error.msg});
+                    self.setState({
+                        errorMsg: response.error.msg,
+                        loading: false
+                    });
+                } else {
+                    browserHistory.push('/auth');
                 }
             });
     }
@@ -46,9 +54,9 @@ class Registration extends React.Component {
                         Регистрация
                     </div>
                     {s_.errorMsg &&
-                        <div className={grid.mbMini}>
-                            {s_.errorMsg}
-                        </div>
+                    <div className={grid.mbMini}>
+                        {s_.errorMsg}
+                    </div>
                     }
                     <div className={grid.mbMini}>
                         <Input

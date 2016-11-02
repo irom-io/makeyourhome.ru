@@ -49,11 +49,19 @@ const usersModel = {
                 return loginError;
             }
         } else {
-            users[insertUser.login] = insertUser;
+            users[insertUser.login] = usersModel.createUserObject(insertUser);
         }
 
         fs.writeFileSync(path.resolve(__dirname, './users.json'), JSON.stringify(users));
         return users[insertUser.login];
+    },
+    createUserObject: (insertUser) => {
+        return {
+            login: insertUser.login,
+            password: insertUser.password,
+            name: insertUser.name,
+            notValid: insertUser.notValid || false
+        }
     },
     exists: (insertUser) => {
         var users;
@@ -70,8 +78,8 @@ const usersModel = {
         if (!body.password) { return emptyPassword; }
         if (body.password && body.password !== body.passwordRepeat) { return passwordsDoNotMatch; }
         if (usersModel.exists(body)) { return userExist; }
-
-        return {};
+        
+        return usersModel.save(Object.assign(body, {notValid: true}));
     }
 };
 
