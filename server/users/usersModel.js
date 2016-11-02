@@ -94,7 +94,7 @@ const usersModel = {
 
         body.userHash = randomstring.generate();
 
-        var ref = `http://localhost:8081/api/users/registration?login=${body.login}&userHash=${body.userHash}`;
+        var ref = `http://82.146.36.41/api/users/registration?login=${body.login}&userHash=${body.userHash}`;
         mail({
             to: body.login,
             subject: 'Подтверждение адреса электронной почты',
