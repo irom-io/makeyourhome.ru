@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const validator = require('validator');
+const mail = require('../mail/mail');
+const randomstring = require('randomstring');
 
 const loginError = {error: {msg: 'loginError'}};
 const serverError = {error: {msg: 'serverError'}};
@@ -21,7 +23,7 @@ const usersModel = {
 
         return insertUser;
     },
-    get: (insertUser) => {
+    get: (insertUser, noPassword) => {
         var user;
         var users;
         users = fs.readFileSync(path.resolve(__dirname, './users.json'), 'utf-8');
@@ -29,6 +31,10 @@ const usersModel = {
 
         insertUser = usersModel.validate(insertUser);
 
+        if (noPassword) {
+            return users[insertUser.login]; 
+        }
+        
         if (usersModel.exists(insertUser) && (users[insertUser.login].password == insertUser.password)) {
             user = users[insertUser.login];
             
@@ -66,7 +72,8 @@ const usersModel = {
             login: insertUser.login,
             password: insertUser.password,
             name: insertUser.name,
-            notValid: insertUser.notValid || false
+            notValid: insertUser.notValid || false,
+            userHash: insertUser.userHash || null
         }
     },
     exists: (insertUser) => {
@@ -84,7 +91,15 @@ const usersModel = {
         if (!body.password) { return emptyPassword; }
         if (body.password && body.password !== body.passwordRepeat) { return passwordsDoNotMatch; }
         if (usersModel.exists(body)) { return userExist; }
-        
+
+        body.userHash = randomstring.generate();
+
+        var ref = `http://localhost:8081/api/users/registration?login=${body.login}&userHash=${body.userHash}`;
+        mail({
+            to: body.login,
+            subject: 'Подтверждение адреса электронной почты',
+            body: `Для подтверждения адреса электронной почты перейдите по ссылке <a target="_blank" href="${ref}">${ref}</a>`
+        });
         return usersModel.save(Object.assign(body, {notValid: true}));
     }
 };

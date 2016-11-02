@@ -164,7 +164,7 @@ class Auth extends React.Component {
                                             >
                                                 <FacebookIcon size={50} round={true} iconBgStyle={{fill: css.colors.main}} />
                                             </Link>
-                                            <Link to="/auth" className={auth.loginIcon}>
+                                            <Link to="/login" className={auth.loginIcon}>
                                                 <AccountCircle size={50} />
                                             </Link>
                                             <Link

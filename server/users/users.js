@@ -56,4 +56,15 @@ router.post('/registration', function(req, res) {
     res.send(usersModel.registration(req.body));
 });
 
+router.get('/registration', function(req, res) {
+    var user = usersModel.get({login: req.query.login}, true);
+    
+    if (req.query.userHash === user.userHash) {
+        res.redirect('http://localhost:3000/login');
+        usersModel.save({login: req.query.login, notValid: false, userHash: null}, true);
+    } else {
+        res.redirect('http://localhost:3000/notFound');
+    }
+});
+
 module.exports = router;
