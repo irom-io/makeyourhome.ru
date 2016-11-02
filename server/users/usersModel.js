@@ -98,7 +98,7 @@ const usersModel = {
         mail({
             to: body.login,
             subject: 'Подтверждение адреса электронной почты',
-            body: `Для подтверждения адреса электронной почты перейдите по ссылке <a target="_blank" href="${ref}">${ref}</a>`
+            body: `Для подтверждения адреса электронной почты перейдите по <a target="_blank" href="${ref}">ссылке</a>`
         });
         return usersModel.save(Object.assign(body, {notValid: true}));
     }
