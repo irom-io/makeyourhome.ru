@@ -18,7 +18,7 @@ class Auth extends React.Component {
             login: '',
             password: '',
             errorMsg: null,
-            notValidUser: false
+            notValidUser: p_.location.query.notValidUser
         };
     }
     componentDidMount() {

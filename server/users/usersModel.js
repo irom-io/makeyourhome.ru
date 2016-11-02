@@ -7,6 +7,7 @@ const serverError = {error: {msg: 'serverError'}};
 
 const emptyName = {error: {msg: 'emptyName'}};
 const notValidEmail = {error: {msg: 'notValidEmail'}};
+const notValidUser = {error: {msg: 'notValidUser'}};
 const userExist = {error: {msg: 'userExist'}};
 const emptyPassword = {error: {msg: 'emptyPassword'}};
 const passwordsDoNotMatch = {error: {msg: 'passwordsDoNotMatch'}};
@@ -30,6 +31,11 @@ const usersModel = {
 
         if (usersModel.exists(insertUser) && (users[insertUser.login].password == insertUser.password)) {
             user = users[insertUser.login];
+            
+            if (user.notValid) {
+                return notValidUser; 
+            }
+            
             return {name: user.name, login: user.login, password: user.password};
         }
 
