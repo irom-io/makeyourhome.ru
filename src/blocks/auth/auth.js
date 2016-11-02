@@ -175,7 +175,7 @@ class Auth extends React.Component {
                                             </Link>
                                         </div>
                                         <div className={`${text.mini} ${text.underline}`}>
-                                            <Link to="/auth">Войти</Link>
+                                            <Link to="/login">Войти</Link>
                                         </div>
                                     </div>
                                 )
