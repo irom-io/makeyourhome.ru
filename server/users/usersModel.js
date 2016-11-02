@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const validator = require('validator');
 
 const loginError = {error: {msg: 'loginError'}};
 const serverError = {error: {msg: 'serverError'}};
@@ -12,9 +13,10 @@ const passwordsDoNotMatch = {error: {msg: 'passwordsDoNotMatch'}};
 
 const usersModel = {
     validate: (insertUser) => {
-        insertUser.login = insertUser.login.substr(0, 100);
-        insertUser.login = insertUser.login.toLowerCase();
-        insertUser.password = insertUser.password.substr(0, 100);
+        insertUser.login && (insertUser.login = insertUser.login.substr(0, 100));
+        insertUser.login && (insertUser.login = insertUser.login.toLowerCase());
+        insertUser.password && (insertUser.password = insertUser.password.substr(0, 100));
+        insertUser.name && (insertUser.name = insertUser.name.substr(0, 100));
 
         return insertUser;
     },
@@ -61,12 +63,13 @@ const usersModel = {
         return (typeof users[insertUser.login] == 'object');
     },
     registration: (body) => {
+        body = usersModel.validate(body);
+
         if (!body.name) { return emptyName; }
-        if (!body.password) { 
-            return emptyPassword; 
-        } else if (body.password !== body.passwordRepeat) {
-            return passwordsDoNotMatch;
-        }
+        if (!validator.isEmail(body.login)) { return notValidEmail; }
+        if (!body.password) { return emptyPassword; }
+        if (body.password && body.password !== body.passwordRepeat) { return passwordsDoNotMatch; }
+        if (usersModel.exists(body)) { return userExist; }
 
         return {};
     }

@@ -69,7 +69,8 @@
     "react-share": "^1.10.0",
     "react-slick": "^0.14.4",
     "react-sticky": "^5.0.5",
-    "slick-carousel": "^1.6.0"
+    "slick-carousel": "^1.6.0",
+    "validator": "^6.1.0"
   },
   "scripts": {
     "server": "node server/server.js",
