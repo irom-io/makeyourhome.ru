@@ -20,6 +20,13 @@ class Registration extends React.Component {
             passwordRepeat: ''
         };
     }
+    componentDidMount() {
+        let user = localStorage.getItem('user');
+
+        if (user) {
+            browserHistory.push('/projects');
+        }
+    }
     onSubmit(e) {
         e.preventDefault();
         const self = this;
@@ -33,7 +40,7 @@ class Registration extends React.Component {
                         loading: false
                     });
                 } else {
-                    browserHistory.push('/auth');
+                    browserHistory.push('/auth?notValidUser=true');
                 }
             });
     }

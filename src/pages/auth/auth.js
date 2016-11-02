@@ -12,12 +12,13 @@ import text from 'blocks/text/text.css';
 class Auth extends React.Component {
     constructor(p_) {
         super(p_);
-
+        
         this.state = {
             loading: false,
             login: '',
             password: '',
-            errorMsg: null
+            errorMsg: null,
+            notValidUser: false
         };
     }
     componentDidMount() {
@@ -60,6 +61,17 @@ class Auth extends React.Component {
                 className={`${grid.col} ${grid.center} ${grid.normalCenter}`}
             >
                 <form onSubmit={(e) => this.onSubmit(e)} className={`${grid.w65} ${grid.w100_tabMini}`}>
+                    {s_.notValidUser &&
+                    <div className={`${text.normal} ${grid.mbNormal}`}>
+                        <div className={`${text.colored} ${grid.mbMini}`}>
+                            Регистрация прошла успешно.
+                        </div>
+                        <div>
+                            Для подтверждения e-mail, Вам отправлено письмо.
+                        </div>
+                    </div>
+                    }
+
                     <div className={`${grid.mbMini} ${text.colored} ${text.normal}`}>
                         Авторизуйтесь или <span />
                         <span className={text.underline}>
