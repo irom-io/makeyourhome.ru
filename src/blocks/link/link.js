@@ -18,6 +18,7 @@ class Link extends React.Component {
             location.query.lang = lang;
             href = router.createHref(location);
         }
+        href = (href.indexOf('/') === 0)? href : `/${href}`;
 
         return href;
     }
