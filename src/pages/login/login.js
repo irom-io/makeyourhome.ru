@@ -1,12 +1,11 @@
 import React from 'react';
 import BlockLogin from 'blocks/login/login';
 import Layout from 'blocks/layout/layout';
-import { browserHistory } from 'react-router';
 import grid from 'blocks/grid/grid.css';
 
 class Login extends React.Component {
-    constructor(p_) {
-        super(p_);
+    constructor(p_, context) {
+        super(p_, context);
 
         this.state = {
             loading: false
@@ -16,14 +15,14 @@ class Login extends React.Component {
         let user = localStorage.getItem('user');
 
         if (user) {
-            browserHistory.push('/projects');
+            this.context.router.push('/projects');
         }
     }
     onResponseAuth(response) {
         this.setState({loading: false});
 
         if (!response.error) {
-            browserHistory.push('/projects');
+            this.context.router.push('/projects');
         }
     }
     onResponseRegistration() {
@@ -49,5 +48,8 @@ class Login extends React.Component {
         );
     }
 }
+Login.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default Login;
