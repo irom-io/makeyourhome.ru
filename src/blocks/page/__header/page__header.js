@@ -6,6 +6,7 @@ import item from 'blocks/item/item.css';
 import Auth from 'blocks/auth/auth';
 import Lang from 'blocks/lang/lang';
 import Link from 'blocks/link/link';
+import Localization from 'blocks/localization/localization';
 
 class PageHeader extends React.Component {
     constructor(p_) {
@@ -21,7 +22,9 @@ class PageHeader extends React.Component {
                 <div className={page.header}>
                     <div className={`${grid.w35} ${item.none_tabMini}`}>
                         <div className={page.title}>
-                            <Link to="/">Создай свой дом</Link>
+                            <Link to="/">
+                                <Localization k="slogan" />
+                            </Link>
                         </div>
                         <div className={page.descr}>
                             <Link>Расскажите нам о своей мечте</Link>
