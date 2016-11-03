@@ -42,10 +42,14 @@ class PageHeader extends React.Component {
                     </div>
                     <div className={`${grid.w35} ${grid.w35_tab} ${grid.w55_tabMini} ${text.right} ${item.none_mob}`}>
                         <div className={page.title}>
-                            <Link to="/">+7 (999) 136-65-57</Link>
+                            <Link to="/">
+                                <L10n k="phone" />
+                            </Link>
                         </div>
                         <div className={`${page.descr} ${grid.pbMicro}`}>
-                            <Link>Irom-io@ya.ru</Link>
+                            <Link to="/">
+                                <L10n k="mail" />
+                            </Link>
                         </div>
                         <Lang
                             location={p_.location}

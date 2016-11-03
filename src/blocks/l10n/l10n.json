@@ -8,5 +8,20 @@
     "ru": "Расскажите нам о своей мечте",
     "en": "Tell us about your dream",
     "esp": "Háblenos de su sueño"
+  },
+  "phone": {
+    "ru": "+7 (926) 571-27-19",
+    "en": "+7 (926) 571-27-19",
+    "esp": "+7 (926) 571-27-19"
+  },
+  "mail": {
+    "ru": "info@makeyourhome.ru",
+    "en": "info@makeyourhome.ru",
+    "esp": "info@makeyourhome.ru"
+  },
+  "exit": {
+    "ru": "Выйти",
+    "en": "Logout",
+    "esp": "Finalizar la sesión"
   }
 }

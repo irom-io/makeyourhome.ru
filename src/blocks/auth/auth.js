@@ -5,6 +5,7 @@ import {FacebookIcon, VKIcon} from 'pages/projects/__share/projects__share';
 import AccountCircle from 'react-icons/lib/md/account-circle'
 import api from 'blocks/api/api';
 import queryString from 'query-string';
+import L10n from 'blocks/l10n/l10n';
 
 import auth from './auth.css';
 import grid from 'blocks/grid/grid.css';
@@ -194,7 +195,7 @@ class Auth extends React.Component {
                             onClick={() => this.logout()}
                             className={`${text.mini} ${text.underline} ${item.pointer}`}
                         >
-                            Выйти
+                            <L10n k="exit" />
                         </div>
                     </div>
                 }
