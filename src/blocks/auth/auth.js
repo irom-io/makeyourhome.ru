@@ -35,8 +35,8 @@ export const loginUser = (loginData) => {
 };
 
 class Auth extends React.Component {
-    constructor(p_) {
-        super(p_);
+    constructor(p_, context) {
+        super(p_, context);
 
         let user = localStorage.getItem('user');
 
@@ -112,7 +112,7 @@ class Auth extends React.Component {
     }
     logout() {
         logoutUserCallbacks.forEach(logout => { logout(); });
-        this.props.history.push('/');
+        this.context.router.push('/');
     }
     getCurrentURL(location, data) {
         let current = `http://82.146.36.41`;
@@ -202,5 +202,8 @@ class Auth extends React.Component {
         );
     }
 }
+Auth.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default Auth;
