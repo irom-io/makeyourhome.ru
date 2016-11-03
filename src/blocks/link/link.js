@@ -1,5 +1,6 @@
 import React from 'react';
 import link from './link.css';
+import {getLang} from 'blocks/l10n/l10n';
 import {Link as ReactLink} from 'react-router';
 
 class Link extends React.Component {
@@ -9,7 +10,7 @@ class Link extends React.Component {
         this.state = {};
     }
     createHref(to) {
-        const lang = 'ru';
+        const lang = getLang();
         const router = this.context.router;
         let location = router.createLocation(to);
         let href = to;

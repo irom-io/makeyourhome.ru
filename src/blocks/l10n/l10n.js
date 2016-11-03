@@ -1,38 +1,40 @@
 import React from 'react';
 import l10n from './l10n.json';
 
+let lang = 'ru';
+export const getLang = () => {
+    return lang;
+};
+
 class L10n extends React.Component {
     constructor(p_, context) {
         super(p_, context);
 
-        this.state = {
-            text: ''
-        };
+        this.getTranslate = this.getTranslate.bind(this);
+        this.state = {};
     }
     componentDidMount() {
-        const self = this;
-        const p_ = this.props;
-
         this.context.router.listen((route) => {
-            let lang = route.query.lang || 'ru';
-            let translate = l10n[p_.k];
-
-            if (translate[lang]) {
-                translate = translate[lang];
-            } else {
-                translate = 'no translate';
-            }
-
-            if (self.state.text !== translate) {
-                self.setState({text: translate});
-            }
+            lang = route.query.lang || lang;
         });
     }
+    getTranslate() {
+        const p_ = this.props;
+        let translate = l10n[p_.k];
+
+        if (translate[lang]) {
+            translate = translate[lang];
+        } else {
+            translate = 'no translate';
+        }
+
+        return translate;
+    }
     render() {
-        const s_ = this.state;
+        const translate = this.getTranslate();
 
         return (
-            <span>{s_.text}</span>
+            <span>{translate}</span>
         );
     }
 }
