@@ -19,7 +19,12 @@
     "en": "info@makeyourhome.ru",
     "esp": "info@makeyourhome.ru"
   },
-  "exit": {
+  "login": {
+    "ru": "Войти",
+    "en": "Login",
+    "esp": "Iniciar sesión"
+  },
+  "logout": {
     "ru": "Выйти",
     "en": "Logout",
     "esp": "Finalizar la sesión"

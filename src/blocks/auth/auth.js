@@ -176,7 +176,9 @@ class Auth extends React.Component {
                                             </Link>
                                         </div>
                                         <div className={`${text.mini} ${text.underline}`}>
-                                            <Link to="/login">Войти</Link>
+                                            <Link to="/login">
+                                                {L10n('login')}
+                                            </Link>
                                         </div>
                                     </div>
                                 )
@@ -195,7 +197,7 @@ class Auth extends React.Component {
                             onClick={() => this.logout()}
                             className={`${text.mini} ${text.underline} ${item.pointer}`}
                         >
-                            {L10n('exit')}
+                            {L10n('logout')}
                         </div>
                     </div>
                 }

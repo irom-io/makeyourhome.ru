@@ -1,6 +1,6 @@
 import React from 'react';
 
-let lang;
+let lang = 'ru';
 export const getLang = () => {
     return lang;
 };
