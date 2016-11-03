@@ -11,8 +11,8 @@ class Lang extends React.Component {
         this.state = {
             items: [
                 {name: 'Ru', active: true},
-                {name: 'Eng'},
-                {name: 'Es'}
+                {name: 'Esp'},
+                {name: 'En'}
             ]
         };
     }

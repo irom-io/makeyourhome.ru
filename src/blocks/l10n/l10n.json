@@ -1,7 +1,12 @@
 {
-  "slogan": {
+  "siteName": {
     "ru": "Создай свой дом",
     "en": "Make your home",
-    "esp": ""
+    "esp": "Haga de su hogar"
+  },
+  "slogan": {
+    "ru": "Расскажите нам о своей мечте",
+    "en": "Tell us about your dream",
+    "esp": "Háblenos de su sueño"
   }
 }
