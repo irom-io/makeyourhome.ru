@@ -1,6 +1,7 @@
 import React from 'react';
 import BlockLogin from 'blocks/login/login';
 import Layout from 'blocks/layout/layout';
+import {getLang} from 'blocks/page/__lang/page__lang';
 import grid from 'blocks/grid/grid.css';
 
 class Login extends React.Component {
@@ -12,17 +13,19 @@ class Login extends React.Component {
         };
     }
     componentDidMount() {
-        let user = localStorage.getItem('user');
+        const user = localStorage.getItem('user');
+        const lang = getLang();
 
         if (user) {
-            this.context.router.push('/projects');
+            this.context.router.push(`/projects?lang=${lang}`);
         }
     }
     onResponseAuth(response) {
         this.setState({loading: false});
+        const lang = getLang();
 
         if (!response.error) {
-            this.context.router.push('/projects');
+            this.context.router.push(`/projects?lang=${lang}`);
         }
     }
     onResponseRegistration() {

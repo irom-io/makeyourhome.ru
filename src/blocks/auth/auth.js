@@ -6,6 +6,7 @@ import AccountCircle from 'react-icons/lib/md/account-circle'
 import api from 'blocks/api/api';
 import queryString from 'query-string';
 import L10n from 'blocks/l10n/l10n';
+import {getLang} from 'blocks/page/__lang/page__lang';
 
 import auth from './auth.css';
 import grid from 'blocks/grid/grid.css';
@@ -112,8 +113,9 @@ class Auth extends React.Component {
         }
     }
     logout() {
+        const lang = getLang();
         logoutUserCallbacks.forEach(logout => { logout(); });
-        this.context.router.push('/');
+        this.context.router.push(`/?lang=${lang}`);
     }
     getCurrentURL(location, data) {
         let current = `http://82.146.36.41`;
