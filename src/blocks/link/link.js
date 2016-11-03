@@ -23,26 +23,18 @@ class Link extends React.Component {
         return href;
     }
     render() {
-        const p_ = this.props;
-        const className = p_.className? `${link.init} ${p_.className}` : link.init;
+        let p_ = {...this.props};
+        p_.className = p_.className? `${link.init} ${p_.className}` : link.init;
+
+        if (p_.to) {
+            p_.to = (() => this.createHref(p_.to))();
+        }
 
         return (
                 (p_.href) ?
-                <a
-                    href={p_.href}
-                    target={p_.target}
-                    className={className}
-                >
-                    {p_.children}
-                </a>
+                <a {...p_} />
                 :
-                <ReactLink
-                    to={(() => this.createHref(p_.to))()}
-                    className={className}
-                    activeClassName={p_.activeClassName}
-                >
-                    {p_.children}
-                </ReactLink>
+                <ReactLink {...p_} />
         );
     }
 }
