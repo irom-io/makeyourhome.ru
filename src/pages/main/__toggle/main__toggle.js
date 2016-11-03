@@ -15,15 +15,15 @@ class MainToggle extends React.Component {
                 {key: 'individual'}
             ],
             ready: [
-                {key: 'Выберите проект дома'},
-                {key: 'Заполните форму покупки'},
-                {key: 'Подготовка проекта дома'},
-                {key: 'Сдача проекта'}
+                {key: 'select'},
+                {key: 'fill'},
+                {key: 'drafting'},
+                {key: 'delivery'}
             ],
             individual: [
-                {key: 'Расскажите о своей идее'},
-                {key: 'Мы создаем проект'},
-                {key: 'Прием проекта'}
+                {key: 'tell'},
+                {key: 'create'},
+                {key: 'acceptance'}
             ],
             active: 'ready'
         };
@@ -51,7 +51,7 @@ class MainToggle extends React.Component {
                         return (
                             <Link className={mainToggle.item} key={`mainToggle__item_${index}`}>
                                 <div className={mainToggle.text}>
-                                    {item.key}
+                                    {L10n(`toggle.${item.key}`)}
                                 </div>
                             </Link>
                         );

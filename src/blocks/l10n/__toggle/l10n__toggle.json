@@ -9,6 +9,41 @@
       "ru": "Индивидуальные проекты",
       "en": "Individual projects",
       "esp": "Los proyectos individuales"
+    },
+    "select": {
+      "ru": "Выберите проект дома",
+      "en": "Select the house project",
+      "esp": "Seleccione el proyecto de la casa"
+    },
+    "fill": {
+      "ru": "Заполните форму покупки",
+      "en": "Fill in the purchase form",
+      "esp": "Rellenar el formulario de compra"
+    },
+    "drafting": {
+      "ru": "Подготовка проекта дома",
+      "en": "Drafting of the house",
+      "esp": "Redacción de la casa"
+    },
+    "delivery": {
+      "ru": "Сдача проекта",
+      "en": "Delivery project",
+      "esp": "Proyecto de entrega"
+    },
+    "tell": {
+      "ru": "Расскажите о своей идее",
+      "en": "Tell us about your idea",
+      "esp": "Háblenos de su idea"
+    },
+    "create": {
+      "ru": "Мы создаем проект",
+      "en": "We create project",
+      "esp": "Creamos proyecto"
+    },
+    "acceptance": {
+      "ru": "Прием проекта",
+      "en": "Acceptance of the project",
+      "esp": "La aceptación del proyecto"
     }
   }
 }

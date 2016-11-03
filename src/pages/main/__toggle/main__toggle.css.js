@@ -63,13 +63,16 @@ const mainToggle = jcss({
         ...item.colored,
         ...text.normalPlus,
         ...text.center,
+        ...text.mini,
         width: 136,
         height: 128,
         lineHeight: 1.3,
+        [css.media.tab]: {
+            ...text.micro
+        },
         [css.media.tabMini]: {
             width: 90,
-            height: 80,
-            ...text.mini
+            height: 80
         },
         [css.media.mob]: {
             width: '100%',
