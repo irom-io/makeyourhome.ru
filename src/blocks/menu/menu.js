@@ -19,16 +19,16 @@ class Menu extends React.Component {
                     name: 'styles',
                     to: '/styles',
                     subItems: [
-                        {name: 'Современный', to: '/projects?style=modern'},
-                        {name: 'Классический', to: '/projects?style=classic'},
-                        {name: 'Дачный', to: '/projects?style=countryside'},
-                        {name: 'Европейский', to: '/projects?style=european'},
-                        {name: 'Американский', to: '/projects?style=american'},
-                        {name: 'Деревянный', to: '/projects?style=wooden'},
-                        {name: 'Бунгало', to: '/projects?style=bungalow'}
+                        {name: 'modern', to: '/projects?style=modern'},
+                        {name: 'classic', to: '/projects?style=classic'},
+                        {name: 'countryside', to: '/projects?style=countryside'},
+                        {name: 'european', to: '/projects?style=european'},
+                        {name: 'american', to: '/projects?style=american'},
+                        {name: 'wooden', to: '/projects?style=wooden'},
+                        {name: 'bungalow', to: '/projects?style=bungalow'}
                     ]
                 },
-                {
+/*                {
                     name: 'collections',
                     to: '/collections',
                     subItems: [
@@ -39,7 +39,7 @@ class Menu extends React.Component {
                         {name: 'Беседка', to: '/projects?collection=cabin'},
                         {name: 'Разное', to: '/projects?collection=other'}
                     ]
-                },
+                },*/
                 {
                     name: 'questions',
                     to: 'questions'
@@ -84,7 +84,7 @@ class Menu extends React.Component {
                                                         to={subItem.to}
                                                         activeClassName="menu_active"
                                                     >
-                                                        {subItem.name}
+                                                        {L10n(`${item.name}.${subItem.name}`)}
                                                     </Link>
                                                 </li>
                                             );
