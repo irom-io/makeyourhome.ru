@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import Rectangle from 'blocks/rectangle/rectangle';
 import Search from 'react-icons/lib/md/search';
-import {Link} from 'react-router';
+import Link from 'blocks/link/link';
 import ArrowLeft from 'react-icons/lib/md/keyboard-arrow-left';
 import ArrowRight from 'react-icons/lib/md/keyboard-arrow-right';
 

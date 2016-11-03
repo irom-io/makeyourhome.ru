@@ -41,8 +41,5 @@ class Link extends React.Component {
 Link.contextTypes = {
     router: React.PropTypes.object.isRequired
 };
-Link.defaultProps = {
-    to: '/'
-};
 
 export default Link;
