@@ -4,6 +4,36 @@
       "ru": "Поиск проектов",
       "en": "Projects search",
       "esp": "Buscar proyectos"
+    },
+    "catalog": {
+      "ru": "Каталог",
+      "en": "Catalog",
+      "esp": "Directorio"
+    },
+    "styles": {
+      "ru": "Стили",
+      "en": "Styles",
+      "esp": "Estilos"
+    },
+    "collections": {
+      "ru": "Коллекции",
+      "en": "Collections",
+      "esp": "Сolecciones"
+    },
+    "questions": {
+      "ru": "Вопрос-ответ",
+      "en": "Questions",
+      "esp": "Preguntas"
+    },
+    "blog": {
+      "ru": "Блог",
+      "en": "Blog",
+      "esp": "Blog"
+    },
+    "favorites": {
+      "ru": "Избранное",
+      "en": "Favorites",
+      "esp": "Favoritos"
     }
   }
 }

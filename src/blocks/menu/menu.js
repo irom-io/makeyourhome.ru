@@ -12,12 +12,12 @@ class Menu extends React.Component {
             isShowMenu: false,
             items: [
                 {
-                    name: 'Каталог',
-                    to: 'projects'
+                    name: 'catalog',
+                    to: '/projects'
                 },
                 {
-                    name: 'Стили',
-                    to: 'styles',
+                    name: 'styles',
+                    to: '/styles',
                     subItems: [
                         {name: 'Современный', to: '/projects?style=modern'},
                         {name: 'Классический', to: '/projects?style=classic'},
@@ -29,8 +29,8 @@ class Menu extends React.Component {
                     ]
                 },
                 {
-                    name: 'Коллекции',
-                    to: 'collections',
+                    name: 'collections',
+                    to: '/collections',
                     subItems: [
                         {name: 'Жилой дом', to: '/projects?collection=houses'},
                         {name: 'Баня', to: '/projects?collection=bath'},
@@ -41,14 +41,14 @@ class Menu extends React.Component {
                     ]
                 },
                 {
-                    name: 'Вопрос-ответ',
+                    name: 'questions',
                     to: 'questions'
                 },
                 {
-                    name: 'Блог'
+                    name: 'blog'
                 },
                 {
-                    name: 'Избранное'
+                    name: 'favorites'
                 }
             ]
         };
@@ -73,7 +73,7 @@ class Menu extends React.Component {
                                         to={item.to}
                                         activeClassName="menu_active"
                                     >
-                                        {item.name}
+                                        {L10n(`menu.${item.name}`)}
                                     </Link>
                                     {item.subItems &&
                                     <ul>
@@ -113,7 +113,7 @@ class Menu extends React.Component {
                                         to={item.to}
                                         activeClassName="menu_active"
                                     >
-                                        {item.name}
+                                        {L10n(`menu.${item.name}`)}
                                     </Link>
                                 </li>
                             );
