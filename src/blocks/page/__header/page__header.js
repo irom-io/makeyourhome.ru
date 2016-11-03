@@ -6,7 +6,7 @@ import item from 'blocks/item/item.css';
 import Auth from 'blocks/auth/auth';
 import Lang from 'blocks/lang/lang';
 import Link from 'blocks/link/link';
-import Localization from 'blocks/localization/localization';
+import L10n from 'blocks/l10n/l10n';
 
 class PageHeader extends React.Component {
     constructor(p_) {
@@ -23,7 +23,7 @@ class PageHeader extends React.Component {
                     <div className={`${grid.w35} ${item.none_tabMini}`}>
                         <div className={page.title}>
                             <Link to="/">
-                                <Localization k="slogan" />
+                                <L10n k="slogan" />
                             </Link>
                         </div>
                         <div className={page.descr}>

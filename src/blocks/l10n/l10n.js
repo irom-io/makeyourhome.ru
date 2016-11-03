@@ -1,7 +1,7 @@
 import React from 'react';
-import localization from './localization.json';
+import l10n from './l10n.json';
 
-class Localization extends React.Component {
+class L10n extends React.Component {
     constructor(p_, context) {
         super(p_, context);
 
@@ -15,7 +15,7 @@ class Localization extends React.Component {
 
         this.context.router.listen((route) => {
             let lang = route.query.lang || 'ru';
-            let translate = localization[p_.k];
+            let translate = l10n[p_.k];
 
             if (translate[lang]) {
                 translate = translate[lang];
@@ -36,8 +36,8 @@ class Localization extends React.Component {
         );
     }
 }
-Localization.contextTypes = {
+L10n.contextTypes = {
     router: React.PropTypes.object.isRequired
 };
 
-export default Localization;
+export default L10n;
