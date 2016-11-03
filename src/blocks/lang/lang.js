@@ -2,6 +2,7 @@ import React from 'react';
 import lang from './lang.css';
 import grid from 'blocks/grid/grid.css';
 import Link from 'blocks/link/link';
+import queryString from 'query-string';
 
 class Lang extends React.Component {
     constructor(p_, context) {
@@ -14,6 +15,27 @@ class Lang extends React.Component {
                 {name: 'En', key: 'en'}
             ]
         };
+    }
+    createHref(lang) {
+        let current = '';
+        const location = this.props.location;
+        const query = location.query;
+        let key;
+        let newQuery = {lang: lang};
+
+        if (location.pathname[0] !== '/') {
+            current = `${current}/${location.pathname}`;
+        }
+
+        for (key in query) {
+            if (query.hasOwnProperty(key) && key !== 'lang') {
+                newQuery[key] = query[key];
+            }
+        }
+
+        current = `${current}?${queryString.stringify(newQuery)}`;
+
+        return current;
     }
     render() {
         const active = this.props.location.query.lang || 'ru';
@@ -29,7 +51,7 @@ class Lang extends React.Component {
                                 className={(active === item.key)? lang.active : lang.item}
                             >
                                 <Link
-                                    to={`/?lang=${item.key}`}
+                                    to={this.createHref(item.key)}
                                 >
                                     {item.name}
                                 </Link>
