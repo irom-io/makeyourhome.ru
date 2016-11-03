@@ -2,21 +2,28 @@ import React from 'react';
 import lang from './lang.css';
 import grid from 'blocks/grid/grid.css';
 import Link from 'blocks/link/link';
-import cn from 'classnames';
 
 class Lang extends React.Component {
-    constructor(p_) {
-        super(p_);
+    constructor(p_, context) {
+        super(p_, context);
 
+        this.createHref = this.createHref.bind(this);
         this.state = {
             items: [
-                {name: 'Ru', active: true},
-                {name: 'Esp'},
-                {name: 'En'}
+                {name: 'Ru', key: 'ru'},
+                {name: 'Esp', key: 'esp'},
+                {name: 'En', key: 'en'}
             ]
         };
     }
+    createHref(lang) {
+        let location = this.props.location;
+        location.query.lang = lang;
+
+        return this.context.router.createHref(location);
+    }
     render() {
+        const active = this.props.location.query.lang || 'ru';
         const s_ = this.state;
 
         return (
@@ -26,9 +33,13 @@ class Lang extends React.Component {
                         return (
                             <div
                                 key={`lang__item_${index}`}
-                                className={cn({[lang.item]: !item.active, [lang.active]: item.active})}
+                                className={(active === item.key)? lang.active : lang.item}
                             >
-                                <Link>{item.name}</Link>
+                                <Link
+                                    to={this.createHref(item.key)}
+                                >
+                                    {item.name}
+                                </Link>
                             </div>
                         );
                     })}
@@ -37,5 +48,8 @@ class Lang extends React.Component {
         );
     }
 }
+Lang.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default Lang;

@@ -47,7 +47,9 @@ class PageHeader extends React.Component {
                         <div className={`${page.descr} ${grid.pbMicro}`}>
                             <Link>Irom-io@ya.ru</Link>
                         </div>
-                        <Lang />
+                        <Lang
+                            location={p_.location}
+                        />
                     </div>
                 </div>
             </div>
