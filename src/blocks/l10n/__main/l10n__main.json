@@ -28,5 +28,20 @@
     "ru": "Выйти",
     "en": "Logout",
     "esp": "Finalizar la sesión"
+  },
+  "finishedProjects": {
+    "ru": "Готовые проекты",
+    "en": "Finished Projects",
+    "esp": "Los proyectos terminados"
+  },
+  "individualProjects": {
+    "ru": "Индивидуальные проекты",
+    "en": "Individual projects",
+    "esp": "Los proyectos individuales"
+  },
+  "workExamples": {
+    "ru": "Примеры работ",
+    "en": "Work Examples",
+    "esp": "Ejemplos de trabajos"
   }
 }

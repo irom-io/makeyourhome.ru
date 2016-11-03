@@ -3,6 +3,7 @@ import Slider from 'blocks/slider/slider';
 import mainSlider from './main__slider.css';
 import Link from 'blocks/link/link';
 import Rectangle from 'blocks/rectangle/rectangle';
+import L10n from 'blocks/l10n/l10n';
 
 class MainSlider extends React.Component {
     constructor(p_) {
@@ -11,16 +12,19 @@ class MainSlider extends React.Component {
         this.state = {
             items: [
                 {
-                    text: 'Готовые проекты',
-                    src: require('./images/1.jpg')
+                    key: 'finishedProjects',
+                    src: require('./images/1.jpg'),
+                    to: '/projects'
                 },
                 {
-                    text: 'Индивидуальные проекты',
-                    src: require('./images/2.jpg')
+                    key: 'individualProjects',
+                    src: require('./images/2.jpg'),
+                    to: '/addProject'
                 },
                 {
-                    text: 'Примеры работ',
-                    src: require('./images/3.jpg')
+                    key: 'workExamples',
+                    src: require('./images/3.jpg'),
+                    to: '/projects'
                 }
             ]
         };
@@ -44,8 +48,8 @@ class MainSlider extends React.Component {
                                         style={{backgroundImage: `url(${item.src})`}}
                                     >
                                     </div>
-                                    <Link>
-                                        <div className={mainSlider.text}>{item.text}</div>
+                                    <Link to={item.to}>
+                                        <div className={mainSlider.text}>{L10n(item.key)}</div>
                                     </Link>
                                 </Rectangle>
                             </div>
