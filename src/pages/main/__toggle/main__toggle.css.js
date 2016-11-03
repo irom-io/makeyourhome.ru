@@ -34,6 +34,33 @@ const tab = {
     }
 };
 
+const toggleItem = {
+    ...item.borderWhite,
+    ...item.rounded,
+    ...item.centred,
+    ...item.colored,
+    ...text.normalPlus,
+    ...text.center,
+    ...text.mini,
+    width: 136,
+    height: 128,
+    lineHeight: 1.3,
+    [css.media.tab]: {
+        ...text.micro
+    },
+    [css.media.tabMini]: {
+        width: 90,
+        height: 80
+    },
+    [css.media.mob]: {
+        width: '100%',
+        ...grid.mbMicro,
+        '&:last-child': {
+            ...grid.mbNone
+        }
+    }
+};
+
 const mainToggle = jcss({
     content: {
         ...item.colored,
@@ -57,31 +84,10 @@ const mainToggle = jcss({
         '&:hover': null
     },
     item: {
-        ...item.borderWhite,
-        ...item.rounded,
-        ...item.centred,
-        ...item.colored,
-        ...text.normalPlus,
-        ...text.center,
-        ...text.mini,
-        width: 136,
-        height: 128,
-        lineHeight: 1.3,
-        [css.media.tab]: {
-            ...text.micro
-        },
-        [css.media.tabMini]: {
-            width: 90,
-            height: 80
-        },
-        [css.media.mob]: {
-            width: '100%',
-            ...grid.mbMicro,
-            '&:last-child': {
-                ...grid.mbNone
-            }
-        }
+        ...toggleItem,
+        ...item.arrow
     },
+    link: toggleItem,
     text: {
         ...grid.w70,
         ...grid.w90_tabMini

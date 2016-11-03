@@ -3,6 +3,7 @@ import Link from 'blocks/link/link';
 import L10n from 'blocks/l10n/l10n';
 
 import grid from 'blocks/grid/grid.css';
+import itemStyle from 'blocks/item/item.css';
 import mainToggle from './main__toggle.css';
 
 class MainToggle extends React.Component {
@@ -15,13 +16,13 @@ class MainToggle extends React.Component {
                 {key: 'individual'}
             ],
             ready: [
-                {key: 'select'},
+                {key: 'select', to: '/projects'},
                 {key: 'fill'},
                 {key: 'drafting'},
                 {key: 'delivery'}
             ],
             individual: [
-                {key: 'tell'},
+                {key: 'tell', to: '/addProject'},
                 {key: 'create'},
                 {key: 'acceptance'}
             ],
@@ -48,13 +49,26 @@ class MainToggle extends React.Component {
                 </div>
                 <div className={mainToggle.content}>
                     {s_[s_.active].map((item, index) => {
-                        return (
-                            <Link className={mainToggle.item} key={`mainToggle__item_${index}`}>
-                                <div className={mainToggle.text}>
-                                    {L10n(`toggle.${item.key}`)}
+                        if (item.to) {
+                            return (
+                                <Link
+                                    to={item.to}
+                                    className={mainToggle.link} key={`mainToggle__item_${index}`}
+                                >
+                                    <div className={mainToggle.text}>
+                                        {L10n(`toggle.${item.key}`)}
+                                    </div>
+                                </Link>
+                            );
+                        } else {
+                            return (
+                                <div className={mainToggle.item} key={`mainToggle__item_${index}`}>
+                                    <div className={mainToggle.text}>
+                                        {L10n(`toggle.${item.key}`)}
+                                    </div>
                                 </div>
-                            </Link>
-                        );
+                            );
+                        }
                     })}
                 </div>
             </div>
