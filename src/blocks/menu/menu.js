@@ -2,6 +2,7 @@ import React from 'react';
 import menu from './menu.css';
 import Link from 'blocks/link/link';
 import {Input} from 'blocks/text/_edit/text_edit';
+import L10n from 'blocks/l10n/l10n';
 
 class Menu extends React.Component {
     constructor(p_) {
@@ -60,7 +61,7 @@ class Menu extends React.Component {
                 <div className={menu.content}>
                     <div className={menu.search}>
                         <Input
-                            placeholder="Поиск проектов"
+                            placeholder={L10n('menu.searchPlaceholder')}
                         />
                     </div>
 

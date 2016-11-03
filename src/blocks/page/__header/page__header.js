@@ -23,12 +23,12 @@ class PageHeader extends React.Component {
                     <div className={`${grid.w35} ${item.none_tabMini}`}>
                         <div className={page.title}>
                             <Link to="/">
-                                <L10n k="siteName" />
+                                {L10n('siteName')}
                             </Link>
                         </div>
                         <div className={page.descr}>
                             <Link to="/">
-                                <L10n k="slogan" />
+                                {L10n('slogan')}
                             </Link>
                         </div>
                     </div>
@@ -43,12 +43,12 @@ class PageHeader extends React.Component {
                     <div className={`${grid.w35} ${grid.w35_tab} ${grid.w55_tabMini} ${text.right} ${item.none_mob}`}>
                         <div className={page.title}>
                             <Link to="/">
-                                <L10n k="phone" />
+                                {L10n('phone')}
                             </Link>
                         </div>
                         <div className={`${page.descr} ${grid.pbMicro}`}>
                             <Link to="/">
-                                <L10n k="mail" />
+                                {L10n('mail')}
                             </Link>
                         </div>
                         <Lang
