@@ -1,5 +1,34 @@
 {
   "collections": {
-
+    "house": {
+      "ru": "Жилой дом",
+      "en": "House",
+      "esp": "Casa"
+    },
+    "bath": {
+      "ru": "Баня",
+      "en": "Bath",
+      "esp": "Baño"
+    },
+    "garage": {
+      "ru": "Гараж",
+      "en": "Garage",
+      "esp": "Garaje"
+    },
+    "recreation": {
+      "ru": "Для отдыха",
+      "en": "Recreation",
+      "esp": "Recreación"
+    },
+    "cabin": {
+      "ru": "Беседка",
+      "en": "Cabin",
+      "esp": "Cabina"
+    },
+    "other": {
+      "ru": "Разное",
+      "en": "Other",
+      "esp": "Otro"
+    }
   }
 }

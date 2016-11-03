@@ -28,18 +28,18 @@ class Menu extends React.Component {
                         {name: 'bungalow', to: '/projects?style=bungalow'}
                     ]
                 },
-/*                {
+                {
                     name: 'collections',
                     to: '/collections',
                     subItems: [
-                        {name: 'Жилой дом', to: '/projects?collection=houses'},
-                        {name: 'Баня', to: '/projects?collection=bath'},
-                        {name: 'Гараж', to: '/projects?collection=garages'},
-                        {name: 'Для отдыха', to: '/projects?collection=recreation'},
-                        {name: 'Беседка', to: '/projects?collection=cabin'},
-                        {name: 'Разное', to: '/projects?collection=other'}
+                        {name: 'house', to: '/projects?collection=house'},
+                        {name: 'bath', to: '/projects?collection=bath'},
+                        {name: 'garage', to: '/projects?collection=garage'},
+                        {name: 'recreation', to: '/projects?collection=recreation'},
+                        {name: 'cabin', to: '/projects?collection=cabin'},
+                        {name: 'other', to: '/projects?collection=other'}
                     ]
-                },*/
+                },
                 {
                     name: 'questions',
                     to: 'questions'
