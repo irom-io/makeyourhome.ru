@@ -7,7 +7,6 @@ class Lang extends React.Component {
     constructor(p_, context) {
         super(p_, context);
 
-        this.createHref = this.createHref.bind(this);
         this.state = {
             items: [
                 {name: 'Ru', key: 'ru'},
@@ -15,12 +14,6 @@ class Lang extends React.Component {
                 {name: 'En', key: 'en'}
             ]
         };
-    }
-    createHref(lang) {
-        let location = this.props.location;
-        location.query.lang = lang;
-
-        return this.context.router.createHref(location);
     }
     render() {
         const active = this.props.location.query.lang || 'ru';
@@ -36,7 +29,7 @@ class Lang extends React.Component {
                                 className={(active === item.key)? lang.active : lang.item}
                             >
                                 <Link
-                                    to={this.createHref(item.key)}
+                                    to={`/?lang=${item.key}`}
                                 >
                                     {item.name}
                                 </Link>

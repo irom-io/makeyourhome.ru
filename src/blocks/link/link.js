@@ -9,7 +9,7 @@ class Link extends React.Component {
         this.state = {};
     }
     createHref(to) {
-        const lang = 'en';
+        const lang = 'ru';
         const router = this.context.router;
         let location = router.createLocation(to);
         let href = to;
