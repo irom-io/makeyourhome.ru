@@ -1,10 +1,6 @@
 import React from 'react';
 import l10n from './l10n.json';
-
-let lang = 'ru';
-export const getLang = () => {
-    return lang;
-};
+import {getLang} from 'blocks/page/__lang/page__lang';
 
 class L10n extends React.Component {
     constructor(p_, context) {
@@ -13,13 +9,10 @@ class L10n extends React.Component {
         this.getTranslate = this.getTranslate.bind(this);
         this.state = {};
     }
-    componentDidMount() {
-        this.context.router.listen((route) => {
-            lang = route.query.lang || lang;
-        });
-    }
     getTranslate() {
         const p_ = this.props;
+        const lang = getLang();
+
         let translate = l10n[p_.k];
 
         if (translate[lang]) {

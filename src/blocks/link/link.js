@@ -1,6 +1,6 @@
 import React from 'react';
 import link from './link.css';
-import {getLang} from 'blocks/l10n/l10n';
+import {getLang} from 'blocks/page/__lang/page__lang';
 import {Link as ReactLink} from 'react-router';
 
 class Link extends React.Component {

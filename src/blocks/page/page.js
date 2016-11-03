@@ -5,11 +5,12 @@ import PageFooter from 'blocks/page/__footer/page__footer';
 import {StickyContainer, Sticky} from 'react-sticky';
 import isMobile from 'ismobilejs';
 import page from './page.css';
+import PageLang from 'blocks/page/__lang/page__lang';
 
 class Page extends React.Component {
     constructor(p_) {
         super(p_);
-
+        
         this.state = {};
     }
     render() {
@@ -18,6 +19,7 @@ class Page extends React.Component {
 
         return (
             <div className={page.wrapper}>
+                <PageLang />
                 <StickyContainer className={page.space}>
                     <div className={page.block}>
                         <PageHeader
