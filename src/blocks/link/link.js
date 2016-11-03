@@ -2,12 +2,24 @@ import React from 'react';
 import link from './link.css';
 import {Link as ReactLink} from 'react-router';
 
-
 class Link extends React.Component {
-    constructor(p_) {
-        super(p_);
+    constructor(p_, context) {
+        super(p_, context);
 
         this.state = {};
+    }
+    createHref(to) {
+        const lang = 'en';
+        const router = this.context.router;
+        let location = router.createLocation(to);
+        let href = to;
+
+        if (!location.query.lang && lang !== 'ru') {
+            location.query.lang = lang;
+            href = router.createHref(location);
+        }
+
+        return href;
     }
     render() {
         const p_ = this.props;
@@ -24,7 +36,7 @@ class Link extends React.Component {
                 </a>
                 :
                 <ReactLink
-                    to={p_.to}
+                    to={(() => this.createHref(p_.to))()}
                     className={className}
                     activeClassName={p_.activeClassName}
                 >
@@ -33,5 +45,11 @@ class Link extends React.Component {
         );
     }
 }
+Link.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
+Link.defaultProps = {
+    to: '/'
+};
 
 export default Link;
