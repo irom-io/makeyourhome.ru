@@ -1,0 +1,14 @@
+{
+  "toggle": {
+    "ready": {
+      "ru": "Готовые проекты домов",
+      "en": "Ready house projects",
+      "esp": "Proyectos de casas listas"
+    },
+    "individual": {
+      "ru": "Индивидуальные проекты",
+      "en": "Individual projects",
+      "esp": "Los proyectos individuales"
+    }
+  }
+}

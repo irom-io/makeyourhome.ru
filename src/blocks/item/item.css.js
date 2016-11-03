@@ -62,6 +62,9 @@ const item = jcss({
     borderMain: {
         border: `2px solid ${css.colors.main}`
     },
+    borderSmMain: {
+        border: `1px solid ${css.colors.main}`
+    },
     borderWhite: {
         border: `2px solid ${css.colors.white}`
     },

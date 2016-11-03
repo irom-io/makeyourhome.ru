@@ -52,7 +52,7 @@ const mainToggle = jcss({
     active: {
         ...tab,
         ...item.colored,
-        border: 'none',
+        ...item.borderSmMain,
         ...item.arrow,
         '&:hover': null
     },
