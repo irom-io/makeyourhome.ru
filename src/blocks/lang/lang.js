@@ -24,7 +24,9 @@ class Lang extends React.Component {
         let newQuery = {lang: lang};
 
         if (location.pathname[0] !== '/') {
-            current = `${current}/${location.pathname}`;
+            current = `/${location.pathname}`;
+        } else {
+            current = `${location.pathname}`;
         }
 
         for (key in query) {
