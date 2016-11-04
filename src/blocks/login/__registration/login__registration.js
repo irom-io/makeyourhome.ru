@@ -2,6 +2,7 @@ import React from 'react';
 import {Input} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
 import api from 'blocks/api/api';
+import L10n from 'blocks/l10n/l10n';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -43,21 +44,21 @@ class LoginRegistration extends React.Component {
             <form onSubmit={(e) => this.onSubmit(e)}>
                 <div className={grid.mbMini}>
                     <Input
-                        placeholder="Имя"
+                        placeholder={L10n('auth.name')}
                         value={s_.name}
                         onChange={(value) => this.onChange(value, 'name')}
                     />
                 </div>
                 <div className={grid.mbMini}>
                     <Input
-                        placeholder="E-mail"
+                        placeholder={L10n('auth.email')}
                         value={s_.login}
                         onChange={(value) => this.onChange(value, 'login')}
                     />
                 </div>
                 <div className={grid.mbMini}>
                     <Input
-                        placeholder="Пароль"
+                        placeholder={L10n('auth.password')}
                         value={s_.password}
                         type="password"
                         onChange={(value) => this.onChange(value, 'password')}
@@ -65,7 +66,7 @@ class LoginRegistration extends React.Component {
                 </div>
                 <div className={grid.mbMini}>
                     <Input
-                        placeholder="Повторите пароль"
+                        placeholder={L10n('auth.passwordConfirm')}
                         value={s_.passwordRepeat}
                         type="password"
                         onChange={(value) => this.onChange(value, 'passwordRepeat')}
@@ -76,7 +77,7 @@ class LoginRegistration extends React.Component {
                         type="submit"
                         disabled={s_.loading}
                     >
-                        Войти
+                        {L10n('login')}
                     </Button>
                 </div>
             </form>

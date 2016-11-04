@@ -19,6 +19,16 @@
       "ru": "Паорль",
       "en": "Password",
       "esp": "Contraseña"
+    },
+    "passwordConfirm": {
+      "ru": "Повторите пароль",
+      "en": "Confirm password",
+      "esp": "Repetir contraseña"
+    },
+    "name": {
+      "ru": "Имя",
+      "en": "Name",
+      "esp": "Тombre"
     }
   }
 }
