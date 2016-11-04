@@ -6,13 +6,15 @@ import l10nMenu from './__menu/l10n__menu.json';
 import l10nStyles from './__styles/l10n__styles';
 import l10nCollections from './__collections/l10n__collections';
 import l10nToggle from './__toggle/l10n__toggle.json';
+import l10nErrors from './__errors/l10n__errors.json';
 
 const l10n = {
     ...l10nMain,
     ...l10nMenu,
     ...l10nStyles,
     ...l10nCollections,
-    ...l10nToggle
+    ...l10nToggle,
+    ...l10nErrors
 };
 
 const getTranslate = (key) => {

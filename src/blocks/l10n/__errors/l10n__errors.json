@@ -1,0 +1,44 @@
+{
+  "errors": {
+    "loginError": {
+      "ru": "Ошибка входа",
+      "en": "Login failed",
+      "esp": "Error de inicio de sesion"
+    },
+    "serverError": {
+      "ru": "Ошибка входа",
+      "en": "Server error",
+      "esp": "Error del servidor"
+    },
+    "emptyName": {
+      "ru": "Введите имя",
+      "en": "Enter your name",
+      "esp": "Introduzca un nombre"
+    },
+    "notValidEmail": {
+      "ru": "Введите е-mail",
+      "en": "Enter e-mail",
+      "esp": "Introduzca el correo electrónico"
+    },
+    "notValidUser": {
+      "ru": "Подтвердите данный е-mail",
+      "en": "Confirm the e-mail",
+      "esp": "Confirmar la dirección de correo"
+    },
+    "userExist": {
+      "ru": "Пользователь с таким именем существует",
+      "en": "User with this name exists",
+      "esp": "Vith Usera este nama eksists"
+    },
+    "emptyPassword": {
+      "ru": "Введите пароль",
+      "en": "Enter password",
+      "esp": "Introduzca su contraseña"
+    },
+    "passwordsDoNotMatch": {
+      "ru": "Пароли не совпадают",
+      "en": "Passwords do not match",
+      "esp": "Las contraseñas no coinciden"
+    }
+  }
+}

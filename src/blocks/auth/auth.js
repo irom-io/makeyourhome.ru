@@ -68,7 +68,7 @@ class Auth extends React.Component {
         });
         errorUserCallbacks.push((error) => {
             self.setState({
-                errorMsg: error.msg,
+                errorMsg: L10n(`errors.${error.msg}`),
                 loading: false
             });
             setTimeout(() => {

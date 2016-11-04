@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginAuth from 'blocks/login/__auth/login__auth';
 import LoginRegistration from 'blocks/login/__registration/login__registration';
+import L10n from 'blocks/l10n/l10n';
 
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
@@ -19,7 +20,7 @@ class Login extends React.Component {
         const p_ = this.props;
 
         if (response.error) {
-            this.setState({errorMsg: response.error.msg})
+            this.setState({errorMsg: L10n(`errors.${response.error.msg}`)})
         }
 
         p_.onResponseAuth(response);
@@ -28,7 +29,7 @@ class Login extends React.Component {
         const p_ = this.props;
 
         if (response.error) {
-            this.setState({errorMsg: response.error.msg});
+            this.setState({errorMsg: L10n(`errors.${response.error.msg}`)});
         } else {
             this.setState({
                 registration: true,
