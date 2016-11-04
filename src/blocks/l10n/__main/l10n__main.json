@@ -73,5 +73,10 @@
     "ru": "Каталог",
     "en": "Catalog",
     "esp": "Directorio"
+  },
+  "confidentiality": {
+    "ru": "Конфиденциальность",
+    "en": "Confidentiality",
+    "esp": "Confidencialidad"
   }
 }
