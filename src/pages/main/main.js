@@ -4,6 +4,7 @@ import MainToggle from 'pages/main/__toggle/main__toggle';
 import page from 'blocks/page/page.css';
 import grid from 'blocks/grid/grid.css';
 import {Tile, TileWrapper} from 'blocks/tile/tile';
+import L10n from 'blocks/l10n/l10n';
 
 class Main extends React.Component {
     constructor(p_) {
@@ -11,12 +12,12 @@ class Main extends React.Component {
 
         this.state = {
             items: [
-                {src: require('./images/2.jpg'), text: 'Найти строителей'},
-                {src: require('./images/1.jpg'), text: 'О нас'},
-                {src: require('./images/3.jpg'), text: 'Статьи'},
-                {src: require('./images/4.jpg'), text: 'Редактировать проект'},
-                {src: require('./images/5.jpg'), text: 'Партнеры'},
-                {src: require('./images/6.jpg'), text: 'Каталог', to: 'projects'}
+                {src: require('./images/2.jpg'), key: 'findBuilders'},
+                {src: require('./images/1.jpg'), key: 'about'},
+                {src: require('./images/3.jpg'), key: 'articles'},
+                {src: require('./images/4.jpg'), key: 'editProject'},
+                {src: require('./images/5.jpg'), key: 'partners'},
+                {src: require('./images/6.jpg'), key: 'catalog', to: 'projects'}
             ]
         };
     }
@@ -38,7 +39,7 @@ class Main extends React.Component {
                             <Tile
                                 key={`main_${index}`}
                                 src={item.src}
-                                text={item.text}
+                                text={L10n(item.key)}
                                 to={item.to}
                             />
                         )

@@ -43,5 +43,35 @@
     "ru": "Примеры работ",
     "en": "Work Examples",
     "esp": "Ejemplos de trabajos"
+  },
+  "findBuilders": {
+    "ru": "Найти строителей",
+    "en": "Find builders",
+    "esp": "Encontrar constructores"
+  },
+  "about": {
+    "ru": "О нас",
+    "en": "About",
+    "esp": "Acerca de nosotros"
+  },
+  "articles": {
+    "ru": "Статьи",
+    "en": "Articles",
+    "esp": "Artículos"
+  },
+  "editProject": {
+    "ru": "Редактировать проект",
+    "en": "Edit project",
+    "esp": "Editar proyecto"
+  },
+  "partners": {
+    "ru": "Партнеры",
+    "en": "Partners",
+    "esp": "Socios"
+  },
+  "catalog": {
+    "ru": "Каталог",
+    "en": "Catalog",
+    "esp": "Directorio"
   }
 }
