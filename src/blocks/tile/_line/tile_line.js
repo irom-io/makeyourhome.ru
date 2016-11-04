@@ -43,7 +43,7 @@ class TileLine extends React.Component {
                         {!p_.toolbar &&
                         <div className={`${text.right} ${grid.mtMini}`}>
                             <Link to={p_.link.to}>
-                                <Button isText={true}>{L10n(`styles.${p_.link.key}`)}</Button>
+                                <Button isText={true}>{L10n(`${p_.name}.${p_.link.key}`)}</Button>
                             </Link>
                         </div>
                         }

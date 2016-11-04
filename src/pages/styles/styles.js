@@ -28,6 +28,7 @@ class Styles extends React.Component {
                 {s_.items.map((item, index) => {
                     return (
                         <TileLine
+                            name="styles"
                             key={`styles_${index}`}
                             src={item.src}
                             text={L10n(`styles.${item.key}`)}
