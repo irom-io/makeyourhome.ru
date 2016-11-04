@@ -61,19 +61,20 @@ class Login extends React.Component {
 
                 {!s_.registration &&
                 <div className={`${grid.mbMini} ${text.colored} ${text.normal}`}>
-                        <span
-                            className={(s_.type === 'registration') && `${text.underline} ${item.pointer}`}
-                            onClick={() => {this.setState({type: 'auth'})}}
-                        >
-                            Авторизуйтесь
-                        </span>
+                    <span>{p_.descr} </span>
+                    <span
+                        className={(s_.type === 'registration') && `${text.underline} ${item.pointer}`}
+                        onClick={() => {this.setState({type: 'auth'})}}
+                    >
+                        {p_.descr? 'Авторизуйтесь'.toLowerCase() : 'Авторизуйтесь'}
+                    </span>
                     <span> или </span>
-                        <span
-                            className={(s_.type === 'auth') && `${text.underline} ${item.pointer}`}
-                            onClick={() => {this.setState({type: 'registration'})}}
-                        >
-                            зарегистрируйтесь
-                        </span>
+                    <span
+                        className={(s_.type === 'auth') && `${text.underline} ${item.pointer}`}
+                        onClick={() => {this.setState({type: 'registration'})}}
+                    >
+                        зарегистрируйтесь
+                    </span>
                 </div>
                 }
 

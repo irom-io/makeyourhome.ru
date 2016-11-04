@@ -76,7 +76,7 @@ class LoginRegistration extends React.Component {
                         type="submit"
                         disabled={s_.loading}
                     >
-                        Отправить
+                        Войти
                     </Button>
                 </div>
             </form>
