@@ -2,6 +2,7 @@ import React from 'react';
 import {Input} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
 import {loginUser} from 'blocks/auth/auth';
+import L10n from 'blocks/l10n/l10n';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -41,14 +42,14 @@ class LoginAuth extends React.Component {
             <form className={grid.w100} onSubmit={(e) => this.onSubmit(e)}>
                 <div className={grid.mbMini}>
                     <Input
-                        placeholder="E-mail"
+                        placeholder={L10n('auth.email')}
                         value={s_.login}
                         onChange={(value) => this.onChange(value, 'login')}
                     />
                 </div>
                 <div className={grid.mbMini}>
                     <Input
-                        placeholder="Пароль"
+                        placeholder={L10n('auth.password')}
                         value={s_.password}
                         type="password"
                         onChange={(value) => this.onChange(value, 'password')}
@@ -59,7 +60,7 @@ class LoginAuth extends React.Component {
                         type="submit"
                         disabled={s_.loading}
                     >
-                        Войти
+                        {L10n('login')}
                     </Button>
                 </div>
             </form>

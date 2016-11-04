@@ -9,6 +9,16 @@
       "ru": "Зарегистрируйтесь",
       "en": "Sign up",
       "esp": "Apuntarte a"
+    },
+    "email": {
+      "ru": "E-mail",
+      "en": "E-mail",
+      "esp": "Correo electrónico"
+    },
+    "password": {
+      "ru": "Паорль",
+      "en": "Password",
+      "esp": "Contraseña"
     }
   }
 }
