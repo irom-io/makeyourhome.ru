@@ -16,7 +16,7 @@
       "esp": "Correo electrónico"
     },
     "password": {
-      "ru": "Паорль",
+      "ru": "Пароль",
       "en": "Password",
       "esp": "Contraseña"
     },
@@ -28,7 +28,7 @@
     "name": {
       "ru": "Имя",
       "en": "Name",
-      "esp": "Тombre"
+      "esp": "Nombre"
     },
     "successReg1": {
       "ru": "Регистрация прошла успешно.",
