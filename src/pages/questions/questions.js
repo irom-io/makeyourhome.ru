@@ -43,7 +43,7 @@ class Questions extends React.Component {
                     loading: false
                 });
                 
-                setTimeout(() => {self.setState({msg: null})}, 15000);
+                setTimeout(() => {self.setState({msg: ''})}, 1500);
             });
     }
     onResponseAuth(response) {
