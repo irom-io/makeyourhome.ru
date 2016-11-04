@@ -3,6 +3,8 @@ import {TileContent} from 'blocks/tile/tile';
 import Link from 'blocks/link/link';
 import Rectangle from 'blocks/rectangle/rectangle';
 import Button from 'blocks/button/button';
+import L10n from 'blocks/l10n/l10n';
+
 import tileLine from './tile_line.css';
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
@@ -41,7 +43,7 @@ class TileLine extends React.Component {
                         {!p_.toolbar &&
                         <div className={`${text.right} ${grid.mtMini}`}>
                             <Link to={p_.link.to}>
-                                <Button isText={true}>{p_.link.text}</Button>
+                                <Button isText={true}>{L10n(`styles.${p_.link.key}`)}</Button>
                             </Link>
                         </div>
                         }
