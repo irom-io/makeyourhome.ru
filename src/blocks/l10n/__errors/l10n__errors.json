@@ -6,7 +6,7 @@
       "esp": "Error de inicio de sesion"
     },
     "serverError": {
-      "ru": "Ошибка входа",
+      "ru": "Ошибка сервера",
       "en": "Server error",
       "esp": "Error del servidor"
     },

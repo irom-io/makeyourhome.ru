@@ -68,7 +68,7 @@ class Auth extends React.Component {
         });
         errorUserCallbacks.push((error) => {
             self.setState({
-                errorMsg: L10n(`errors.${error.msg}`),
+                errorMsg: error.msg,
                 loading: false
             });
             setTimeout(() => {
@@ -142,6 +142,7 @@ class Auth extends React.Component {
     render() {
         const p_ = this.props;
         const s_ = this.state;
+        const errorMsg = s_.errorMsg && L10n(`errors.${s_.errorMsg}`);
 
         return (
             <Layout
@@ -151,10 +152,10 @@ class Auth extends React.Component {
                 {!s_.user &&
                     <div>
                         {(() => {
-                            if (s_.errorMsg) {
+                            if (errorMsg) {
                                 return (
                                     <div className={auth.loginItem}>
-                                        {s_.errorMsg}
+                                        {errorMsg}
                                     </div>
                                 )
                             } else {

@@ -20,7 +20,7 @@ class Login extends React.Component {
         const p_ = this.props;
 
         if (response.error) {
-            this.setState({errorMsg: L10n(`errors.${response.error.msg}`)})
+            this.setState({errorMsg: response.error.msg})
         }
 
         p_.onResponseAuth(response);
@@ -29,7 +29,7 @@ class Login extends React.Component {
         const p_ = this.props;
 
         if (response.error) {
-            this.setState({errorMsg: L10n(`errors.${response.error.msg}`)});
+            this.setState({errorMsg: response.error.msg});
         } else {
             this.setState({
                 registration: true,
@@ -43,6 +43,7 @@ class Login extends React.Component {
     render() {
         const s_ = this.state;
         const p_ = this.props;
+        const errorMsg = s_.errorMsg && L10n(`errors.${s_.errorMsg}`);
         
         return (
             <div className={grid.w100}>
@@ -79,9 +80,9 @@ class Login extends React.Component {
                 </div>
                 }
 
-                {s_.errorMsg &&
+                {errorMsg &&
                 <div className={grid.mbMini}>
-                    {s_.errorMsg}
+                    {errorMsg}
                 </div>
                 }
 
