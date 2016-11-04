@@ -41,14 +41,7 @@ class Auth extends React.Component {
     constructor(p_, context) {
         super(p_, context);
 
-        let user = localStorage.getItem('user');
-
-        if (user) {
-            user = JSON.parse(user);
-        }
-
         this.state = {
-            user: user,
             loading: false
         };
     }
@@ -90,8 +83,10 @@ class Auth extends React.Component {
     fbLogin() {
         const self = this;
         const query = self.props.location.query;
+        let user = localStorage.getItem('user');
+        if (user) {user = JSON.parse(user);}
 
-        if (!isLogin && !self.state.user && query.code && query.fb) {
+        if (!isLogin && !user && query.code && query.fb) {
             isLogin = true;
             loginUser({
                 soc: 'fb',
@@ -103,8 +98,10 @@ class Auth extends React.Component {
     vkLogin() {
         const self = this;
         const query = self.props.location.query;
+        let user = localStorage.getItem('user');
+        if (user) {user = JSON.parse(user);}
 
-        if (!isLogin && !self.state.user && query.code && query.vk) {
+        if (!isLogin && !user && query.code && query.vk) {
             isLogin = true;
             loginUser({
                 soc: 'vk',
@@ -144,13 +141,15 @@ class Auth extends React.Component {
         const p_ = this.props;
         const s_ = this.state;
         const errorMsg = s_.errorMsg && L10n(`errors.${s_.errorMsg}`);
+        let user = localStorage.getItem('user');
+        if (user) {user = JSON.parse(user);}
 
         return (
             <Layout
                 loading={s_.loading}
                 className={`${grid.w100} ${text.center} ${grid.pMicro} ${item.rounded} ${item.overNone}`}
             >
-                {!s_.user &&
+                {!user &&
                     <div>
                         {(() => {
                             if (errorMsg) {
@@ -190,11 +189,11 @@ class Auth extends React.Component {
                         })()}
                     </div>
                 }
-                {s_.user &&
+                {user &&
                     <div>
                         <div className={grid.mbMicro}>
                             <div className={auth.loginItem}>
-                                {s_.user.name}
+                                {user.name}
                             </div>
                         </div>
                         <div

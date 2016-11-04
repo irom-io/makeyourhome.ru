@@ -14,15 +14,8 @@ class Questions extends React.Component {
     constructor(p_) {
         super(p_);
 
-        let user = localStorage.getItem('user');
-
-        if (user) {
-            user = JSON.parse(user);
-        }
-
         this.state = {
             question: '',
-            user: user,
             loading: false,
             items: [
                 {question: 'Что собой представляет готовый проект дома?', answer: 'Готовый проект дома (типовой, многоразовый и т.п.) - это уже созданный проект, решения которого ориентированы на потребности большинства.'},
@@ -34,12 +27,12 @@ class Questions extends React.Component {
     onChangeQuestion(value) {
         this.setState({question: value})
     }
-    sendQuestion() {
+    sendQuestion(user) {
         const self = this;
         const s_ = this.state;
         
         self.setState({loading: true});
-        api.post('questions', {user: s_.user, question: s_.question})
+        api.post('questions', {user: user, question: s_.question})
             .then(() => {
                 self.setState({
                     question: '', 
@@ -62,6 +55,8 @@ class Questions extends React.Component {
     }
     render() {
         const s_ = this.state;
+        let user = localStorage.getItem('user');
+        if (user) {user = JSON.parse(user);}
 
         return (
             <div className={page.content}>
@@ -74,7 +69,7 @@ class Questions extends React.Component {
                             onChange={(value) => this.onChangeQuestion(value)}
                         />
                     </div>
-                    {!s_.user &&
+                    {!user &&
                     <Login
                         descr="Чтобы задать вопрос,"
                         onSubmit={() => {this.setState({loading: true})}}
@@ -82,11 +77,11 @@ class Questions extends React.Component {
                         onResponseRegistration={(response) => this.onResponseRegistration(response)}
                     />
                     }
-                    {s_.user &&
+                    {user &&
                     <div className={text.center}>
                         <Button
                             disabled={!s_.question}
-                            onClick={() => this.sendQuestion()}
+                            onClick={() => this.sendQuestion(user)}
                             className={grid.w100_mob}
                         >
                             Задать вопрос
