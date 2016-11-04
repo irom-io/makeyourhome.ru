@@ -10,13 +10,13 @@ class Styles extends React.Component {
 
         this.state = {
             items: [
-                {src: require('./images/1.jpg'), key: 'modern', descr: require('./html/1.html'), link: {to: '/projects?style=modern', key: 'modern'}},
-                {src: require('./images/2.jpg'), key: 'classic', descr: require('./html/2.html'), link: {to: '/projects?style=classic', key: 'classic'}},
-                {src: require('./images/3.jpg'), key: 'countryside', descr: require('./html/3.html'), link: {to: '/projects?style=countryside', key: 'countryside'}},
-                {src: require('./images/4.jpg'), key: 'european', descr: require('./html/4.html'), link: {to: '/projects?style=european', key: 'european'}},
-                {src: require('./images/5.jpg'), key: 'american', descr: require('./html/5.html'), link: {to: '/projects?style=american', key: 'american'}},
-                {src: require('./images/6.jpg'), key: 'wooden', descr: require('./html/6.html'), link: {to: '/projects?style=wooden', key: 'wooden'}},
-                {src: require('./images/7.jpg'), key: 'bungalow', descr: require('./html/7.html'), link: {to: '/projects?style=bungalow', key: 'bungalow'}}
+                {src: require('./images/1.jpg'), key: 'modern', link: {to: '/projects?style=modern', key: 'modern'}},
+                {src: require('./images/2.jpg'), key: 'classic', link: {to: '/projects?style=classic', key: 'classic'}},
+                {src: require('./images/3.jpg'), key: 'countryside', link: {to: '/projects?style=countryside', key: 'countryside'}},
+                {src: require('./images/4.jpg'), key: 'european', link: {to: '/projects?style=european', key: 'european'}},
+                {src: require('./images/5.jpg'), key: 'american', link: {to: '/projects?style=american', key: 'american'}},
+                {src: require('./images/6.jpg'), key: 'wooden', link: {to: '/projects?style=wooden', key: 'wooden'}},
+                {src: require('./images/7.jpg'), key: 'bungalow', link: {to: '/projects?style=bungalow', key: 'bungalow'}}
             ]
         };
     }
@@ -33,7 +33,7 @@ class Styles extends React.Component {
                             text={L10n(`styles.${item.key}`)}
                             link={item.link}
                         >
-                            <div dangerouslySetInnerHTML={{__html: item.descr}}></div>
+                            <div dangerouslySetInnerHTML={{__html: L10n(`styles.${item.key}.descr`)}}></div>
                         </TileLine>
                     )
                 })}
