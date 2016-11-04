@@ -38,18 +38,21 @@ export class Textarea extends React.Component {
 
         this.state = {};
     }
+    onChange() {
+        const value = this.refs.textarea.value;
+        this.props.onChange(value);
+    }
     render() {
-        let p_ = {...this.props};
-
-        if (p_.className) {
-            p_.className = `${p_.className} ${textEdit.textarea}`;
-        } else {
-            p_.className = textEdit.textarea;
-        }
+        const p_ = this.props;
+        const className = p_.className? `${textEdit.textarea} ${p_.className}` : textEdit.textarea;
 
         return (
             <textarea
-                {...p_}
+                ref="textarea"
+                className={className}
+                value={p_.value}
+                placeholder={p_.placeholder}
+                onChange={() => this.onChange()}
             />
         );
     }

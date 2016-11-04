@@ -16,6 +16,7 @@ class Questions extends React.Component {
         const user = localStorage.getItem('user');
 
         this.state = {
+            question: '',
             user: user,
             loading: false,
             items: [
@@ -24,6 +25,12 @@ class Questions extends React.Component {
                 {question: 'Доставка проекта', answer: 'Большая часть наших проектов доставляется в течение 5 - 8 рабочих дней с момента получения заказа. Проект дома может быть отправлен по почте заказным письмом или курьерской службой.'}
             ]
         };
+    }
+    onChangeQuestion(value) {
+        this.setState({question: value})
+    }
+    sendQuestion() {
+        //console.log(this.state.question);
     }
     onResponseAuth(response) {
         if (!response.error) {
@@ -42,7 +49,11 @@ class Questions extends React.Component {
             <div className={page.content}>
                 <Layout loading={s_.loading}>
                     <div className={grid.mbMini}>
-                        <Textarea placeholder="Ваш вопрос" />
+                        <Textarea 
+                            placeholder="Ваш вопрос"
+                            value={s_.question}
+                            onChange={(value) => this.onChangeQuestion(value)}
+                        />
                     </div>
                     {!s_.user &&
                     <Login
@@ -54,7 +65,12 @@ class Questions extends React.Component {
                     }
                     {s_.user &&
                     <div className={text.center}>
-                        <Button className={grid.w100_mob} type="submit">Задать вопрос</Button>
+                        <Button
+                            onClick={() => this.sendQuestion()}
+                            className={grid.w100_mob}
+                        >
+                            Задать вопрос
+                        </Button>
                     </div>
                     }
                 </Layout>
