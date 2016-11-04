@@ -3,6 +3,7 @@ import menu from './menu.css';
 import Link from 'blocks/link/link';
 import {Input} from 'blocks/text/_edit/text_edit';
 import L10n from 'blocks/l10n/l10n';
+import MenuButton from 'blocks/menu/__button/menu__button';
 
 class Menu extends React.Component {
     constructor(p_) {
@@ -53,6 +54,9 @@ class Menu extends React.Component {
             ]
         };
     }
+    onClickMobile() {
+        this.setState({isShowMenu: !this.state.isShowMenu});
+    }
     render() {
         const s_ = this.state;
 
@@ -96,13 +100,9 @@ class Menu extends React.Component {
                         })}
                     </ul>
 
-                    <div className={menu.button}>
-                        <div className={menu.buttonContent}>
-                            <div className={menu.line}></div>
-                            <div className={menu.line}></div>
-                            <div className={menu.line}></div>
-                        </div>
-                    </div>
+                    <MenuButton
+                        onClick={() => this.onClickMobile()}
+                    />
 
                     {s_.isShowMenu &&
                     <ul className={menu.itemsMob}>

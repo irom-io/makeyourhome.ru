@@ -37,6 +37,7 @@ const menu = jcss({
         ...item.abs,
         ...item.none,
         ...item.block_tabMini,
+        ...item.o90,
         top: '100%',
         right: 0
     },

@@ -3,7 +3,6 @@ import Link from 'blocks/link/link';
 import L10n from 'blocks/l10n/l10n';
 
 import grid from 'blocks/grid/grid.css';
-import itemStyle from 'blocks/item/item.css';
 import mainToggle from './main__toggle.css';
 
 class MainToggle extends React.Component {
