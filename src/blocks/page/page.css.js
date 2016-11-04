@@ -21,6 +21,7 @@ const page = jcss({
     header: {
         flexShrink: 0,
         ...grid.row,
+        ...grid.col_mob,
         ...grid.justify,
         ...grid.pMini,
         ...grid.w100,

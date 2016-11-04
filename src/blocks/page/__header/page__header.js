@@ -55,6 +55,11 @@ class PageHeader extends React.Component {
                             location={p_.location}
                         />
                     </div>
+                    <div className={`${text.center} ${grid.mtMicro} ${item.none} ${item.block_mob}`}>
+                        <Lang
+                            location={p_.location}
+                        />
+                    </div>
                 </div>
             </div>
         );
