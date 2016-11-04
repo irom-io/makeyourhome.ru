@@ -60,10 +60,10 @@ router.get('/registration', function(req, res) {
     var user = usersModel.get({login: req.query.login}, true);
     
     if (req.query.userHash === user.userHash) {
-        res.redirect('http://82.146.36.41/login');
+        res.redirect(`http://82.146.36.41/login?lang=${req.query.lang}`);
         usersModel.save({login: req.query.login, notValid: false, userHash: null}, true);
     } else {
-        res.redirect('http://82.146.36.41/notFound');
+        res.redirect(`http://82.146.36.41/notFound?lang=${req.query.lang}`);
     }
 });
 

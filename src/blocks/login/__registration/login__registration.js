@@ -3,6 +3,7 @@ import {Input} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
 import api from 'blocks/api/api';
 import L10n from 'blocks/l10n/l10n';
+import {getLang} from 'blocks/page/__lang/page__lang';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -22,17 +23,25 @@ class LoginRegistration extends React.Component {
     onSubmit(e) {
         e.preventDefault();
         const self = this;
+        const s_ = self.state;
+        const lang = getLang();
 
         self.props.onSubmit();
         self.setState({loading: true});
-        api.post('users/registration', this.state)
-            .then(res => {
-                self.props.onResponse(res);
+        api.post('users/registration', {
+            name: s_.name,
+            login: s_.login,
+            password: s_.password,
+            passwordRepeat: s_.passwordRepeat,
+            lang: lang
+        })
+        .then(res => {
+            self.props.onResponse(res);
 
-                if (res.error) {
-                    self.setState({loading: false}); // Иначе возникает ошибка при редиректе после логина
-                }
-            });
+            if (res.error) {
+                self.setState({loading: false}); // Иначе возникает ошибка при редиректе после логина
+            }
+        });
     }
     onChange(value, field) {
         this.setState({[field]: value})

@@ -44,6 +44,21 @@
       "ru": "Перейдите по сссылке из письма и, затем, авторизуйтесь.",
       "en": "Follow the link from the letter, and then log in.",
       "esp": "Siga el enlace de la letra, e iniciar la sesión."
+    },
+    "verify1": {
+      "ru": "Подтверждение адреса электронной почты.",
+      "en": "Confirm your email address.",
+      "esp": "Confirmar su dirección de correo electrónico."
+    },
+    "verify2": {
+      "ru": "Чтобы подтвердить электронный адрес, нажмите",
+      "en": "To verify your email address, click",
+      "esp": "Para verificar su dirección de correo electrónico, haga clic"
+    },
+    "confirm": {
+      "ru": "подтвердить",
+      "en": "confirm",
+      "esp": "confirmar"
     }
   }
 }

@@ -3,6 +3,7 @@ const path = require('path');
 const validator = require('validator');
 const mail = require('../mail/mail');
 const randomstring = require('randomstring');
+const L10nAuth = require('../../src/blocks/l10n/__auth/l10n__auth.json').auth;
 
 const loginError = {error: {msg: 'loginError'}};
 const serverError = {error: {msg: 'serverError'}};
@@ -94,11 +95,11 @@ const usersModel = {
 
         body.userHash = randomstring.generate();
 
-        var ref = `http://82.146.36.41/api/users/registration?login=${body.login}&userHash=${body.userHash}`;
+        var ref = `http://82.146.36.41/api/users/registration?login=${body.login}&userHash=${body.userHash}&lang=${body.lang}`;
         mail({
             to: body.login,
-            subject: 'Подтверждение адреса электронной почты',
-            body: `Для подтверждения адреса электронной почты перейдите по <a target="_blank" href="${ref}">ссылке</a>`
+            subject: L10nAuth.verify1[body.lang],
+            body: `${L10nAuth.verify2[body.lang]} <a target="_blank" href="${ref}">${L10nAuth.confirm[body.lang]}</a>`
         });
         return usersModel.save(Object.assign(body, {notValid: true}));
     }
