@@ -33,7 +33,7 @@ class Collections extends React.Component {
                             text={L10n(`collections.${item.key}`)}
                             link={item.link}
                         >
-                            <div dangerouslySetInnerHTML={{__html: item.descr}}></div>
+                            <div dangerouslySetInnerHTML={{__html: L10n(`collections.${item.key}.descr`)}}></div>
                         </TileLine>
                     )
                 })}
