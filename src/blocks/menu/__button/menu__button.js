@@ -1,4 +1,5 @@
 import React from 'react';
+import enhanceWithClickOutside from 'react-click-outside';
 import menu from 'blocks/menu/menu.css';
 
 class MenuButton extends React.Component {
@@ -6,6 +7,11 @@ class MenuButton extends React.Component {
         super(p_);
 
         this.state = {};
+    }
+    handleClickOutside() {
+        const p_ = this.props;
+        
+        p_.onClickOutside();
     }
     render() {
         const p_ = this.props;
@@ -25,4 +31,4 @@ class MenuButton extends React.Component {
     }
 }
 
-export default MenuButton;
+export default enhanceWithClickOutside(MenuButton);

@@ -1,9 +1,11 @@
 import React from 'react';
-import menu from './menu.css';
 import Link from 'blocks/link/link';
 import {Input} from 'blocks/text/_edit/text_edit';
 import L10n from 'blocks/l10n/l10n';
 import MenuButton from 'blocks/menu/__button/menu__button';
+
+import menu from './menu.css';
+import item from 'blocks/item/item.css';
 
 class Menu extends React.Component {
     constructor(p_) {
@@ -57,6 +59,9 @@ class Menu extends React.Component {
     onClickMobile() {
         this.setState({isShowMenu: !this.state.isShowMenu});
     }
+    onClickOutsideMobile() {
+        this.setState({isShowMenu: false});
+    }
     render() {
         const s_ = this.state;
 
@@ -102,10 +107,12 @@ class Menu extends React.Component {
 
                     <MenuButton
                         onClick={() => this.onClickMobile()}
+                        onClickOutside={() => this.onClickOutsideMobile()}
                     />
 
-                    {s_.isShowMenu &&
-                    <ul className={menu.itemsMob}>
+                    <ul
+                        className={`${menu.itemsMob} ${s_.isShowMenu? item.visible : item.hidden}`}
+                    >
                         {s_.items.map((item, index) => {
                             return (
                                 <li key={`menu__item-${index}`} className={menu.item}>
@@ -119,7 +126,6 @@ class Menu extends React.Component {
                             );
                         })}
                     </ul>
-                    }
                 </div>
             </div>
         );
