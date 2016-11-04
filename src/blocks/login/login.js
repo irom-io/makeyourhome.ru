@@ -68,14 +68,14 @@ class Login extends React.Component {
                         className={(s_.type === 'registration') && `${text.underline} ${item.pointer}`}
                         onClick={() => {this.setState({type: 'auth'})}}
                     >
-                        {p_.descr? 'Авторизуйтесь'.toLowerCase() : 'Авторизуйтесь'}
+                        {p_.descr? L10n('auth.signIn').toLowerCase() : L10n('auth.signIn')}
                     </span>
-                    <span> или </span>
+                    <span> {L10n('or')} </span>
                     <span
                         className={(s_.type === 'auth') && `${text.underline} ${item.pointer}`}
                         onClick={() => {this.setState({type: 'registration'})}}
                     >
-                        зарегистрируйтесь
+                        {L10n('auth.signUp').toLowerCase()}
                     </span>
                 </div>
                 }

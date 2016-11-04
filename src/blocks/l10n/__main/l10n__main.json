@@ -78,5 +78,10 @@
     "ru": "Конфиденциальность",
     "en": "Confidentiality",
     "esp": "Confidencialidad"
+  },
+  "or": {
+    "ru": "или",
+    "en": "or",
+    "esp": "o"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "auth": {
+    "signIn": {
+      "ru": "Авторизуйтесь",
+      "en": "Sign in",
+      "esp": "Registrarse"
+    },
+    "signUp": {
+      "ru": "Зарегистрируйтесь",
+      "en": "Sign up",
+      "esp": "Apuntarte a"
+    }
+  }
+}
