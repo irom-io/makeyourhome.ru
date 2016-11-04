@@ -14,8 +14,12 @@ class Questions extends React.Component {
     constructor(p_) {
         super(p_);
 
-        const user = localStorage.getItem('user');
-        
+        let user = localStorage.getItem('user');
+
+        if (user) {
+            user = JSON.parse(user);
+        }
+
         this.state = {
             question: '',
             user: user,
