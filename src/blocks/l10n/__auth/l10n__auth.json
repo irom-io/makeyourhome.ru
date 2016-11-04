@@ -29,6 +29,21 @@
       "ru": "Имя",
       "en": "Name",
       "esp": "Тombre"
+    },
+    "successReg1": {
+      "ru": "Регистрация прошла успешно.",
+      "en": "Registration completed successfully.",
+      "esp": "Registro se realizó correctamente."
+    },
+    "successReg2": {
+      "ru": "Для подтверждения e-mail, Вам отправлено письмо.",
+      "en": "To confirm the e-mail, sent you a letter.",
+      "esp": "Para confirmar la dirección de correo, se envió una carta."
+    },
+    "successReg3": {
+      "ru": "Перейдите по сссылке из письма и, затем, авторизуйтесь.",
+      "en": "Follow the link from the letter, and then log in.",
+      "esp": "Siga el enlace de la letra, e iniciar la sesión."
     }
   }
 }

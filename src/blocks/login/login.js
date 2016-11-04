@@ -50,13 +50,13 @@ class Login extends React.Component {
                 {s_.registration &&
                 <div className={`${text.normal} ${grid.mbNormal}`}>
                     <div className={`${text.colored} ${grid.mbMini}`}>
-                        Регистрация прошла успешно.
+                        {L10n('auth.successReg1')}
                     </div>
                     <div className={grid.mbMini}>
-                        Для подтверждения e-mail, Вам отправлено письмо.
+                        {L10n('auth.successReg2')}
                     </div>
                     <div>
-                        Перейдите по сссылке из письма и, затем, авторизуйтесь.
+                        {L10n('auth.successReg3')}
                     </div>
                 </div>
                 }
