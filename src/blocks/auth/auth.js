@@ -7,6 +7,7 @@ import api from 'blocks/api/api';
 import queryString from 'query-string';
 import L10n from 'blocks/l10n/l10n';
 import {getLang} from 'blocks/page/__lang/page__lang';
+import config from '../../../server/config.json';
 
 import auth from './auth.css';
 import grid from 'blocks/grid/grid.css';
@@ -118,11 +119,11 @@ class Auth extends React.Component {
         this.context.router.push(`/?lang=${lang}`);
     }
     getCurrentURL(location, data) {
-        let current = `http://82.146.36.41`;
+        let current = `http://${config.host}`;
         const query = location.query;
         let key;
         let newQuery = data || {};
-
+        
         if (location.pathname[0] === '/') {
             current = `${current}${location.pathname}`
         } else {

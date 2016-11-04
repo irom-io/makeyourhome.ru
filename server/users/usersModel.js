@@ -4,6 +4,7 @@ const validator = require('validator');
 const mail = require('../mail/mail');
 const randomstring = require('randomstring');
 const L10nAuth = require('../../src/blocks/l10n/__auth/l10n__auth.json').auth;
+const config = require('../config.json');
 
 const loginError = {error: {msg: 'loginError'}};
 const serverError = {error: {msg: 'serverError'}};
@@ -95,7 +96,7 @@ const usersModel = {
 
         body.userHash = randomstring.generate();
 
-        var ref = `http://82.146.36.41/api/users/registration?login=${body.login}&userHash=${body.userHash}&lang=${body.lang}`;
+        var ref = `http://${config.host}/api/users/registration?login=${body.login}&userHash=${body.userHash}&lang=${body.lang}`;
         mail({
             to: body.login,
             subject: L10nAuth.verify1[body.lang],

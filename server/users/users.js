@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const usersModel = require('./usersModel');
 const request = require('request');
+const config = require('../config.json');
 
 const serverError = {error: {msg: 'serverError'}};
 router.post('/', function(req, res) {
@@ -60,10 +61,10 @@ router.get('/registration', function(req, res) {
     var user = usersModel.get({login: req.query.login}, true);
     
     if (req.query.userHash === user.userHash) {
-        res.redirect(`http://82.146.36.41/login?lang=${req.query.lang}`);
+        res.redirect(`http://${config.host}/login?lang=${req.query.lang}`);
         usersModel.save({login: req.query.login, notValid: false, userHash: null}, true);
     } else {
-        res.redirect(`http://82.146.36.41/notFound?lang=${req.query.lang}`);
+        res.redirect(`http://${config.host}/notFound?lang=${req.query.lang}`);
     }
 });
 
