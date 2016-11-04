@@ -3,6 +3,7 @@ import Login from 'blocks/login/login';
 import Layout from 'blocks/layout/layout';
 import {Textarea} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
+import api from 'blocks/api/api';
 
 import page from 'blocks/page/page.css';
 import grid from 'blocks/grid/grid.css';
@@ -14,7 +15,7 @@ class Questions extends React.Component {
         super(p_);
 
         const user = localStorage.getItem('user');
-
+        
         this.state = {
             question: '',
             user: user,
@@ -30,7 +31,20 @@ class Questions extends React.Component {
         this.setState({question: value})
     }
     sendQuestion() {
-        //console.log(this.state.question);
+        const self = this;
+        const s_ = this.state;
+        
+        self.setState({loading: true});
+        api.post('questions', {user: s_.user, question: s_.question})
+            .then(() => {
+                self.setState({
+                    question: '', 
+                    msg: 'Вы успешно задали вопрос, мы обязательно на него ответим.',
+                    loading: false
+                });
+                
+                setTimeout(() => {self.setState({msg: null})}, 15000);
+            });
     }
     onResponseAuth(response) {
         if (!response.error) {
@@ -48,6 +62,7 @@ class Questions extends React.Component {
         return (
             <div className={page.content}>
                 <Layout loading={s_.loading}>
+                    {s_.msg}
                     <div className={grid.mbMini}>
                         <Textarea 
                             placeholder="Ваш вопрос"
@@ -66,6 +81,7 @@ class Questions extends React.Component {
                     {s_.user &&
                     <div className={text.center}>
                         <Button
+                            disabled={!s_.question}
                             onClick={() => this.sendQuestion()}
                             className={grid.w100_mob}
                         >
