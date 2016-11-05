@@ -4,6 +4,7 @@ import Layout from 'blocks/layout/layout';
 import {Textarea} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
 import api from 'blocks/api/api';
+import L10n from 'blocks/l10n/l10n';
 
 import page from 'blocks/page/page.css';
 import grid from 'blocks/grid/grid.css';
@@ -64,14 +65,14 @@ class Questions extends React.Component {
                     {s_.msg}
                     <div className={grid.mbMini}>
                         <Textarea 
-                            placeholder="Ваш вопрос"
+                            placeholder={L10n('questions.yourQuestion')}
                             value={s_.question}
                             onChange={(value) => this.onChangeQuestion(value)}
                         />
                     </div>
                     {!user &&
                     <Login
-                        descr="Чтобы задать вопрос,"
+                        descr={`${L10n('questions.toAsk')},`}
                         onSubmit={() => {this.setState({loading: true})}}
                         onResponseAuth={(response) => this.onResponseAuth(response)}
                         onResponseRegistration={(response) => this.onResponseRegistration(response)}
@@ -84,7 +85,7 @@ class Questions extends React.Component {
                             onClick={() => this.sendQuestion(user)}
                             className={grid.w100_mob}
                         >
-                            Задать вопрос
+                            {L10n('questions.ask')}
                         </Button>
                     </div>
                     }

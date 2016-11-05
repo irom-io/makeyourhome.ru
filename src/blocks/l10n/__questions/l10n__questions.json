@@ -1,0 +1,19 @@
+{
+  "questions": {
+    "yourQuestion": {
+      "ru": "Ваш вопрос",
+      "en": "Your question",
+      "esp": "Su pregunta"
+    },
+    "toAsk": {
+      "ru": "Чтобы задать вопрос",
+      "en": "To ask questions",
+      "esp": "Para hacer preguntas"
+    },
+    "ask": {
+      "ru": "Задать вопрос",
+      "en": "Ask a question",
+      "esp": "Haz una pregunta"
+    }
+  }
+}
