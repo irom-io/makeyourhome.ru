@@ -83,5 +83,15 @@
     "ru": "или",
     "en": "or",
     "esp": "o"
+  },
+  "notFound": {
+    "ru": "Страница не найдена, возможно то, что Вы ищете найдется в",
+    "en": "Page not found, it is possible that you will find in the",
+    "esp": "Página no encontrada, es posible que se encuentra en la búsqueda"
+  },
+  "notFoundCatalog": {
+    "ru": "каталоге",
+    "en": "catalog",
+    "esp": "de catálogo"
   }
 }

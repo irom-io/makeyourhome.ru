@@ -1,6 +1,8 @@
 import React from 'react';
 import Place from 'react-icons/lib/md/place';
 import Link from 'blocks/link/link';
+import L10n from 'blocks/l10n/l10n';
+
 import grid from 'blocks/grid/grid.css';
 import page from 'blocks/page/page.css';
 import text from 'blocks/text/text.css';
@@ -29,9 +31,9 @@ class NotFound extends React.Component {
                     </div>
                 </div>
                 <div className={notFound.text}>
-                    <span>Страница не найдена, возможно то, что Вы ищете найдется в </span>
+                    <span>{L10n('notFound')} </span>
                     <span className={`${text.underline} ${text.colored}`}>
-                        <Link to="/projects">каталоге</Link>
+                        <Link to="/projects">{L10n('notFoundCatalog')}</Link>
                     </span>
                 </div>
             </div>
