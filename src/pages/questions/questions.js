@@ -73,6 +73,17 @@ class Questions extends React.Component {
     seeMore() {
         this.setState({visibleItems: (this.state.visibleItems + step)})
     }
+    deleteQuestion(user, questionId) {
+        const self = this;
+
+        self.setState({loading: true});
+        api.delete('questions', {user: user, questionId: questionId})
+            .then((response) => {
+                if (response && !response.error) {
+                    self.setState({items: response, loading: false});
+                }
+            });
+    }
     render() {
         const s_ = this.state;
         let user = localStorage.getItem('user');
@@ -151,6 +162,7 @@ class Questions extends React.Component {
                                         {isAdmin &&
                                         <AdminEdit
                                             onEdit={() => {this.context.router.push(`/admin?type=questions&questionId=${item.id}`)}}
+                                            onDelete={() => this.deleteQuestion(user, item.id)}
                                         />
                                         }
                                     </div>

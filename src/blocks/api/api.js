@@ -27,5 +27,8 @@ export default {
     },
     post: (url, data) => {
         return fetchInit(url, 'POST', data);
+    },
+    delete: (url, data) => {
+        return fetchInit(url, 'DELETE', data);
     }
 };
