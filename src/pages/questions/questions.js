@@ -3,6 +3,7 @@ import Login from 'blocks/login/login';
 import Layout from 'blocks/layout/layout';
 import {Textarea} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
+import Link from 'blocks/link/link';
 import api from 'blocks/api/api';
 import L10n from 'blocks/l10n/l10n';
 
@@ -59,8 +60,7 @@ class Questions extends React.Component {
         let user = localStorage.getItem('user');
         if (user) {user = JSON.parse(user);}
         const isAdmin = localStorage.getItem('isAdmin');
-
-        console.log(isAdmin);
+        
         return (
             <div className={page.content}>
                 <Layout loading={s_.loading}>
@@ -93,6 +93,18 @@ class Questions extends React.Component {
                     }
                 </Layout>
 
+                {isAdmin &&
+                <div className={`${text.center} ${grid.mtMini}`}>
+                    <Button
+                        className={grid.w100_mob}
+                    >
+                        <Link to="/add?type=question">
+                            {L10n('admin.addQuestion')}
+                        </Link>
+                    </Button>
+                </div>
+                }
+                
                 <div className={`${grid.hSeparator} ${grid.mtMini} ${grid.mbNormal}`}></div>
 
                 {s_.items.map((item, index) => {

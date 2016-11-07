@@ -1,0 +1,9 @@
+{
+  "admin": {
+    "addQuestion": {
+      "ru": "Добавить вопрос",
+      "en": "Add question",
+      "esp": "Añadir pregunta"
+    }
+  }
+}

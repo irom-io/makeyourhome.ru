@@ -72,6 +72,7 @@ class Auth extends React.Component {
         });
         logoutUserCallbacks.push(() => {
             localStorage.removeItem('user');
+            localStorage.removeItem('isAdmin');
             self.setState({
                 user: null,
                 loading: false
