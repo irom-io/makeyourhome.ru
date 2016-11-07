@@ -109,10 +109,14 @@ class AdminQuestions extends React.Component {
         return (
             <form className={grid.w100} onSubmit={(e) => this.onSubmit(e)}>
                 <div
-                    onClick={() => this.addNew()}
-                    className={`${grid.mbMini} ${text.md} ${text.underline} ${item.pointer}`}
+                    className={`${grid.mbMini} ${text.md}`}
                 >
-                    Добавить новый ответ
+                    <span
+                        onClick={() => this.addNew()}
+                        className={`${text.underline} ${item.pointer}`}
+                    >
+                        Добавить новый ответ
+                    </span>
                 </div>
                 {s_.questionId &&
                     <div

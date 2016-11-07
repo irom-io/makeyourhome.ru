@@ -51,6 +51,7 @@ export class Textarea extends React.Component {
                 ref="textarea"
                 className={className}
                 value={p_.value}
+                rows={p_.rows}
                 placeholder={p_.placeholder}
                 onChange={() => this.onChange()}
             />

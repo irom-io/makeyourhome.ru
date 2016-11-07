@@ -44,7 +44,7 @@ router.post('/add', function(req, res) {
         } else {
             questionId = randomstring.generate(15);
 
-            questions.unshift({
+            questions.push({
                 id: questionId,
                 [req.body.lang]: {
                     question: req.body.question,
