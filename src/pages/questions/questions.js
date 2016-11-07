@@ -4,6 +4,7 @@ import Layout from 'blocks/layout/layout';
 import {Textarea} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
 import Link from 'blocks/link/link';
+import {getLang} from 'blocks/page/__lang/page__lang';
 import api from 'blocks/api/api';
 import L10n from 'blocks/l10n/l10n';
 
@@ -18,13 +19,25 @@ class Questions extends React.Component {
 
         this.state = {
             question: '',
-            loading: false,
-            items: [
-                {question: 'Что собой представляет готовый проект дома?', answer: 'Готовый проект дома (типовой, многоразовый и т.п.) - это уже созданный проект, решения которого ориентированы на потребности большинства.'},
-                {question: 'Мне хотелось бы внести в проект некоторые изменения. Сколько это будет стоить?', answer: 'Хороший вопрос. Поскольку все проекты домов отличаются друг от друга (как и просьбы о внесении изменений), заранее цену установить весьма трудно.'},
-                {question: 'Доставка проекта', answer: 'Большая часть наших проектов доставляется в течение 5 - 8 рабочих дней с момента получения заказа. Проект дома может быть отправлен по почте заказным письмом или курьерской службой.'}
-            ]
+            loading: true,
+            items: null
         };
+    }
+    componentDidMount() {
+        const self = this;
+
+        api.get('questions')
+            .then((response) => {
+                console.log(response);
+                if (!response.error) {
+                    self.setState({
+                        items: response,
+                        loading: false
+                    });
+                } else {
+                    self.setState({loading: false});
+                }
+            });
     }
     onChangeQuestion(value) {
         this.setState({question: value})
@@ -37,7 +50,7 @@ class Questions extends React.Component {
         api.post('questions', {user: user, question: s_.question})
             .then(() => {
                 self.setState({
-                    question: '', 
+                    question: '',
                     msg: 'Вы успешно задали вопрос, мы обязательно на него ответим.',
                     loading: false
                 });
@@ -60,10 +73,15 @@ class Questions extends React.Component {
         let user = localStorage.getItem('user');
         if (user) {user = JSON.parse(user);}
         const isAdmin = localStorage.getItem('isAdmin');
+        const lang = getLang();
         
         return (
-            <div className={page.content}>
-                <Layout loading={s_.loading}>
+            <Layout
+                loading={s_.loading}
+                isPage={true}
+                className={page.content}
+            >
+                <div>
                     {s_.msg}
                     <div className={grid.mbMini}>
                         <Textarea 
@@ -91,7 +109,7 @@ class Questions extends React.Component {
                         </Button>
                     </div>
                     }
-                </Layout>
+                </div>
 
                 {isAdmin &&
                 <div className={`${text.center} ${grid.mtMini}`}>
@@ -110,20 +128,20 @@ class Questions extends React.Component {
                 
                 <div className={`${grid.hSeparator} ${grid.mtMini} ${grid.mbNormal}`}></div>
 
-                {s_.items.map((item, index) => {
+                {s_.items && s_.items.map((item, index) => {
                     return (
                         <div key={`question_${index}`} className={questions.wrapper}>
                             <div className={questions.title}>
-                                {item.question}
+                                {item[lang].question}
                             </div>
 
                             <div className={questions.text}>
-                                {item.answer}
+                                {item[lang].answer}
                             </div>
                         </div>
                     )
                 })}
-            </div>
+            </Layout>
         );
     }
 }
