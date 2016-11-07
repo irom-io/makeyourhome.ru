@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 const express = require('express');
 const router = express.Router();
 const usersModel = require('../users/usersModel');
@@ -32,9 +35,10 @@ router.post('/add', function(req, res) {
             answer: req.body.answer
         });
         fs.writeFileSync(path.resolve(__dirname, './questions.json'), JSON.stringify(questions));
+        res.send({});
+    } else {
+        res.send(serverError);
     }
-
-    res.send({});
 });
 
 module.exports = router;

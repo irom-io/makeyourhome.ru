@@ -10,6 +10,11 @@
       "en": "Question",
       "esp": "Pregunta"
     },
+    "answer": {
+      "ru": "Ответ",
+      "en": "Answer",
+      "esp": "Respuesta"
+    },
     "save": {
       "ru": "Сохранить",
       "en": "Save",
