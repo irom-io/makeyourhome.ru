@@ -7,6 +7,7 @@ import Link from 'blocks/link/link';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import api from 'blocks/api/api';
 import L10n from 'blocks/l10n/l10n';
+import AdminEdit from 'blocks/admin/__edit/admin__edit';
 
 import page from 'blocks/page/page.css';
 import grid from 'blocks/grid/grid.css';
@@ -146,6 +147,10 @@ class Questions extends React.Component {
                                         <div className={questions.text}>
                                             {item[lang].answer}
                                         </div>
+
+                                        {isAdmin &&
+                                        <AdminEdit />
+                                        }
                                     </div>
                                 )
                             } else {

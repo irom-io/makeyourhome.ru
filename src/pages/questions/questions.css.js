@@ -6,6 +6,7 @@ import grid from 'blocks/grid/grid.css';
 
 const questions = jcss({
     wrapper: {
+        ...item.rel,
         ...item.shadow,
         ...grid.pMini,
         ...grid.mbNormal,
