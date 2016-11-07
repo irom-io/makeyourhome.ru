@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const find = require('array-find');
 
 const express = require('express');
 const router = express.Router();
@@ -32,12 +33,19 @@ router.post('/add', function(req, res) {
         questions = JSON.parse(questions);
         
         if (questionId) {
-            console.log(questionId)
+            var question = find(questions, function (question, index, array) {
+                return question.id === questionId;
+            });
+
+            question[req.body.lang] = {
+                question: req.body.question,
+                answer: req.body.answer
+            }
         } else {
             questionId = randomstring.generate(15);
 
             questions.unshift({
-                questionId: questionId,
+                id: questionId,
                 [req.body.lang]: {
                     question: req.body.question,
                     answer: req.body.answer   

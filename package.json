@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:8081",
   "devDependencies": {
+    "array-find": "^1.0.0",
     "autoprefixer": "6.4.1",
     "babel-core": "6.14.0",
     "babel-eslint": "6.1.2",
