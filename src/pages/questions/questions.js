@@ -58,7 +58,9 @@ class Questions extends React.Component {
         const s_ = this.state;
         let user = localStorage.getItem('user');
         if (user) {user = JSON.parse(user);}
+        const isAdmin = localStorage.getItem('isAdmin');
 
+        console.log(isAdmin);
         return (
             <div className={page.content}>
                 <Layout loading={s_.loading}>

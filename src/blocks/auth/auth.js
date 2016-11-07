@@ -28,6 +28,7 @@ export const loginUser = (loginData) => {
         .then(res => {
             if (!res.error) {
                 localStorage.setItem('user', JSON.stringify(res));
+                localStorage.setItem('isAdmin', res.isAdmin);
                 loginUserCallbacks.forEach(login => { login(res); });
             } else {
                 errorUserCallbacks.forEach(errorCallback => { errorCallback(res.error); });

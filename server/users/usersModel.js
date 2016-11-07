@@ -44,7 +44,12 @@ const usersModel = {
                 return notValidUser; 
             }
             
-            return {name: user.name, login: user.login, password: user.password};
+            return {
+                isAdmin: user.isAdmin || null,
+                name: user.name, 
+                login: user.login, 
+                password: user.password
+            };
         }
 
         return loginError;
