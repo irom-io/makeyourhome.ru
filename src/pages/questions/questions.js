@@ -161,7 +161,7 @@ class Questions extends React.Component {
 
                                         {isAdmin &&
                                         <AdminEdit
-                                            onEdit={() => {this.context.router.push(`/admin?type=questions&questionId=${item.id}`)}}
+                                            editTo={`/admin?type=questions&questionId=${item.id}`}
                                             onDelete={() => this.deleteQuestion(user, item.id)}
                                         />
                                         }

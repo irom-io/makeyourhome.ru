@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'blocks/link/link';
 import Edit from 'react-icons/lib/md/edit';
 import Delete from 'react-icons/lib/md/delete';
 
@@ -15,9 +16,9 @@ class AdminEdit extends React.Component {
         
         return (
             <div className={admin.wrapper}>
-                <div onClick={p_.onEdit} className={admin.item}>
+                <Link to={p_.editTo} className={admin.item}>
                     <Edit size={16} />
-                </div>
+                </Link>
                 <div onClick={p_.onDelete} className={admin.item}>
                     <Delete size={16} />
                 </div>
