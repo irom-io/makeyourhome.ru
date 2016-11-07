@@ -16,8 +16,8 @@ import questions from './questions.css';
 
 const step = 3;
 class Questions extends React.Component {
-    constructor(p_) {
-        super(p_);
+    constructor(p_, context) {
+        super(p_, context);
 
         this.state = {
             question: '',
@@ -149,7 +149,9 @@ class Questions extends React.Component {
                                         </div>
 
                                         {isAdmin &&
-                                        <AdminEdit />
+                                        <AdminEdit
+                                            onEdit={() => {this.context.router.push(`/admin?type=questions&questionId=${item.id}`)}}
+                                        />
                                         }
                                     </div>
                                 )
@@ -175,5 +177,8 @@ class Questions extends React.Component {
         );
     }
 }
+Questions.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default Questions;

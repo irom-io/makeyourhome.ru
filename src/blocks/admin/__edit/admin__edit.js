@@ -11,12 +11,14 @@ class AdminEdit extends React.Component {
         this.state = {};
     }
     render() {
+        const p_ = this.props;
+        
         return (
             <div className={admin.wrapper}>
-                <div className={admin.item}>
-                        <Edit size={16} />
+                <div onClick={p_.onEdit} className={admin.item}>
+                    <Edit size={16} />
                 </div>
-                <div className={admin.item}>
+                <div onClick={p_.onDelete} className={admin.item}>
                     <Delete size={16} />
                 </div>
             </div>
