@@ -60,4 +60,10 @@ router.post('/add', function(req, res) {
     }
 });
 
+router.get('/', function(req, res) {
+    var questions = fs.readFileSync(path.resolve(__dirname, './questions.json'), 'utf-8');
+
+    res.send(questions);
+});
+
 module.exports = router;

@@ -22,7 +22,10 @@ const fetchInit = (url, methodName, data) => {
 };
 
 export default {
+    get: (url, data) => {
+        return fetchInit(url, 'GET', data);
+    },
     post: (url, data) => {
         return fetchInit(url, 'POST', data);
-    }  
+    }
 };

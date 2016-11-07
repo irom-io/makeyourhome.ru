@@ -23,6 +23,22 @@ class AdminQuestions extends React.Component {
             questionId: p_.questionId || null
         };
     }
+    componentDidMount() {
+        const self = this;
+
+        api.get('questions')
+            .then((response) => {
+                self.props.onLoad();
+
+                if (response && self.state.questionId) {
+                    response.forEach((question) => {
+                        if (question.id === self.state.questionId) {
+                            self.setState({data: question});
+                        }
+                    })
+                }
+            });
+    }
     onChange(value, field) {
         const lang = getLang();
         let data = this.state.data;

@@ -9,7 +9,7 @@ class Admin extends React.Component {
         super(p_, context);
 
         this.state = {
-            loading: false
+            loading: true
         };
     }
     componentDidMount() {
@@ -36,6 +36,8 @@ class Admin extends React.Component {
                         case 'questions':
                             return (
                                 <AdminQuestions
+                                    questionId={p_.location.query.questionId}
+                                    onLoad={() => {this.setState({loading: false})}}
                                     onSubmit={() => {this.setState({loading: true})}}
                                     onResponse={() => {this.setState({loading: false})}}
                                 />
