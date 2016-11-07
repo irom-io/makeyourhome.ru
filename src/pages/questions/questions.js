@@ -95,13 +95,16 @@ class Questions extends React.Component {
 
                 {isAdmin &&
                 <div className={`${text.center} ${grid.mtMini}`}>
-                    <Button
+                    <Link
                         className={grid.w100_mob}
+                        to="/admin?type=question"
                     >
-                        <Link to="/add?type=question">
+                        <Button
+                            className={grid.w100_mob}
+                        >
                             {L10n('admin.addQuestion')}
-                        </Link>
-                    </Button>
+                        </Button>
+                    </Link>
                 </div>
                 }
                 

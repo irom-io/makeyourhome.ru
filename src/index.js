@@ -4,6 +4,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import {renderStyles} from 'jcss';
 
 import Page from 'blocks/page/page';
+import Admin from 'pages/admin/admin';
 import Main from 'pages/main/main';
 import Projects from 'pages/projects/projects';
 import Project from 'pages/project/project';
@@ -21,6 +22,7 @@ ReactDOM.render(
     >
         <Route path="" component={Page}>
             <Route path="/" component={Main}/>
+            <Route path="/admin" component={Admin}/>
             <Route path="/styles" component={Styles}/>
             <Route path="/collections" component={Collections}/>
             <Route path="/questions" component={Questions}/>
