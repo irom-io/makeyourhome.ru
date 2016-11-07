@@ -93,5 +93,10 @@
     "ru": "каталоге",
     "en": "catalog",
     "esp": "de catálogo"
+  },
+  "more": {
+    "ru": "Еще",
+    "en": "More",
+    "esp": "Más"
   }
 }

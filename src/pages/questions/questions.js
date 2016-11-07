@@ -13,6 +13,7 @@ import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
 import questions from './questions.css';
 
+const step = 3;
 class Questions extends React.Component {
     constructor(p_) {
         super(p_);
@@ -20,7 +21,8 @@ class Questions extends React.Component {
         this.state = {
             question: '',
             loading: true,
-            items: null
+            items: null,
+            visibleItems: step
         };
     }
     componentDidMount() {
@@ -66,6 +68,9 @@ class Questions extends React.Component {
     }
     onResponseRegistration() {
         this.setState({loading: false});
+    }
+    seeMore() {
+        this.setState({visibleItems: (this.state.visibleItems + step)})
     }
     render() {
         const s_ = this.state;
@@ -127,19 +132,40 @@ class Questions extends React.Component {
                 
                 <div className={`${grid.hSeparator} ${grid.mtMini} ${grid.mbNormal}`}></div>
 
-                {s_.items && s_.items.map((item, index) => {
-                    return (
-                        <div key={`question_${index}`} className={questions.wrapper}>
-                            <div className={questions.title}>
-                                {item[lang].question}
-                            </div>
+                {s_.items &&
+                <div>
+                    {
+                        s_.items.map((item, index) => {
+                            if (index < s_.visibleItems) {
+                                return (
+                                    <div key={`question_${index}`} className={questions.wrapper}>
+                                        <div className={questions.title}>
+                                            {item[lang].question}
+                                        </div>
 
-                            <div className={questions.text}>
-                                {item[lang].answer}
-                            </div>
-                        </div>
-                    )
-                })}
+                                        <div className={questions.text}>
+                                            {item[lang].answer}
+                                        </div>
+                                    </div>
+                                )
+                            } else {
+                                return '';
+                            }
+                        })
+                    }
+                </div>
+                }
+
+                {s_.items && (s_.visibleItems < s_.items.length) &&
+                <div className={`${text.center} ${grid.mtMini}`}>
+                    <Button
+                        onClick={() => this.seeMore()}
+                        className={grid.w100_mob}
+                    >
+                        {L10n('more')}
+                    </Button>
+                </div>
+                }
             </Layout>
         );
     }
