@@ -24,18 +24,29 @@ router.post('/', function(req, res) {
 
 router.post('/add', function(req, res) {
     var user = usersModel.get(req.body.user);
+    var questionId = req.body.questionId || null;
 
     if (!user.error && user.isAdmin) {
         var questions;
         questions = fs.readFileSync(path.resolve(__dirname, './questions.json'), 'utf-8');
         questions = JSON.parse(questions);
-        questions.unshift({
-            id: randomstring.generate(15),
-            question: req.body.question,
-            answer: req.body.answer
-        });
+        
+        if (questionId) {
+            console.log(questionId)
+        } else {
+            questionId = randomstring.generate(15);
+
+            questions.unshift({
+                questionId: questionId,
+                [req.body.lang]: {
+                    question: req.body.question,
+                    answer: req.body.answer   
+                }
+            });    
+        }
+        
         fs.writeFileSync(path.resolve(__dirname, './questions.json'), JSON.stringify(questions));
-        res.send({});
+        res.send({questionId: questionId});
     } else {
         res.send(serverError);
     }

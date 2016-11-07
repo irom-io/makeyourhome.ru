@@ -1,7 +1,6 @@
 import React from 'react';
 import {Input, Textarea} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
-import L10n from 'blocks/l10n/l10n';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import api from 'blocks/api/api';
 
@@ -16,7 +15,8 @@ class AdminQuestions extends React.Component {
             errorMsg: null,
             loading: false,
             question: '',
-            answer: ''
+            answer: '',
+            questionId: null
         };
     }
     onChange(value, field) {
@@ -41,16 +41,16 @@ class AdminQuestions extends React.Component {
             user: user,
             answer: s_.answer,
             question: s_.question,
+            questionId: s_.questionId,
             lang: getLang()
         })
         .then((response) => {
             p_.onResponse(response);
             if (!response.error) {
                 self.setState({
-                    msg: L10n('admin.success'),
+                    msg: 'Сохранено успешно',
                     loading: false,
-                    question: '',
-                    answer: ''
+                    questionId: response.questionId
                 });
                 setTimeout(() => {
                     self.setState({
@@ -67,11 +67,12 @@ class AdminQuestions extends React.Component {
     }
     render() {
         const s_ = this.state;
+        const lang = getLang();
 
         return (
             <form className={grid.w100} onSubmit={(e) => this.onSubmit(e)}>
                 <div className={`${grid.mbMini} ${text.md}`}>
-                    {L10n('admin.addQuestion')}
+                    Добавить ответ
                 </div>
                 {s_.errorMsg &&
                 <div className={grid.mbMini}>
@@ -85,14 +86,14 @@ class AdminQuestions extends React.Component {
                 }
                 <div className={grid.mbMini}>
                     <Input
-                        placeholder={L10n('admin.question')}
+                        placeholder="Вопрос"
                         value={s_.question}
                         onChange={(value) => this.onChange(value, 'question')}
                     />
                 </div>
                 <div className={grid.mbMini}>
                     <Textarea
-                        placeholder={L10n('admin.answer')}
+                        placeholder="Ответ"
                         value={s_.answer}
                         onChange={(value) => this.onChange(value, 'answer')}
                     />
@@ -102,7 +103,7 @@ class AdminQuestions extends React.Component {
                         type="submit"
                         disabled={s_.loading || !s_.question || !s_.answer}
                     >
-                        {L10n('admin.save')}
+                        Сохранить {lang}
                     </Button>
                 </div>
             </form>

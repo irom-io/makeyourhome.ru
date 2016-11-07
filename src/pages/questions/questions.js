@@ -102,7 +102,7 @@ class Questions extends React.Component {
                         <Button
                             className={grid.w100_mob}
                         >
-                            {L10n('admin.addQuestion')}
+                            Добавить ответ
                         </Button>
                     </Link>
                 </div>

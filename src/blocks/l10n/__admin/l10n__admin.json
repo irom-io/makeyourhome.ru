@@ -1,29 +1,3 @@
 {
-  "admin": {
-    "addQuestion": {
-      "ru": "Добавить вопрос",
-      "en": "Add question",
-      "esp": "Añadir pregunta"
-    },
-    "question": {
-      "ru": "Вопрос",
-      "en": "Question",
-      "esp": "Pregunta"
-    },
-    "answer": {
-      "ru": "Ответ",
-      "en": "Answer",
-      "esp": "Respuesta"
-    },
-    "save": {
-      "ru": "Сохранить",
-      "en": "Save",
-      "esp": "Salvar"
-    },
-    "success": {
-      "ru": "Сохранено успешно",
-      "en": "Saved successfully",
-      "esp": "Guardado con éxito"
-    }
-  }
+  "admin": {}
 }
