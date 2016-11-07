@@ -4,6 +4,16 @@
       "ru": "Добавить вопрос",
       "en": "Add question",
       "esp": "Añadir pregunta"
+    },
+    "question": {
+      "ru": "Вопрос",
+      "en": "Question",
+      "esp": "Pregunta"
+    },
+    "save": {
+      "ru": "Сохранить",
+      "en": "Save",
+      "esp": "Salvar"
     }
   }
 }

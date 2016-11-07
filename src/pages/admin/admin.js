@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from 'blocks/layout/layout';
+import AdminQuestions from 'pages/admin/__questions/admin__questions';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import grid from 'blocks/grid/grid.css';
 
@@ -22,15 +23,25 @@ class Admin extends React.Component {
     render() {
         const s_ = this.state;
         const p_ = this.props;
+        const lang = getLang();
 
-        console.log(p_.location.query);
         return (
             <Layout
                 loading={s_.loading}
                 isPage={true}
                 className={`${grid.col} ${grid.center} ${grid.normalCenter}`}
             >
-
+                {(() => {
+                    switch (p_.location.query.type) {
+                        case 'questions':
+                            return (
+                                <AdminQuestions />
+                            );
+                        default:
+                            this.context.router.push(`/notFound?lang=${lang}`);
+                            break;
+                    }
+                })()}
             </Layout>
         );
     }

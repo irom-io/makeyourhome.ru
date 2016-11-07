@@ -97,7 +97,7 @@ class Questions extends React.Component {
                 <div className={`${text.center} ${grid.mtMini}`}>
                     <Link
                         className={grid.w100_mob}
-                        to="/admin?type=question"
+                        to="/admin?type=questions"
                     >
                         <Button
                             className={grid.w100_mob}
