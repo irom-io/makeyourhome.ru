@@ -12,6 +12,7 @@ import Styles from 'pages/styles/styles';
 import Collections from 'pages/collections/collections';
 import Questions from 'pages/questions/questions';
 import Login from 'pages/login/login';
+import Blog from 'pages/blog/blog';
 import NotFound from 'pages/notFound/notFound';
 
 renderStyles();
@@ -29,6 +30,7 @@ ReactDOM.render(
             <Route path="/projects" component={Projects}/>
             <Route path="/projects/:projectId" component={Project}/>
             <Route path="/login" component={Login}/>
+            <Route path="/blog" component={Blog}/>
             <Route path="*" component={NotFound}/>
         </Route>
     </Router>,

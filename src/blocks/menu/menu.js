@@ -48,7 +48,8 @@ class Menu extends React.Component {
                     to: 'questions'
                 },
                 {
-                    name: 'blog'
+                    name: 'blog',
+                    to: 'blog'
                 },
                 {
                     name: 'favorites'
