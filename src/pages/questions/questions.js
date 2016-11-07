@@ -28,7 +28,6 @@ class Questions extends React.Component {
 
         api.get('questions')
             .then((response) => {
-                console.log(response);
                 if (!response.error) {
                     self.setState({
                         items: response,
