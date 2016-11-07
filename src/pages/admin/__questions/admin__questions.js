@@ -5,6 +5,7 @@ import {getLang} from 'blocks/page/__lang/page__lang';
 import api from 'blocks/api/api';
 
 import grid from 'blocks/grid/grid.css';
+import item from 'blocks/item/item.css';
 import text from 'blocks/text/text.css';
 
 class AdminQuestions extends React.Component {
@@ -14,19 +15,39 @@ class AdminQuestions extends React.Component {
         this.state = {
             errorMsg: null,
             loading: false,
-            question: '',
-            answer: '',
-            questionId: null
+            data: {
+                ru: {answer: '', question: ''},
+                en: {answer: '', question: ''},
+                esp: {answer: '', question: ''}
+            },
+            questionId: p_.questionId || null
         };
     }
     onChange(value, field) {
-        this.setState({[field]: value})
+        const lang = getLang();
+        let data = this.state.data;
+        data[lang][field] = value;
+        
+        this.setState({data: data});
+    }
+    addNew() {
+        this.setState({
+            data: {
+                ru: {answer: '', question: ''},
+                en: {answer: '', question: ''},
+                esp: {answer: '', question: ''}
+            },
+            errorMsg: null,
+            loading: false,
+            questionId: null
+        });
     }
     onSubmit(e) {
         e.preventDefault();
         const s_ = this.state;
         const p_ = this.props;
         const self = this;
+        const lang = getLang();
         let user = localStorage.getItem('user');
 
         if (user) {
@@ -39,16 +60,16 @@ class AdminQuestions extends React.Component {
         p_.onSubmit();
         api.post('questions/add', {
             user: user,
-            answer: s_.answer,
-            question: s_.question,
+            answer: s_.data[lang].answer,
+            question: s_.data[lang].question,
             questionId: s_.questionId,
-            lang: getLang()
+            lang: lang
         })
         .then((response) => {
             p_.onResponse(response);
             if (!response.error) {
                 self.setState({
-                    msg: 'Сохранено успешно',
+                    msg: 'Успешно сохранено',
                     loading: false,
                     questionId: response.questionId
                 });
@@ -71,9 +92,19 @@ class AdminQuestions extends React.Component {
 
         return (
             <form className={grid.w100} onSubmit={(e) => this.onSubmit(e)}>
-                <div className={`${grid.mbMini} ${text.md}`}>
-                    Добавить ответ
+                <div
+                    onClick={() => this.addNew()}
+                    className={`${grid.mbMini} ${text.md} ${text.underline} ${item.pointer}`}
+                >
+                    Добавить новый ответ
                 </div>
+                {s_.questionId &&
+                    <div
+                        className={`${grid.mbMini} ${text.md}`}
+                    >
+                        Редактировать ответ в {lang}
+                    </div>
+                }
                 {s_.errorMsg &&
                 <div className={grid.mbMini}>
                     {s_.errorMsg}
@@ -87,21 +118,21 @@ class AdminQuestions extends React.Component {
                 <div className={grid.mbMini}>
                     <Input
                         placeholder="Вопрос"
-                        value={s_.question}
+                        value={s_.data[lang].question}
                         onChange={(value) => this.onChange(value, 'question')}
                     />
                 </div>
                 <div className={grid.mbMini}>
                     <Textarea
                         placeholder="Ответ"
-                        value={s_.answer}
+                        value={s_.data[lang].answer}
                         onChange={(value) => this.onChange(value, 'answer')}
                     />
                 </div>
                 <div className={text.right}>
                     <Button
                         type="submit"
-                        disabled={s_.loading || !s_.question || !s_.answer}
+                        disabled={s_.loading || !s_.data[lang].answer || !s_.data[lang].question}
                     >
                         Сохранить {lang}
                     </Button>
