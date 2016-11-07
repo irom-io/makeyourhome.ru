@@ -13,6 +13,7 @@ class AdminQuestions extends React.Component {
         super(p_, context);
 
         this.state = {
+            errorMsg: null,
             loading: false,
             question: '',
             answer: ''
@@ -23,16 +24,19 @@ class AdminQuestions extends React.Component {
     }
     onSubmit(e) {
         e.preventDefault();
-
-        let self = this;
-        const s_ = self.state;
+        const s_ = this.state;
+        const p_ = this.props;
+        const self = this;
         let user = localStorage.getItem('user');
+
         if (user) {
             user = JSON.parse(user)
         } else {
             user = {};
         }
 
+        self.setState({msg: null, errorMsg: null, loading: true});
+        p_.onSubmit();
         api.post('questions/add', {
             user: user,
             answer: s_.answer,
@@ -40,7 +44,25 @@ class AdminQuestions extends React.Component {
             lang: getLang()
         })
         .then((response) => {
-
+            p_.onResponse(response);
+            if (!response.error) {
+                self.setState({
+                    msg: L10n('admin.success'),
+                    loading: false,
+                    question: '',
+                    answer: ''
+                });
+                setTimeout(() => {
+                    self.setState({
+                        msg: null
+                    });
+                }, 2500);
+            } else {
+                self.setState({
+                    errorMsg: response.error.msg,
+                    loading: false
+                });
+            }
         });
     }
     render() {
@@ -48,6 +70,19 @@ class AdminQuestions extends React.Component {
 
         return (
             <form className={grid.w100} onSubmit={(e) => this.onSubmit(e)}>
+                <div className={`${grid.mbMini} ${text.md}`}>
+                    {L10n('admin.addQuestion')}
+                </div>
+                {s_.errorMsg &&
+                <div className={grid.mbMini}>
+                    {s_.errorMsg}
+                </div>
+                }
+                {s_.msg &&
+                <div className={grid.mbMini}>
+                    {s_.msg}
+                </div>
+                }
                 <div className={grid.mbMini}>
                     <Input
                         placeholder={L10n('admin.question')}

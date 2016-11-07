@@ -35,7 +35,10 @@ class Admin extends React.Component {
                     switch (p_.location.query.type) {
                         case 'questions':
                             return (
-                                <AdminQuestions />
+                                <AdminQuestions
+                                    onSubmit={() => {this.setState({loading: true})}}
+                                    onResponse={() => {this.setState({loading: false})}}
+                                />
                             );
                         default:
                             this.context.router.push(`/notFound?lang=${lang}`);
