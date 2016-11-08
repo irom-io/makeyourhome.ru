@@ -25,16 +25,18 @@ router.post('/', function(req, res) {
 
             post[req.body.lang] = {
                 title: req.body.title,
-                shortText: req.body.shortText
+                shortText: req.body.shortText,
+                longText: req.body.longText
             }
         } else {
             postId = randomstring.generate(15);
 
-            posts.push({
+            posts.unshift({
                 id: postId,
                 [req.body.lang]: {
                     title: req.body.title,
-                    shortText: req.body.shortText
+                    shortText: req.body.shortText,
+                    longText: req.body.longText
                 }
             });    
         }

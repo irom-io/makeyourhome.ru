@@ -17,9 +17,9 @@ class AdminPosts extends React.Component {
             errorMsg: null,
             loading: false,
             data: {
-                ru: {title: '', shortText: ''},
-                en: {title: '', shortText: ''},
-                esp: {title: '', shortText: ''}
+                ru: {title: '', shortText: '', longText: ''},
+                en: {title: '', shortText: '', longText: ''},
+                esp: {title: '', shortText: '', longText: ''}
             },
             postId: p_.postId || null
         };
@@ -50,9 +50,9 @@ class AdminPosts extends React.Component {
     addNew() {
         this.setState({
             data: {
-                ru: {title: '', shortText: ''},
-                en: {title: '', shortText: ''},
-                esp: {title: '', shortText: ''}
+                ru: {title: '', shortText: '', longText: ''},
+                en: {title: '', shortText: '', longText: ''},
+                esp: {title: '', shortText: '', longText: ''}
             },
             errorMsg: null,
             loading: false,
@@ -79,6 +79,7 @@ class AdminPosts extends React.Component {
             user: user,
             title: s_.data[lang].title,
             shortText: s_.data[lang].shortText,
+            longText: s_.data[lang].longText,
             postId: s_.postId,
             lang: lang
         })
@@ -150,10 +151,18 @@ class AdminPosts extends React.Component {
                         onChange={(value) => this.onChange(value, 'shortText')}
                     />
                 </div>
+                <div className={grid.mbMini}>
+                    <Textarea
+                        rows={10}
+                        placeholder="Подробное описание"
+                        value={s_.data[lang].longText}
+                        onChange={(value) => this.onChange(value, 'longText')}
+                    />
+                </div>
                 <div className={text.right}>
                     <Button
                         type="submit"
-                        disabled={s_.loading || !s_.data[lang].title || !s_.data[lang].shortText}
+                        disabled={s_.loading || !s_.data[lang].title || !s_.data[lang].shortText || !s_.data[lang].longText}
                     >
                         Сохранить {lang}
                     </Button>
