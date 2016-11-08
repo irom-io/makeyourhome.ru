@@ -149,14 +149,22 @@ class Questions extends React.Component {
                     {
                         s_.items.map((item, index) => {
                             if (index < s_.visibleItems) {
+                                let question = 'noTranslate';
+                                let answer = 'noTranslate';
+
+                                if (item[lang]) {
+                                    question = item[lang].question;
+                                    answer = item[lang].answer;
+                                }
+
                                 return (
                                     <div key={`question_${index}`} className={questions.wrapper}>
                                         <div className={questions.title}>
-                                            {item[lang].question}
+                                            {question}
                                         </div>
 
                                         <div className={questions.text}>
-                                            {item[lang].answer}
+                                            {answer}
                                         </div>
 
                                         {isAdmin &&
