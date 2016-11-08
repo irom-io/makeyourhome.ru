@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from 'blocks/layout/layout';
 import AdminQuestions from 'pages/admin/__questions/admin__questions';
+import AdminPosts from 'pages/admin/__posts/admin__posts';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import grid from 'blocks/grid/grid.css';
 
@@ -37,6 +38,15 @@ class Admin extends React.Component {
                             return (
                                 <AdminQuestions
                                     questionId={p_.location.query.questionId}
+                                    onLoad={() => {this.setState({loading: false})}}
+                                    onSubmit={() => {this.setState({loading: true})}}
+                                    onResponse={() => {this.setState({loading: false})}}
+                                />
+                            );
+                        case 'posts':
+                            return (
+                                <AdminPosts
+                                    postId={p_.location.query.postId}
                                     onLoad={() => {this.setState({loading: false})}}
                                     onSubmit={() => {this.setState({loading: true})}}
                                     onResponse={() => {this.setState({loading: false})}}

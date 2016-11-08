@@ -9,7 +9,7 @@ import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
 import text from 'blocks/text/text.css';
 
-class AdminQuestions extends React.Component {
+class AdminPosts extends React.Component {
     constructor(p_, context) {
         super(p_, context);
 
@@ -17,24 +17,24 @@ class AdminQuestions extends React.Component {
             errorMsg: null,
             loading: false,
             data: {
-                ru: {answer: '', question: ''},
-                en: {answer: '', question: ''},
-                esp: {answer: '', question: ''}
+                ru: {title: '', shortText: ''},
+                en: {title: '', shortText: ''},
+                esp: {title: '', shortText: ''}
             },
-            questionId: p_.questionId || null
+            postId: p_.postId || null
         };
     }
     componentDidMount() {
         const self = this;
 
-        api.get('questions')
+        api.get('posts')
             .then((response) => {
                 self.props.onLoad();
 
-                if (response && self.state.questionId) {
-                    response.forEach((question) => {
-                        if (question.id === self.state.questionId) {
-                            self.setState({data: question});
+                if (response && self.state.postId) {
+                    response.forEach((post) => {
+                        if (post.id === self.state.postId) {
+                            self.setState({data: post});
                         }
                     })
                 }
@@ -50,13 +50,13 @@ class AdminQuestions extends React.Component {
     addNew() {
         this.setState({
             data: {
-                ru: {answer: '', question: ''},
-                en: {answer: '', question: ''},
-                esp: {answer: '', question: ''}
+                ru: {title: '', shortText: ''},
+                en: {title: '', shortText: ''},
+                esp: {title: '', shortText: ''}
             },
             errorMsg: null,
             loading: false,
-            questionId: null
+            postId: null
         });
     }
     onSubmit(e) {
@@ -75,11 +75,11 @@ class AdminQuestions extends React.Component {
 
         self.setState({msg: null, errorMsg: null, loading: true});
         p_.onSubmit();
-        api.post('questions/add', {
+        api.post('posts', {
             user: user,
-            answer: s_.data[lang].answer,
-            question: s_.data[lang].question,
-            questionId: s_.questionId,
+            title: s_.data[lang].title,
+            shortText: s_.data[lang].shortText,
+            postId: s_.postId,
             lang: lang
         })
         .then((response) => {
@@ -88,7 +88,7 @@ class AdminQuestions extends React.Component {
                 self.setState({
                     msg: 'Успешно сохранено',
                     loading: false,
-                    questionId: response.questionId
+                    postId: response.postId
                 });
                 setTimeout(() => {
                     self.setState({
@@ -116,14 +116,14 @@ class AdminQuestions extends React.Component {
                         onClick={() => this.addNew()}
                         className={`${text.underline} ${item.pointer}`}
                     >
-                        Добавить новый ответ
+                        Добавить новую запись
                     </span>
                 </div>
-                {s_.questionId &&
+                {s_.postId &&
                     <div
                         className={`${grid.mbMini} ${text.md}`}
                     >
-                        Редактировать ответ в {lang}
+                        Редактировать запись в {lang}
                     </div>
                 }
                 {s_.errorMsg &&
@@ -138,22 +138,22 @@ class AdminQuestions extends React.Component {
                 }
                 <div className={grid.mbMini}>
                     <Input
-                        placeholder="Вопрос"
-                        value={s_.data[lang].question}
-                        onChange={(value) => this.onChange(value, 'question')}
+                        placeholder="Заголовок"
+                        value={s_.data[lang].title}
+                        onChange={(value) => this.onChange(value, 'title')}
                     />
                 </div>
                 <div className={grid.mbMini}>
                     <Textarea
-                        placeholder="Ответ"
-                        value={s_.data[lang].answer}
-                        onChange={(value) => this.onChange(value, 'answer')}
+                        placeholder="Краткое описание"
+                        value={s_.data[lang].shortText}
+                        onChange={(value) => this.onChange(value, 'shortText')}
                     />
                 </div>
                 <div className={text.right}>
                     <Button
                         type="submit"
-                        disabled={s_.loading || !s_.data[lang].answer || !s_.data[lang].question}
+                        disabled={s_.loading || !s_.data[lang].title || !s_.data[lang].shortText}
                     >
                         Сохранить {lang}
                     </Button>
@@ -162,8 +162,8 @@ class AdminQuestions extends React.Component {
         );
     }
 }
-AdminQuestions.contextTypes = {
+AdminPosts.contextTypes = {
     router: React.PropTypes.object.isRequired
 };
 
-export default AdminQuestions;
+export default AdminPosts;
