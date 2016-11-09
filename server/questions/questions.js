@@ -7,6 +7,7 @@ const router = express.Router();
 const usersModel = require('../users/usersModel');
 const randomstring = require('randomstring');
 const mail = require('../mail/mail');
+const questionsSrc = path.resolve(__dirname, '../data/questions.json');
 
 const serverError = {error: {msg: 'serverError'}};
 router.post('/', function(req, res) {
@@ -29,7 +30,7 @@ router.post('/add', function(req, res) {
 
     if (!user.error && user.isAdmin) {
         var questions;
-        questions = fs.readFileSync(path.resolve(__dirname, './questions.json'), 'utf-8');
+        questions = fs.readFileSync(questionsSrc, 'utf-8');
         questions = JSON.parse(questions);
         
         if (questionId) {
@@ -53,7 +54,7 @@ router.post('/add', function(req, res) {
             });    
         }
         
-        fs.writeFileSync(path.resolve(__dirname, './questions.json'), JSON.stringify(questions));
+        fs.writeFileSync(questionsSrc, JSON.stringify(questions));
         res.send({questionId: questionId});
     } else {
         res.send(serverError);
@@ -66,7 +67,7 @@ router.delete('/', function(req, res) {
 
     if (!user.error && user.isAdmin) {
         var questions;
-        questions = fs.readFileSync(path.resolve(__dirname, './questions.json'), 'utf-8');
+        questions = fs.readFileSync(questionsSrc, 'utf-8');
         questions = JSON.parse(questions);
 
         if (questionId) {
@@ -76,7 +77,7 @@ router.delete('/', function(req, res) {
                 }
             });
 
-            fs.writeFileSync(path.resolve(__dirname, './questions.json'), JSON.stringify(questions));
+            fs.writeFileSync(questionsSrc, JSON.stringify(questions));
             res.send(questions);
         }
     } else {
@@ -85,7 +86,7 @@ router.delete('/', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-    var questions = fs.readFileSync(path.resolve(__dirname, './questions.json'), 'utf-8');
+    var questions = fs.readFileSync(questionsSrc, 'utf-8');
 
     res.send(questions);
 });
