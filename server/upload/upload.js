@@ -34,6 +34,9 @@ router.post('/', upload.array('images'), function(req, res) {
         });
         res.send(files);
     } else {
+        req.files.forEach((file) => {
+            fs.unlink(file.path);
+        });
         res.send(serverError);
     }
 });
