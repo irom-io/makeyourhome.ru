@@ -37,6 +37,7 @@
     "http-proxy-middleware": "0.17.1",
     "jest": "15.1.1",
     "json-loader": "0.5.4",
+    "multer": "^1.2.0",
     "object-assign": "4.1.0",
     "path-exists": "2.1.0",
     "postcss": "^5.2.4",
@@ -76,6 +77,7 @@
     "react-slick": "^0.14.4",
     "react-sticky": "^5.0.5",
     "slick-carousel": "^1.6.0",
+    "superagent": "^2.3.0",
     "validator": "^6.1.0"
   },
   "scripts": {

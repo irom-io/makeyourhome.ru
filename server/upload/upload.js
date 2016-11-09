@@ -1,11 +1,13 @@
 const path = require('path');
 const express = require('express');
 const router = express.Router();
-const randomstring = require('randomstring');
+const multer = require('multer');
+const upload = multer({ dest: path.resolve(__dirname, './images/')});
 
 const serverError = {error: {msg: 'serverError'}};
 
-router.post('/', function(req, res) {
+router.post('/', upload.array('images'), function(req, res) {
+    console.log(req.files);
     res.send({});
 });
 
