@@ -6,6 +6,7 @@ const express = require('express');
 const router = express.Router();
 const usersModel = require('../users/usersModel');
 const randomstring = require('randomstring');
+const postsSrc = path.resolve(__dirname, '../data/posts.json');
 
 const serverError = {error: {msg: 'serverError'}};
 
@@ -15,7 +16,7 @@ router.post('/', function(req, res) {
 
     if (!user.error && user.isAdmin) {
         var posts;
-        posts = fs.readFileSync(path.resolve(__dirname, './posts.json'), 'utf-8');
+        posts = fs.readFileSync(postsSrc, 'utf-8');
         posts = JSON.parse(posts);
         
         if (postId) {
@@ -41,7 +42,7 @@ router.post('/', function(req, res) {
             });    
         }
         
-        fs.writeFileSync(path.resolve(__dirname, './posts.json'), JSON.stringify(posts));
+        fs.writeFileSync(postsSrc, JSON.stringify(posts));
         res.send({postId: postId});
     } else {
         res.send(serverError);
@@ -54,7 +55,7 @@ router.delete('/', function(req, res) {
 
     if (!user.error && user.isAdmin) {
         var posts;
-        posts = fs.readFileSync(path.resolve(__dirname, './posts.json'), 'utf-8');
+        posts = fs.readFileSync(postsSrc, 'utf-8');
         posts = JSON.parse(posts);
 
         if (postId) {
@@ -64,7 +65,7 @@ router.delete('/', function(req, res) {
                 }
             });
 
-            fs.writeFileSync(path.resolve(__dirname, './posts.json'), JSON.stringify(posts));
+            fs.writeFileSync(postsSrc, JSON.stringify(posts));
             res.send(posts);
         }
     } else {
@@ -73,7 +74,7 @@ router.delete('/', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-    var posts = fs.readFileSync(path.resolve(__dirname, './posts.json'), 'utf-8');
+    var posts = fs.readFileSync(postsSrc, 'utf-8');
 
     res.send(posts);
 });
