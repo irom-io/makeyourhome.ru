@@ -2,7 +2,6 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import Reactangle from 'blocks/rectangle/rectangle';
 import Upload from 'react-icons/lib/md/vertical-align-top';
-import request from 'superagent';
 
 import adminLoader from './admin__loader.css';
 
@@ -12,13 +11,25 @@ class AdminLoader extends React.Component {
 
         this.state = {};
     }
-    onDrop(acceptedFiles) {
-        let req = request.post('/api/upload');
-        acceptedFiles.forEach((file)=> {
-            req.attach('images', file);
+    onDrop(files) {
+        let formData = new FormData();
+        files.forEach((file, index) => {
+            formData.append(`images`, file);
         });
-        req.end(() => {
-            console.log('done');
+
+        fetch('/api/upload', {
+            method: 'post',
+            body: formData
+        })
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            } else {
+                return {error: {msg: 'serverError'}};
+            }
+        })
+        .then((response) => {
+            console.log(response);
         });
     }
     render() {

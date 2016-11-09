@@ -77,7 +77,6 @@
     "react-slick": "^0.14.4",
     "react-sticky": "^5.0.5",
     "slick-carousel": "^1.6.0",
-    "superagent": "^2.3.0",
     "validator": "^6.1.0"
   },
   "scripts": {
