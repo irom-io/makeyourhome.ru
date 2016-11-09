@@ -105,15 +105,6 @@ class AdminPosts extends React.Component {
             }
         });
     }
-    onLoad(images) {
-        const s_ = this.state;
-
-        if (s_.images) {
-            this.setState({images: [...s_.images, ...images]});
-        } else {
-            this.setState({images: images});
-        }
-    }
     render() {
         const s_ = this.state;
         const lang = getLang();
@@ -149,10 +140,7 @@ class AdminPosts extends React.Component {
                 }
 
                 <div className={grid.mbMini}>
-                    <AdminLoader 
-                        images={s_.images}
-                        onLoad={(images) => this.onLoad(images)}
-                    />
+                    <AdminLoader />
                 </div>
 
                 <div className={grid.mbMini}>

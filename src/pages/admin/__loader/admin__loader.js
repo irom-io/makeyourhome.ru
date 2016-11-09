@@ -11,7 +11,9 @@ class AdminLoader extends React.Component {
     constructor(p_, context) {
         super(p_, context);
 
-        this.state = {};
+        this.state = {
+            images: []
+        };
     }
     onDrop(files) {
         const self = this;
@@ -41,12 +43,12 @@ class AdminLoader extends React.Component {
                 return {error: {msg: 'serverError'}};
             }
         })
-        .then((response) => {
-            self.props.onLoad(response);
+        .then((images) => {
+            this.setState({images: [...self.state.images, ...images]});
         });
     }
     render() {
-        const p_ = this.props;
+        const s_ = this.state;
 
         return (
             <div>
@@ -61,10 +63,10 @@ class AdminLoader extends React.Component {
                     </Reactangle>
                 </Dropzone>
 
-                {p_.images &&
+                {(s_.images.length > 0) &&
                 <div className={grid.mtMini}>
                     <TileWrapper>
-                        {p_.images.map((image, index) => {
+                        {s_.images.map((image, index) => {
                             return (
                                 <Tile
                                     key={`adminLoaderImage__${index}`}
