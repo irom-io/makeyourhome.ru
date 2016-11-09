@@ -5,6 +5,7 @@ import Link from 'blocks/link/link';
 import TileLine from 'blocks/tile/_line/tile_line';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import api from 'blocks/api/api';
+import {createSrc} from 'blocks/item/item';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -31,7 +32,6 @@ class Posts extends React.Component {
                         items: response,
                         loading: false
                     });
-                    console.log(response);
                 } else {
                     self.setState({loading: false});
                 }
@@ -75,12 +75,14 @@ class Posts extends React.Component {
                         <TileLine
                             name="posts"
                             key={`post_${index}`}
-                            src={item.images[0]}
+                            src={createSrc(item.images[0])}
                             text={title}
                             l10nText={true}
                             link={{}}
                         >
-                            {shortText}
+                            <div className={text.preWrap}>
+                                {shortText}
+                            </div>
                         </TileLine>
                     )
                 })}

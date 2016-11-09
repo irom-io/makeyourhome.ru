@@ -44,6 +44,9 @@ const text = jcss({
             textDecoration: 'none'
         })
     },
+    preWrap: {
+        whiteSpace: 'pre-wrap'
+    },
     ...(() => {
         let sizes = {};
         
