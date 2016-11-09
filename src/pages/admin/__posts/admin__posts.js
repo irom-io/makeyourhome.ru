@@ -3,6 +3,7 @@ import {Input, Textarea} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import api from 'blocks/api/api';
+import AdminLoader from 'pages/admin/__loader/admin__loader';
 import L10n from 'blocks/l10n/l10n';
 
 import grid from 'blocks/grid/grid.css';
@@ -137,6 +138,11 @@ class AdminPosts extends React.Component {
                     {s_.msg}
                 </div>
                 }
+
+                <div className={grid.mbMini}>
+                    <AdminLoader />
+                </div>
+
                 <div className={grid.mbMini}>
                     <Input
                         placeholder="Заголовок"

@@ -71,6 +71,9 @@ const item = jcss({
     borderDotted: {
         border: `1px dotted ${css.colors.lightBlack}`
     },
+    borderDashed: {
+        border: `1px dashed ${css.colors.white}`
+    },
     overNone: {
         overflow: 'hidden'
     },
