@@ -80,6 +80,7 @@ class AdminPosts extends React.Component {
         p_.onSubmit();
         api.post('posts', {
             user: user,
+            images: s_.data.images,
             title: s_.data[lang].title,
             shortText: s_.data[lang].shortText,
             longText: s_.data[lang].longText,

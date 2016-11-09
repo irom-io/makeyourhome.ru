@@ -24,6 +24,7 @@ router.post('/', function(req, res) {
                 return post.id === postId;
             });
 
+            post.images = req.body.images;
             post[req.body.lang] = {
                 title: req.body.title,
                 shortText: req.body.shortText,
@@ -34,6 +35,7 @@ router.post('/', function(req, res) {
 
             posts.unshift({
                 id: postId,
+                images: req.body.images,
                 [req.body.lang]: {
                     title: req.body.title,
                     shortText: req.body.shortText,
