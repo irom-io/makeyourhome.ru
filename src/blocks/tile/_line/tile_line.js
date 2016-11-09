@@ -18,6 +18,13 @@ class TileLine extends React.Component {
     }
     render() {
         const p_ = this.props;
+        let innerText;
+        
+        if (p_.l10nText) {
+            innerText = p_.text;
+        } else {
+            innerText = L10n(`${p_.name}.${p_.link.key}`)
+        }
 
         return (
             <div className={tileLine.wrapper}>
@@ -43,7 +50,7 @@ class TileLine extends React.Component {
                         {!p_.toolbar &&
                         <div className={`${text.right} ${grid.mtMini}`}>
                             <Link to={p_.link.to}>
-                                <Button isText={true}>{L10n(`${p_.name}.${p_.link.key}`)}</Button>
+                                <Button isText={true}>{innerText}</Button>
                             </Link>
                         </div>
                         }

@@ -2,7 +2,8 @@ import React from 'react';
 import Layout from 'blocks/layout/layout';
 import Button from 'blocks/button/button';
 import Link from 'blocks/link/link';
-import PostsSlider from 'pages/posts/__slider/posts__slider';
+import TileLine from 'blocks/tile/_line/tile_line';
+import {getLang} from 'blocks/page/__lang/page__lang';
 import api from 'blocks/api/api';
 
 import grid from 'blocks/grid/grid.css';
@@ -16,7 +17,7 @@ class Posts extends React.Component {
         this.state = {
             question: '',
             loading: true,
-            items: null,
+            items: [],
             visibleItems: step
         };
     }
@@ -39,6 +40,7 @@ class Posts extends React.Component {
     render() {
         const s_ = this.state;
         const isAdmin = localStorage.getItem('isAdmin');
+        const lang = getLang();
 
         return (
             <Layout
@@ -60,13 +62,28 @@ class Posts extends React.Component {
                 </div>
                 }
 
-                {s_.items &&
-                <div>
-                    <div className={grid.mbMini}>
+                {s_.items.map((item, index) => {
+                    let title = 'noTranslate';
+                    let shortText = 'noTranslate';
 
-                    </div>
-                </div>
-                }
+                    if (item[lang]) {
+                        title = item[lang].title;
+                        shortText = item[lang].shortText;
+                    }
+
+                    return (
+                        <TileLine
+                            name="posts"
+                            key={`post_${index}`}
+                            src={item.images[0]}
+                            text={title}
+                            l10nText={true}
+                            link={{}}
+                        >
+                            {shortText}
+                        </TileLine>
+                    )
+                })}
             </Layout>
         );
     }
