@@ -5,6 +5,7 @@ const mail = require('../mail/mail');
 const randomstring = require('randomstring');
 const L10nAuth = require('../../src/blocks/l10n/__auth/l10n__auth.json').auth;
 const config = require('../config.json');
+const usersSrc = path.resolve(__dirname, '../data/users.json');
 
 const loginError = {error: {msg: 'loginError'}};
 const serverError = {error: {msg: 'serverError'}};
@@ -28,7 +29,7 @@ const usersModel = {
     get: (insertUser, noPassword) => {
         var user;
         var users;
-        users = fs.readFileSync(path.resolve(__dirname, './users.json'), 'utf-8');
+        users = fs.readFileSync(usersSrc, 'utf-8');
         users = JSON.parse(users);
 
         insertUser = usersModel.validate(insertUser);
@@ -56,7 +57,7 @@ const usersModel = {
     },
     save: (insertUser, isReplace) => {
         var users;
-        users = fs.readFileSync(path.resolve(__dirname, './users.json'), 'utf-8');
+        users = fs.readFileSync(usersSrc, 'utf-8');
         users = JSON.parse(users);
 
         insertUser = usersModel.validate(insertUser);
@@ -72,7 +73,7 @@ const usersModel = {
             users[insertUser.login] = usersModel.createUserObject(insertUser);
         }
 
-        fs.writeFileSync(path.resolve(__dirname, './users.json'), JSON.stringify(users));
+        fs.writeFileSync(usersSrc, JSON.stringify(users));
         return users[insertUser.login];
     },
     createUserObject: (insertUser) => {
@@ -86,7 +87,7 @@ const usersModel = {
     },
     exists: (insertUser) => {
         var users;
-        users = fs.readFileSync(path.resolve(__dirname, './users.json'), 'utf-8');
+        users = fs.readFileSync(usersSrc, 'utf-8');
         users = JSON.parse(users);
 
         return (typeof users[insertUser.login] == 'object');
