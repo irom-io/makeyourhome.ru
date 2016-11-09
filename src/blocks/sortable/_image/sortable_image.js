@@ -6,11 +6,15 @@ import sortableImage from './sortable_image.css';
 
 class Item extends React.Component {
     render() {
+        const p_ = this.props;
+
         return (
             <div
-                {...this.props}
+                {...p_}
             >
-                {this.props.children}
+                <Rectangle>
+                    {p_.children}
+                </Rectangle>
             </div>
         )
     }
@@ -33,7 +37,7 @@ class SortableImage extends React.Component {
     render() {
         const s_ = this.state;
 
-        const listItems = s_.items.map(function(item, index) {
+        const items = s_.items.map(function(item, index) {
             return (
                 <SortableImageItem
                     key={`sortableItem_${index}`}
@@ -41,7 +45,8 @@ class SortableImage extends React.Component {
                     items={s_.items}
                     draggingIndex={s_.draggingIndex}
                     sortId={index}
-                    outline="list"
+                    outline="grid"
+                    childProps={{className: sortableImage.item}}
                 >
                     {item}
                 </SortableImageItem>
@@ -49,8 +54,8 @@ class SortableImage extends React.Component {
         }, this);
 
         return (
-            <div>
-                {listItems}
+            <div className={sortableImage.wrapper}>
+                {items}
             </div>
         )
     }

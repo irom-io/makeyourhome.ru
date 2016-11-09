@@ -3,6 +3,7 @@ import grid from 'blocks/grid/grid.css';
 
 const sortableImage = jcss({
     wrapper: {
+        ...grid.row,
         marginRight: -grid.mMini.margin,
         marginBottom: -grid.mMini.margin
     },
