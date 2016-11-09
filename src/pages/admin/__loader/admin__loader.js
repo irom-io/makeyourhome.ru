@@ -64,9 +64,10 @@ class AdminLoader extends React.Component {
                 {p_.images &&
                 <div className={grid.mtMini}>
                     <TileWrapper>
-                        {p_.images.map((image) => {
+                        {p_.images.map((image, index) => {
                             return (
                                 <Tile
+                                    key={`adminLoaderImage__${index}`}
                                     src={`http://localhost:8081/images/${image}`}
                                 />
                             );
