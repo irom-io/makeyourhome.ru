@@ -2,7 +2,7 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import Reactangle from 'blocks/rectangle/rectangle';
 import Upload from 'react-icons/lib/md/vertical-align-top';
-import {Tile, TileWrapper} from 'blocks/tile/tile';
+import SortableImage from 'blocks/sortable/_image/sortable_image';
 
 import grid from 'blocks/grid/grid.css';
 import adminLoader from './admin__loader.css';
@@ -65,18 +65,13 @@ class AdminLoader extends React.Component {
 
                 {(s_.images.length > 0) &&
                 <div className={grid.mtMini}>
-                    <TileWrapper>
-                        {s_.images.map((image, index) => {
-                            return (
-                                <Tile
-                                    key={`adminLoaderImage__${index}`}
-                                    src={`http://localhost:8081/images/${image}`}
-                                />
-                            );
-                        })}
-                    </TileWrapper>
+
                 </div>
                 }
+
+                <SortableImage
+                    items={[1,2,3]}
+                />
             </div>
         );
     }
