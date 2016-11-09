@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const usersModel = require('./usersModel');
 const request = require('request');
-const config = require('../config.json');
+const config = require('../data/config.json');
 
 const serverError = {error: {msg: 'serverError'}};
 router.post('/', function(req, res) {

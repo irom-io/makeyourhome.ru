@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const config = require('./config.json');
+const config = require('./data/config.json');
 const express = require('express');
 const app = express();
 const port = config.port;

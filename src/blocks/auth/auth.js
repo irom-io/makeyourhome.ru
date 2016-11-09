@@ -7,7 +7,7 @@ import api from 'blocks/api/api';
 import queryString from 'query-string';
 import L10n from 'blocks/l10n/l10n';
 import {getLang} from 'blocks/page/__lang/page__lang';
-import config from '../../../server/config.json';
+import config from '../../../server/data/config.json';
 
 import auth from './auth.css';
 import grid from 'blocks/grid/grid.css';
