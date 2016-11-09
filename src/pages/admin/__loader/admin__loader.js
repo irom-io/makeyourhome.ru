@@ -12,11 +12,7 @@ class AdminLoader extends React.Component {
         super(p_, context);
 
         this.state = {
-            items: [
-                '7af44fb0334dd45ba501baf571da31ca.jpg',
-                '46ba9c8d978d55838ffb7a6467a6ae4f.jpg',
-                '9703ef88aaba23e11fdf5790c89f24c3.jpg'
-            ]
+            items: p_.images
         };
     }
     onDrop(files) {
@@ -48,11 +44,15 @@ class AdminLoader extends React.Component {
             }
         })
         .then((items) => {
-            this.setState({items: [...self.state.items, ...items]});
+            let newItems = [...self.state.items, ...items];
+            
+            this.setState({items: newItems});
+            this.props.onUpdate(newItems);
         });
     }
     onUpdate(items) {
         this.setState({items: items});
+        this.props.onUpdate(items);
     }
     render() {
         const s_ = this.state;
@@ -80,6 +80,9 @@ class AdminLoader extends React.Component {
         );
     }
 }
+AdminLoader.defaultProps = {
+    images: []
+};
 AdminLoader.contextTypes = {
     router: React.PropTypes.object.isRequired
 };

@@ -22,6 +22,7 @@ class AdminPosts extends React.Component {
                 en: {title: '', shortText: '', longText: ''},
                 esp: {title: '', shortText: '', longText: ''}
             },
+            images: [],
             postId: p_.postId || null
         };
     }
@@ -55,6 +56,7 @@ class AdminPosts extends React.Component {
                 en: {title: '', shortText: '', longText: ''},
                 esp: {title: '', shortText: '', longText: ''}
             },
+            images: [],
             errorMsg: null,
             loading: false,
             postId: null
@@ -105,6 +107,9 @@ class AdminPosts extends React.Component {
             }
         });
     }
+    onUpdate(images) {
+        this.setState({images: images});
+    }
     render() {
         const s_ = this.state;
         const lang = getLang();
@@ -140,7 +145,10 @@ class AdminPosts extends React.Component {
                 }
 
                 <div className={grid.mbMini}>
-                    <AdminLoader />
+                    <AdminLoader
+                        images={s_.images}
+                        onUpdate={(images) => this.onUpdate(images)}
+                    />
                 </div>
 
                 <div className={grid.mbMini}>

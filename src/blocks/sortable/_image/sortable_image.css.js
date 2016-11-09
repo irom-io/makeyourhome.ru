@@ -11,11 +11,11 @@ const sortableImage = jcss({
     item: {
         ...grid.prMini,
         ...grid.pbMini,
-        width: '33.33333%'
+        width: '12.5%'
     },
     inner: {
         ...item.shadow,
-        ...item.pointer,
+        ...item.pointer
     }
 });
 
