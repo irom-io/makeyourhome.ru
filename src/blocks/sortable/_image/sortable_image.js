@@ -51,7 +51,13 @@ class SortableImage extends React.Component {
         }
     }
     onDelete(src) {
-        console.log(src);
+        const p_ = this.props;
+        const deleteIndex = p_.items.indexOf(src);
+        
+        if (deleteIndex !== -1) {
+            p_.items.splice(deleteIndex, 1);
+            p_.onUpdate(p_.items);
+        }
     }
     render() {
         const s_ = this.state;

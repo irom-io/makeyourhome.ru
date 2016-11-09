@@ -109,6 +109,7 @@ class AdminPosts extends React.Component {
     }
     onUpdate(images) {
         this.setState({images: images});
+        console.log(images);
     }
     render() {
         const s_ = this.state;
