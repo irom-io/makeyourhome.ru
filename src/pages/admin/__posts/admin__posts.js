@@ -18,11 +18,11 @@ class AdminPosts extends React.Component {
             errorMsg: null,
             loading: false,
             data: {
+                images: [],
                 ru: {title: '', shortText: '', longText: ''},
                 en: {title: '', shortText: '', longText: ''},
                 esp: {title: '', shortText: '', longText: ''}
             },
-            images: [],
             postId: p_.postId || null
         };
     }
@@ -54,9 +54,9 @@ class AdminPosts extends React.Component {
             data: {
                 ru: {title: '', shortText: '', longText: ''},
                 en: {title: '', shortText: '', longText: ''},
-                esp: {title: '', shortText: '', longText: ''}
+                esp: {title: '', shortText: '', longText: ''},
+                images: []
             },
-            images: [],
             errorMsg: null,
             loading: false,
             postId: null
@@ -108,8 +108,9 @@ class AdminPosts extends React.Component {
         });
     }
     onUpdate(images) {
-        this.setState({images: images});
-        console.log(images);
+        let data = this.state.data;
+        data.images = images;
+        this.setState({data: data});
     }
     render() {
         const s_ = this.state;
@@ -147,7 +148,7 @@ class AdminPosts extends React.Component {
 
                 <div className={grid.mbMini}>
                     <AdminLoader
-                        images={s_.images}
+                        images={s_.data.images}
                         onUpdate={(images) => this.onUpdate(images)}
                     />
                 </div>
@@ -177,7 +178,7 @@ class AdminPosts extends React.Component {
                 <div className={text.right}>
                     <Button
                         type="submit"
-                        disabled={s_.loading || !s_.data[lang].title || !s_.data[lang].shortText || !s_.data[lang].longText}
+                        disabled={s_.loading || (s_.data.images.length === 0) || !s_.data[lang].title || !s_.data[lang].shortText || !s_.data[lang].longText}
                     >
                         Сохранить {lang}
                     </Button>
