@@ -3,7 +3,6 @@ import Dropzone from 'react-dropzone';
 import Reactangle from 'blocks/rectangle/rectangle';
 import Upload from 'react-icons/lib/md/vertical-align-top';
 import {Tile, TileWrapper} from 'blocks/tile/tile';
-import Sortable from 'blocks/sortable/sortable';
 
 import grid from 'blocks/grid/grid.css';
 import adminLoader from './admin__loader.css';
@@ -78,8 +77,6 @@ class AdminLoader extends React.Component {
                     </TileWrapper>
                 </div>
                 }
-
-                <Sortable data={{items: [1,2,3,4]}} />
             </div>
         );
     }

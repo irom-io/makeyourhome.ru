@@ -6,7 +6,6 @@ class ListItem extends React.Component {
         return (
             <div
                 {...this.props}
-                className="list-item"
             >
                 {this.props.children}
             </div>
@@ -22,24 +21,24 @@ class SortableList extends React.Component {
 
         this.state = {
             draggingIndex: null,
-            data: p_.data
+            items: p_.items
         };
     }
     updateState(update) {
         this.setState(update);
     }
     render() {
-        const childProps = { className: 'myClass1' };
-        const listItems = this.state.data.items.map(function(item, i) {
+        const s_ = this.state;
+
+        const listItems = s_.items.map(function(item, index) {
             return (
                 <SortableListItem
-                    key={i}
+                    key={`sortableItem_${index}`}
                     updateState={(update) => this.updateState(update)}
-                    items={this.state.data.items}
-                    draggingIndex={this.state.draggingIndex}
-                    sortId={i}
+                    items={s_.items}
+                    draggingIndex={s_.draggingIndex}
+                    sortId={index}
                     outline="list"
-                    childProps={childProps}
                 >
                     {item}
                 </SortableListItem>
@@ -47,7 +46,7 @@ class SortableList extends React.Component {
         }, this);
 
         return (
-            <div className="list">
+            <div>
                 {listItems}
             </div>
         )
