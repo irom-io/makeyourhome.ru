@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 
 routes(app);
 app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use('/images', express.static(path.resolve(__dirname, './data/images')));
 app.get('*', (req, res) => {
     const indexContent = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8');
 
