@@ -1,50 +1,57 @@
 import React from 'react';
 import { sortable } from 'react-sortable';
 
-var ListItem = React.createClass({
-    displayName: 'SortableListItem',
-    render: function() {
+class ListItem extends React.Component {
+    render() {
         return (
-            <div {...this.props} className="list-item">{this.props.children}</div>
+            <div
+                {...this.props}
+                className="list-item"
+            >
+                {this.props.children}
+            </div>
         )
     }
-});
+}
 
-var SortableListItem = sortable(ListItem);
+const SortableListItem = sortable(ListItem);
 
-var SortableList = React.createClass({
+class SortableList extends React.Component {
+    constructor(p_) {
+        super(p_);
 
-    getInitialState: function() {
-        return {
+        this.state = {
             draggingIndex: null,
-            data: this.props.data
+            data: p_.data
         };
-    },
-
-    updateState: function(obj) {
-        this.setState(obj);
-    },
-
-    render: function() {
-        var childProps = { className: 'myClass1' };
-        var listItems = this.state.data.items.map(function(item, i) {
+    }
+    updateState(update) {
+        this.setState(update);
+    }
+    render() {
+        const childProps = { className: 'myClass1' };
+        const listItems = this.state.data.items.map(function(item, i) {
             return (
                 <SortableListItem
                     key={i}
-                    updateState={this.updateState}
+                    updateState={(update) => this.updateState(update)}
                     items={this.state.data.items}
                     draggingIndex={this.state.draggingIndex}
                     sortId={i}
                     outline="list"
                     childProps={childProps}
-                >{item}</SortableListItem>
+                >
+                    {item}
+                </SortableListItem>
             );
         }, this);
 
         return (
-            <div className="list">{listItems}</div>
+            <div className="list">
+                {listItems}
+            </div>
         )
     }
-});
+}
 
 export default SortableList;
