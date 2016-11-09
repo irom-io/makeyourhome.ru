@@ -22,9 +22,7 @@ class Rectangle extends React.Component {
                         >
                         </div>
                     }
-                    {!p_.src &&
-                        p_.children
-                    }
+                    {p_.children}
                 </div>
                 <div style={{paddingBottom: `${paddingBottom}%`}}></div>
             </div>

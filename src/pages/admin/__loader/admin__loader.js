@@ -72,6 +72,7 @@ class AdminLoader extends React.Component {
 
                 <div className={grid.mtMini}>
                     <SortableImage
+                        onDelete={(items) => this.onUpdate(items)}
                         onUpdate={(items) => this.onUpdate(items)}
                         items={s_.items}
                     />

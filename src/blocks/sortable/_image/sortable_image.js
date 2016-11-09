@@ -2,12 +2,17 @@ import React from 'react';
 import Rectangle from 'blocks/rectangle/rectangle';
 import { sortable } from 'react-sortable';
 import {createSrc} from 'blocks/item/item';
+import {AdminDelete} from 'blocks/admin/__edit/admin__edit';
 
 import sortableImage from './sortable_image.css'; 
 
 class Item extends React.Component {
+    onDelete(src) {
+        this.props.onDelete(src);
+    }
     render() {
-        const p_ = this.props;
+        let p_ = {...this.props};
+        delete p_.onDelete;
 
         return (
             <div
@@ -16,7 +21,13 @@ class Item extends React.Component {
                 <Rectangle
                     className={sortableImage.inner}
                     src={createSrc(p_.src)}
-                />
+                >
+                    <div className={sortableImage.delete}>
+                        <AdminDelete
+                            onDelete={() => this.onDelete(p_.src)}
+                        />
+                    </div>
+                </Rectangle>
             </div>
         )
     }
@@ -39,6 +50,9 @@ class SortableImage extends React.Component {
             this.props.onUpdate(update.items);
         }
     }
+    onDelete(src) {
+        console.log(src);
+    }
     render() {
         const s_ = this.state;
         const p_ = this.props;
@@ -52,7 +66,7 @@ class SortableImage extends React.Component {
                     draggingIndex={s_.draggingIndex}
                     sortId={index}
                     outline="grid"
-                    childProps={{className: sortableImage.item, src: item}}
+                    childProps={{className: sortableImage.item, src: item, onDelete: (src) => this.onDelete(src)}}
                 />
             );
         }, this);

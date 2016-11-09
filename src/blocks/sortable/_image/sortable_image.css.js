@@ -16,6 +16,11 @@ const sortableImage = jcss({
     inner: {
         ...item.shadow,
         ...item.pointer
+    },
+    delete: {
+        ...item.abs,
+        top: 3,
+        right: 3
     }
 });
 
