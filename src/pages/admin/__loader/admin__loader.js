@@ -17,6 +17,15 @@ class AdminLoader extends React.Component {
             formData.append(`images`, file);
         });
 
+        let user = localStorage.getItem('user');
+
+        if (user) {
+            user = JSON.parse(user)
+        } else {
+            user = {};
+        }
+        formData.append('user', JSON.stringify(user));
+
         fetch('/api/upload', {
             method: 'post',
             body: formData
