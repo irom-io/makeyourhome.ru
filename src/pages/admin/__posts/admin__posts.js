@@ -140,7 +140,10 @@ class AdminPosts extends React.Component {
                 }
 
                 <div className={grid.mbMini}>
-                    <AdminLoader />
+                    <AdminLoader 
+                        images={s_.images}
+                        onLoad={(images) => {this.setState({images: images})}}
+                    />
                 </div>
 
                 <div className={grid.mbMini}>

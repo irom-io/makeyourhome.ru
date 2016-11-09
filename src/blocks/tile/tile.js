@@ -40,7 +40,9 @@ export class TileContent extends React.Component {
                     title={p_.text}
                 >
                 </div>
+                {p_.text &&
                 <div className={tile.text}>{p_.text}</div>
+                }
             </div>
         );
     }
@@ -57,11 +59,20 @@ export class Tile extends React.Component {
 
         return (
             <div className={`${tile.item} ${p_.noIndents? '' : tile.indents}`}>
+                {tile.link &&
                 <Link className={tile.link} to={p_.to}>
                     <Rectangle className={grid.col}>
                         <TileContent {...p_} />
                     </Rectangle>
                 </Link>
+                }
+                {!tile.link &&
+                <div className={tile.link}>
+                    <Rectangle className={grid.col}>
+                        <TileContent {...p_} />
+                    </Rectangle>
+                </div>
+                }
             </div>
         );
     }

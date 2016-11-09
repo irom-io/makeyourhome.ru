@@ -2,7 +2,9 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import Reactangle from 'blocks/rectangle/rectangle';
 import Upload from 'react-icons/lib/md/vertical-align-top';
+import {Tile, TileWrapper} from 'blocks/tile/tile';
 
+import grid from 'blocks/grid/grid.css';
 import adminLoader from './admin__loader.css';
 
 class AdminLoader extends React.Component {
@@ -12,7 +14,9 @@ class AdminLoader extends React.Component {
         this.state = {};
     }
     onDrop(files) {
+        const self = this;
         let formData = new FormData();
+
         files.forEach((file, index) => {
             formData.append(`images`, file);
         });
@@ -38,10 +42,12 @@ class AdminLoader extends React.Component {
             }
         })
         .then((response) => {
-            console.log(response);
+            self.props.onLoad(response);
         });
     }
     render() {
+        const p_ = this.props;
+
         return (
             <div>
                 <Dropzone
@@ -54,6 +60,20 @@ class AdminLoader extends React.Component {
                         <Upload size={32} />
                     </Reactangle>
                 </Dropzone>
+
+                {p_.images &&
+                <div className={grid.mtMini}>
+                    <TileWrapper>
+                        {p_.images.map((image) => {
+                            return (
+                                <Tile
+                                    src={`http://localhost:8081/images/${image}`}
+                                />
+                            );
+                        })}
+                    </TileWrapper>
+                </div>
+                }
             </div>
         );
     }

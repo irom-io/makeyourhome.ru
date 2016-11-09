@@ -39,6 +39,7 @@ const tile = jcss({
         '&:hover': null
     },
     content: {
+        ...item.pointer,
         height: '100%'
     },
     img: {
