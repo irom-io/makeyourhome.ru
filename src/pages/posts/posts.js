@@ -6,6 +6,7 @@ import TileLine from 'blocks/tile/_line/tile_line';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import api from 'blocks/api/api';
 import {createSrc} from 'blocks/item/item';
+import AdminEdit from 'blocks/admin/__edit/admin__edit';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -39,6 +40,8 @@ class Posts extends React.Component {
     }
     render() {
         const s_ = this.state;
+        let user = localStorage.getItem('user');
+        if (user) {user = JSON.parse(user);}
         const isAdmin = localStorage.getItem('isAdmin');
         const lang = getLang();
 
@@ -83,6 +86,13 @@ class Posts extends React.Component {
                             <div className={text.preWrap}>
                                 {shortText}
                             </div>
+
+                            {isAdmin &&
+                            <AdminEdit
+                                editTo={`/admin?type=posts&postId=${item.id}`}
+                                onDelete={() => this.deleteQuestion(user, item.id)}
+                            />
+                            }
                         </TileLine>
                     )
                 })}
