@@ -4,7 +4,7 @@ const validator = require('validator');
 const mail = require('../mail/mail');
 const randomstring = require('randomstring');
 const L10nAuth = require('../../src/blocks/l10n/__auth/l10n__auth.json').auth;
-const config = require('../config.json');
+const config = require('../data/config.json');
 const usersSrc = path.resolve(__dirname, '../data/users.json');
 
 const loginError = {error: {msg: 'loginError'}};
