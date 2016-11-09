@@ -1,5 +1,6 @@
 import jcss from 'jcss';
 import grid from 'blocks/grid/grid.css';
+import item from 'blocks/item/item.css';
 
 const sortableImage = jcss({
     wrapper: {
@@ -11,6 +12,10 @@ const sortableImage = jcss({
         ...grid.prMini,
         ...grid.pbMini,
         width: '33.33333%'
+    },
+    inner: {
+        ...item.shadow,
+        ...item.pointer,
     }
 });
 

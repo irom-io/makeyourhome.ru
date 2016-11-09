@@ -1,6 +1,7 @@
 import React from 'react';
 import Rectangle from 'blocks/rectangle/rectangle';
 import { sortable } from 'react-sortable';
+import {createSrc} from 'blocks/item/item';
 
 import sortableImage from './sortable_image.css'; 
 
@@ -12,9 +13,10 @@ class Item extends React.Component {
             <div
                 {...p_}
             >
-                <Rectangle>
-                    {p_.children}
-                </Rectangle>
+                <Rectangle
+                    className={sortableImage.inner}
+                    src={createSrc(p_.src)}
+                />
             </div>
         )
     }
@@ -46,10 +48,8 @@ class SortableImage extends React.Component {
                     draggingIndex={s_.draggingIndex}
                     sortId={index}
                     outline="grid"
-                    childProps={{className: sortableImage.item}}
-                >
-                    {item}
-                </SortableImageItem>
+                    childProps={{className: sortableImage.item, src: item}}
+                />
             );
         }, this);
 

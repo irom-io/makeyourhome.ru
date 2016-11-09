@@ -69,9 +69,15 @@ class AdminLoader extends React.Component {
                 </div>
                 }
 
-                <SortableImage
-                    items={[1,2,3]}
-                />
+                <div className={grid.mtMini}>
+                    <SortableImage
+                        items={[
+                        '7af44fb0334dd45ba501baf571da31ca.jpg',
+                        '46ba9c8d978d55838ffb7a6467a6ae4f.jpg',
+                        '9703ef88aaba23e11fdf5790c89f24c3.jpg'
+                    ]}
+                    />
+                </div>
             </div>
         );
     }
