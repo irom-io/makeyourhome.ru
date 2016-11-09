@@ -12,7 +12,11 @@ class AdminLoader extends React.Component {
         super(p_, context);
 
         this.state = {
-            images: []
+            items: [
+                '7af44fb0334dd45ba501baf571da31ca.jpg',
+                '46ba9c8d978d55838ffb7a6467a6ae4f.jpg',
+                '9703ef88aaba23e11fdf5790c89f24c3.jpg'
+            ]
         };
     }
     onDrop(files) {
@@ -43,9 +47,12 @@ class AdminLoader extends React.Component {
                 return {error: {msg: 'serverError'}};
             }
         })
-        .then((images) => {
-            this.setState({images: [...self.state.images, ...images]});
+        .then((items) => {
+            this.setState({items: [...self.state.items, ...items]});
         });
+    }
+    onUpdate(items) {
+        this.setState({items: items});
     }
     render() {
         const s_ = this.state;
@@ -63,19 +70,10 @@ class AdminLoader extends React.Component {
                     </Reactangle>
                 </Dropzone>
 
-                {(s_.images.length > 0) &&
-                <div className={grid.mtMini}>
-
-                </div>
-                }
-
                 <div className={grid.mtMini}>
                     <SortableImage
-                        items={[
-                        '7af44fb0334dd45ba501baf571da31ca.jpg',
-                        '46ba9c8d978d55838ffb7a6467a6ae4f.jpg',
-                        '9703ef88aaba23e11fdf5790c89f24c3.jpg'
-                    ]}
+                        onUpdate={(items) => this.onUpdate(items)}
+                        items={s_.items}
                     />
                 </div>
             </div>

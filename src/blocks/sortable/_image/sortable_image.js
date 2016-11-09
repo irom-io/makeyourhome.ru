@@ -29,22 +29,26 @@ class SortableImage extends React.Component {
         super(p_);
 
         this.state = {
-            draggingIndex: null,
-            items: p_.items
+            draggingIndex: null
         };
     }
     updateState(update) {
         this.setState(update);
+
+        if (update.items) {
+            this.props.onUpdate(update.items);
+        }
     }
     render() {
         const s_ = this.state;
+        const p_ = this.props;
 
-        const items = s_.items.map(function(item, index) {
+        const items = p_.items.map(function(item, index) {
             return (
                 <SortableImageItem
                     key={`sortableItem_${index}`}
                     updateState={(update) => this.updateState(update)}
-                    items={s_.items}
+                    items={p_.items}
                     draggingIndex={s_.draggingIndex}
                     sortId={index}
                     outline="grid"
