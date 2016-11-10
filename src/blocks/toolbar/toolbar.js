@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectsShare from 'pages/projects/__share/projects__share';
+import Share from 'blocks/share/share';
 import Favorite from 'react-icons/lib/md/favorite';
 import NavigateNext from 'react-icons/lib/md/navigate-next';
 
@@ -15,7 +15,7 @@ class Toolbar extends React.Component {
         return (
             <div className={toolbar.wrapper}>
                 <div>
-                    <ProjectsShare />
+                    <Share />
                 </div>
 
                 <div className={toolbar.iconsWrapper}>

@@ -1,7 +1,6 @@
 import jcss from 'jcss';
 import css from 'blocks/config/css';
 import grid from 'blocks/grid/grid.css';
-import item from 'blocks/item/item.css';
 import text from 'blocks/text/text.css';
 
 const projects = jcss({
@@ -20,13 +19,6 @@ const projects = jcss({
             ...grid.w100,
             ...grid.prNone,
             ...grid.mbMicro
-        }
-    },
-    shareButton: {
-        ...grid.mrMicro,
-        ...item.pointer,
-        '&:last-child': {
-            marginRight: grid.mNone.margin
         }
     },
     params: {

@@ -1,6 +1,5 @@
 import React from 'react';
 import ProjectsParams from 'pages/projects/__params/projects__params';
-import ProjectsShare from 'pages/projects/__share/projects__share';
 import grid from 'blocks/grid/grid.css';
 
 class ProjectsToolbar extends React.Component {
@@ -14,8 +13,6 @@ class ProjectsToolbar extends React.Component {
         
         return (
             <div className={`${grid.row} ${grid.justify} ${grid.normalCenter} ${grid.plMini}`}>
-                <ProjectsShare />
-                
                 <div className={`${grid.w50} ${grid.plMini} ${grid.prMini} ${grid.space_tabMini} ${grid.wAuto_tabMini}`}>
                     <ProjectsParams
                         project={p_.project}

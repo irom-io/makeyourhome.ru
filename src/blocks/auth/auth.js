@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'blocks/link/link';
 import Layout from 'blocks/layout/layout';
-import {FacebookIcon, VKIcon} from 'pages/projects/__share/projects__share';
+import {FacebookIcon, VKIcon} from 'blocks/share/share';
 import AccountCircle from 'react-icons/lib/md/account-circle'
 import api from 'blocks/api/api';
 import queryString from 'query-string';

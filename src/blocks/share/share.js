@@ -1,7 +1,7 @@
 import React from 'react';
 import {/*ShareButtons, ShareCounts,*/ generateShareIcon} from 'react-share';
 import grid from 'blocks/grid/grid.css';
-import projects from 'pages/projects/projects.css';
+import share from './share.css';
 import css from 'blocks/config/css';
 
 export const FacebookIcon = generateShareIcon('facebook');
@@ -9,7 +9,7 @@ export const TwitterIcon = generateShareIcon('twitter');
 export const PinterestIcon = generateShareIcon('pinterest');
 export const VKIcon = generateShareIcon('vk');
 
-class ProjectsShare extends React.Component {
+class Share extends React.Component {
     constructor(p_) {
         super(p_);
 
@@ -18,13 +18,13 @@ class ProjectsShare extends React.Component {
     render() {
         return (
             <div className={grid.row}>
-                <div className={projects.shareButton}>
+                <div className={share.button}>
                     <FacebookIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
                 </div>
-                <div className={projects.shareButton}>
+                <div className={share.button}>
                     <TwitterIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
                 </div>
-                <div className={projects.shareButton}>
+                <div className={share.button}>
                     <PinterestIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
                 </div>
             </div>
@@ -32,4 +32,4 @@ class ProjectsShare extends React.Component {
     }
 }
 
-export default ProjectsShare;
+export default Share;
