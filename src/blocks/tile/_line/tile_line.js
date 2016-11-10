@@ -3,6 +3,7 @@ import {TileContent} from 'blocks/tile/tile';
 import Link from 'blocks/link/link';
 import Rectangle from 'blocks/rectangle/rectangle';
 import Toolbar from 'blocks/toolbar/toolbar';
+import config from '../../../../server/data/config.json';
 
 import tileLine from './tile_line.css';
 import grid from 'blocks/grid/grid.css';
@@ -47,7 +48,7 @@ class TileLine extends React.Component {
                         <Toolbar
                             small={true}
                             to={p_.link.to}
-                            url={`http://makeyourhome.ru${p_.link.to}`}
+                            url={`http://${config.host}${p_.link.to}`}
                             title={p_.text}
                             media={p_.src}
                             description={p_.description}

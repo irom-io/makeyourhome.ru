@@ -18,6 +18,7 @@ class Project extends React.Component {
             selected: 0,
             items: [
                 {
+                    id: 123,
                     title: 'Дом классика', space: 80, garage: 'Есть гараж', beds: 'Три спальни', floors: 'Два этажа',
                     main: require('./images/1/1.jpg'),
                     images: [
@@ -25,7 +26,8 @@ class Project extends React.Component {
                         require('./images/1/3.jpg'),
                         require('./images/1/4.jpg'),
                         require('./images/1/5.jpg')
-                    ]
+                    ],
+                    description: 'Описание проекта'
                 }
             ]
         };
