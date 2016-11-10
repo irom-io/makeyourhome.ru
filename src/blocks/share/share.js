@@ -38,7 +38,7 @@ class Share extends React.Component {
                 <div className={share.button}>
                     <TwitterShareButton
                         url={p_.url}
-                        title={p_.title}
+                        title={`${p_.title}. ${p_.description.substr(0, 50)}...`}
                     >
                         <TwitterIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
                     </TwitterShareButton>

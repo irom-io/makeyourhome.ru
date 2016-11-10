@@ -7,6 +7,7 @@ import Toolbar from 'blocks/toolbar/toolbar';
 import tileLine from './tile_line.css';
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
+import text from 'blocks/text/text.css';
 
 class TileLine extends React.Component {
     constructor(p_) {
@@ -37,8 +38,8 @@ class TileLine extends React.Component {
                 </Link>
                 <div className={grid.space}>
                     <div className={tileLine.content}>
-                        <div className={grid.mbMini}>
-                            {p_.children}
+                        <div className={`${grid.mbMini} ${text.preWrap}`}>
+                            {p_.description}
                         </div>
                         <Toolbar
                             small={true}
@@ -46,6 +47,7 @@ class TileLine extends React.Component {
                             url={`http://makeyourhome.ru${p_.link.to}`}
                             title={p_.text}
                             media={p_.src}
+                            description={p_.description}
                         />
                     </div>
                 </div>
