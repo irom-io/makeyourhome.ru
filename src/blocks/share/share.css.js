@@ -8,7 +8,7 @@ const share = jcss({
         ...grid.mrMicro,
         ...item.pointer,
         [css.media.mob]: {
-            marginRight: 3
+            marginRight: 0
         },
         '&:last-child': {
             marginRight: grid.mNone.margin
