@@ -41,6 +41,7 @@ class TileLine extends React.Component {
                             {p_.children}
                         </div>
                         <Toolbar
+                            small={true}
                             to={p_.link.to}
                         />
                     </div>

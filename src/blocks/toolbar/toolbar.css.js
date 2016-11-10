@@ -13,6 +13,9 @@ const icon = {
         ...grid.pMicro,
         ...grid.mrMicro
     },
+    [css.media.mob]: {
+        marginRight: 3
+    },
     '&:last-child': {
         ...grid.mrNone
     }
