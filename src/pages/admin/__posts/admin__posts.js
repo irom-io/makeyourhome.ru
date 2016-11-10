@@ -163,6 +163,7 @@ class AdminPosts extends React.Component {
                 </div>
                 <div className={grid.mbMini}>
                     <Textarea
+                        rows={5}
                         placeholder="Краткое описание"
                         value={s_.data[lang].shortText}
                         onChange={(value) => this.onChange(value, 'shortText')}
