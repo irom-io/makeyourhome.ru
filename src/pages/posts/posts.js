@@ -38,6 +38,17 @@ class Posts extends React.Component {
                 }
             });
     }
+    deletePost(user, postId) {
+        const self = this;
+
+        self.setState({loading: true});
+        api.delete('posts', {user: user, postId: postId})
+            .then((response) => {
+                if (response && !response.error) {
+                    self.setState({items: response, loading: false});
+                }
+            });
+    }
     render() {
         const s_ = this.state;
         let user = localStorage.getItem('user');
@@ -90,7 +101,7 @@ class Posts extends React.Component {
                             {isAdmin &&
                             <AdminEdit
                                 editTo={`/admin?type=posts&postId=${item.id}`}
-                                onDelete={() => this.deleteQuestion(user, item.id)}
+                                onDelete={() => this.deletePost(user, item.id)}
                             />
                             }
                         </TileLine>
