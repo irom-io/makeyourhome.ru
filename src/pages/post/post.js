@@ -5,7 +5,6 @@ import {getLang} from 'blocks/page/__lang/page__lang';
 import PostSlider from 'pages/post/__slider/post__slider';
 import Title from 'blocks/title/title';
 import Toolbar from 'blocks/toolbar/toolbar';
-import config from '../../../server/data/config.json';
 import {createSrc} from 'blocks/item/item';
 
 import grid from 'blocks/grid/grid.css';
@@ -71,7 +70,7 @@ class Post extends React.Component {
                         {s_.post[lang].longText}
                     </div>
                     <Toolbar
-                        url={`http://${config.host}/posts/${s_.post.id}`}
+                        url={`/posts/${s_.post.id}`}
                         title={s_.post[lang].title}
                         media={createSrc(s_.post.images[0])}
                         description={s_.post[lang].shortText}

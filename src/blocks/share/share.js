@@ -1,5 +1,6 @@
 import React from 'react';
 import {ShareButtons, generateShareIcon} from 'react-share';
+import {addLang} from 'blocks/link/link';
 import grid from 'blocks/grid/grid.css';
 import share from './share.css';
 import css from 'blocks/config/css';
@@ -23,12 +24,12 @@ class Share extends React.Component {
     }
     render() {
         const p_ = this.props;
-
+        const url = addLang(p_.url);
         return (
             <div className={grid.row}>
                 <div className={share.button}>
                     <FacebookShareButton
-                        url={p_.url}
+                        url={url}
                         title={p_.title}
                         description={p_.description}
                     >
@@ -37,15 +38,15 @@ class Share extends React.Component {
                 </div>
                 <div className={share.button}>
                     <TwitterShareButton
-                        url={p_.url}
-                        title={`${p_.title}. ${p_.description.substr(0, 50)}...`}
+                        url={url}
+                        title={`${p_.title}. ${p_.description.substr(0, 37)}...`}
                     >
                         <TwitterIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
                     </TwitterShareButton>
                 </div>
                 <div className={share.button}>
                     <PinterestShareButton
-                        url={p_.url}
+                        url={url}
                         title={p_.title}
                         media={p_.media}
                     >
