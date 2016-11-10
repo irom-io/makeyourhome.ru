@@ -40,7 +40,9 @@ class TileLine extends React.Component {
                         <div className={grid.mbMini}>
                             {p_.children}
                         </div>
-                        <Toolbar />
+                        <Toolbar
+                            to={p_.link.to}
+                        />
                     </div>
                 </div>
             </div>

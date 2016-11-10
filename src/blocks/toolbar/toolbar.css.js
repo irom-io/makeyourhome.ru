@@ -7,7 +7,10 @@ const icon = {
     ...grid.mrMini,
     ...item.rounded,
     ...item.borderMain,
-    ...item.invColored
+    ...item.invColored,
+    '&:last-child': {
+        ...grid.mrNone
+    }
 };
 const toolbar = jcss({
     wrapper: {
@@ -21,8 +24,7 @@ const toolbar = jcss({
     icon: icon,
     iconBig: {
         ...icon,
-        ...grid.pMicro,
-        ...grid.mrNone
+        ...grid.pMicro
     }
 });
 
