@@ -3,7 +3,7 @@ import item from 'blocks/item/item.css';
 import grid from 'blocks/grid/grid.css';
 import css from 'blocks/config/css';
 
-const postsSlider = jcss({
+const postSlider = jcss({
     wrapper: {
         '& .slick-slider': {
             ...item.rel
@@ -55,4 +55,4 @@ const postsSlider = jcss({
     }
 });
 
-export default postsSlider;
+export default postSlider;

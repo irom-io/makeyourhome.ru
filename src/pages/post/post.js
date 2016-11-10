@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from 'blocks/layout/layout';
 import api from 'blocks/api/api';
 import {getLang} from 'blocks/page/__lang/page__lang';
+import PostSlider from 'pages/post/__slider/post__slider';
 
 class Post extends React.Component {
     constructor(p_, context) {
@@ -46,7 +47,13 @@ class Post extends React.Component {
                 loading={s_.loading}
                 isPage={true}
             >
-
+                {s_.post &&
+                <div>
+                    <PostSlider 
+                        images={s_.post.images}
+                    />
+                </div>
+                }
             </Layout>
         )
     }
