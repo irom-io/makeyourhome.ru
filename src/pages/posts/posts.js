@@ -92,7 +92,7 @@ class Posts extends React.Component {
                             src={createSrc(item.images[0])}
                             text={title}
                             l10nText={true}
-                            link={{}}
+                            link={{to: `/posts/${item.id}`}}
                         >
                             <div className={text.preWrap}>
                                 {shortText}

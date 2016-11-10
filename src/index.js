@@ -13,6 +13,7 @@ import Collections from 'pages/collections/collections';
 import Questions from 'pages/questions/questions';
 import Login from 'pages/login/login';
 import Posts from 'pages/posts/posts';
+import Post from 'pages/post/post';
 import NotFound from 'pages/notFound/notFound';
 
 renderStyles();
@@ -31,6 +32,7 @@ ReactDOM.render(
             <Route path="/projects/:projectId" component={Project}/>
             <Route path="/login" component={Login}/>
             <Route path="/posts" component={Posts}/>
+            <Route path="/posts/:postId" component={Post}/>
             <Route path="*" component={NotFound}/>
         </Route>
     </Router>,
