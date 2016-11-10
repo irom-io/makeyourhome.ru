@@ -21,7 +21,7 @@ class PageFooter extends React.Component {
                 <div className={footer.line}></div>
                 <div className={footer.content}>
                     <div className={`${grid.w25} ${grid.w30_tab} ${item.none_tabMini} ${text.underline}`}>
-                        <Link>
+                        <Link to="/posts/jvYxHlcL9jwtc3S">
                             {L10n('confidentiality')}
                         </Link>
                     </div>
