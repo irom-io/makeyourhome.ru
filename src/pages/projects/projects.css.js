@@ -4,16 +4,6 @@ import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
 import text from 'blocks/text/text.css';
 
-const icon = {
-    ...grid.pMini,
-    ...grid.mrMini,
-    ...item.rounded,
-    ...item.borderMain,
-    ...item.invColored,
-    [css.media.tabMini]: {
-        ...grid.pMicro
-    }
-};
 const projects = jcss({
     filters: {
         ...grid.row,
@@ -37,32 +27,6 @@ const projects = jcss({
         ...item.pointer,
         '&:last-child': {
             marginRight: grid.mNone.margin
-        }
-    },
-    toolbar: {
-        ...grid.row,
-        ...grid.justify,
-        ...grid.normalCenter,
-        ...grid.mtMini,
-        [css.media.tabMini]: {
-            ...grid.col,
-            ...grid.mtNone
-        },
-        [css.media.mob]: {
-            ...grid.row,
-            ...grid.mtMini
-        }
-    },
-    iconsWrapper: {
-        ...grid.row
-    },
-    icon: icon,
-    iconBig: {
-        ...icon,
-        ...grid.pMicro,
-        ...grid.mrNone,
-        [css.media.tabMini]: {
-            ...grid.pNone
         }
     },
     params: {

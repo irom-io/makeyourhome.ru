@@ -1,6 +1,5 @@
 import React from 'react';
 import ProjectsFilters from 'pages/projects/__filters/projects__filters';
-import ProjectsToolbar from 'pages/projects/__toolbar/projects__toolbar';
 import ProjectsParams from 'pages/projects/__params/projects__params';
 import TileLine from 'blocks/tile/_line/tile_line';
 import page from 'blocks/page/page.css';
@@ -38,7 +37,6 @@ class Projects extends React.Component {
                                 src={project.src}
                                 text={project.text}
                                 link={project.link}
-                                toolbar={<ProjectsToolbar />}
                                 l10nText={true}
                             >
                                 <div>

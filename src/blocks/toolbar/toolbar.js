@@ -2,10 +2,10 @@ import React from 'react';
 import ProjectsShare from 'pages/projects/__share/projects__share';
 import Favorite from 'react-icons/lib/md/favorite';
 import NavigateNext from 'react-icons/lib/md/navigate-next';
-import item from 'blocks/item/item.css';
-import projects from 'pages/projects/projects.css';
 
-class ProjectsToolbar extends React.Component {
+import toolbar from './toolbar.css';
+
+class Toolbar extends React.Component {
     constructor(p_) {
         super(p_);
 
@@ -13,21 +13,21 @@ class ProjectsToolbar extends React.Component {
     }
     render() {
         return (
-            <div className={projects.toolbar}>
-                <div className={`${item.none_tabMini} ${item.block_mob}`}>
+            <div className={toolbar.wrapper}>
+                <div>
                     <ProjectsShare />
                 </div>
 
-                <div className={projects.iconsWrapper}>
+                <div className={toolbar.iconsWrapper}>
                     <div
                         title="В избранное"
-                        className={projects.icon}
+                        className={toolbar.icon}
                     >
                         <Favorite size={20} />
                     </div>
                     <div
                         title="Подробнее"
-                        className={projects.iconBig}
+                        className={toolbar.iconBig}
                     >
                         <NavigateNext size={32} />
                     </div>
@@ -37,4 +37,4 @@ class ProjectsToolbar extends React.Component {
     }
 }
 
-export default ProjectsToolbar;
+export default Toolbar;

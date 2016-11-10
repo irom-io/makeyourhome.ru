@@ -2,13 +2,11 @@ import React from 'react';
 import {TileContent} from 'blocks/tile/tile';
 import Link from 'blocks/link/link';
 import Rectangle from 'blocks/rectangle/rectangle';
-import Button from 'blocks/button/button';
-import L10n from 'blocks/l10n/l10n';
+import Toolbar from 'blocks/toolbar/toolbar';
 
 import tileLine from './tile_line.css';
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
-import text from 'blocks/text/text.css';
 
 class TileLine extends React.Component {
     constructor(p_) {
@@ -18,13 +16,6 @@ class TileLine extends React.Component {
     }
     render() {
         const p_ = this.props;
-        let innerText;
-        
-        if (p_.l10nText) {
-            innerText = p_.text;
-        } else {
-            innerText = L10n(`${p_.name}.${p_.link.key}`)
-        }
 
         return (
             <div className={tileLine.wrapper}>
@@ -46,15 +37,10 @@ class TileLine extends React.Component {
                 </Link>
                 <div className={grid.space}>
                     <div className={tileLine.content}>
-                        {p_.children}
-                        {!p_.toolbar &&
-                        <div className={`${text.right} ${grid.mtMini}`}>
-                            <Link to={p_.link.to}>
-                                <Button isText={true}>{innerText}</Button>
-                            </Link>
+                        <div className={grid.mbMini}>
+                            {p_.children}
                         </div>
-                        }
-                        {p_.toolbar}
+                        <Toolbar />
                     </div>
                 </div>
             </div>
