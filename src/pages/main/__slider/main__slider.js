@@ -14,17 +14,20 @@ class MainSlider extends React.Component {
                 {
                     key: 'finishedProjects',
                     src: require('./images/1.jpg'),
-                    to: '/projects'
+                    to: '/projects',
+                    style: {right: 0}
                 },
                 {
                     key: 'individualProjects',
                     src: require('./images/2.jpg'),
-                    to: '/addProject'
+                    to: '/addProject',
+                    style: {left: 0}
                 },
                 {
                     key: 'workExamples',
                     src: require('./images/3.jpg'),
-                    to: '/projects'
+                    to: '/projects',
+                    style: {left: 0}
                 }
             ]
         };
@@ -49,7 +52,12 @@ class MainSlider extends React.Component {
                                     >
                                     </div>
                                     <Link to={item.to}>
-                                        <div className={mainSlider.text}>{L10n(item.key)}</div>
+                                        <div
+                                            style={item.style}
+                                            className={mainSlider.text}
+                                        >
+                                            {L10n(item.key)}
+                                        </div>
                                     </Link>
                                 </Rectangle>
                             </div>

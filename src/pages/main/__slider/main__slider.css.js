@@ -17,7 +17,6 @@ const mainSlider = jcss({
         ...grid.pNormal,
         ...text.mdPlus,
         ...text.center,
-        right: 0,
         minWidth: '40%',
         top: '14%',
         [css.media.tabMini]: {
