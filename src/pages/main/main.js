@@ -15,7 +15,7 @@ class Main extends React.Component {
                 {src: require('./images/2.jpg'), key: 'findBuilders'},
                 {src: require('./images/1.jpg'), key: 'about'},
                 {src: require('./images/3.jpg'), key: 'articles', to: 'posts'},
-                {src: require('./images/4.jpg'), key: 'editProject'},
+                {src: require('./images/4.jpg'), key: 'editProject', to: 'posts/0MNZ66eg3fX5UHj'},
                 {src: require('./images/5.jpg'), key: 'partners', to: 'posts/0QTL1SFXsTGqOKL'},
                 {src: require('./images/6.jpg'), key: 'catalog', to: 'projects'}
             ]
