@@ -39,6 +39,7 @@ class Projects extends React.Component {
                                 text={project.text}
                                 link={project.link}
                                 toolbar={<ProjectsToolbar />}
+                                l10nText={true}
                             >
                                 <div>
                                     <div className={`${grid.mbMini}`}>
