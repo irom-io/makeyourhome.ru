@@ -93,11 +93,8 @@ class Posts extends React.Component {
                             text={title}
                             l10nText={true}
                             link={{to: `/posts/${item.id}`}}
+                            description={shortText}
                         >
-                            <div className={text.preWrap}>
-                                {shortText}
-                            </div>
-
                             {isAdmin &&
                             <AdminEdit
                                 editTo={`/admin?type=posts&postId=${item.id}`}

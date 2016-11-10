@@ -4,7 +4,6 @@ import ProjectsParams from 'pages/projects/__params/projects__params';
 import TileLine from 'blocks/tile/_line/tile_line';
 import page from 'blocks/page/page.css';
 import grid from 'blocks/grid/grid.css';
-import item from 'blocks/item/item.css';
 
 class Projects extends React.Component {
     constructor(p_) {
@@ -38,12 +37,10 @@ class Projects extends React.Component {
                                 text={project.text}
                                 link={project.link}
                                 l10nText={true}
+                                description={project.descr}
                             >
-                                <div>
-                                    <div className={`${grid.mbMini}`}>
-                                        <ProjectsParams project={project} />
-                                    </div>
-                                    <div className={`${item.none_tabMini} ${item.block_mob}`} dangerouslySetInnerHTML={{__html: project.descr}}></div>
+                                <div className={`${grid.mbMini}`}>
+                                    <ProjectsParams project={project} />
                                 </div>
                             </TileLine>
                         )

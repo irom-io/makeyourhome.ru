@@ -38,6 +38,9 @@ class TileLine extends React.Component {
                 </Link>
                 <div className={grid.space}>
                     <div className={tileLine.content}>
+                        <div>
+                            {p_.children}
+                        </div>
                         <div className={`${grid.mbMini} ${text.preWrap}`}>
                             {p_.description}
                         </div>
