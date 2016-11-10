@@ -1,4 +1,5 @@
 import jcss from 'jcss';
+import css from 'blocks/config/css';
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
 
@@ -8,6 +9,10 @@ const icon = {
     ...item.rounded,
     ...item.borderMain,
     ...item.invColored,
+    [css.media.tabMini]: {
+        ...grid.pMicro,
+        ...grid.mrMicro
+    },
     '&:last-child': {
         ...grid.mrNone
     }
@@ -24,7 +29,10 @@ const toolbar = jcss({
     icon: icon,
     iconBig: {
         ...icon,
-        ...grid.pMicro
+        ...grid.pMicro,
+        [css.media.tabMini]: {
+            ...grid.pNone
+        }
     }
 });
 

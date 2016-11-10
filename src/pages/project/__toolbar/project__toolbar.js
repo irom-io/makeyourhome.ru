@@ -13,11 +13,13 @@ class ProjectToolbar extends React.Component {
         const p_ = this.props;
         
         return (
-            <div className={`${grid.row} ${grid.justify} ${grid.normalCenter} ${grid.plMini}`}>
-                <div className={`${grid.w50} ${grid.plMini} ${grid.prMini}`}>
+            <div className={`${grid.row} ${grid.justify} ${grid.normalCenter} ${grid.col_mob}`}>
+                <div
+                    className={`${grid.w50} ${grid.w100_mob} ${grid.mbMini_mob} ${grid.plMini} ${grid.prMini} ${grid.plNone_tabMini} ${grid.prNone_tabMini}`}
+                >
                     <Toolbar />
                 </div>
-                <div className={`${grid.w50} ${grid.plMini} ${grid.prMini}`}>
+                <div className={`${grid.w50} ${grid.w100_mob} ${grid.plMini} ${grid.prMini} ${grid.plNone_tabMini} ${grid.prNone_tabMini}`}>
                     <ProjectsParams
                         project={p_.project}
                     />
