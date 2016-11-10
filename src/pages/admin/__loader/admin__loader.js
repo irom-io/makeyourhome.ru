@@ -11,9 +11,7 @@ class AdminLoader extends React.Component {
     constructor(p_, context) {
         super(p_, context);
 
-        this.state = {
-            items: p_.images
-        };
+        this.state = {};
     }
     onDrop(files) {
         const self = this;
@@ -43,19 +41,17 @@ class AdminLoader extends React.Component {
                 return {error: {msg: 'serverError'}};
             }
         })
-        .then((items) => {
-            let newItems = [...self.state.items, ...items];
-            
-            this.setState({items: newItems});
-            this.props.onUpdate(newItems);
+        .then((images) => {
+            let newImages = [...self.props.images, ...images];
+
+            this.props.onUpdate(newImages);
         });
     }
-    onUpdate(items) {
-        this.setState({items: items});
-        this.props.onUpdate(items);
+    onUpdate(images) {
+        this.props.onUpdate(images);
     }
     render() {
-        const s_ = this.state;
+        const p_ = this.props;
 
         return (
             <div>
@@ -72,9 +68,9 @@ class AdminLoader extends React.Component {
 
                 <div className={grid.mtMini}>
                     <SortableImage
-                        onDelete={(items) => this.onUpdate(items)}
-                        onUpdate={(items) => this.onUpdate(items)}
-                        items={s_.items}
+                        onDelete={(images) => this.onUpdate(images)}
+                        onUpdate={(images) => this.onUpdate(images)}
+                        items={p_.images}
                     />
                 </div>
             </div>

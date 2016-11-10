@@ -116,7 +116,7 @@ class AdminPosts extends React.Component {
     render() {
         const s_ = this.state;
         const lang = getLang();
-
+        
         return (
             <form className={grid.w100} onSubmit={(e) => this.onSubmit(e)}>
                 <div
