@@ -1,5 +1,5 @@
 import React from 'react';
-import {/*ShareButtons, ShareCounts,*/ generateShareIcon} from 'react-share';
+import {ShareButtons, generateShareIcon} from 'react-share';
 import grid from 'blocks/grid/grid.css';
 import share from './share.css';
 import css from 'blocks/config/css';
@@ -9,6 +9,12 @@ export const TwitterIcon = generateShareIcon('twitter');
 export const PinterestIcon = generateShareIcon('pinterest');
 export const VKIcon = generateShareIcon('vk');
 
+const {
+    FacebookShareButton,
+    TwitterShareButton,
+    PinterestShareButton
+} = ShareButtons;
+
 class Share extends React.Component {
     constructor(p_) {
         super(p_);
@@ -16,16 +22,35 @@ class Share extends React.Component {
         this.state = {};
     }
     render() {
+        const p_ = this.props;
+
         return (
             <div className={grid.row}>
                 <div className={share.button}>
-                    <FacebookIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
+                    <FacebookShareButton
+                        url={p_.url}
+                        title={p_.title}
+                        description={p_.description}
+                    >
+                        <FacebookIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
+                    </FacebookShareButton>
                 </div>
                 <div className={share.button}>
-                    <TwitterIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
+                    <TwitterShareButton
+                        url={p_.url}
+                        title={p_.title}
+                    >
+                        <TwitterIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
+                    </TwitterShareButton>
                 </div>
                 <div className={share.button}>
-                    <PinterestIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
+                    <PinterestShareButton
+                        url={p_.url}
+                        title={p_.title}
+                        media={p_.media}
+                    >
+                        <PinterestIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
+                    </PinterestShareButton>
                 </div>
             </div>
         )

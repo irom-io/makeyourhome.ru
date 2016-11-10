@@ -16,7 +16,7 @@ class TileLine extends React.Component {
     }
     render() {
         const p_ = this.props;
-
+        
         return (
             <div className={tileLine.wrapper}>
                 <Link to={p_.link.to} className={`${grid.w100} ${item.none} ${item.block_mob}`}>
@@ -43,6 +43,9 @@ class TileLine extends React.Component {
                         <Toolbar
                             small={true}
                             to={p_.link.to}
+                            url={`http://makeyourhome.ru${p_.link.to}`}
+                            title={p_.text}
+                            media={p_.src}
                         />
                     </div>
                 </div>

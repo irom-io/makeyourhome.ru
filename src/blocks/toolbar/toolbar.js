@@ -24,7 +24,12 @@ class Toolbar extends React.Component {
         return (
             <div className={wrapperClassName}>
                 <div className={p_.small && (`${grid.mbMicro_tabMini} ${grid.mbNone_mob}`)}>
-                    <Share />
+                    <Share
+                        url={p_.url}
+                        title={p_.title}
+                        media={p_.media}
+                        description={p_.description}
+                    />
                 </div>
 
                 <div className={toolbar.iconsWrapper}>
