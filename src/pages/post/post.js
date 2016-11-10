@@ -4,6 +4,7 @@ import api from 'blocks/api/api';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import PostSlider from 'pages/post/__slider/post__slider';
 import Title from 'blocks/title/title';
+import Toolbar from 'blocks/toolbar/toolbar';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -59,14 +60,15 @@ class Post extends React.Component {
                             {s_.post[lang].title}
                         </Title>
                     </div>
-                    <div className={grid.mbNormal}>
+                    <div className={grid.mbMini}>
                         <PostSlider
                             images={s_.post.images}
                         />
                     </div>
-                    <div className={text.preWrap}>
+                    <div className={`${text.preWrap} ${text.justify} ${grid.mbMicro} ${text.mini_tabMini}`}>
                         {s_.post[lang].longText}
                     </div>
+                    <Toolbar />
                 </div>
                 }
             </Layout>

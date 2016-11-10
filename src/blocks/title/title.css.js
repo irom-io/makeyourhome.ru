@@ -7,7 +7,10 @@ import text from 'blocks/text/text.css';
 const title = jcss({
     wrapper: {
         ...item.iBlock,
-        ...text.big
+        ...item.overNone,
+        ...text.big,
+        ...text.normal_tabMini,
+        ...text.mini_tabMini
     },
     line: {
         ...grid.mtMicro,

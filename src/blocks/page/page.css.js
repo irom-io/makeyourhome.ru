@@ -56,6 +56,7 @@ const page = jcss({
         ...grid.w100,
         ...grid.pMini,
         ...item.shadow,
+        ...item.overNone,
         ...item.z1,
         'max-width': css.maxWidth,
         flex: '1 0 auto'
