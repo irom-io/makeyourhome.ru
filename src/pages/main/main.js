@@ -12,8 +12,8 @@ class Main extends React.Component {
 
         this.state = {
             items: [
-                {src: require('./images/2.jpg'), key: 'findBuilders'},
-                {src: require('./images/1.jpg'), key: 'about'},
+                {src: require('./images/2.jpg'), key: 'findBuilders', to: 'posts/CG0tqCIq2kSJSHU'},
+                {src: require('./images/1.jpg'), key: 'about', to: 'posts/HSOvcvsoPeu3YUw'},
                 {src: require('./images/3.jpg'), key: 'articles', to: 'posts'},
                 {src: require('./images/4.jpg'), key: 'editProject', to: 'posts/0MNZ66eg3fX5UHj'},
                 {src: require('./images/5.jpg'), key: 'partners', to: 'posts/0QTL1SFXsTGqOKL'},

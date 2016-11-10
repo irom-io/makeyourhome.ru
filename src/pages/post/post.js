@@ -49,6 +49,16 @@ class Post extends React.Component {
         const s_ = this.state;
         const lang = getLang();
 
+        let title = 'No translate';
+        let shortText = 'No translate';
+        let longText = 'No translate';
+
+        if (s_.post && s_.post[lang]) {
+            title = s_.post[lang].title;
+            shortText = s_.post[lang].shortText;
+            longText = s_.post[lang].longText;
+        }
+
         return (
             <Layout
                 loading={s_.loading}
@@ -58,7 +68,7 @@ class Post extends React.Component {
                 <div>
                     <div className={grid.mbMini}>
                         <Title>
-                            {s_.post[lang].title}
+                            {title}
                         </Title>
                     </div>
                     <div className={grid.mbMini}>
@@ -67,13 +77,13 @@ class Post extends React.Component {
                         />
                     </div>
                     <div className={`${text.preWrap} ${text.justify} ${grid.mbMicro} ${text.mini_tabMini}`}>
-                        {s_.post[lang].longText}
+                        {longText}
                     </div>
                     <Toolbar
                         url={`/posts/${s_.post.id}`}
-                        title={s_.post[lang].title}
+                        title={title}
                         media={createSrc(s_.post.images[0])}
-                        description={s_.post[lang].shortText}
+                        description={shortText}
                     />
                 </div>
                 }
