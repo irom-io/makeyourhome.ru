@@ -5,6 +5,8 @@ import {getLang} from 'blocks/page/__lang/page__lang';
 import PostSlider from 'pages/post/__slider/post__slider';
 import Title from 'blocks/title/title';
 import Toolbar from 'blocks/toolbar/toolbar';
+import config from '../../../server/data/config.json';
+import {createSrc} from 'blocks/item/item';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -68,7 +70,12 @@ class Post extends React.Component {
                     <div className={`${text.preWrap} ${text.justify} ${grid.mbMicro} ${text.mini_tabMini}`}>
                         {s_.post[lang].longText}
                     </div>
-                    <Toolbar />
+                    <Toolbar
+                        url={`http://${config.host}/posts/${s_.post.id}`}
+                        title={s_.post[lang].title}
+                        media={createSrc(s_.post.images[0])}
+                        description={s_.post[lang].shortText}
+                    />
                 </div>
                 }
             </Layout>
