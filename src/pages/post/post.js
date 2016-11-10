@@ -3,6 +3,10 @@ import Layout from 'blocks/layout/layout';
 import api from 'blocks/api/api';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import PostSlider from 'pages/post/__slider/post__slider';
+import Title from 'blocks/title/title';
+
+import grid from 'blocks/grid/grid.css';
+import text from 'blocks/text/text.css';
 
 class Post extends React.Component {
     constructor(p_, context) {
@@ -41,6 +45,7 @@ class Post extends React.Component {
     }
     render() {
         const s_ = this.state;
+        const lang = getLang();
 
         return (
             <Layout
@@ -49,9 +54,19 @@ class Post extends React.Component {
             >
                 {s_.post &&
                 <div>
-                    <PostSlider 
-                        images={s_.post.images}
-                    />
+                    <div className={grid.mbMini}>
+                        <Title>
+                            {s_.post[lang].title}
+                        </Title>
+                    </div>
+                    <div className={grid.mbNormal}>
+                        <PostSlider
+                            images={s_.post.images}
+                        />
+                    </div>
+                    <div className={text.preWrap}>
+                        {s_.post[lang].longText}
+                    </div>
                 </div>
                 }
             </Layout>
