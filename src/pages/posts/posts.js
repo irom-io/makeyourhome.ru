@@ -7,6 +7,7 @@ import {getLang} from 'blocks/page/__lang/page__lang';
 import api from 'blocks/api/api';
 import {createSrc} from 'blocks/item/item';
 import AdminEdit from 'blocks/admin/__edit/admin__edit';
+import L10n from 'blocks/l10n/l10n';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -49,6 +50,9 @@ class Posts extends React.Component {
                 }
             });
     }
+    seeMore() {
+        this.setState({visibleItems: (this.state.visibleItems + step)})
+    }
     render() {
         const s_ = this.state;
         let user = localStorage.getItem('user');
@@ -76,34 +80,53 @@ class Posts extends React.Component {
                 </div>
                 }
 
-                {s_.items.map((item, index) => {
-                    let title = 'noTranslate';
-                    let shortText = 'noTranslate';
+                {s_.items &&
+                <div>
+                    {s_.items.map((item, index) => {
+                        if (index < s_.visibleItems) {
+                            let title = 'noTranslate';
+                            let shortText = 'noTranslate';
 
-                    if (item[lang]) {
-                        title = item[lang].title;
-                        shortText = item[lang].shortText;
-                    }
-
-                    return (
-                        <TileLine
-                            name="posts"
-                            key={`post_${index}`}
-                            src={createSrc(item.images[0])}
-                            text={title}
-                            l10nText={true}
-                            link={{to: `/posts/${item.id}`}}
-                            description={shortText}
-                        >
-                            {isAdmin &&
-                            <AdminEdit
-                                editTo={`/admin?type=posts&postId=${item.id}`}
-                                onDelete={() => this.deletePost(user, item.id)}
-                            />
+                            if (item[lang]) {
+                                title = item[lang].title;
+                                shortText = item[lang].shortText;
                             }
-                        </TileLine>
-                    )
-                })}
+
+                            return (
+                                <TileLine
+                                    name="posts"
+                                    key={`post_${index}`}
+                                    src={createSrc(item.images[0])}
+                                    text={title}
+                                    l10nText={true}
+                                    link={{to: `/posts/${item.id}`}}
+                                    description={shortText}
+                                >
+                                    {isAdmin &&
+                                    <AdminEdit
+                                        editTo={`/admin?type=posts&postId=${item.id}`}
+                                        onDelete={() => this.deletePost(user, item.id)}
+                                    />
+                                    }
+                                </TileLine>
+                            )
+                        } else {
+                            return '';
+                        }
+                    })}
+                </div>
+                }
+
+                {s_.items && (s_.visibleItems < s_.items.length) &&
+                <div className={`${text.center} ${grid.mtMini}`}>
+                    <Button
+                        onClick={() => this.seeMore()}
+                        className={grid.w100_mob}
+                    >
+                        {L10n('more')}
+                    </Button>
+                </div>
+                }
             </Layout>
         );
     }
