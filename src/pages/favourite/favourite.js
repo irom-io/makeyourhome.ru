@@ -78,7 +78,7 @@ class Favourite extends React.Component {
 
                 {user && s_.items &&
                 <div>
-                    {(s_.items.length === 0) &&
+                    {!s_.loading && (s_.items.length === 0) &&
                     L10n('noFave')
                     }
                     {s_.items.map((item, index) => {
