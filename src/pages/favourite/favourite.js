@@ -14,7 +14,7 @@ class Favourite extends React.Component {
     componentDidMount() {
         const self = this;
 
-        api.get('questions')
+/*        api.get('posts')
             .then((response) => {
                 if (!response.error) {
                     self.setState({
@@ -25,7 +25,7 @@ class Favourite extends React.Component {
                 } else {
                     self.setState({loading: false});
                 }
-            });
+            });*/
     }
     render() {
         const s_ = this.state;
