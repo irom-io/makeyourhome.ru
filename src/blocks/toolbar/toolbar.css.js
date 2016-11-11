@@ -37,7 +37,8 @@ const icon = {
     },
     '&:last-child': {
         ...grid.mrNone
-    }
+    },
+    '&:hover': null
 };
 const toolbar = jcss({
     wrapper: {
@@ -49,9 +50,10 @@ const toolbar = jcss({
         ...grid.row
     },
     icon: icon,
-    activeIcon: {
+    iconActive: {
         ...icon,
-        ...item.colored
+        ...item.colored,
+        '&:hover': null
     },
     iconBig: {
         ...icon,

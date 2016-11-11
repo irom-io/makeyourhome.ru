@@ -28,6 +28,7 @@ if (user) {user = JSON.parse(user);}
 export const getUser = () => user;
 export const setUser = (insertUser) => {
     if (insertUser) {
+        localStorage.setItem('user', JSON.stringify(insertUser));
         user = {...user, ...insertUser};
     } else {
         user = null;
@@ -41,9 +42,7 @@ export const loginUser = (loginData) => {
     return api.post('users', loginData)
         .then(res => {
             if (!res.error) {
-                localStorage.setItem('user', JSON.stringify(res));
                 setUser(res);
-
                 if (res.isAdmin) {
                     localStorage.setItem('isAdmin', res.isAdmin);
                 }

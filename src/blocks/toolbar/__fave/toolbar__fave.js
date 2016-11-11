@@ -11,9 +11,7 @@ class ToolbarFave extends React.Component {
     constructor(p_) {
         super(p_);
 
-        this.state = {
-            loading: false
-        };
+        this.state = {};
     }
     onClick() {
         const p_ = this.props;
@@ -24,7 +22,6 @@ class ToolbarFave extends React.Component {
             .then((response) => {
                  if (!response.error) {
                      setUser(response);
-                     console.log(getUser().favouritePosts);
                      this.setState({
                          loading: false
                      });
@@ -36,7 +33,6 @@ class ToolbarFave extends React.Component {
     render() {
         const user = getUser();
         const p_ = this.props;
-        const s_ = this.state;
 
         if (!user) {
             return (
@@ -66,14 +62,13 @@ class ToolbarFave extends React.Component {
                     break;
             }
 
-            const className = (user[key].indexOf(p_.fave.id) !== -1)? toolbar.activeIcon : toolbar.icon;
-
+            const className = (user[key].indexOf(p_.fave.id) !== -1)? toolbar.iconActive : toolbar.icon;
+            
             //TODO setuser save to localstorage
             return (
                 <button
                     className={className}
                     onClick={() => this.onClick()}
-                    disabled={s_.loading}
                 >
                     <Favorite size={20} />
                 </button>
