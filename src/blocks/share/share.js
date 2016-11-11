@@ -49,6 +49,7 @@ class Share extends React.Component {
                         url={url}
                         title={p_.title}
                         media={p_.media}
+                        description={p_.description}
                     >
                         <PinterestIcon size={32} round={true} iconBgStyle={{fill: css.colors.main}} />
                     </PinterestShareButton>
