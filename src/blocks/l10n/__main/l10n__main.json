@@ -98,5 +98,10 @@
     "ru": "Еще",
     "en": "More",
     "esp": "Más"
+  },
+  "fave": {
+    "ru": "В избранное",
+    "en": "To favorites",
+    "esp": "Gustado"
   }
 }

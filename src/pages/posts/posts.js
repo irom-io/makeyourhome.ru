@@ -101,6 +101,7 @@ class Posts extends React.Component {
                                     l10nText={true}
                                     link={{to: `/posts/${item.id}`}}
                                     description={shortText}
+                                    fave={{type: 'post', id: item.id}}
                                 >
                                     {isAdmin &&
                                     <AdminEdit

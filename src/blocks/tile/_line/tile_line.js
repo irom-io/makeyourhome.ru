@@ -51,6 +51,7 @@ class TileLine extends React.Component {
                             title={p_.text}
                             media={p_.src}
                             description={p_.description}
+                            fave={p_.fave}
                         />
                     </div>
                 </div>
