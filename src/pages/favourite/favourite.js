@@ -78,6 +78,9 @@ class Favourite extends React.Component {
 
                 {user && s_.items &&
                 <div>
+                    {(s_.items.length === 0) &&
+                    L10n('noFave')
+                    }
                     {s_.items.map((item, index) => {
                         if (index < s_.visibleItems) {
                             let title = 'noTranslate';
