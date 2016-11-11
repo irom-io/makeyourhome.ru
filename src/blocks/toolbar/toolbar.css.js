@@ -27,6 +27,14 @@ const icon = {
             backgroundColor: css.colors.white
         }
     },
+    '&:disabled': {
+        ...item.o50,
+        ...item.notAllowed,
+        '&:hover': {
+            color: css.colors.main,
+            backgroundColor: css.colors.white
+        }
+    },
     '&:last-child': {
         ...grid.mrNone
     }

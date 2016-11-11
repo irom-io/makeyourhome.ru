@@ -21,6 +21,20 @@ let errorUserCallbacks = [];
 let logoutUserCallbacks = [];
 let isLogin = false;
 
+/* user */
+let user = localStorage.getItem('user');
+if (user) {user = JSON.parse(user);}
+
+export const getUser = () => user;
+export const setUser = (insertUser) => {
+    if (insertUser) {
+        user = {...user, ...insertUser};
+    } else {
+        user = null;
+    }
+};
+/* /user */
+
 export const loginUser = (loginData) => {
     startLoginCallbacks.forEach(start => { start(); });
 
@@ -28,6 +42,7 @@ export const loginUser = (loginData) => {
         .then(res => {
             if (!res.error) {
                 localStorage.setItem('user', JSON.stringify(res));
+                setUser(res);
 
                 if (res.isAdmin) {
                     localStorage.setItem('isAdmin', res.isAdmin);
@@ -77,6 +92,7 @@ class Auth extends React.Component {
         logoutUserCallbacks.push(() => {
             localStorage.removeItem('user');
             localStorage.removeItem('isAdmin');
+            setUser(null);
             self.setState({
                 user: null,
                 loading: false

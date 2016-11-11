@@ -49,7 +49,8 @@ const usersModel = {
                 isAdmin: user.isAdmin || null,
                 name: user.name, 
                 login: user.login, 
-                password: user.password
+                password: user.password,
+                favouritePosts: user.favouritePosts || []
             };
         }
 

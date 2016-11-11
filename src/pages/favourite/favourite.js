@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from 'blocks/layout/layout';
 //import {getLang} from 'blocks/page/__lang/page__lang';
-import api from 'blocks/api/api';
+//import api from 'blocks/api/api';
 
 class Favourite extends React.Component {
     constructor(p_, context) {
@@ -12,7 +12,7 @@ class Favourite extends React.Component {
         };
     }
     componentDidMount() {
-        const self = this;
+//        const self = this;
 
 /*        api.get('posts')
             .then((response) => {
