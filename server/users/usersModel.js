@@ -65,8 +65,9 @@ const usersModel = {
 
         if (usersModel.exists(insertUser)) {
             if ((users[insertUser.login].password == insertUser.password) || isReplace) {
-                var userData = usersModel.createUserObject(insertUser);
-                users[insertUser.login] = Object.assign(users[insertUser.login], userData);
+                var userData = Object.assign(users[insertUser.login], insertUser);
+                userData = usersModel.createUserObject(userData);
+                users[insertUser.login] = userData;
             } else {
                 return loginError;
             }
