@@ -103,5 +103,10 @@
     "ru": "Для добавления в избранное авторизуйтесь",
     "en": "To add to favorites log in",
     "esp": "Para añadir a favoritos registro"
+  },
+  "toFave": {
+    "ru": "Чтобы добавлять в избранное",
+    "en": "To add to favorites",
+    "esp": "Para añadir a favoritos"
   }
 }

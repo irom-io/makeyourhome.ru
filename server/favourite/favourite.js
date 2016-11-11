@@ -1,10 +1,12 @@
-const find = require('array-find');
+const fs = require('fs');
+const path = require('path');
 
 const express = require('express');
 const router = express.Router();
 const usersModel = require('../users/usersModel');
 
 const serverError = {error: {msg: 'serverError'}};
+const postsSrc = path.resolve(__dirname, '../data/posts.json');
 
 router.post('/', function(req, res) {
     var user = usersModel.get(req.body.user);
@@ -32,10 +34,24 @@ router.post('/', function(req, res) {
     }
 });
 
-/*router.get('/', function(req, res) {
-    var posts = fs.readFileSync(postsSrc, 'utf-8');
+router.post('/view', function(req, res) {
+    var user = usersModel.get(req.body.user);
 
-    res.send(posts);
-});*/
+    if (!user.error) {
+        var favouritePosts = [];
+        var posts = fs.readFileSync(postsSrc, 'utf-8');
+        posts = JSON.parse(posts);
+
+        posts.forEach((post) => {
+            if (user.favouritePosts.indexOf(post.id) !== -1) {
+                favouritePosts.push(post);
+            }
+        });
+
+        res.send(favouritePosts);
+    } else {
+        res.send(serverError);
+    }
+});
 
 module.exports = router;

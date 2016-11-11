@@ -6,7 +6,7 @@ const fetchInit = (url, methodName, data) => {
         },
         method: method
     };
-    
+
     if (method !== 'GET') {
         props['body'] = JSON.stringify(data);
     }
