@@ -83,7 +83,8 @@ const usersModel = {
             password: insertUser.password,
             name: insertUser.name,
             notValid: insertUser.notValid || false,
-            userHash: insertUser.userHash || null
+            userHash: insertUser.userHash || null,
+            favouritePosts: insertUser.favouritePosts || []
         }
     },
     exists: (insertUser) => {

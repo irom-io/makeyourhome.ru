@@ -10,8 +10,23 @@ router.post('/', function(req, res) {
     var user = usersModel.get(req.body.user);
 
     if (!user.error) {
-        console.log(user);
-        console.log(req.body.fave);
+        var fave = req.body.fave;
+        var faveIndex;
+        switch (fave.type) {
+            case 'post':
+                faveIndex = user.favouritePosts.indexOf(fave.id);
+                if (faveIndex === -1) {
+                    user.favouritePosts.push(fave.id);
+                } else {
+                    user.favouritePosts.splice(faveIndex, 1);
+                }
+                break;
+            case 'project':
+                break;
+        }
+
+        user = usersModel.save(user, true);
+        res.send(user);
     } else {
         res.send(serverError);
     }

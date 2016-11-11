@@ -23,10 +23,11 @@ class ToolbarFave extends React.Component {
         api.post('favourite', {fave: p_.fave, user: {login: user.login, password: user.password}})
             .then((response) => {
                  if (!response.error) {
+                     setUser(response);
+                     console.log(getUser().favouritePosts);
                      this.setState({
                          loading: false
                      });
-                     setUser(response);
                  } else {
                      this.setState({loading: false});
                  }
@@ -34,6 +35,7 @@ class ToolbarFave extends React.Component {
     }
     render() {
         const user = getUser();
+        const p_ = this.props;
         const s_ = this.state;
 
         if (!user) {
@@ -51,9 +53,25 @@ class ToolbarFave extends React.Component {
                 </div>
             )
         } else {
+            let key;
+            
+            switch (p_.fave.type) {
+                case 'post':
+                    key = 'favouritePosts';
+                    break;
+                case 'project':
+                    key = 'favouriteProjects';
+                    break;
+                default:
+                    break;
+            }
+
+            const className = (user[key].indexOf(p_.fave.id) !== -1)? toolbar.activeIcon : toolbar.icon;
+
+            //TODO setuser save to localstorage
             return (
                 <button
-                    className={toolbar.icon}
+                    className={className}
                     onClick={() => this.onClick()}
                     disabled={s_.loading}
                 >

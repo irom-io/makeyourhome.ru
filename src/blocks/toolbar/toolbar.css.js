@@ -49,6 +49,10 @@ const toolbar = jcss({
         ...grid.row
     },
     icon: icon,
+    activeIcon: {
+        ...icon,
+        ...item.colored
+    },
     iconBig: {
         ...icon,
         ...grid.pMicro,
