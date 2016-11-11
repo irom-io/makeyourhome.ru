@@ -100,8 +100,8 @@
     "esp": "Más"
   },
   "fave": {
-    "ru": "В избранное",
-    "en": "To favorites",
-    "esp": "Gustado"
+    "ru": "Для добавления в избранное авторизуйтесь",
+    "en": "To add to favorites log in",
+    "esp": "Para añadir a favoritos registro"
   }
 }

@@ -16,6 +16,17 @@ const icon = {
     [css.media.mob]: {
         marginRight: 3
     },
+    '&:focus': {
+        outline: 0
+    },
+    '&.iconDisabled': {
+        ...item.o50,
+        ...item.notAllowed,
+        '&:hover': {
+            color: css.colors.main,
+            backgroundColor: css.colors.white
+        }
+    },
     '&:last-child': {
         ...grid.mrNone
     }
@@ -36,6 +47,14 @@ const toolbar = jcss({
         [css.media.tabMini]: {
             ...grid.pNone
         }
+    },
+    tip: {
+        backgroundColor: `${css.colors.white} !important`,
+        border: `${item.borderMain.border} !important`,
+        color: `${css.colors.main} !important`,
+        textAlign: `left !important`,
+        padding: `${grid.pMicro.padding}px !important`,
+        borderRadius: `${item.rounded.borderRadius}px !important`
     }
 });
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import Favorite from 'react-icons/lib/md/favorite';
 import L10n from 'blocks/l10n/l10n';
-import ReactTooltip from 'react-tooltip'
+import ReactTooltip from 'react-tooltip';
+import {findDOMNode} from 'react-dom';
 
 import toolbar from 'blocks/toolbar/toolbar.css';
 
@@ -17,15 +18,27 @@ class ToolbarFave extends React.Component {
         console.log(p_.fave);
     }
     render() {
-        return (
-            <button
-                title={L10n('fave')}
-                className={toolbar.icon}
-                onClick={() => this.onClick()}
-            >
-                <Favorite size={20} />
-            </button>
-        )
+        const user = null;
+
+        if (!user) {
+            return (
+                <div>
+                    <button
+                        className={`${toolbar.icon} iconDisabled`}
+                        data-tip={L10n('fave')}
+                        data-class={`${toolbar.tip}`}
+                    >
+                        <Favorite size={20} />
+                    </button>
+
+                    <ReactTooltip />
+                </div>
+            )
+        } else {
+            return (
+                <div></div>
+            )
+        }
     }
 }
 
