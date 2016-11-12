@@ -42,6 +42,7 @@ class MainSlider extends React.Component {
                     arrows={false}
                     speed={1300}
                     easing="easeOutQuart"
+                    touchMove={true}
                 >
                     {s_.items.map((item, index) => {
                         return (

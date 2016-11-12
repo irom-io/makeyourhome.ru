@@ -30,6 +30,7 @@ class PostSlider extends React.Component {
                         arrows={false}
                         speed={1300}
                         easing="easeOutQuart"
+                        touchMove={true}
                     >
                         {p_.images.map((image, index) => {
                             return (
