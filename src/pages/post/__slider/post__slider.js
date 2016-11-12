@@ -28,6 +28,8 @@ class PostSlider extends React.Component {
                     <Slider
                         dots={true}
                         arrows={false}
+                        speed={1300}
+                        easing="easeOutQuart"
                     >
                         {p_.images.map((image, index) => {
                             return (

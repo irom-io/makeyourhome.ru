@@ -40,6 +40,8 @@ class MainSlider extends React.Component {
                 <Slider
                     dots={true}
                     arrows={false}
+                    speed={1300}
+                    easing="easeOutQuart"
                 >
                     {s_.items.map((item, index) => {
                         return (
