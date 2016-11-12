@@ -85,6 +85,7 @@ const usersModel = {
             name: insertUser.name,
             notValid: insertUser.notValid || false,
             userHash: insertUser.userHash || null,
+            isAdmin: insertUser.isAdmin || null,
             favouritePosts: insertUser.favouritePosts || []
         }
     },
