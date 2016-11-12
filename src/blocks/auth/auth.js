@@ -113,6 +113,11 @@ class Auth extends React.Component {
                 soc: 'fb',
                 code: query.code,
                 redirect_uri: self.getCurrentURL(self.props.location, {fb: 1})
+            }).then((response) => {
+                if (!response.error) {
+                    let currentUrl = self.getCurrentURL(self.props.location, {}, true);
+                    self.context.router.push(currentUrl);
+                }
             });
         }
     }
@@ -128,6 +133,11 @@ class Auth extends React.Component {
                 soc: 'vk',
                 code: query.code,
                 redirect_uri: self.getCurrentURL(self.props.location, {vk: 1})
+            }).then((response) => {
+                if (!response.error) {
+                    let currentUrl = self.getCurrentURL(self.props.location, {}, true);
+                    self.context.router.push(currentUrl);
+                }
             });
         }
     }
@@ -136,8 +146,8 @@ class Auth extends React.Component {
         logoutUserCallbacks.forEach(logout => { logout(); });
         this.context.router.push(`/?lang=${lang}`);
     }
-    getCurrentURL(location, data) {
-        let current = `http://${config.host}`;
+    getCurrentURL(location, data, isLocal) {
+        let current = isLocal? '' : `http://${config.host}`;
         const query = location.query;
         let key;
         let newQuery = data || {};
@@ -156,7 +166,11 @@ class Auth extends React.Component {
 
         current = `${current}?${queryString.stringify(newQuery)}`;
 
-        return encodeURIComponent(current);
+        if (!isLocal) {
+            return encodeURIComponent(current);
+        } else {
+            return current;
+        }
     }
     render() {
         const p_ = this.props;
