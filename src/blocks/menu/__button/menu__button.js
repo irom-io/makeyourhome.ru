@@ -1,4 +1,6 @@
 import React from 'react';
+import {findDOMNode} from 'react-dom';
+
 import menu from 'blocks/menu/menu.css';
 
 class MenuButton extends React.Component {
@@ -6,12 +8,22 @@ class MenuButton extends React.Component {
         super(p_);
 
         this.state = {};
+        this.handleDocumentClick = this.handleDocumentClick.bind(this);
     }
-/*    handleClickOutside() {
-        const p_ = this.props;
-        
-        p_.onClickOutside();
-    }*/
+    componentDidMount () {
+        window.__myapp_container.addEventListener('click', this.handleDocumentClick)
+    }
+
+    componentWillUnmount () {
+        window.__myapp_container.removeEventListener('click', this.handleDocumentClick)
+    }
+    handleDocumentClick(e) {
+        const menuButton = findDOMNode(this.refs.menuButton);
+
+        if (!menuButton.contains(e.target)) {
+            this.props.onClickOutside(e);
+        }
+    }
     render() {
         const p_ = this.props;
         
@@ -19,6 +31,7 @@ class MenuButton extends React.Component {
             <div
                 onClick={p_.onClick}
                 className={menu.button}
+                ref="menuButton"
             >
                 <div className={menu.buttonContent}>
                     <div className={menu.line}></div>

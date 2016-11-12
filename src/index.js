@@ -18,6 +18,8 @@ import Favourite from 'pages/favourite/favourite';
 import NotFound from 'pages/notFound/notFound';
 
 renderStyles();
+window.__myapp_container = document.getElementById('root');
+
 ReactDOM.render(
     <Router
         history={browserHistory}
@@ -38,5 +40,5 @@ ReactDOM.render(
             <Route path="*" component={NotFound}/>
         </Route>
     </Router>,
-    document.getElementById('root')
+    window.__myapp_container
 );
