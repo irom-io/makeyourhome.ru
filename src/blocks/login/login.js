@@ -62,7 +62,7 @@ class Login extends React.Component {
                 }
 
                 {!s_.registration &&
-                <div className={`${grid.mbMini} ${text.colored} ${text.normal}`}>
+                <div className={`${grid.mbMini} ${text.colored} ${text.normal} ${text.center_mob}`}>
                     <span>{p_.descr} </span>
                     <span
                         className={(s_.type === 'registration') && `${text.underline} ${item.pointer}`}
