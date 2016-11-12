@@ -213,7 +213,7 @@ class Auth extends React.Component {
                                                 <VKIcon size={50} round={true} iconBgStyle={{fill: css.colors.main}} />
                                             </Link>
                                         </div>
-                                        <div className={`${text.mini} ${text.underline}`}>
+                                        <div className={`${text.mini} ${text.underline} ${item.iBlock}`}>
                                             <Link to="/login">
                                                 {L10n('login')}
                                             </Link>
@@ -233,7 +233,7 @@ class Auth extends React.Component {
                         </div>
                         <div
                             onClick={() => this.logout()}
-                            className={`${text.mini} ${text.underline} ${item.pointer}`}
+                            className={`${text.mini} ${text.underline} ${item.pointer} ${item.iBlock}`}
                         >
                             {L10n('logout')}
                         </div>
