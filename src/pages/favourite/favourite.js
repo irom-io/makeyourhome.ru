@@ -64,11 +64,17 @@ class Favourite extends React.Component {
         const s_ = this.state;
         const user = getUser();
         const lang = getLang();
+        let className;
+
+        if ((!user) || (s_.items.length === 0)) {
+            className = `${grid.row} ${grid.center} ${grid.normalCenter}`;
+        }
 
         return (
             <Layout
                 loading={s_.loading}
                 isPage={true}
+                className={className}
             >
                 {!user &&
                 <Login
