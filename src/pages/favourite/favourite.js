@@ -27,9 +27,12 @@ class Favourite extends React.Component {
     componentDidMount() {
         const user = getUser();
 
-        if (user) {
-            this.loadFave(user);
-        }
+        if (user) { this.loadFave(user); }
+    }
+    componentWillReceiveProps() {
+        const user = getUser();
+
+        if (user) { this.loadFave(user); }
     }
     onResponseAuth(response) {
         if (!response.error) {
