@@ -104,6 +104,7 @@ class Auth extends React.Component {
     fbLogin() {
         const self = this;
         const query = self.props.location.query;
+        const lang = getLang();
         let user = localStorage.getItem('user');
         if (user) {user = JSON.parse(user);}
 
@@ -115,8 +116,12 @@ class Auth extends React.Component {
                 redirect_uri: self.getCurrentURL(self.props.location, {fb: 1})
             }).then((response) => {
                 if (!response.error) {
-                    let currentUrl = self.getCurrentURL(self.props.location, {}, true);
-                    self.context.router.push(currentUrl);
+                    if (self.props.location.pathname !== '/login') {
+                        let currentUrl = self.getCurrentURL(self.props.location, {}, true);
+                        self.context.router.push(currentUrl);
+                    } else {
+                        self.context.router.push(`/projects?lang=${lang}`);
+                    }
                 }
             });
         }
@@ -124,6 +129,7 @@ class Auth extends React.Component {
     vkLogin() {
         const self = this;
         const query = self.props.location.query;
+        const lang = getLang();
         let user = localStorage.getItem('user');
         if (user) {user = JSON.parse(user);}
 
@@ -135,8 +141,12 @@ class Auth extends React.Component {
                 redirect_uri: self.getCurrentURL(self.props.location, {vk: 1})
             }).then((response) => {
                 if (!response.error) {
-                    let currentUrl = self.getCurrentURL(self.props.location, {}, true);
-                    self.context.router.push(currentUrl);
+                    if (self.props.location.pathname !== '/login') {
+                        let currentUrl = self.getCurrentURL(self.props.location, {}, true);
+                        self.context.router.push(currentUrl);
+                    } else {
+                        self.context.router.push(`/projects?lang=${lang}`);
+                    }
                 }
             });
         }
