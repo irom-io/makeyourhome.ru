@@ -7,6 +7,7 @@ const usersModel = require('../users/usersModel');
 
 const serverError = {error: {msg: 'serverError'}};
 const postsSrc = path.resolve(__dirname, '../data/posts.json');
+const projectsSrc = path.resolve(__dirname, '../data/projects.json');
 
 router.post('/', function(req, res) {
     var user = usersModel.get(req.body.user, false, true);
@@ -27,6 +28,14 @@ router.post('/', function(req, res) {
                 }
                 break;
             case 'project':
+                faveIndex = user.favouriteProjects.indexOf(fave.id);
+                if (faveIndex === -1) {
+                    user.favouriteProjects.push(fave.id);
+                    isActive = true;
+                } else {
+                    user.favouriteProjects.splice(faveIndex, 1);
+                    isActive = false;
+                }
                 break;
         }
 
@@ -43,15 +52,26 @@ router.post('/view', function(req, res) {
     if (!user.error) {
         var favouritePosts = [];
         var posts = fs.readFileSync(postsSrc, 'utf-8');
-        posts = JSON.parse(posts);
 
+        posts = JSON.parse(posts);
         posts.forEach((post) => {
             if (user.favouritePosts.indexOf(post.id) !== -1) {
                 favouritePosts.push(post);
             }
         });
 
-        res.send(favouritePosts);
+        var favouriteProjects = [];
+        var projects = fs.readFileSync(projectsSrc, 'utf-8');
+
+        projects = JSON.parse(projects);
+        projects.forEach((project) => {
+            if (user.favouriteProjects.indexOf(project.id) !== -1) {
+                favouriteProjects.push(project);
+            }
+        });
+        var favourite = favouriteProjects.concat(favouritePosts);
+
+        res.send(favourite);
     } else {
         res.send(serverError);
     }

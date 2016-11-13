@@ -1,54 +1,142 @@
 import React from 'react';
-import ProjectsFilters from 'pages/projects/__filters/projects__filters';
-import ProjectsParams from 'pages/projects/__params/projects__params';
+import Layout from 'blocks/layout/layout';
+import Button from 'blocks/button/button';
+import Link from 'blocks/link/link';
 import TileLine from 'blocks/tile/_line/tile_line';
-import page from 'blocks/page/page.css';
-import grid from 'blocks/grid/grid.css';
+import {getLang} from 'blocks/page/__lang/page__lang';
+import api from 'blocks/api/api';
+import {createSrc} from 'blocks/item/item';
+import AdminEdit from 'blocks/admin/__edit/admin__edit';
+import L10n from 'blocks/l10n/l10n';
+import {getUser} from 'blocks/auth/auth';
 
+import grid from 'blocks/grid/grid.css';
+import text from 'blocks/text/text.css';
+
+const step = 3;
 class Projects extends React.Component {
-    constructor(p_) {
-        super(p_);
+    constructor(p_, context) {
+        super(p_, context);
 
         this.state = {
-            items: [
-                {src: require('./images/1.jpg'), text: 'Дом классика', descr: require('./html/1.html'), link: {to: '/projects/1'}, space: 80, garage: 'Есть гараж', beds: 'Три спальни', floors: 'Два этажа'},
-                {src: require('./images/2.jpg'), text: 'Уэлфит', descr: require('./html/2.html'), link: {to: '/projects/2'}, space: 120, garage: 'Нет гаража', beds: 'Одна спальня', floors: 'Два этажа'},
-                {src: require('./images/3.jpg'), text: 'Загородная баня', descr: require('./html/3.html'), link: {to: '/projects/3'}, space: 30, garage: 'Нет гаража', beds: 'Нет спален', floors: 'Один этаж'},
-                {src: require('./images/4.jpg'), text: 'Юрта', descr: require('./html/4.html'), link: {to: '/projects/4'}, space: 72, garage: 'Есть гараж', beds: 'Две спальни', floors: 'Два этажа'},
-                {src: require('./images/5.jpg'), text: 'Коттедж', descr: require('./html/5.html'), link: {to: '/projects/5'}, space: 130, garage: 'Нет гаража', beds: 'Одна спальня', floors: 'Два этажа'}
-            ]
+            question: '',
+            loading: true,
+            items: [],
+            visibleItems: step
         };
+    }
+    componentDidMount() {
+        const self = this;
+        const user = getUser();
+
+        api.post('projects/view', {user: user})
+            .then((response) => {
+                if (!response.error) {
+                    self.setState({
+                        items: response,
+                        loading: false
+                    });
+                } else {
+                    self.setState({
+                        loading: false
+                    });
+                }
+            })
+    }
+    deleteProject(user, projectId) {
+        const self = this;
+
+        self.setState({loading: true});
+        api.delete('projects', {user: user, projectId: projectId})
+            .then((response) => {
+                if (response && !response.error) {
+                    self.setState({items: response, loading: false});
+                }
+            });
+    }
+    seeMore() {
+        this.setState({visibleItems: (this.state.visibleItems + step)})
     }
     render() {
         const s_ = this.state;
+        let user = localStorage.getItem('user');
+        if (user) {user = JSON.parse(user);}
+        const isAdmin = localStorage.getItem('isAdmin');
+        const lang = getLang();
 
         return (
-            <div className={page.content}>
-                <ProjectsFilters />
+            <Layout
+                loading={s_.loading}
+                isPage={true}
+            >
+                {isAdmin &&
+                <div className={`${text.center} ${grid.mbMini}`}>
+                    <Link
+                        className={grid.w100_mob}
+                        to="/admin?type=projects"
+                    >
+                        <Button
+                            className={grid.w100_mob}
+                        >
+                            Добавить запись
+                        </Button>
+                    </Link>
+                </div>
+                }
 
-                <div className={`${grid.hSeparator} ${grid.mtMini} ${grid.mbMini}`}></div>
-
+                {s_.items &&
                 <div>
-                    {s_.items.map((project, index) => {
-                        return (
-                            <TileLine
-                                key={`projectsProjects_${index}`}
-                                src={project.src}
-                                text={project.text}
-                                link={project.link}
-                                l10nText={true}
-                                description={project.descr}
-                            >
-                                <div className={`${grid.mbMini}`}>
-                                    <ProjectsParams project={project} />
-                                </div>
-                            </TileLine>
-                        )
+                    {s_.items.map((item, index) => {
+                        if (index < s_.visibleItems) {
+                            let title = 'noTranslate';
+                            let shortText = 'noTranslate';
+
+                            if (item[lang]) {
+                                title = item[lang].title;
+                                shortText = item[lang].shortText;
+                            }
+
+                            return (
+                                <TileLine
+                                    key={`project_${index}`}
+                                    src={createSrc(item.images[0])}
+                                    text={title}
+                                    l10nText={true}
+                                    link={{to: `/projects/${item.id}`}}
+                                    description={shortText}
+                                    fave={{type: 'project', id: item.id, isActive: item.faveActive}}
+                                >
+                                    {isAdmin &&
+                                    <AdminEdit
+                                        editTo={`/admin?type=projects&projectId=${item.id}`}
+                                        onDelete={() => this.deleteProject(user, item.id)}
+                                    />
+                                    }
+                                </TileLine>
+                            )
+                        } else {
+                            return '';
+                        }
                     })}
                 </div>
-            </div>
+                }
+
+                {s_.items && (s_.visibleItems < s_.items.length) &&
+                <div className={`${text.center} ${grid.mtMini}`}>
+                    <Button
+                        onClick={() => this.seeMore()}
+                        className={grid.w100_mob}
+                    >
+                        {L10n('more')}
+                    </Button>
+                </div>
+                }
+            </Layout>
         );
     }
 }
+Projects.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default Projects;
