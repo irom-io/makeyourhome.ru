@@ -27,8 +27,8 @@ router.post('/', function(req, res) {
                 break;
         }
 
-        user = usersModel.save(user, true);
-        res.send(user);
+        usersModel.save(user, true);
+        res.send({favouritePosts: user.favouritePosts});
     } else {
         res.send(serverError);
     }
