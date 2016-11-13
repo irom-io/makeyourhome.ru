@@ -36,15 +36,6 @@ export const setUser = (insertUser) => {
 };
 /* /user */
 
-/* fave */
-let fave = {favouritePosts: []};
-
-export const getFave = () => fave;
-export const setFave = (insertFave) => {
-    fave.favouritePosts = insertFave.favouritePosts;
-};
-/* /fave */
-
 export const loginUser = (loginData) => {
     startLoginCallbacks.forEach(start => { start(); });
 

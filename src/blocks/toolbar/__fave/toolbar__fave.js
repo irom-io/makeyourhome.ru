@@ -2,7 +2,7 @@ import React from 'react';
 import Favorite from 'react-icons/lib/md/favorite';
 import L10n from 'blocks/l10n/l10n';
 import ReactTooltip from 'react-tooltip';
-import {getUser, getFave, setFave} from 'blocks/auth/auth';
+import {getUser} from 'blocks/auth/auth';
 import api from 'blocks/api/api';
 
 import toolbar from 'blocks/toolbar/toolbar.css';
@@ -19,20 +19,12 @@ class ToolbarFave extends React.Component {
 
         this.setState({loading: true});
         api.post('favourite', {fave: p_.fave, user: {login: user.login, password: user.password}})
-            .then((response) => {
-                 if (!response.error) {
-                     setFave(response);
-                     this.setState({
-                         loading: false
-                     });
-                 } else {
-                     this.setState({loading: false});
-                 }
-            });
+        .then((response) => {
+
+        });
     }
     render() {
         const user = getUser();
-        const fave = getFave();
         const p_ = this.props;
 
         if (!user) {
@@ -63,12 +55,11 @@ class ToolbarFave extends React.Component {
                     break;
             }
 
-            const className = (fave[key].indexOf(p_.fave.id) !== -1)? toolbar.iconActive : toolbar.icon;
+            //const className = (fave[key].indexOf(p_.fave.id) !== -1)? toolbar.iconActive : toolbar.icon;
             
-            //TODO setuser save to localstorage
             return (
                 <button
-                    className={className}
+                    className={''}
                     onClick={() => this.onClick()}
                 >
                     <Favorite size={20} />
