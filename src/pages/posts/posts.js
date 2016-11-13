@@ -8,6 +8,7 @@ import api from 'blocks/api/api';
 import {createSrc} from 'blocks/item/item';
 import AdminEdit from 'blocks/admin/__edit/admin__edit';
 import L10n from 'blocks/l10n/l10n';
+import {getUser, setFave} from 'blocks/auth/auth';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -26,18 +27,27 @@ class Posts extends React.Component {
     }
     componentDidMount() {
         const self = this;
+        const user = getUser();
 
         api.get('posts')
+            .then((response) => { return response; })
             .then((response) => {
-                if (!response.error) {
+                if (!user) {
                     self.setState({
                         items: response,
                         loading: false
-                    });
+                    })
                 } else {
-                    self.setState({loading: false});
+                    api.post('favourite/list', {user: user})
+                    .then((faveList) => {
+                        setFave(faveList);
+                        self.setState({
+                            items: response,
+                            loading: false
+                        });
+                    })
                 }
-            });
+            })
     }
     deletePost(user, postId) {
         const self = this;

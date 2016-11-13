@@ -2,7 +2,7 @@ import React from 'react';
 import Favorite from 'react-icons/lib/md/favorite';
 import L10n from 'blocks/l10n/l10n';
 import ReactTooltip from 'react-tooltip';
-import {getUser, setUser, getFave, setFave} from 'blocks/auth/auth';
+import {getUser, getFave, setFave} from 'blocks/auth/auth';
 import api from 'blocks/api/api';
 
 import toolbar from 'blocks/toolbar/toolbar.css';
