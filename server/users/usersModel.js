@@ -26,7 +26,7 @@ const usersModel = {
 
         return insertUser;
     },
-    get: (insertUser, noPassword) => {
+    get: (insertUser, noPassword, allData) => {
         var user;
         var users;
         users = fs.readFileSync(usersSrc, 'utf-8');
@@ -45,13 +45,16 @@ const usersModel = {
                 return notValidUser; 
             }
             
-            return {
-                isAdmin: user.isAdmin || null,
-                name: user.name, 
-                login: user.login, 
-                password: user.password,
-                favouritePosts: user.favouritePosts || []
-            };
+            if (allData) {
+                return users[insertUser.login];
+            } else {
+                return {
+                    isAdmin: user.isAdmin || null,
+                    name: user.name,
+                    login: user.login,
+                    password: user.password
+                };
+            }
         }
 
         return loginError;

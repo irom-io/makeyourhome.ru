@@ -9,7 +9,7 @@ const serverError = {error: {msg: 'serverError'}};
 const postsSrc = path.resolve(__dirname, '../data/posts.json');
 
 router.post('/', function(req, res) {
-    var user = usersModel.get(req.body.user);
+    var user = usersModel.get(req.body.user, false, true);
 
     if (!user.error) {
         var fave = req.body.fave;
@@ -35,7 +35,7 @@ router.post('/', function(req, res) {
 });
 
 router.post('/list', function(req, res) {
-    var user = usersModel.get(req.body.user);
+    var user = usersModel.get(req.body.user, false, true);
 
     if (!user.error) {
         res.send({favouritePosts: user.favouritePosts});
@@ -45,7 +45,7 @@ router.post('/list', function(req, res) {
 });
 
 router.post('/view', function(req, res) {
-    var user = usersModel.get(req.body.user);
+    var user = usersModel.get(req.body.user, false, true);
 
     if (!user.error) {
         var favouritePosts = [];
