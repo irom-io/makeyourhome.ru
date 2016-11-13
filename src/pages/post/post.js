@@ -6,6 +6,7 @@ import PostSlider from 'pages/post/__slider/post__slider';
 import Title from 'blocks/title/title';
 import Toolbar from 'blocks/toolbar/toolbar';
 import {createSrc} from 'blocks/item/item';
+import {getUser} from 'blocks/auth/auth';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -22,8 +23,9 @@ class Post extends React.Component {
         const self = this;
         const p_ = self.props;
         const lang = getLang();
+        const user = getUser();
 
-        api.get('posts')
+        api.post('posts', {user: user})
             .then((response) => {
                 let isCorrectPostId = false;
                 self.setState({loading: false});

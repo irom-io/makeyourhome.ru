@@ -27,14 +27,16 @@ class Posts extends React.Component {
     }
     componentDidMount() {
         const self = this;
+        const user = getUser();
 
-        api.get('posts')
+        api.post('posts/view', {user: user})
             .then((response) => {
                 if (!response.error) {
                     self.setState({
                         items: response,
                         loading: false
-                    });                    
+                    });
+                    console.log(response);
                 } else {
                     self.setState({
                         loading: false

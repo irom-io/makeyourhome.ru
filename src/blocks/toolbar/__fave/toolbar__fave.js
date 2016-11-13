@@ -55,11 +55,11 @@ class ToolbarFave extends React.Component {
                     break;
             }
 
-            //const className = (fave[key].indexOf(p_.fave.id) !== -1)? toolbar.iconActive : toolbar.icon;
+            const className = (p_.fave.isActive)? toolbar.iconActive : toolbar.icon;
             
             return (
                 <button
-                    className={''}
+                    className={className}
                     onClick={() => this.onClick()}
                 >
                     <Favorite size={20} />

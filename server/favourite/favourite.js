@@ -34,16 +34,6 @@ router.post('/', function(req, res) {
     }
 });
 
-router.post('/list', function(req, res) {
-    var user = usersModel.get(req.body.user, false, true);
-
-    if (!user.error) {
-        res.send({favouritePosts: user.favouritePosts});
-    } else {
-        res.send(serverError);
-    }
-});
-
 router.post('/view', function(req, res) {
     var user = usersModel.get(req.body.user, false, true);
 

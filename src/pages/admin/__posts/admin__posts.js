@@ -2,6 +2,7 @@ import React from 'react';
 import {Input, Textarea} from 'blocks/text/_edit/text_edit';
 import Button from 'blocks/button/button';
 import {getLang} from 'blocks/page/__lang/page__lang';
+import {getUser} from 'blocks/auth/auth';
 import api from 'blocks/api/api';
 import AdminLoader from 'pages/admin/__loader/admin__loader';
 import L10n from 'blocks/l10n/l10n';
@@ -28,8 +29,9 @@ class AdminPosts extends React.Component {
     }
     componentDidMount() {
         const self = this;
+        const user = getUser();
 
-        api.get('posts')
+        api.post('posts/view', {user: user})
             .then((response) => {
                 self.props.onLoad();
 

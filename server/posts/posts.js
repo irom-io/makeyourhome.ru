@@ -5,6 +5,7 @@ const find = require('array-find');
 const express = require('express');
 const router = express.Router();
 const usersModel = require('../users/usersModel');
+const favouriteModel = require('../favourite/favouriteModel');
 const randomstring = require('randomstring');
 const postsSrc = path.resolve(__dirname, '../data/posts.json');
 
@@ -75,10 +76,8 @@ router.delete('/', function(req, res) {
     }
 });
 
-router.get('/', function(req, res) {
-    var posts = fs.readFileSync(postsSrc, 'utf-8');
-
-    res.send(posts);
+router.post('/view', function(req, res) {
+    res.send(favouriteModel.getPosts(req.body.user));
 });
 
 module.exports = router;

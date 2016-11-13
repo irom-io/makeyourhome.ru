@@ -19,6 +19,8 @@ const passwordsDoNotMatch = {error: {msg: 'passwordsDoNotMatch'}};
 
 const usersModel = {
     validate: (insertUser) => {
+        insertUser = insertUser || {};
+        
         insertUser.login && (insertUser.login = insertUser.login.substr(0, 100));
         insertUser.login && (insertUser.login = insertUser.login.toLowerCase());
         insertUser.password && (insertUser.password = insertUser.password.substr(0, 100));
