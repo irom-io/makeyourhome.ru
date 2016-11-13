@@ -11,21 +11,26 @@ class ToolbarFave extends React.Component {
     constructor(p_) {
         super(p_);
 
-        this.state = {};
+        this.state = {
+            isActive: p_.fave.isActive
+        };
     }
     onClick() {
+        const self = this;
         const p_ = this.props;
         const user = getUser();
 
         this.setState({loading: true});
         api.post('favourite', {fave: p_.fave, user: {login: user.login, password: user.password}})
         .then((response) => {
-
+            if (!response.error) {
+                self.setState({isActive: response.isActive})
+            }
         });
     }
     render() {
         const user = getUser();
-        const p_ = this.props;
+        const s_ = this.state;
 
         if (!user) {
             return (
@@ -42,20 +47,7 @@ class ToolbarFave extends React.Component {
                 </div>
             )
         } else {
-            let key;
-            
-            switch (p_.fave.type) {
-                case 'post':
-                    key = 'favouritePosts';
-                    break;
-                case 'project':
-                    key = 'favouriteProjects';
-                    break;
-                default:
-                    break;
-            }
-
-            const className = (p_.fave.isActive)? toolbar.iconActive : toolbar.icon;
+            const className = (s_.isActive)? toolbar.iconActive : toolbar.icon;
             
             return (
                 <button

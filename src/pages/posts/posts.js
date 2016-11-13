@@ -36,7 +36,6 @@ class Posts extends React.Component {
                         items: response,
                         loading: false
                     });
-                    console.log(response);
                 } else {
                     self.setState({
                         loading: false

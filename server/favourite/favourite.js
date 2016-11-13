@@ -10,6 +10,7 @@ const postsSrc = path.resolve(__dirname, '../data/posts.json');
 
 router.post('/', function(req, res) {
     var user = usersModel.get(req.body.user, false, true);
+    var isActive;
 
     if (!user.error) {
         var fave = req.body.fave;
@@ -19,8 +20,10 @@ router.post('/', function(req, res) {
                 faveIndex = user.favouritePosts.indexOf(fave.id);
                 if (faveIndex === -1) {
                     user.favouritePosts.push(fave.id);
+                    isActive = true;
                 } else {
                     user.favouritePosts.splice(faveIndex, 1);
+                    isActive = false;
                 }
                 break;
             case 'project':
@@ -28,7 +31,7 @@ router.post('/', function(req, res) {
         }
 
         usersModel.save(user, true);
-        res.send({favouritePosts: user.favouritePosts});
+        res.send({isActive: isActive});
     } else {
         res.send(serverError);
     }
