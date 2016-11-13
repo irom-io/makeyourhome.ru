@@ -62,7 +62,9 @@ class ToolbarFave extends React.Component {
                     break;
             }
 
-            const className = (user[key].indexOf(p_.fave.id) !== -1)? toolbar.iconActive : toolbar.icon;
+            //const className = (user[key].indexOf(p_.fave.id) !== -1)? toolbar.iconActive : toolbar.icon;
+            const className = toolbar.icon;
+            console.log(user);
             
             //TODO setuser save to localstorage
             return (
