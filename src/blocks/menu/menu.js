@@ -10,52 +10,54 @@ import item from 'blocks/item/item.css';
 class Menu extends React.Component {
     constructor(p_) {
         super(p_);
+        const items = [
+            {
+                name: 'catalog',
+                to: '/projects'
+            },
+            {
+                name: 'styles',
+                to: '/styles',
+                subItems: [
+                    {name: 'modern', to: '/projects?style=modern'},
+                    {name: 'classic', to: '/projects?style=classic'},
+                    {name: 'countryside', to: '/projects?style=countryside'},
+                    {name: 'european', to: '/projects?style=european'},
+                    {name: 'american', to: '/projects?style=american'},
+                    {name: 'wooden', to: '/projects?style=wooden'},
+                    {name: 'bungalow', to: '/projects?style=bungalow'}
+                ]
+            },
+            {
+                name: 'collections',
+                to: '/collections',
+                subItems: [
+                    {name: 'house', to: '/projects?collection=house'},
+                    {name: 'bath', to: '/projects?collection=bath'},
+                    {name: 'garage', to: '/projects?collection=garage'},
+                    {name: 'recreation', to: '/projects?collection=recreation'},
+                    {name: 'cabin', to: '/projects?collection=cabin'},
+                    {name: 'other', to: '/projects?collection=other'}
+                ]
+            },
+            {
+                name: 'questions',
+                to: 'questions'
+            },
+            {
+                name: 'posts',
+                to: 'posts'
+            },
+            {
+                name: 'favorites',
+                to: 'favourite'
+            }
+        ];
 
         this.state = {
             isShowMenu: false,
-            items: [
-                {
-                    name: 'catalog',
-                    to: '/projects'
-                },
-                {
-                    name: 'styles',
-                    to: '/styles',
-                    subItems: [
-                        {name: 'modern', to: '/projects?style=modern'},
-                        {name: 'classic', to: '/projects?style=classic'},
-                        {name: 'countryside', to: '/projects?style=countryside'},
-                        {name: 'european', to: '/projects?style=european'},
-                        {name: 'american', to: '/projects?style=american'},
-                        {name: 'wooden', to: '/projects?style=wooden'},
-                        {name: 'bungalow', to: '/projects?style=bungalow'}
-                    ]
-                },
-                {
-                    name: 'collections',
-                    to: '/collections',
-                    subItems: [
-                        {name: 'house', to: '/projects?collection=house'},
-                        {name: 'bath', to: '/projects?collection=bath'},
-                        {name: 'garage', to: '/projects?collection=garage'},
-                        {name: 'recreation', to: '/projects?collection=recreation'},
-                        {name: 'cabin', to: '/projects?collection=cabin'},
-                        {name: 'other', to: '/projects?collection=other'}
-                    ]
-                },
-                {
-                    name: 'questions',
-                    to: 'questions'
-                },
-                {
-                    name: 'posts',
-                    to: 'posts'
-                },
-                {
-                    name: 'favorites',
-                    to: 'favourite'
-                }
-            ]
+            items: items,
+            itemsMob: [{name: 'home', to: '/'}, ...items]
         };
     }
     onClickMobile() {
@@ -115,7 +117,7 @@ class Menu extends React.Component {
                     <ul
                         className={`${menu.itemsMob} ${s_.isShowMenu? item.visible : item.hidden}`}
                     >
-                        {s_.items.map((item, index) => {
+                        {s_.itemsMob.map((item, index) => {
                             return (
                                 <li key={`menu__item-${index}`} className={menu.item}>
                                     <Link

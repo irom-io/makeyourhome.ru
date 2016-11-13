@@ -5,6 +5,11 @@
       "en": "Projects search",
       "esp": "Buscar proyectos"
     },
+    "home": {
+      "ru": "Главная",
+      "en": "Home",
+      "esp": "Principal"
+    },
     "catalog": {
       "ru": "Каталог",
       "en": "Catalog",
