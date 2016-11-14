@@ -32,7 +32,8 @@ class AdminProjects extends React.Component {
             projectId: p_.projectId || null,
             styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}}),
             collections: collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`, 'ru')}}),
-            floors: numberList.map((number) => {return {value: number.name, label: L10n(`project.floors.${number.name}`, 'ru')}})
+            floors: numberList.map((number) => {return {value: number.name, label: L10n(`project.floors.${number.name}`, 'ru')}}),
+            bedrooms: numberList.map((bedroom) => {return {value: bedroom.name, label: L10n(`project.bedrooms.${bedroom.name}`, 'ru')}})
         };
     }
     componentDidMount() {
@@ -68,7 +69,8 @@ class AdminProjects extends React.Component {
                 images: [],
                 style: null,
                 type: null,
-                floor: null
+                floor: null,
+                bedroom: null
             },
             errorMsg: null,
             loading: false,
@@ -144,6 +146,12 @@ class AdminProjects extends React.Component {
         data.floor = floor.value;
         this.setState({data: data});
     }
+    selectBedroom(bedroom) {
+        let data = this.state.data;
+
+        data.bedroom = bedroom.value;
+        this.setState({data: data});
+    }
     render() {
         const s_ = this.state;
         const lang = getLang();
@@ -186,30 +194,6 @@ class AdminProjects extends React.Component {
                 </div>
 
                 <div className={grid.mbMini}>
-                    <Input
-                        placeholder="Заголовок"
-                        value={s_.data[lang].title}
-                        onChange={(value) => this.onChange(value, 'title')}
-                    />
-                </div>
-                <div className={grid.mbMini}>
-                    <Textarea
-                        rows={5}
-                        placeholder="Краткое описание"
-                        value={s_.data[lang].shortText}
-                        onChange={(value) => this.onChange(value, 'shortText')}
-                    />
-                </div>
-                <div className={grid.mbMini}>
-                    <Textarea
-                        rows={10}
-                        placeholder="Подробное описание"
-                        value={s_.data[lang].longText}
-                        onChange={(value) => this.onChange(value, 'longText')}
-                    />
-                </div>
-
-                <div className={grid.mbMini}>
                     <Select
                         placeholder="Стиль"
                         options={s_.styles}
@@ -239,6 +223,41 @@ class AdminProjects extends React.Component {
                         searchable={false}
                         onChange={(floor) => this.selectFloor(floor)}
                         value={s_.data.floor}
+                    />
+                </div>
+
+                <div className={grid.mbMini}>
+                    <Select
+                        placeholder="Количество спален"
+                        options={s_.bedrooms}
+                        clearable={false}
+                        searchable={false}
+                        onChange={(bedroom) => this.selectBedroom(bedroom)}
+                        value={s_.data.bedroom}
+                    />
+                </div>
+
+                <div className={grid.mbMini}>
+                    <Input
+                        placeholder="Заголовок"
+                        value={s_.data[lang].title}
+                        onChange={(value) => this.onChange(value, 'title')}
+                    />
+                </div>
+                <div className={grid.mbMini}>
+                    <Textarea
+                        rows={5}
+                        placeholder="Краткое описание"
+                        value={s_.data[lang].shortText}
+                        onChange={(value) => this.onChange(value, 'shortText')}
+                    />
+                </div>
+                <div className={grid.mbMini}>
+                    <Textarea
+                        rows={10}
+                        placeholder="Подробное описание"
+                        value={s_.data[lang].longText}
+                        onChange={(value) => this.onChange(value, 'longText')}
                     />
                 </div>
 

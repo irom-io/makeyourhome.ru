@@ -31,6 +31,38 @@
         "en": "Five floors",
         "esp": "Сinco pisos"
       }
+    },
+    "bedrooms": {
+      "zero": {
+        "ru": "Нет спален",
+        "en": "No of bedrooms",
+        "esp": "Ninguna de las habitaciones"
+      },
+      "one": {
+        "ru": "Одна спальня",
+        "en": "One bedroom",
+        "esp": "Un dormitorio"
+      },
+      "two": {
+        "ru": "Две спальни",
+        "en": "Two bedrooms",
+        "esp": "Dos dormitorios"
+      },
+      "three": {
+        "ru": "Три спальни",
+        "en": "Three bedrooms",
+        "esp": "Tres dormitorios"
+      },
+      "four": {
+        "ru": "Четыре спальни",
+        "en": "Four bedrooms",
+        "esp": "Сuatro dormitorios"
+      },
+      "five": {
+        "ru": "Пять спален",
+        "en": "Five bedrooms",
+        "esp": "Сinco dormitorios"
+      }
     }
   }
 }
