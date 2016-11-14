@@ -12,7 +12,12 @@ class Select extends React.Component {
         };
     }
     onChange(selected) {
-        this.setState({value: selected})
+        const p_ = this.props;
+        this.setState({value: selected});
+
+        if (p_.onChange) {
+            p_.onChange(selected);
+        }
     }
     render() {
         const s_ = this.state;

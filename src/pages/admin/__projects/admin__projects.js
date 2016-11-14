@@ -24,7 +24,8 @@ class AdminProjects extends React.Component {
                 images: [],
                 ru: {title: '', shortText: '', longText: ''},
                 en: {title: '', shortText: '', longText: ''},
-                esp: {title: '', shortText: '', longText: ''}
+                esp: {title: '', shortText: '', longText: ''},
+                style: null
             },
             projectId: p_.projectId || null,
             styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}})
@@ -60,7 +61,8 @@ class AdminProjects extends React.Component {
                 ru: {title: '', shortText: '', longText: ''},
                 en: {title: '', shortText: '', longText: ''},
                 esp: {title: '', shortText: '', longText: ''},
-                images: []
+                images: [],
+                style: null
             },
             errorMsg: null,
             loading: false,
@@ -118,6 +120,12 @@ class AdminProjects extends React.Component {
         data.images = images;
         this.setState({data: data});
     }
+    selectStyle(style) {
+        let data = this.state.data;
+
+        data.style = style.value;
+        this.setState({data: data});
+    }
     render() {
         const s_ = this.state;
         const lang = getLang();
@@ -163,6 +171,10 @@ class AdminProjects extends React.Component {
                     <Select
                         placeholder="Стиль"
                         options={s_.styles}
+                        clearable={false}
+                        searchable={false}
+                        onChange={(style) => this.selectStyle(style)}
+                        value={s_.data.style}
                     />
                 </div>
 
