@@ -1,6 +1,11 @@
 {
   "project": {
     "floors": {
+      "zero": {
+        "ru": "Не здание",
+        "en": "Not building",
+        "esp": "No la construcción"
+      },
       "one": {
         "ru": "Один этаж",
         "en": "One floor",
@@ -20,6 +25,11 @@
         "ru": "Четыре этажа",
         "en": "Four floors",
         "esp": "Сuatro pisos"
+      },
+      "five": {
+        "ru": "Пять этажей",
+        "en": "Five floors",
+        "esp": "Сinco pisos"
       }
     }
   }

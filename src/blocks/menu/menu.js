@@ -26,11 +26,13 @@ export const collectionList = [
     {name: 'other', to: '/projects?collection=other'}
 ];
 
-export const floorList = [
+export const numberList = [
+    {name: 'zero'},
     {name: 'one'},
     {name: 'two'},
     {name: 'three'},
-    {name: 'four'}
+    {name: 'four'},
+    {name: 'five'}
 ];
 
 class Menu extends React.Component {

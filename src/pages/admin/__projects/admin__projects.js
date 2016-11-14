@@ -7,7 +7,7 @@ import api from 'blocks/api/api';
 import AdminLoader from 'pages/admin/__loader/admin__loader';
 import Select from 'blocks/select/select';
 import L10n from 'blocks/l10n/l10n';
-import {styleList, collectionList, floorList} from 'blocks/menu/menu';
+import {styleList, collectionList, numberList} from 'blocks/menu/menu';
 
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
@@ -32,7 +32,7 @@ class AdminProjects extends React.Component {
             projectId: p_.projectId || null,
             styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}}),
             collections: collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`, 'ru')}}),
-            floors: floorList.map((floor) => {return {value: floor.name, label: L10n(`project.floors.${floor.name}`, 'ru')}})
+            floors: numberList.map((number) => {return {value: number.name, label: L10n(`project.floors.${number.name}`, 'ru')}})
         };
     }
     componentDidMount() {
