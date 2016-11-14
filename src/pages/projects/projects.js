@@ -9,6 +9,7 @@ import {createSrc} from 'blocks/item/item';
 import AdminEdit from 'blocks/admin/__edit/admin__edit';
 import L10n from 'blocks/l10n/l10n';
 import {getUser} from 'blocks/auth/auth';
+import ProjectsParams from 'pages/projects/__params/projects__params';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -112,6 +113,9 @@ class Projects extends React.Component {
                                         onDelete={() => this.deleteProject(user, item.id)}
                                     />
                                     }
+                                    <div className={`${grid.mbMini}`}>
+                                        <ProjectsParams project={item} />
+                                    </div>
                                 </TileLine>
                             )
                         } else {
