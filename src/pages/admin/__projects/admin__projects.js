@@ -186,6 +186,30 @@ class AdminProjects extends React.Component {
                 </div>
 
                 <div className={grid.mbMini}>
+                    <Input
+                        placeholder="Заголовок"
+                        value={s_.data[lang].title}
+                        onChange={(value) => this.onChange(value, 'title')}
+                    />
+                </div>
+                <div className={grid.mbMini}>
+                    <Textarea
+                        rows={5}
+                        placeholder="Краткое описание"
+                        value={s_.data[lang].shortText}
+                        onChange={(value) => this.onChange(value, 'shortText')}
+                    />
+                </div>
+                <div className={grid.mbMini}>
+                    <Textarea
+                        rows={10}
+                        placeholder="Подробное описание"
+                        value={s_.data[lang].longText}
+                        onChange={(value) => this.onChange(value, 'longText')}
+                    />
+                </div>
+
+                <div className={grid.mbMini}>
                     <Select
                         placeholder="Стиль"
                         options={s_.styles}
@@ -218,29 +242,6 @@ class AdminProjects extends React.Component {
                     />
                 </div>
 
-                <div className={grid.mbMini}>
-                    <Input
-                        placeholder="Заголовок"
-                        value={s_.data[lang].title}
-                        onChange={(value) => this.onChange(value, 'title')}
-                    />
-                </div>
-                <div className={grid.mbMini}>
-                    <Textarea
-                        rows={5}
-                        placeholder="Краткое описание"
-                        value={s_.data[lang].shortText}
-                        onChange={(value) => this.onChange(value, 'shortText')}
-                    />
-                </div>
-                <div className={grid.mbMini}>
-                    <Textarea
-                        rows={10}
-                        placeholder="Подробное описание"
-                        value={s_.data[lang].longText}
-                        onChange={(value) => this.onChange(value, 'longText')}
-                    />
-                </div>
                 <div className={text.right}>
                     <Button
                         type="submit"
