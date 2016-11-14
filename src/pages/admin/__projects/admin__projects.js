@@ -219,88 +219,94 @@ class AdminProjects extends React.Component {
                     />
                 </div>
 
-                <div className={grid.mbMini}>
-                    <Select
-                        placeholder="Стиль"
-                        options={s_.styles}
-                        clearable={false}
-                        searchable={false}
-                        onChange={(style) => this.selectStyle(style)}
-                        value={s_.data.style}
-                    />
+                <div className={grid.mbBig}>
+                    <div className={grid.mbMini}>
+                        <Select
+                            placeholder="Стиль"
+                            options={s_.styles}
+                            clearable={false}
+                            searchable={false}
+                            onChange={(style) => this.selectStyle(style)}
+                            value={s_.data.style}
+                        />
+                    </div>
+
+                    <div>
+                        <Select
+                            placeholder="Тип"
+                            options={s_.collections}
+                            clearable={false}
+                            searchable={false}
+                            onChange={(type) => this.selectType(type)}
+                            value={s_.data.type}
+                        />
+                    </div>
                 </div>
 
-                <div className={grid.mbMini}>
-                    <Select
-                        placeholder="Тип"
-                        options={s_.collections}
-                        clearable={false}
-                        searchable={false}
-                        onChange={(type) => this.selectType(type)}
-                        value={s_.data.type}
-                    />
+                <div className={grid.mbBig}>
+                    <div className={grid.mbMini}>
+                        <Input
+                            type="number"
+                            placeholder="Площадь"
+                            value={s_.data.area}
+                            onChange={(value) => this.onChangeNumber(value, 'area')}
+                        />
+                    </div>
+
+                    <div className={grid.mbMini}>
+                        <Select
+                            placeholder="Количество спален"
+                            options={s_.bedrooms}
+                            clearable={false}
+                            searchable={false}
+                            onChange={(bedroom) => this.selectBedroom(bedroom)}
+                            value={s_.data.bedroom}
+                        />
+                    </div>
+
+                    <div className={grid.mbMini}>
+                        <Select
+                            placeholder="Этажность"
+                            options={s_.floors}
+                            clearable={false}
+                            searchable={false}
+                            onChange={(floor) => this.selectFloor(floor)}
+                            value={s_.data.floor}
+                        />
+                    </div>
+
+                    <div>
+                        <Select
+                            placeholder="Гараж"
+                            options={s_.garage}
+                            clearable={false}
+                            searchable={false}
+                            onChange={(garage) => this.selectGarage(garage)}
+                            value={s_.data.garage}
+                        />
+                    </div>
                 </div>
 
-                <div className={grid.mbMini}>
-                    <Select
-                        placeholder="Этажность"
-                        options={s_.floors}
-                        clearable={false}
-                        searchable={false}
-                        onChange={(floor) => this.selectFloor(floor)}
-                        value={s_.data.floor}
-                    />
-                </div>
+                <div className={grid.mbBig}>
+                    <div className={grid.mbMini}>
+                        <Input
+                            type="number"
+                            placeholder="Стоимость PDF"
+                            value={s_.data.pdfCoast}
+                            onChange={(value) => this.onChangeNumber(value, 'pdfCoast')}
+                        />
+                    </div>
 
-                <div className={grid.mbMini}>
-                    <Select
-                        placeholder="Количество спален"
-                        options={s_.bedrooms}
-                        clearable={false}
-                        searchable={false}
-                        onChange={(bedroom) => this.selectBedroom(bedroom)}
-                        value={s_.data.bedroom}
-                    />
-                </div>
-
-                <div className={grid.mbMini}>
-                    <Select
-                        placeholder="Гараж"
-                        options={s_.garage}
-                        clearable={false}
-                        searchable={false}
-                        onChange={(garage) => this.selectGarage(garage)}
-                        value={s_.data.garage}
-                    />
-                </div>
-
-                <div className={grid.mbMini}>
-                    <Input
-                        type="number"
-                        placeholder="Площадь"
-                        value={s_.data.area}
-                        onChange={(value) => this.onChangeNumber(value, 'area')}
-                    />
-                </div>
-
-                <div className={grid.mbMini}>
-                    <Input
-                        type="number"
-                        placeholder="Стоимость PDF"
-                        value={s_.data.pdfCoast}
-                        onChange={(value) => this.onChangeNumber(value, 'pdfCoast')}
-                    />
-                </div>
-
-                <div className={grid.mbMini}>
-                    <Select
-                        placeholder="Дополнительно"
-                        options={s_.additions}
-                        clearable={false}
-                        searchable={false}
-                        onChange={(addition) => this.selectAddition(addition)}
-                        value={s_.addition}
-                    />
+                    <div className={grid.mbMini}>
+                        <Select
+                            placeholder="Дополнительно"
+                            options={s_.additions}
+                            clearable={false}
+                            searchable={false}
+                            onChange={(addition) => this.selectAddition(addition)}
+                            value={s_.addition}
+                        />
+                    </div>
                 </div>
 
                 <div className={grid.mbMini}>
