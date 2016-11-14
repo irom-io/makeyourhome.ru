@@ -23,9 +23,7 @@ const l10n = {
     ...l10nAdmin
 };
 
-const getTranslate = (key) => {
-    const lang = getLang();
-
+const getTranslate = (key, lang = getLang()) => {
     let translate = objectPath.get(l10n, key);
 
     if (translate[lang]) {

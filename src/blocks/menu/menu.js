@@ -7,6 +7,16 @@ import MenuButton from 'blocks/menu/__button/menu__button';
 import menu from './menu.css';
 import item from 'blocks/item/item.css';
 
+export const styleList = [
+    {name: 'modern', to: '/projects?style=modern'},
+    {name: 'classic', to: '/projects?style=classic'},
+    {name: 'countryside', to: '/projects?style=countryside'},
+    {name: 'european', to: '/projects?style=european'},
+    {name: 'american', to: '/projects?style=american'},
+    {name: 'wooden', to: '/projects?style=wooden'},
+    {name: 'bungalow', to: '/projects?style=bungalow'}
+];
+
 class Menu extends React.Component {
     constructor(p_) {
         super(p_);
@@ -18,15 +28,7 @@ class Menu extends React.Component {
             {
                 name: 'styles',
                 to: '/styles',
-                subItems: [
-                    {name: 'modern', to: '/projects?style=modern'},
-                    {name: 'classic', to: '/projects?style=classic'},
-                    {name: 'countryside', to: '/projects?style=countryside'},
-                    {name: 'european', to: '/projects?style=european'},
-                    {name: 'american', to: '/projects?style=american'},
-                    {name: 'wooden', to: '/projects?style=wooden'},
-                    {name: 'bungalow', to: '/projects?style=bungalow'}
-                ]
+                subItems: styleList
             },
             {
                 name: 'collections',

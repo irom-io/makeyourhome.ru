@@ -5,7 +5,9 @@ import {getLang} from 'blocks/page/__lang/page__lang';
 import {getUser} from 'blocks/auth/auth';
 import api from 'blocks/api/api';
 import AdminLoader from 'pages/admin/__loader/admin__loader';
+import Select from 'blocks/select/select';
 import L10n from 'blocks/l10n/l10n';
+import {styleList} from 'blocks/menu/menu';
 
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
@@ -24,7 +26,8 @@ class AdminProjects extends React.Component {
                 en: {title: '', shortText: '', longText: ''},
                 esp: {title: '', shortText: '', longText: ''}
             },
-            projectId: p_.projectId || null
+            projectId: p_.projectId || null,
+            styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}})
         };
     }
     componentDidMount() {
@@ -153,6 +156,13 @@ class AdminProjects extends React.Component {
                     <AdminLoader
                         images={s_.data.images}
                         onUpdate={(images) => this.onUpdate(images)}
+                    />
+                </div>
+
+                <div className={grid.mbMini}>
+                    <Select
+                        placeholder="Стиль"
+                        options={s_.styles}
                     />
                 </div>
 
