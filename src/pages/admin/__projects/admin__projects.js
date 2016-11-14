@@ -29,7 +29,8 @@ class AdminProjects extends React.Component {
                 type: null,
                 floor: null,
                 bedroom: null,
-                garage: null
+                garage: null,
+                area: ''
             },
             projectId: p_.projectId || null,
             styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}}),
@@ -63,6 +64,12 @@ class AdminProjects extends React.Component {
         
         this.setState({data: data});
     }
+    onChangeNumber(value, field) {
+        let data = this.state.data;
+        data[field] = value;
+
+        this.setState({data: data});
+    }
     addNew() {
         this.setState({
             data: {
@@ -74,7 +81,8 @@ class AdminProjects extends React.Component {
                 type: null,
                 floor: null,
                 bedroom: null,
-                garage: null
+                garage: null,
+                area: ''
             },
             errorMsg: null,
             loading: false,
@@ -255,6 +263,14 @@ class AdminProjects extends React.Component {
                         searchable={false}
                         onChange={(garage) => this.selectGarage(garage)}
                         value={s_.data.garage}
+                    />
+                </div>
+
+                <div className={grid.mbMini}>
+                    <Input
+                        placeholder="Площадь"
+                        value={s_.data.area}
+                        onChange={(value) => this.onChangeNumber(value, 'area')}
                     />
                 </div>
 
