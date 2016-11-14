@@ -5,6 +5,7 @@ import Search from 'react-icons/lib/md/search';
 import Link from 'blocks/link/link';
 import ArrowLeft from 'react-icons/lib/md/keyboard-arrow-left';
 import ArrowRight from 'react-icons/lib/md/keyboard-arrow-right';
+import {createSrc} from 'blocks/item/item';
 
 import grid from 'blocks/grid/grid.css';
 import projectSlider from './project__slider.css';
@@ -66,7 +67,7 @@ class ProjectSlider extends React.Component {
                                 >
                                     <div className={projectSlider.itemWrapper}>
                                         <Rectangle
-                                            src={src}
+                                            src={createSrc(src)}
                                             className={projectSlider.item}
                                         />
                                         <Link
