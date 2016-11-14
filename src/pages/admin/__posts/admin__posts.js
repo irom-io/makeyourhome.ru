@@ -38,7 +38,7 @@ class AdminPosts extends React.Component {
                 if (response && self.state.postId) {
                     response.forEach((post) => {
                         if (post.id === self.state.postId) {
-                            self.setState({data: post});
+                            self.setState({data: {...self.state.data, ...post}});
                         }
                     })
                 }
@@ -69,7 +69,6 @@ class AdminPosts extends React.Component {
         const s_ = this.state;
         const p_ = this.props;
         const self = this;
-        const lang = getLang();
         let user = localStorage.getItem('user');
 
         if (user) {
@@ -82,12 +81,8 @@ class AdminPosts extends React.Component {
         p_.onSubmit();
         api.post('posts', {
             user: user,
-            images: s_.data.images,
-            title: s_.data[lang].title,
-            shortText: s_.data[lang].shortText,
-            longText: s_.data[lang].longText,
-            postId: s_.postId,
-            lang: lang
+            data: s_.data,
+            postId: s_.postId
         })
         .then((response) => {
             p_.onResponse(response);

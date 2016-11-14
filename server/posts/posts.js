@@ -14,6 +14,7 @@ const serverError = {error: {msg: 'serverError'}};
 router.post('/', function(req, res) {
     var user = usersModel.get(req.body.user);
     var postId = req.body.postId || null;
+    var post;
 
     if (!user.error && user.isAdmin) {
         var posts;
@@ -21,28 +22,17 @@ router.post('/', function(req, res) {
         posts = JSON.parse(posts);
         
         if (postId) {
-            var post = find(posts, function (post, index, array) {
+            post = find(posts, function (post, index, array) {
                 return post.id === postId;
             });
-
-            post.images = req.body.images;
-            post[req.body.lang] = {
-                title: req.body.title,
-                shortText: req.body.shortText,
-                longText: req.body.longText
-            }
+            
+            post = Object.assign(post, req.body.data);
         } else {
             postId = randomstring.generate(15);
-
-            posts.unshift({
-                id: postId,
-                images: req.body.images,
-                [req.body.lang]: {
-                    title: req.body.title,
-                    shortText: req.body.shortText,
-                    longText: req.body.longText
-                }
-            });    
+            post = Object.assign({}, req.body.data);
+            post.id = postId;
+            
+            posts.unshift(post);    
         }
         
         fs.writeFileSync(postsSrc, JSON.stringify(posts));
