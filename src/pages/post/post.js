@@ -86,7 +86,7 @@ class Post extends React.Component {
                         title={title}
                         media={createSrc(s_.post.images[0])}
                         description={shortText}
-                        fave={{id: s_.post.id, type: 'post'}}
+                        fave={{id: s_.post.id, type: 'post', isActive: s_.post.faveActive}}
                     />
                 </div>
                 }
