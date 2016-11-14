@@ -7,7 +7,7 @@ import api from 'blocks/api/api';
 import AdminLoader from 'pages/admin/__loader/admin__loader';
 import Select from 'blocks/select/select';
 import L10n from 'blocks/l10n/l10n';
-import {styleList, collectionList, numberList} from 'blocks/menu/menu';
+import {styleList, collectionList, numberList, additionList} from 'blocks/menu/menu';
 
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
@@ -20,6 +20,7 @@ class AdminProjects extends React.Component {
         this.state = {
             errorMsg: null,
             loading: false,
+            addition: 'withoutAdditions',
             data: {
                 images: [],
                 ru: {title: '', shortText: '', longText: ''},
@@ -38,6 +39,7 @@ class AdminProjects extends React.Component {
             collections: collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`, 'ru')}}),
             floors: numberList.map((number) => {return {value: number.name, label: L10n(`project.floors.${number.name}`, 'ru')}}),
             bedrooms: numberList.map((bedroom) => {return {value: bedroom.name, label: L10n(`project.bedrooms.${bedroom.name}`, 'ru')}}),
+            additions: additionList.map((addition) => {return {value: addition.name, label: L10n(`project.additions.${addition.name}`, 'ru')}}),
             garage: [{value: 'no', label: L10n(`project.garage.no`, 'ru')}, {value: 'yes', label: L10n(`project.garage.yes`, 'ru')}]
         };
     }
@@ -88,7 +90,8 @@ class AdminProjects extends React.Component {
             },
             errorMsg: null,
             loading: false,
-            projectId: null
+            projectId: null,
+            addition: 'withoutAdditions'
         });
     }
     onSubmit(e) {
@@ -171,6 +174,9 @@ class AdminProjects extends React.Component {
 
         data.garage = garage.value;
         this.setState({data: data});
+    }
+    selectAddition(addition) {
+        this.setState({addition: addition.value});
     }
     render() {
         const s_ = this.state;
@@ -283,6 +289,17 @@ class AdminProjects extends React.Component {
                         placeholder="Стоимость PDF"
                         value={s_.data.pdfCoast}
                         onChange={(value) => this.onChangeNumber(value, 'pdfCoast')}
+                    />
+                </div>
+
+                <div className={grid.mbMini}>
+                    <Select
+                        placeholder="Дополнительно"
+                        options={s_.additions}
+                        clearable={false}
+                        searchable={false}
+                        onChange={(addition) => this.selectAddition(addition)}
+                        value={s_.addition}
                     />
                 </div>
 

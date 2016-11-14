@@ -76,7 +76,12 @@
         "esp": "Tiene un garaje"
       }
     },
-    "additionally": {
+    "additions": {
+      "withoutAdditions": {
+        "ru": "Без дополнений",
+        "en": "Without additions",
+        "esp": "Sin adiciones"
+      },
       "mirroredVersion": {
         "ru": "Зеркальный вариант",
         "en": "Mirrored version",

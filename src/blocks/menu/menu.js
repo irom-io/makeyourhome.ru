@@ -35,6 +35,16 @@ export const numberList = [
     {name: 'five'}
 ];
 
+export const additionList = [
+    {name: 'withoutAdditions'},
+    {name: 'mirroredVersion'},
+    {name: 'сostEstimates'},
+    {name: 'locationLighting'},
+    {name: 'locationFurniture'},
+    {name: 'connectionPlumbing'},
+    {name: 'consultation'}
+];
+
 class Menu extends React.Component {
     constructor(p_) {
         super(p_);
