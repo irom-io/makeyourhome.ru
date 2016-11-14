@@ -27,13 +27,16 @@ class AdminProjects extends React.Component {
                 esp: {title: '', shortText: '', longText: ''},
                 style: null,
                 type: null,
-                floor: null
+                floor: null,
+                bedroom: null,
+                garage: null
             },
             projectId: p_.projectId || null,
             styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}}),
             collections: collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`, 'ru')}}),
             floors: numberList.map((number) => {return {value: number.name, label: L10n(`project.floors.${number.name}`, 'ru')}}),
-            bedrooms: numberList.map((bedroom) => {return {value: bedroom.name, label: L10n(`project.bedrooms.${bedroom.name}`, 'ru')}})
+            bedrooms: numberList.map((bedroom) => {return {value: bedroom.name, label: L10n(`project.bedrooms.${bedroom.name}`, 'ru')}}),
+            garage: [{value: 'no', label: L10n(`project.garage.no`, 'ru')}, {value: 'yes', label: L10n(`project.garage.yes`, 'ru')}]
         };
     }
     componentDidMount() {
@@ -70,7 +73,8 @@ class AdminProjects extends React.Component {
                 style: null,
                 type: null,
                 floor: null,
-                bedroom: null
+                bedroom: null,
+                garage: null
             },
             errorMsg: null,
             loading: false,
@@ -150,6 +154,12 @@ class AdminProjects extends React.Component {
         let data = this.state.data;
 
         data.bedroom = bedroom.value;
+        this.setState({data: data});
+    }
+    selectGarage(garage) {
+        let data = this.state.data;
+
+        data.garage = garage.value;
         this.setState({data: data});
     }
     render() {
@@ -234,6 +244,17 @@ class AdminProjects extends React.Component {
                         searchable={false}
                         onChange={(bedroom) => this.selectBedroom(bedroom)}
                         value={s_.data.bedroom}
+                    />
+                </div>
+
+                <div className={grid.mbMini}>
+                    <Select
+                        placeholder="Гараж"
+                        options={s_.garage}
+                        clearable={false}
+                        searchable={false}
+                        onChange={(garage) => this.selectGarage(garage)}
+                        value={s_.data.garage}
                     />
                 </div>
 

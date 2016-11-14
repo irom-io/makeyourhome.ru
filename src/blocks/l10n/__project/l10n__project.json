@@ -63,6 +63,18 @@
         "en": "Five bedrooms",
         "esp": "Сinco dormitorios"
       }
+    },
+    "garage": {
+      "no": {
+        "ru": "Нет гаража",
+        "en": "No garage",
+        "esp": "Sin garaje"
+      },
+      "yes": {
+        "ru": "Есть гараж",
+        "en": "Have a garage",
+        "esp": "Tiene un garaje"
+      }
     }
   }
 }
