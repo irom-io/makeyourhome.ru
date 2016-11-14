@@ -15,7 +15,6 @@ class Select extends React.Component {
         const p_ = this.props;
         this.setState({value: selected});
 
-        console.log('change');
         if (p_.onChange) {
             p_.onChange(selected);
         }

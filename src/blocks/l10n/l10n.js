@@ -9,6 +9,7 @@ import l10nToggle from './__toggle/l10n__toggle.json';
 import l10nErrors from './__errors/l10n__errors.json';
 import l10nAuth from './__auth/l10n__auth.json';
 import l10nQuestions from './__questions/l10n__questions.json';
+import l10nProject from './__project/l10n__project.json';
 import l10nAdmin from './__admin/l10n__admin.json';
 
 const l10n = {
@@ -20,7 +21,8 @@ const l10n = {
     ...l10nErrors,
     ...l10nAuth,
     ...l10nQuestions,
-    ...l10nAdmin
+    ...l10nAdmin,
+    ...l10nProject
 };
 
 const getTranslate = (key, lang = getLang()) => {

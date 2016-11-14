@@ -1,0 +1,26 @@
+{
+  "project": {
+    "floors": {
+      "one": {
+        "ru": "Один этаж",
+        "en": "One floor",
+        "esp": "Un piso"
+      },
+      "two": {
+        "ru": "Два этажа",
+        "en": "Two floors",
+        "esp": "Dos pisos"
+      },
+      "three": {
+        "ru": "Три этажа",
+        "en": "Three floors",
+        "esp": "Tres pisos"
+      },
+      "four": {
+        "ru": "Четыре этажа",
+        "en": "Four floors",
+        "esp": "Сuatro pisos"
+      }
+    }
+  }
+}

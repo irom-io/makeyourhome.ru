@@ -7,7 +7,7 @@ import api from 'blocks/api/api';
 import AdminLoader from 'pages/admin/__loader/admin__loader';
 import Select from 'blocks/select/select';
 import L10n from 'blocks/l10n/l10n';
-import {styleList, collectionList} from 'blocks/menu/menu';
+import {styleList, collectionList, floorList} from 'blocks/menu/menu';
 
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
@@ -26,11 +26,13 @@ class AdminProjects extends React.Component {
                 en: {title: '', shortText: '', longText: ''},
                 esp: {title: '', shortText: '', longText: ''},
                 style: null,
-                type: null
+                type: null,
+                floor: null
             },
             projectId: p_.projectId || null,
             styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}}),
-            collections: collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`, 'ru')}})
+            collections: collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`, 'ru')}}),
+            floors: floorList.map((floor) => {return {value: floor.name, label: L10n(`project.floors.${floor.name}`, 'ru')}})
         };
     }
     componentDidMount() {
@@ -65,7 +67,8 @@ class AdminProjects extends React.Component {
                 esp: {title: '', shortText: '', longText: ''},
                 images: [],
                 style: null,
-                type: null
+                type: null,
+                floor: null
             },
             errorMsg: null,
             loading: false,
@@ -135,6 +138,12 @@ class AdminProjects extends React.Component {
         data.type = type.value;
         this.setState({data: data});
     }
+    selectFloor(floor) {
+        let data = this.state.data;
+
+        data.floor = floor.value;
+        this.setState({data: data});
+    }
     render() {
         const s_ = this.state;
         const lang = getLang();
@@ -195,6 +204,17 @@ class AdminProjects extends React.Component {
                         searchable={false}
                         onChange={(type) => this.selectType(type)}
                         value={s_.data.type}
+                    />
+                </div>
+
+                <div className={grid.mbMini}>
+                    <Select
+                        placeholder="Этажность"
+                        options={s_.floors}
+                        clearable={false}
+                        searchable={false}
+                        onChange={(floor) => this.selectFloor(floor)}
+                        value={s_.data.floor}
                     />
                 </div>
 
