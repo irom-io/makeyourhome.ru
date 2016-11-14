@@ -25,7 +25,7 @@ class Post extends React.Component {
         const lang = getLang();
         const user = getUser();
 
-        api.post('posts', {user: user})
+        api.post('posts/view', {user: user})
             .then((response) => {
                 let isCorrectPostId = false;
                 self.setState({loading: false});

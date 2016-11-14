@@ -51,6 +51,7 @@ router.post('/view', function(req, res) {
             if (fave.type == 'post') {
                 posts.forEach((post) => {
                      if (post.id == fave.id) {
+                         post.type = 'post';
                          favourite.push(post);
                          return false;
                      }
@@ -59,6 +60,7 @@ router.post('/view', function(req, res) {
             if (fave.type == 'project') {
                 projects.forEach((project) => {
                     if (project.id == fave.id) {
+                        project.type = 'project';
                         favourite.push(project);
                         return false;
                     }

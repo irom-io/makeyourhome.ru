@@ -102,11 +102,11 @@ class Favourite extends React.Component {
 
                             return (
                                 <TileLine
-                                    key={`post_${index}`}
+                                    key={`fave_${index}`}
                                     src={createSrc(item.images[0])}
                                     text={title}
                                     l10nText={true}
-                                    link={{to: `/posts/${item.id}`}}
+                                    link={{to: `/${item.type}s/${item.id}`}}
                                     description={shortText}
                                 />
                             )
