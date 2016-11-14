@@ -30,7 +30,8 @@ class AdminProjects extends React.Component {
                 floor: null,
                 bedroom: null,
                 garage: null,
-                area: ''
+                area: '',
+                pdfCoast: ''
             },
             projectId: p_.projectId || null,
             styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}}),
@@ -82,7 +83,8 @@ class AdminProjects extends React.Component {
                 floor: null,
                 bedroom: null,
                 garage: null,
-                area: ''
+                area: '',
+                pdfCoast: ''
             },
             errorMsg: null,
             loading: false,
@@ -268,9 +270,19 @@ class AdminProjects extends React.Component {
 
                 <div className={grid.mbMini}>
                     <Input
+                        type="number"
                         placeholder="Площадь"
                         value={s_.data.area}
                         onChange={(value) => this.onChangeNumber(value, 'area')}
+                    />
+                </div>
+
+                <div className={grid.mbMini}>
+                    <Input
+                        type="number"
+                        placeholder="Стоимость PDF"
+                        value={s_.data.pdfCoast}
+                        onChange={(value) => this.onChangeNumber(value, 'pdfCoast')}
                     />
                 </div>
 
