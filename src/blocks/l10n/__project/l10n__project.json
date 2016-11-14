@@ -75,6 +75,38 @@
         "en": "Have a garage",
         "esp": "Tiene un garaje"
       }
+    },
+    "additionally": {
+      "mirroredVersion": {
+        "ru": "Зеркальный вариант",
+        "en": "Mirrored version",
+        "esp": "Versión reflejada"
+      },
+      "сostEstimates": {
+        "ru": "Смета на материалы",
+        "en": "Cost estimates for materials",
+        "esp": "Estimaciones de costos de las materias"
+      },
+      "locationLighting": {
+        "ru": "Расположение освещения",
+        "en": "Location lighting",
+        "esp": "Ubicación de la iluminación"
+      },
+      "locationFurniture": {
+        "ru": "Расположение мебели",
+        "en": "Location furniture",
+        "esp": "muebles de Localización"
+      },
+      "connectionPlumbing": {
+        "ru": "Подключение сантехники",
+        "en": "Connection plumbing",
+        "esp": "Tuberías de conexión"
+      },
+      "consultation": {
+        "ru": "Консультация",
+        "en": "Consultation",
+        "esp": "Consulta"
+      }
     }
   }
 }
