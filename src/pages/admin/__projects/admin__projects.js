@@ -32,7 +32,8 @@ class AdminProjects extends React.Component {
                 bedroom: null,
                 garage: null,
                 area: '',
-                pdfCoast: ''
+                pdfCoast: '',
+                addition: {}
             },
             projectId: p_.projectId || null,
             styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}}),
@@ -86,7 +87,8 @@ class AdminProjects extends React.Component {
                 bedroom: null,
                 garage: null,
                 area: '',
-                pdfCoast: ''
+                pdfCoast: '',
+                addition: {}
             },
             errorMsg: null,
             loading: false,
@@ -178,10 +180,17 @@ class AdminProjects extends React.Component {
     selectAddition(addition) {
         this.setState({addition: addition.value});
     }
+    onChangeAddition(value) {
+        const s_ = this.state;
+        let data = this.state.data;
+
+        data.addition[s_.addition] = value;
+        this.setState({data: data});
+    }
     render() {
         const s_ = this.state;
         const lang = getLang();
-        
+
         return (
             <form className={grid.w100} onSubmit={(e) => this.onSubmit(e)}>
                 <div
@@ -307,6 +316,17 @@ class AdminProjects extends React.Component {
                             value={s_.addition}
                         />
                     </div>
+
+                    {s_.addition !== 'withoutAdditions' &&
+                        <div className={grid.mbMini}>
+                            <Input
+                                type="number"
+                                placeholder="Стоимость дополнения"
+                                value={s_.data.addition[s_.addition]}
+                                onChange={(value) => this.onChangeAddition(value)}
+                            />
+                        </div>
+                    }
                 </div>
 
                 <div className={grid.mbMini}>
