@@ -14,29 +14,20 @@ router.post('/', function(req, res) {
     var isActive;
 
     if (!user.error) {
-        var fave = req.body.fave;
-        var faveIndex;
-        switch (fave.type) {
-            case 'post':
-                faveIndex = user.favouritePosts.indexOf(fave.id);
-                if (faveIndex === -1) {
-                    user.favouritePosts.push(fave.id);
-                    isActive = true;
-                } else {
-                    user.favouritePosts.splice(faveIndex, 1);
-                    isActive = false;
-                }
-                break;
-            case 'project':
-                faveIndex = user.favouriteProjects.indexOf(fave.id);
-                if (faveIndex === -1) {
-                    user.favouriteProjects.push(fave.id);
-                    isActive = true;
-                } else {
-                    user.favouriteProjects.splice(faveIndex, 1);
-                    isActive = false;
-                }
-                break;
+        var faveIndex = -1;
+
+        user.favourite.forEach((fave, index) => {
+            if ((fave.type == req.body.fave.type) && (fave.id == req.body.fave.id)) {
+                faveIndex = index;
+            }
+        });
+
+        if (faveIndex == -1) {
+            user.favourite.unshift(req.body.fave);
+            isActive = true;
+        } else {
+            user.favourite.splice(faveIndex, 1);
+            isActive = false;
         }
 
         usersModel.save(user, true);
@@ -50,26 +41,30 @@ router.post('/view', function(req, res) {
     var user = usersModel.get(req.body.user, false, true);
 
     if (!user.error) {
-        var favouritePosts = [];
+        var favourite = [];
         var posts = fs.readFileSync(postsSrc, 'utf-8');
-
-        posts = JSON.parse(posts);
-        posts.forEach((post) => {
-            if (user.favouritePosts.indexOf(post.id) !== -1) {
-                favouritePosts.push(post);
-            }
-        });
-
-        var favouriteProjects = [];
         var projects = fs.readFileSync(projectsSrc, 'utf-8');
-
+        posts = JSON.parse(posts);
         projects = JSON.parse(projects);
-        projects.forEach((project) => {
-            if (user.favouriteProjects.indexOf(project.id) !== -1) {
-                favouriteProjects.push(project);
+
+        user.favourite.forEach((fave) => {
+            if (fave.type == 'post') {
+                posts.forEach((post) => {
+                     if (post.id == fave.id) {
+                         favourite.push(post);
+                         return false;
+                     }
+                });
+            }
+            if (fave.type == 'project') {
+                projects.forEach((project) => {
+                    if (project.id == fave.id) {
+                        favourite.push(project);
+                        return false;
+                    }
+                });
             }
         });
-        var favourite = favouriteProjects.concat(favouritePosts);
 
         res.send(favourite);
     } else {

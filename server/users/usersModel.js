@@ -91,8 +91,7 @@ const usersModel = {
             notValid: insertUser.notValid || false,
             userHash: insertUser.userHash || null,
             isAdmin: insertUser.isAdmin || null,
-            favouritePosts: insertUser.favouritePosts || [],
-            favouriteProjects: insertUser.favouriteProjects || []
+            favourite: insertUser.favourite || []
         }
     },
     exists: (insertUser) => {

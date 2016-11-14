@@ -13,9 +13,11 @@ const favouriteModel = {
 
         if (!user.error) {
             posts.forEach((post) => {
-                if (user.favouritePosts.indexOf(post.id) !== -1) {
-                    post.faveActive = true
-                }
+                user.favourite.forEach((fave) => {
+                    if (fave.type == 'post' && fave.id == post.id) {
+                        post.faveActive = true;
+                    }
+                });
             });
         }
 
@@ -27,10 +29,12 @@ const favouriteModel = {
         projects = JSON.parse(projects);
 
         if (!user.error) {
-            projects.forEach((post) => {
-                if (user.favouriteProjects.indexOf(post.id) !== -1) {
-                    post.faveActive = true
-                }
+            projects.forEach((project) => {
+                user.favourite.forEach((fave) => {
+                    if (fave.type == 'project' && fave.id == project.id) {
+                        project.faveActive = true;
+                    }
+                });
             });
         }
 
