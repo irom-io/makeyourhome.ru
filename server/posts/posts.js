@@ -27,6 +27,7 @@ router.post('/', function(req, res) {
             });
             
             post = Object.assign(post, req.body.data);
+            delete post.faveActive;
         } else {
             postId = randomstring.generate(15);
             post = Object.assign({}, req.body.data);
