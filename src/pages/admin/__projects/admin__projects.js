@@ -7,7 +7,7 @@ import api from 'blocks/api/api';
 import AdminLoader from 'pages/admin/__loader/admin__loader';
 import Select from 'blocks/select/select';
 import L10n from 'blocks/l10n/l10n';
-import {styleList} from 'blocks/menu/menu';
+import {styleList, collectionList} from 'blocks/menu/menu';
 
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
@@ -25,10 +25,12 @@ class AdminProjects extends React.Component {
                 ru: {title: '', shortText: '', longText: ''},
                 en: {title: '', shortText: '', longText: ''},
                 esp: {title: '', shortText: '', longText: ''},
-                style: null
+                style: null,
+                type: null
             },
             projectId: p_.projectId || null,
-            styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}})
+            styles: styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`, 'ru')}}),
+            collections: collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`, 'ru')}})
         };
     }
     componentDidMount() {
@@ -62,7 +64,8 @@ class AdminProjects extends React.Component {
                 en: {title: '', shortText: '', longText: ''},
                 esp: {title: '', shortText: '', longText: ''},
                 images: [],
-                style: null
+                style: null,
+                type: null
             },
             errorMsg: null,
             loading: false,
@@ -126,6 +129,12 @@ class AdminProjects extends React.Component {
         data.style = style.value;
         this.setState({data: data});
     }
+    selectType(type) {
+        let data = this.state.data;
+
+        data.type = type.value;
+        this.setState({data: data});
+    }
     render() {
         const s_ = this.state;
         const lang = getLang();
@@ -175,6 +184,17 @@ class AdminProjects extends React.Component {
                         searchable={false}
                         onChange={(style) => this.selectStyle(style)}
                         value={s_.data.style}
+                    />
+                </div>
+
+                <div className={grid.mbMini}>
+                    <Select
+                        placeholder="Тип"
+                        options={s_.collections}
+                        clearable={false}
+                        searchable={false}
+                        onChange={(type) => this.selectType(type)}
+                        value={s_.data.type}
                     />
                 </div>
 

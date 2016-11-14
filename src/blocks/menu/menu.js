@@ -17,6 +17,15 @@ export const styleList = [
     {name: 'bungalow', to: '/projects?style=bungalow'}
 ];
 
+export const collectionList = [
+    {name: 'house', to: '/projects?collection=house'},
+    {name: 'bath', to: '/projects?collection=bath'},
+    {name: 'garage', to: '/projects?collection=garage'},
+    {name: 'recreation', to: '/projects?collection=recreation'},
+    {name: 'cabin', to: '/projects?collection=cabin'},
+    {name: 'other', to: '/projects?collection=other'}
+];
+
 class Menu extends React.Component {
     constructor(p_) {
         super(p_);
@@ -33,14 +42,7 @@ class Menu extends React.Component {
             {
                 name: 'collections',
                 to: '/collections',
-                subItems: [
-                    {name: 'house', to: '/projects?collection=house'},
-                    {name: 'bath', to: '/projects?collection=bath'},
-                    {name: 'garage', to: '/projects?collection=garage'},
-                    {name: 'recreation', to: '/projects?collection=recreation'},
-                    {name: 'cabin', to: '/projects?collection=cabin'},
-                    {name: 'other', to: '/projects?collection=other'}
-                ]
+                subItems: collectionList
             },
             {
                 name: 'questions',
