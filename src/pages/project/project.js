@@ -69,6 +69,7 @@ class Project extends React.Component {
                         <ProjectImage
                             projectId={s_.project.id}
                             imageId={image}
+                            images={s_.project.images}
                         />
                         }
 

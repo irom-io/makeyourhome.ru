@@ -113,5 +113,10 @@
     "ru": "Здесь будут отображаться ваши избранные материалы",
     "en": "It will display your favorite materials",
     "esp": "Se mostrará sus materiales favoritos"
+  },
+  "back": {
+    "ru": "Вернуться к проекту",
+    "en": "Back to project",
+    "esp": "Volver a proyectos"
   }
 }

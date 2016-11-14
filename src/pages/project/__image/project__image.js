@@ -1,6 +1,9 @@
 import React from 'react';
 import Link from 'blocks/link/link';
 import ArrowLeft from 'react-icons/lib/md/keyboard-arrow-left';
+import {createSrc} from 'blocks/item/item';
+import L10n from 'blocks/l10n/l10n';
+
 import projectImage from './project__image.css';
 import grid from 'blocks/grid/grid.css';
 
@@ -8,16 +11,9 @@ class ProjectImage extends React.Component {
     constructor(p_) {
         super(p_);
 
-        this.state = {images: [
-            require('pages/project/images/1/1.jpg'),
-            require('pages/project/images/1/2.jpg'),
-            require('pages/project/images/1/3.jpg'),
-            require('pages/project/images/1/4.jpg'),
-            require('pages/project/images/1/5.jpg')
-        ]};
+        this.state = {};
     }
     render() {
-        const s_ = this.state;
         const p_ = this.props;
 
         return (
@@ -30,13 +26,13 @@ class ProjectImage extends React.Component {
                         <ArrowLeft size={36} />
                     </div>
                     <div>
-                        Вернуться к проекту
+                        {L10n('back')}
                     </div>
                 </Link>
                 <img
                     className={grid.w100}
                     alt=""
-                    src={s_.images[p_.imageId]}
+                    src={createSrc(p_.images[p_.imageId])}
                 />
             </div>
         )
