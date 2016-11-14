@@ -55,7 +55,7 @@ class AdminProjects extends React.Component {
                 if (response && self.state.projectId) {
                     response.forEach((project) => {
                         if (project.id === self.state.projectId) {
-                            self.setState({data: project});
+                            self.setState({data: {...self.state.data, ...project}});
                         }
                     })
                 }
@@ -101,7 +101,6 @@ class AdminProjects extends React.Component {
         const s_ = this.state;
         const p_ = this.props;
         const self = this;
-        const lang = getLang();
         let user = localStorage.getItem('user');
 
         if (user) {
@@ -114,12 +113,8 @@ class AdminProjects extends React.Component {
         p_.onSubmit();
         api.post('projects', {
             user: user,
-            images: s_.data.images,
-            title: s_.data[lang].title,
-            shortText: s_.data[lang].shortText,
-            longText: s_.data[lang].longText,
-            projectId: s_.projectId,
-            lang: lang
+            data: s_.data,
+            projectId: s_.projectId
         })
         .then((response) => {
             p_.onResponse(response);
@@ -178,7 +173,26 @@ class AdminProjects extends React.Component {
         this.setState({data: data});
     }
     selectAddition(addition) {
-        this.setState({addition: addition.value});
+        let data = this.state.data;
+
+        if (addition.value === 'withoutAdditions') {
+            data.addition = {};
+            this.setState({data: data, addition: addition.value});
+
+            return;
+        }
+
+        if (!data.addition[addition.value]) {
+            data.addition[addition.value] = '';
+            this.setState({
+                data: data,
+                addition: addition.value
+            });
+        } else {
+            this.setState({
+                addition: addition.value
+            });
+        }
     }
     onChangeAddition(value) {
         const s_ = this.state;

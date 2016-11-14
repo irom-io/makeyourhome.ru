@@ -25,24 +25,15 @@ router.post('/', function(req, res) {
                 return project.id === projectId;
             });
 
-            project.images = req.body.images;
-            project[req.body.lang] = {
-                title: req.body.title,
-                shortText: req.body.shortText,
-                longText: req.body.longText
-            }
+
+            project = Object.assign(project, req.body.data);
+            delete project.faveActive;
         } else {
             projectId = randomstring.generate(15);
+            project = Object.assign({}, req.body.data);
+            project.id = projectId;
 
-            projects.unshift({
-                id: projectId,
-                images: req.body.images,
-                [req.body.lang]: {
-                    title: req.body.title,
-                    shortText: req.body.shortText,
-                    longText: req.body.longText
-                }
-            });    
+            projects.unshift(project);
         }
         
         fs.writeFileSync(projectsSrc, JSON.stringify(projects));
