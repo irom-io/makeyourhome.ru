@@ -164,6 +164,11 @@
         "en": "6 printed copies",
         "esp": "6 kopis impresos"
       }
+    },
+    "total": {
+      "ru": "Итого",
+      "en": "In total",
+      "esp": "En total"
     }
   }
 }

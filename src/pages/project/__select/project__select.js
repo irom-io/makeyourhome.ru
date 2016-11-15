@@ -8,34 +8,60 @@ import projectSelect from './project__select.css';
 class ProjectSelect extends React.Component {
     constructor(p_) {
         super(p_);
+
+        this.state = {
+            pdf: 1*p_.project.pdfCoast,
+            printed: 2*p_.project.printedCoast,
+            addition: null,
+            additionSum: 0
+        };
+    }
+    getAdditionOptions(p_) {
         let key;
         let additionOptions = [];
 
         for (key in p_.project.addition) {
             if (p_.project.addition.hasOwnProperty(key)) {
-                additionOptions.push({value: p_.project.addition[key], label: L10n(`project.additions.${key}`)})
+                additionOptions.push({value: 1*p_.project.addition[key], label: L10n(`project.additions.${key}`)})
             }
         }
 
-        this.state = {
-            pdf: p_.project.pdfCoast,
-            printed: 2*p_.project.printedCoast,
-            addition: 0,
-            additionOptions: additionOptions
-        };
+        return additionOptions;
+    }
+    onChange(selected, type) {
+        let value = 0;
+        if (type === 'additionSum') {
+            selected.forEach((selectedItem) => {
+                value += selectedItem.value;
+            });
+            this.setState({
+                addition: selected,
+                additionSum: value
+            });
+        } else {
+            value = selected.value;
+            this.setState({[type]: value});
+        }
+    }
+    getTotal(s_) {
+        return s_.pdf + s_.printed + s_.additionSum;
     }
     render() {
         const s_ = this.state;
         const p_ = this.props;
 
+        const additionOptions = this.getAdditionOptions(p_);
+        const total = this.getTotal(s_);
+
         return (
             <div>
                 <div className={grid.mbMini}>
                     <Select
-                        options={[{value: 0, label: L10n('project.withoutPdf')}, {value: p_.project.pdfCoast, label: L10n('project.withPdf')}]}
+                        options={[{value: 0, label: L10n('project.withoutPdf')}, {value: 1*p_.project.pdfCoast, label: L10n('project.withPdf')}]}
                         searchable={false}
                         value={s_.pdf}
                         clearable={false}
+                        onChange={(selected) => this.onChange(selected, 'pdf')}
                     />
                 </div>
                 <div className={grid.mbMini}>
@@ -44,21 +70,22 @@ class ProjectSelect extends React.Component {
                         searchable={false}
                         clearable={false}
                         value={s_.printed}
+                        onChange={(selected) => this.onChange(selected, 'printed')}
                     />
                 </div>
                 <div className={grid.mbMini}>
                     <Select
                         placeholder={L10n('project.additions.text')}
-                        options={s_.additionOptions}
+                        options={additionOptions}
                         searchable={false}
                         clearable={false}
-                        value={s_.addition}
                         multi={true}
+                        value={s_.addition}
+                        onChange={(selected) => this.onChange(selected, 'additionSum')}
                     />
-                    <div className={projectSelect.subText}>Какие возможности?</div>
                 </div>
                 <div className={projectSelect.priceWrapper}>
-                    Итого: <span className={projectSelect.price}>3000</span> р.
+                    {L10n('project.total')}: <span className={projectSelect.price}>{total}</span> р.
                 </div>
             </div>
         )
