@@ -127,6 +127,38 @@
       "ru": "Другие проекты",
       "en": "Other projects",
       "esp": "Otros proyectos"
+    },
+    "withPdf": {
+      "ru": "Проект в PDF",
+      "en": "Project in PDF",
+      "esp": "Proyecto a PDF"
+    },
+    "withoutPdf": {
+      "ru": "Без PDF версии",
+      "en": "Without PDF version",
+      "esp": "Sin versión PDF"
+    },
+    "printed": {
+      "zero": {
+        "ru": "без печатных копий",
+        "en": "no printed copies",
+        "esp": "no hay copias impresas"
+      },
+      "two": {
+        "ru": "2 печатные копии",
+        "en": "2 printed copies",
+        "esp": "2 kopis impresos"
+      },
+      "four": {
+        "ru": "4 печатные копии",
+        "en": "4 printed copies",
+        "esp": "4 kopis impresos"
+      },
+      "six": {
+        "ru": "6 печатные копии",
+        "en": "6 printed copies",
+        "esp": "6 kopis impresos"
+      }
     }
   }
 }

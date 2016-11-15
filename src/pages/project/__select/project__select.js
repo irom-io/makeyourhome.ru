@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'blocks/select/select';
+import L10n from 'blocks/l10n/l10n';
 
 import grid from 'blocks/grid/grid.css';
 import projectSelect from './project__select.css';
@@ -8,25 +9,32 @@ class ProjectSelect extends React.Component {
     constructor(p_) {
         super(p_);
 
-        this.state = {};
+        this.state = {
+            pdf: p_.project.pdfCoast,
+            printed: 2*p_.project.printedCoast
+        };
     }
     render() {
+        const s_ = this.state;
+        const p_ = this.props;
+
         return (
             <div>
                 <div className={grid.mbMini}>
                     <Select
-                        options={[{value: 1, label: 'Проект в PDF'}, {value: 0, label: 'Без PDF версии'}]}
+                        options={[{value: p_.project.pdfCoast, label: L10n('project.withPdf')}, {value: 0, label: L10n('project.withoutPdf')}]}
                         searchable={false}
-                        value={1}
+                        value={s_.pdf}
+                        clearable={false}
                     />
                 </div>
                 <div className={grid.mbMini}>
                     <Select
-                        options={[{value: 2, label: '2 печатные копии'}, {value: 3, label: '3 печатные копии'}, {value: 4, label: '4 печатные копии'}]}
+                        options={[{value: 0, label: L10n('project.printed.zero')}, {value: 2*p_.project.printedCoast, label: L10n('project.printed.two')}, {value: 4*p_.project.printedCoast, label: L10n('project.printed.four')}, {value: 6*p_.project.printedCoast, label: L10n('project.printed.six')}]}
                         searchable={false}
-                        value={2}
+                        clearable={false}
+                        value={s_.printed}
                     />
-                    <div className={projectSelect.subText}>Что включено?</div>
                 </div>
                 <div className={grid.mbMini}>
                     <Select

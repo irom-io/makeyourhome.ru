@@ -92,7 +92,9 @@ class Project extends React.Component {
                                 text={s_.project[lang].title}
                                 src={createSrc(s_.project.images[0])}
                             >
-                                <ProjectSelect />
+                                <ProjectSelect 
+                                    project={s_.project}
+                                />
                             </ProjectItem>
 
                             <ProjectToolbar
