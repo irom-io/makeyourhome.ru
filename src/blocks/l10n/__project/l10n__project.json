@@ -169,6 +169,11 @@
       "ru": "Итого",
       "en": "In total",
       "esp": "En total"
+    },
+    "change": {
+      "ru": "Изменить проект",
+      "en": "Change project",
+      "esp": "Cambio proyecto"
     }
   }
 }

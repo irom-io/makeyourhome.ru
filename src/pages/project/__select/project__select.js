@@ -16,6 +16,13 @@ class ProjectSelect extends React.Component {
             additionSum: 0
         };
     }
+    componentWillReceiveProps(p_) {
+        this.setState({
+            pdf: p_.pdf,
+            printed: p_.printed,
+            addition: p_.addition
+        });
+    }
     getAdditionOptions(p_) {
         let key;
         let additionOptions = [];

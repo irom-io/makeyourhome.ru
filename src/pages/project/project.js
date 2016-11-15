@@ -86,7 +86,7 @@ class Project extends React.Component {
                     className={projectItem.icon}
                 >
                     <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
-                        Изменить проект
+                        {L10n('project.change')}
                     </div>
                     <Edit size={20} />
                 </div>
