@@ -24,7 +24,7 @@ class ProjectSelect extends React.Component {
 
         for (key in p_.project.addition) {
             if (p_.project.addition.hasOwnProperty(key)) {
-                additionOptions.push({value: key, label: L10n(`project.additions.${key}`)})
+                additionOptions.push({value: key, label: L10n(`project.${key}`)})
             }
         }
 
@@ -75,7 +75,7 @@ class ProjectSelect extends React.Component {
                 </div>
                 <div className={grid.mbMini}>
                     <Select
-                        options={[{value: 'zero', label: L10n('project.printed.zero')}, {value: 'two', label: L10n('project.printed.two')}, {value: 'four', label: L10n('project.printed.four')}, {value: 'six', label: L10n('project.printed.six')}]}
+                        options={[{value: 'zero', label: L10n('project.zero')}, {value: 'two', label: L10n('project.two')}, {value: 'four', label: L10n('project.four')}, {value: 'six', label: L10n('project.six')}]}
                         searchable={false}
                         clearable={false}
                         value={s_.printed}
@@ -84,7 +84,7 @@ class ProjectSelect extends React.Component {
                 </div>
                 <div className={grid.mbMini}>
                     <Select
-                        placeholder={L10n('project.additions.text')}
+                        placeholder={L10n('project.text')}
                         options={additionOptions}
                         searchable={false}
                         clearable={false}

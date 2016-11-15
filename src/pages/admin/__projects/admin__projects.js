@@ -41,7 +41,7 @@ class AdminProjects extends React.Component {
             collections: collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`, 'ru')}}),
             floors: numberList.map((number) => {return {value: number.name, label: L10n(`project.floors.${number.name}`, 'ru')}}),
             bedrooms: numberList.map((bedroom) => {return {value: bedroom.name, label: L10n(`project.bedrooms.${bedroom.name}`, 'ru')}}),
-            additions: additionList.map((addition) => {return {value: addition.name, label: L10n(`project.additions.${addition.name}`, 'ru')}}),
+            additions: additionList.map((addition) => {return {value: addition.name, label: L10n(`project.${addition.name}`, 'ru')}}),
             garage: [{value: 'no', label: L10n(`project.garage.no`, 'ru')}, {value: 'yes', label: L10n(`project.garage.yes`, 'ru')}]
         };
     }

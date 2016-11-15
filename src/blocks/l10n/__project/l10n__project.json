@@ -86,47 +86,45 @@
         "esp": "Tiene un garaje"
       }
     },
-    "additions": {
-      "text": {
-        "ru": "Дополнительно",
-        "en": "Additionally",
-        "esp": "Además"
-      },
-      "withoutAdditions": {
-        "ru": "Без дополнений",
-        "en": "Without additions",
-        "esp": "Sin adiciones"
-      },
-      "mirroredVersion": {
-        "ru": "Зеркальный вариант",
-        "en": "Mirrored version",
-        "esp": "Versión reflejada"
-      },
-      "сostEstimates": {
-        "ru": "Смета на материалы",
-        "en": "Cost estimates for materials",
-        "esp": "Estimaciones de costos de las materias"
-      },
-      "locationLighting": {
-        "ru": "Расположение освещения",
-        "en": "Location lighting",
-        "esp": "Ubicación de la iluminación"
-      },
-      "locationFurniture": {
-        "ru": "Расположение мебели",
-        "en": "Location furniture",
-        "esp": "muebles de Localización"
-      },
-      "connectionPlumbing": {
-        "ru": "Подключение сантехники",
-        "en": "Connection plumbing",
-        "esp": "Tuberías de conexión"
-      },
-      "consultation": {
-        "ru": "Консультация",
-        "en": "Consultation",
-        "esp": "Consulta"
-      }
+    "text": {
+      "ru": "Дополнительно",
+      "en": "Additionally",
+      "esp": "Además"
+    },
+    "withoutAdditions": {
+      "ru": "Без дополнений",
+      "en": "Without additions",
+      "esp": "Sin adiciones"
+    },
+    "mirroredVersion": {
+      "ru": "Зеркальный вариант",
+      "en": "Mirrored version",
+      "esp": "Versión reflejada"
+    },
+    "сostEstimates": {
+      "ru": "Смета на материалы",
+      "en": "Cost estimates for materials",
+      "esp": "Estimaciones de costos de las materias"
+    },
+    "locationLighting": {
+      "ru": "Расположение освещения",
+      "en": "Location lighting",
+      "esp": "Ubicación de la iluminación"
+    },
+    "locationFurniture": {
+      "ru": "Расположение мебели",
+      "en": "Location furniture",
+      "esp": "muebles de Localización"
+    },
+    "connectionPlumbing": {
+      "ru": "Подключение сантехники",
+      "en": "Connection plumbing",
+      "esp": "Tuberías de conexión"
+    },
+    "consultation": {
+      "ru": "Консультация",
+      "en": "Consultation",
+      "esp": "Consulta"
     },
     "otherProjects": {
       "ru": "Другие проекты",
@@ -143,27 +141,25 @@
       "en": "Without PDF version",
       "esp": "Sin versión PDF"
     },
-    "printed": {
-      "zero": {
-        "ru": "Без печатных копий",
-        "en": "No printed copies",
-        "esp": "No hay copias impresas"
-      },
-      "two": {
-        "ru": "2 печатные копии",
-        "en": "2 printed copies",
-        "esp": "2 kopis impresos"
-      },
-      "four": {
-        "ru": "4 печатные копии",
-        "en": "4 printed copies",
-        "esp": "4 kopis impresos"
-      },
-      "six": {
-        "ru": "6 печатных копий",
-        "en": "6 printed copies",
-        "esp": "6 kopis impresos"
-      }
+    "zero": {
+      "ru": "Без печатных копий",
+      "en": "No printed copies",
+      "esp": "No hay copias impresas"
+    },
+    "two": {
+      "ru": "2 печатные копии",
+      "en": "2 printed copies",
+      "esp": "2 kopis impresos"
+    },
+    "four": {
+      "ru": "4 печатные копии",
+      "en": "4 printed copies",
+      "esp": "4 kopis impresos"
+    },
+    "six": {
+      "ru": "6 печатных копий",
+      "en": "6 printed copies",
+      "esp": "6 kopis impresos"
     },
     "total": {
       "ru": "Итого",
