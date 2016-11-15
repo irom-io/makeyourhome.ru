@@ -6,6 +6,7 @@ import ProjectSelect from 'pages/project/__select/project__select';
 import ProjectImage from 'pages/project/__image/project__image';
 import {Tile, TileWrapper} from 'blocks/tile/tile';
 import api from 'blocks/api/api';
+import arrayShuffle from 'array-shuffle';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import {getUser} from 'blocks/auth/auth';
 import {createSrc} from 'blocks/item/item';
@@ -20,47 +21,54 @@ class Project extends React.Component {
         super(p_, context);
 
         this.state = {
-            loading: true,
-            otherProjects: []
-        }
+            loading: true
+        };
+
+        this.loadProject = this.loadProject.bind(this);
+        this.findProject = this.findProject.bind(this);
     }
     componentDidMount() {
+        this.loadProject();
+    }
+    componentWillReceiveProps(p_) {
+        this.findProject(this.state.projects, p_.params.projectId);
+    }
+    loadProject() {
         const self = this;
-        const p_ = self.props;
-        const lang = getLang();
         const user = getUser();
 
+        self.setState({loading: true});
         api.post('projects/view', {user: user})
             .then((response) => {
-                let otherProjects = [];
-                let isCorrectProjectId = false;
-                self.setState({loading: false});
-
-                if (response && p_.params.projectId) {
-                    response.forEach((project) => {
-                        if (project.id === p_.params.projectId) {
-                            self.setState({
-                                project: project
-                            });
-
-                            isCorrectProjectId = true;
-                        } else {
-                            otherProjects.push(project)
-                        }
-                    });
-                    self.setState({otherProjects: otherProjects});
-
-                    if (!isCorrectProjectId) {
-                        this.context.router.push(`/notFound?lang=${lang}`);
-                    }
-                }
+                self.findProject(response, self.props.params.projectId);
             });
+    }
+    findProject(projects, projectId) {
+        let currentProject = false;
+        const lang = getLang();
+
+        projects.forEach((project) => {
+            if (project.id === projectId) {
+                currentProject = project
+            }
+        });
+
+        if (!currentProject) {
+            this.context.router.push(`/notFound?lang=${lang}`);
+        } else {
+            this.setState({
+                project: currentProject,
+                projects: arrayShuffle(projects),
+                loading: false
+            });
+        }
     }
     render() {
         const p_ = this.props;
         const s_ = this.state;
         const image = p_.location.query.image;
         const lang = getLang();
+        let sameProjectsIndex = 0;
 
         return (
             <Layout
@@ -110,9 +118,11 @@ class Project extends React.Component {
 
                         <div className={grid.w70_mob}>
                             <TileWrapper>
-                                {s_.otherProjects.map((project, index) => {
+                                {s_.projects.map((project, index) => {
 
-                                    if (index < 3) {
+                                    if ((project.id !== s_.project.id) && sameProjectsIndex < 3) {
+                                        sameProjectsIndex++;
+
                                         return (
                                             <Tile
                                                 key={`project__${project.id}`}

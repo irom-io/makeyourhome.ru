@@ -57,6 +57,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "array-shuffle": "^1.0.1",
     "classnames": "^2.2.5",
     "ismobilejs": "^0.4.0",
     "nodemailer": "^2.6.4",
