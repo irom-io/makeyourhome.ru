@@ -10,18 +10,11 @@ class ProjectSelect extends React.Component {
         super(p_);
 
         this.state = {
-            pdf: p_.pdf,
-            printed: p_.printed,
-            addition: p_.addition,
-            additionSum: 0
+            pdf: 'withPdf',
+            printed: 'two',
+            addition: []
         };
-    }
-    componentWillReceiveProps(p_) {
-        this.setState({
-            pdf: p_.pdf,
-            printed: p_.printed,
-            addition: p_.addition
-        });
+        this.props.onSelect(this.state);
     }
     getAdditionOptions(p_) {
         let key;
@@ -29,45 +22,49 @@ class ProjectSelect extends React.Component {
 
         for (key in p_.project.addition) {
             if (p_.project.addition.hasOwnProperty(key)) {
-                additionOptions.push({value: 1*p_.project.addition[key], label: L10n(`project.additions.${key}`)})
+                additionOptions.push({value: key, label: L10n(`project.additions.${key}`)})
             }
         }
 
         return additionOptions;
     }
-    onChange(selected, type) {
-        let value = 0;
-        if (type === 'additionSum') {
-            selected.forEach((selectedItem) => {
-                value += selectedItem.value;
-            });
+    componentWillReceiveProps(p_) {
+        if (p_.project.id !== this.props.project.id) {
             this.setState({
-                addition: selected,
-                additionSum: value
-            }, () => {
-                this.props.onSelect({...this.state, total: this.getTotal(this.state)})
-            });
-        } else {
-            this.setState({[type]: selected}, () => {
-                this.props.onSelect({...this.state, total: this.getTotal(this.state)})
+                pdf: 'withPdf',
+                printed: 'two',
+                addition: []
             });
         }
     }
-    getTotal(s_) {
-        return s_.pdf.value + s_.printed.value + s_.additionSum;
+    onChange(selected, type) {
+        if (type === 'addition') {
+            let addition = [];
+            selected.forEach((selectedItem) => {
+                addition.push(selectedItem.value);
+            });
+            this.setState({
+                addition: addition
+            }, () => {
+                this.props.onSelect(this.state);
+            });
+        } else {
+            this.setState({[type]: selected.value}, () => {
+                this.props.onSelect(this.state);
+            });
+        }
     }
     render() {
         const s_ = this.state;
         const p_ = this.props;
 
         const additionOptions = this.getAdditionOptions(p_);
-        const total = this.getTotal(s_);
 
         return (
             <div>
                 <div className={grid.mbMini}>
                     <Select
-                        options={[{value: 0, label: L10n('project.withoutPdf')}, {value: 1*p_.project.pdfCoast, label: L10n('project.withPdf')}]}
+                        options={[{value: 'withoutPdf', label: L10n('project.withoutPdf')}, {value: 'withPdf', label: L10n('project.withPdf')}]}
                         searchable={false}
                         value={s_.pdf}
                         clearable={false}
@@ -76,7 +73,7 @@ class ProjectSelect extends React.Component {
                 </div>
                 <div className={grid.mbMini}>
                     <Select
-                        options={[{value: 0, label: L10n('project.printed.zero')}, {value: 2*p_.project.printedCoast, label: L10n('project.printed.two')}, {value: 4*p_.project.printedCoast, label: L10n('project.printed.four')}, {value: 6*p_.project.printedCoast, label: L10n('project.printed.six')}]}
+                        options={[{value: 'zero', label: L10n('project.printed.zero')}, {value: 'two', label: L10n('project.printed.two')}, {value: 'four', label: L10n('project.printed.four')}, {value: 'six', label: L10n('project.printed.six')}]}
                         searchable={false}
                         clearable={false}
                         value={s_.printed}
@@ -91,11 +88,11 @@ class ProjectSelect extends React.Component {
                         clearable={false}
                         multi={true}
                         value={s_.addition}
-                        onChange={(selected) => this.onChange(selected, 'additionSum')}
+                        onChange={(selected) => this.onChange(selected, 'addition')}
                     />
                 </div>
                 <div className={projectSelect.priceWrapper}>
-                    {L10n('project.total')}: <span className={projectSelect.price}>{total}</span> р.
+                    {L10n('project.total')}: <span className={projectSelect.price}>123</span> р.
                 </div>
             </div>
         )

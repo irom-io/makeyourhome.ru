@@ -35,7 +35,9 @@ class Project extends React.Component {
         this.loadProject();
     }
     componentWillReceiveProps(p_) {
-        this.findProject(this.state.projects, p_.params.projectId);
+        if (p_.params.projectId !== this.props.params.projectId) {
+            this.findProject(this.state.projects, p_.params.projectId);
+        }
     }
     loadProject() {
         const self = this;
@@ -64,20 +66,18 @@ class Project extends React.Component {
                 project: currentProject,
                 projects: arrayShuffle(projects),
                 loading: false,
-                pdf: {value: 1*currentProject.pdfCoast, label: L10n('project.withPdf')},
-                printed: {value: 2*currentProject.printedCoast, label: L10n('project.printed.two')},
-                addition: [],
                 total: (1*currentProject.pdfCoast + 2*currentProject.printedCoast)
             });
         }
     }
     onSelect(selected) {
-        this.setState({
+/*        this.setState({
             pdf: selected.pdf,
             printed: selected.printed,
             addition: selected.addition,
             total: selected.total
-        });
+        });*/
+        console.log(selected);
     }
     getButtons() {
         return (
@@ -132,11 +132,8 @@ class Project extends React.Component {
                                 src={createSrc(s_.project.images[0])}
                                 buttons={Buttons}
                             >
-                                <ProjectSelect 
+                                <ProjectSelect
                                     project={s_.project}
-                                    pdf={s_.pdf}
-                                    printed={s_.printed}
-                                    addition={s_.addition}
                                     onSelect={(selected) => this.onSelect(selected)}
                                 />
                             </ProjectItem>
