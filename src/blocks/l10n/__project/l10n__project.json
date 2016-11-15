@@ -112,6 +112,11 @@
         "en": "Consultation",
         "esp": "Consulta"
       }
+    },
+    "otherProjects": {
+      "ru": "Другие проекты",
+      "en": "Other projects",
+      "esp": "Otros proyectos"
     }
   }
 }

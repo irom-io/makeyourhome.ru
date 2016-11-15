@@ -10,6 +10,7 @@ import {getLang} from 'blocks/page/__lang/page__lang';
 import {getUser} from 'blocks/auth/auth';
 import {createSrc} from 'blocks/item/item';
 import Layout from 'blocks/layout/layout';
+import L10n from 'blocks/l10n/l10n';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -19,7 +20,8 @@ class Project extends React.Component {
         super(p_, context);
 
         this.state = {
-            loading: true
+            loading: true,
+            otherProjects: []
         }
     }
     componentDidMount() {
@@ -30,6 +32,7 @@ class Project extends React.Component {
 
         api.post('projects/view', {user: user})
             .then((response) => {
+                let otherProjects = [];
                 let isCorrectProjectId = false;
                 self.setState({loading: false});
 
@@ -41,8 +44,11 @@ class Project extends React.Component {
                             });
 
                             isCorrectProjectId = true;
+                        } else {
+                            otherProjects.push(project)
                         }
                     });
+                    self.setState({otherProjects: otherProjects});
 
                     if (!isCorrectProjectId) {
                         this.context.router.push(`/notFound?lang=${lang}`);
@@ -99,24 +105,29 @@ class Project extends React.Component {
                         {s_.project[lang].longText}
                     </div>
 
-                    <div className={`${text.md} ${grid.mbMini} ${text.colored}`}>Похожие проекты:</div>
-                    <TileWrapper>
-                        <Tile
-                            src={require('pages/projects/images/2.jpg')}
-                            text={'Коттедж'}
-                            to={'/projects/2'}
-                        />
-                        <Tile
-                            src={require('pages/projects/images/3.jpg')}
-                            text={'Современный дом'}
-                            to={'/projects/3'}
-                        />
-                        <Tile
-                            src={require('pages/projects/images/4.jpg')}
-                            text={'Деревянный дом'}
-                            to={'/projects/4'}
-                        />
-                    </TileWrapper>
+                    <div className={`${grid.col_mob} ${grid.normalCenter_mob}`}>
+                        <div className={`${text.md} ${grid.mbMini} ${text.colored}`}>{L10n('project.otherProjects')}:</div>
+
+                        <div className={grid.w70_mob}>
+                            <TileWrapper>
+                                {s_.otherProjects.map((project, index) => {
+
+                                    if (index < 3) {
+                                        return (
+                                            <Tile
+                                                key={`project__${project.id}`}
+                                                src={createSrc(project.images[0])}
+                                                text={project[lang].title}
+                                                to={`/projects/${project.id}`}
+                                            />
+                                        );
+                                    } else {
+                                        return '';
+                                    }
+                                })}
+                            </TileWrapper>
+                        </div>
+                    </div>
                 </div>
                 }
             </Layout>
