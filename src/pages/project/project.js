@@ -71,13 +71,21 @@ class Project extends React.Component {
         }
     }
     onSelect(selected) {
-/*        this.setState({
-            pdf: selected.pdf,
-            printed: selected.printed,
-            addition: selected.addition,
-            total: selected.total
-        });*/
-        console.log(selected);
+        const s_ = this.state;
+        let coast = {
+            pdf: {
+                'withoutPdf': 0,
+                'withPdf': 1*s_.project.pdfCoast
+            },
+            printed: {
+                'zero': 0,
+                'two': 2*s_.project.printedCoast,
+                'four': 4*s_.project.printedCoast,
+                'six': 6*s_.project.printedCoast
+            },
+            addition: s_.project.addition
+        };
+        console.log(coast);
     }
     getButtons() {
         return (
