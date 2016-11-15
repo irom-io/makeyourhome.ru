@@ -33,6 +33,7 @@ class AdminProjects extends React.Component {
                 garage: null,
                 area: '',
                 pdfCoast: '',
+                printedCoast: '',
                 addition: {}
             },
             projectId: p_.projectId || null,
@@ -88,6 +89,7 @@ class AdminProjects extends React.Component {
                 garage: null,
                 area: '',
                 pdfCoast: '',
+                printedCoast: '',
                 addition: {}
             },
             errorMsg: null,
@@ -317,6 +319,15 @@ class AdminProjects extends React.Component {
                             placeholder="Стоимость PDF"
                             value={s_.data.pdfCoast}
                             onChange={(value) => this.onChangeNumber(value, 'pdfCoast')}
+                        />
+                    </div>
+
+                    <div className={grid.mbMini}>
+                        <Input
+                            type="number"
+                            placeholder="Стоимость одной печатной копии"
+                            value={s_.data.printedCoast}
+                            onChange={(value) => this.onChangeNumber(value, 'printedCoast')}
                         />
                     </div>
 
