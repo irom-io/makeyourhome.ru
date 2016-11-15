@@ -8,6 +8,7 @@ import L10n from 'blocks/l10n/l10n';
 import {createSrc} from 'blocks/item/item';
 import {getLang} from 'blocks/page/__lang/page__lang';
 import api from 'blocks/api/api';
+import ProjectsParams from 'pages/projects/__params/projects__params';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -108,7 +109,13 @@ class Favourite extends React.Component {
                                     l10nText={true}
                                     link={{to: `/${item.type}s/${item.id}`}}
                                     description={shortText}
-                                />
+                                >
+                                    {(item.type === 'project') &&
+                                    <div className={`${grid.mbMini}`}>
+                                        <ProjectsParams project={item} />
+                                    </div>
+                                    }
+                                </TileLine>
                             )
                         } else {
                             return '';
