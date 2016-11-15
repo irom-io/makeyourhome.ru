@@ -87,6 +87,11 @@
       }
     },
     "additions": {
+      "text": {
+        "ru": "Дополнительно",
+        "en": "Additionally",
+        "esp": "Además"
+      },
       "withoutAdditions": {
         "ru": "Без дополнений",
         "en": "Without additions",

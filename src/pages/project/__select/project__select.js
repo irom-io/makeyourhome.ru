@@ -8,10 +8,20 @@ import projectSelect from './project__select.css';
 class ProjectSelect extends React.Component {
     constructor(p_) {
         super(p_);
+        let key;
+        let additionOptions = [{value: 0, label: L10n(`project.additions.withoutAdditions`)}];
+
+        for (key in p_.project.addition) {
+            if (p_.project.addition.hasOwnProperty(key)) {
+                additionOptions.push({value: p_.project.addition[key], label: L10n(`project.additions.${key}`)})
+            }
+        }
 
         this.state = {
             pdf: p_.project.pdfCoast,
-            printed: 2*p_.project.printedCoast
+            printed: 2*p_.project.printedCoast,
+            addition: 0,
+            additionOptions: additionOptions
         };
     }
     render() {
@@ -38,10 +48,11 @@ class ProjectSelect extends React.Component {
                 </div>
                 <div className={grid.mbMini}>
                     <Select
-                        placeholder="Дополнительно"
-                        options={[{value: 1, label: 'Зеркальный вариант'}, {value: 2, label: 'Индивидуальные цвета'}, {value: 3, label: 'Вариации планировки'}]}
+                        placeholder={L10n('project.additions.text')}
+                        options={s_.additionOptions}
                         searchable={false}
-                        value={false}
+                        clearable={false}
+                        value={s_.addition}
                     />
                     <div className={projectSelect.subText}>Какие возможности?</div>
                 </div>
