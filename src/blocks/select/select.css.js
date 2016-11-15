@@ -25,6 +25,16 @@ const select = jcss({
             ...item.colored,
             '&:hover': null
         },
+        '&.Select--multi .Select-value-icon': {
+            ...item.colored
+        },
+        '&.Select--multi .Select-value': {
+            ...item.borderSmMain
+        },
+        '&.Select--multi .Select-value-label': {
+            ...item.invColored,
+            '&:hover': null
+        },
         [css.media.tabMini]: {
             ...text.micro
         }

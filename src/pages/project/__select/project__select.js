@@ -9,7 +9,7 @@ class ProjectSelect extends React.Component {
     constructor(p_) {
         super(p_);
         let key;
-        let additionOptions = [{value: 0, label: L10n(`project.additions.withoutAdditions`)}];
+        let additionOptions = [];
 
         for (key in p_.project.addition) {
             if (p_.project.addition.hasOwnProperty(key)) {
@@ -32,7 +32,7 @@ class ProjectSelect extends React.Component {
             <div>
                 <div className={grid.mbMini}>
                     <Select
-                        options={[{value: p_.project.pdfCoast, label: L10n('project.withPdf')}, {value: 0, label: L10n('project.withoutPdf')}]}
+                        options={[{value: 0, label: L10n('project.withoutPdf')}, {value: p_.project.pdfCoast, label: L10n('project.withPdf')}]}
                         searchable={false}
                         value={s_.pdf}
                         clearable={false}
@@ -53,6 +53,7 @@ class ProjectSelect extends React.Component {
                         searchable={false}
                         clearable={false}
                         value={s_.addition}
+                        multi={true}
                     />
                     <div className={projectSelect.subText}>Какие возможности?</div>
                 </div>
