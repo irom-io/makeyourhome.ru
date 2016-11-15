@@ -37,9 +37,13 @@ class ProjectSelect extends React.Component {
             this.setState({
                 addition: selected,
                 additionSum: value
+            }, () => {
+                this.props.onSelect({...this.state, total: this.getTotal(this.state)})
             });
         } else {
-            this.setState({[type]: selected});
+            this.setState({[type]: selected}, () => {
+                this.props.onSelect({...this.state, total: this.getTotal(this.state)})
+            });
         }
     }
     getTotal(s_) {

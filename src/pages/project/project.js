@@ -66,6 +66,9 @@ class Project extends React.Component {
             });
         }
     }
+    onSelect(selected) {
+        console.log(selected);
+    }
     render() {
         const p_ = this.props;
         const s_ = this.state;
@@ -100,6 +103,7 @@ class Project extends React.Component {
                                     pdf={s_.pdf}
                                     printed={s_.printed}
                                     addition={s_.addition}
+                                    onSelect={(selected) => this.onSelect(selected)}
                                 />
                             </ProjectItem>
 
