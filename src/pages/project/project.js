@@ -11,7 +11,6 @@ import {getUser} from 'blocks/auth/auth';
 import {createSrc} from 'blocks/item/item';
 import Layout from 'blocks/layout/layout';
 
-import page from 'blocks/page/page.css';
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
 
@@ -82,9 +81,9 @@ class Project extends React.Component {
                                 <ProjectSelect />
                             </ProjectItem>
 
-                            "ProjectToolbar
-                            project="selectedProject"
-                            />"
+                            <ProjectToolbar
+                                project={s_.project}
+                            />
                         </div>
                         }
                     </div>
