@@ -10,9 +10,9 @@ class ProjectSelect extends React.Component {
         super(p_);
 
         this.state = {
-            pdf: 1*p_.project.pdfCoast,
-            printed: 2*p_.project.printedCoast,
-            addition: null,
+            pdf: p_.pdf,
+            printed: p_.printed,
+            addition: p_.addition,
             additionSum: 0
         };
     }
@@ -39,12 +39,11 @@ class ProjectSelect extends React.Component {
                 additionSum: value
             });
         } else {
-            value = selected.value;
-            this.setState({[type]: value});
+            this.setState({[type]: selected});
         }
     }
     getTotal(s_) {
-        return s_.pdf + s_.printed + s_.additionSum;
+        return s_.pdf.value + s_.printed.value + s_.additionSum;
     }
     render() {
         const s_ = this.state;

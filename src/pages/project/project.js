@@ -59,7 +59,10 @@ class Project extends React.Component {
             this.setState({
                 project: currentProject,
                 projects: arrayShuffle(projects),
-                loading: false
+                loading: false,
+                pdf: {value: 1*currentProject.pdfCoast, label: L10n('project.withPdf')},
+                printed: {value: 2*currentProject.printedCoast, label: L10n('project.printed.two')},
+                addition: []
             });
         }
     }
@@ -94,6 +97,9 @@ class Project extends React.Component {
                             >
                                 <ProjectSelect 
                                     project={s_.project}
+                                    pdf={s_.pdf}
+                                    printed={s_.printed}
+                                    addition={s_.addition}
                                 />
                             </ProjectItem>
 
