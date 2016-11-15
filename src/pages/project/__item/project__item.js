@@ -1,7 +1,6 @@
 import React from 'react';
-import Done from 'react-icons/lib/md/done';
-import Edit from 'react-icons/lib/md/edit';
 import Rectangle from 'blocks/rectangle/rectangle';
+
 import projectItem from './project__item.css';
 import grid from 'blocks/grid/grid.css';
 import item from 'blocks/item/item.css';
@@ -36,26 +35,7 @@ class TileLine extends React.Component {
                     <div className={projectItem.content}>
                         {p_.children}
                     </div>
-                    <div className={projectItem.iconWrapper}>
-                        <div
-                            title="Изменить проект"
-                            className={projectItem.icon}
-                        >
-                            <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
-                                Изменить проект
-                            </div>
-                            <Edit size={20} />
-                        </div>
-                        <div
-                            title="Заказать"
-                            className={projectItem.icon}
-                        >
-                            <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
-                                Заказать
-                            </div>
-                            <Done size={20} />
-                        </div>
-                    </div>
+                    {p_.buttons}
                 </div>
             </div>
         );

@@ -12,9 +12,12 @@ import {getUser} from 'blocks/auth/auth';
 import {createSrc} from 'blocks/item/item';
 import Layout from 'blocks/layout/layout';
 import L10n from 'blocks/l10n/l10n';
+import Done from 'react-icons/lib/md/done';
+import Edit from 'react-icons/lib/md/edit';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
+import projectItem from 'pages/project/__item/project__item.css';
 
 class Project extends React.Component {
     constructor(p_, context) {
@@ -26,6 +29,7 @@ class Project extends React.Component {
 
         this.loadProject = this.loadProject.bind(this);
         this.findProject = this.findProject.bind(this);
+        this.getButtons = this.getButtons.bind(this);
     }
     componentDidMount() {
         this.loadProject();
@@ -62,18 +66,47 @@ class Project extends React.Component {
                 loading: false,
                 pdf: {value: 1*currentProject.pdfCoast, label: L10n('project.withPdf')},
                 printed: {value: 2*currentProject.printedCoast, label: L10n('project.printed.two')},
-                addition: []
+                addition: [],
+                total: (1*currentProject.pdfCoast + 2*currentProject.printedCoast)
             });
         }
     }
     onSelect(selected) {
-        console.log(selected);
+        this.setState({
+            pdf: selected.pdf,
+            printed: selected.printed,
+            addition: selected.addition,
+            total: selected.total
+        });
+    }
+    getButtons() {
+        return (
+            <div className={projectItem.iconWrapper}>
+                <div
+                    className={projectItem.icon}
+                >
+                    <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
+                        Изменить проект
+                    </div>
+                    <Edit size={20} />
+                </div>
+                <div
+                    className={projectItem.icon}
+                >
+                    <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
+                        Заказать
+                    </div>
+                    <Done size={20} />
+                </div>
+            </div>
+        );
     }
     render() {
         const p_ = this.props;
         const s_ = this.state;
         const image = p_.location.query.image;
         const lang = getLang();
+        const Buttons = this.getButtons();
         let sameProjectsIndex = 0;
 
         return (
@@ -97,6 +130,7 @@ class Project extends React.Component {
                             <ProjectItem
                                 text={s_.project[lang].title}
                                 src={createSrc(s_.project.images[0])}
+                                buttons={Buttons}
                             >
                                 <ProjectSelect 
                                     project={s_.project}
