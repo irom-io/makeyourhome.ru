@@ -25,6 +25,7 @@ class ProjectToolbar extends React.Component {
                         title={p_.project[lang].title}
                         media={p_.project.images[0]}
                         description={p_.project[lang].longText}
+                        fave={{id: p_.project.id, type: 'project', isActive: p_.project.faveActive}}
                     />
                 </div>
                 <div className={`${grid.w50} ${grid.w100_mob} ${grid.plMini} ${grid.prMini} ${grid.plNone_tabMini} ${grid.prNone_tabMini}`}>

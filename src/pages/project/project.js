@@ -97,6 +97,7 @@ class Project extends React.Component {
 
                             <ProjectToolbar
                                 project={s_.project}
+                                fave={{id: s_.project.id, type: 'project', isActive: s_.project.faveActive}}
                             />
                         </div>
                         }
