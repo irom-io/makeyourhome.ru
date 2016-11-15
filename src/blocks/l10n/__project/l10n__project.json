@@ -30,6 +30,11 @@
         "ru": "Пять этажей",
         "en": "Five floors",
         "esp": "Сinco pisos"
+      },
+      "six": {
+        "ru": "Шесть этажей",
+        "en": "Six floors",
+        "esp": "Seis pisos"
       }
     },
     "bedrooms": {
@@ -62,6 +67,11 @@
         "ru": "Пять спален",
         "en": "Five bedrooms",
         "esp": "Сinco dormitorios"
+      },
+      "six": {
+        "ru": "Шесть спален",
+        "en": "Six bedrooms",
+        "esp": "Seis habitaciones"
       }
     },
     "garage": {

@@ -32,7 +32,8 @@ export const numberList = [
     {name: 'two'},
     {name: 'three'},
     {name: 'four'},
-    {name: 'five'}
+    {name: 'five'},
+    {name: 'six'}
 ];
 
 export const additionList = [
