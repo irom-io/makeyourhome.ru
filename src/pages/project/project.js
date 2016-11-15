@@ -72,6 +72,10 @@ class Project extends React.Component {
     }
     onSelect(selected) {
         const s_ = this.state;
+        
+        let totalList = {};
+        let total = 0;
+        let key;
         let coast = {
             pdf: {
                 'withoutPdf': 0,
@@ -85,7 +89,23 @@ class Project extends React.Component {
             },
             addition: s_.project.addition
         };
-        console.log(coast);
+
+        totalList[selected.pdf] = coast.pdf[selected.pdf];
+        totalList[selected.printed] = coast.printed[selected.printed];
+        selected.addition.forEach((additionKey) => {
+            totalList[additionKey] = 1*coast.addition[additionKey];
+        });
+        
+        for (key in totalList) {
+            if (totalList.hasOwnProperty(key)) {
+                total += totalList[key];
+            }
+        }
+        
+        this.setState({
+            total: total,
+            totalList: totalList
+        });
     }
     getButtons() {
         return (
@@ -142,6 +162,7 @@ class Project extends React.Component {
                             >
                                 <ProjectSelect
                                     project={s_.project}
+                                    total={s_.total}
                                     onSelect={(selected) => this.onSelect(selected)}
                                 />
                             </ProjectItem>

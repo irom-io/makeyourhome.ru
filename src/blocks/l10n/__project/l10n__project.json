@@ -145,9 +145,9 @@
     },
     "printed": {
       "zero": {
-        "ru": "без печатных копий",
-        "en": "no printed copies",
-        "esp": "no hay copias impresas"
+        "ru": "Без печатных копий",
+        "en": "No printed copies",
+        "esp": "No hay copias impresas"
       },
       "two": {
         "ru": "2 печатные копии",
@@ -160,7 +160,7 @@
         "esp": "4 kopis impresos"
       },
       "six": {
-        "ru": "6 печатные копии",
+        "ru": "6 печатных копий",
         "en": "6 printed copies",
         "esp": "6 kopis impresos"
       }

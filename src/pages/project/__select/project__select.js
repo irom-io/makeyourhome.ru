@@ -14,6 +14,8 @@ class ProjectSelect extends React.Component {
             printed: 'two',
             addition: []
         };
+    }
+    componentDidMount() {
         this.props.onSelect(this.state);
     }
     getAdditionOptions(p_) {
@@ -92,7 +94,7 @@ class ProjectSelect extends React.Component {
                     />
                 </div>
                 <div className={projectSelect.priceWrapper}>
-                    {L10n('project.total')}: <span className={projectSelect.price}>123</span> р.
+                    {L10n('project.total')}: <span className={projectSelect.price}>{p_.total}</span> р.
                 </div>
             </div>
         )
