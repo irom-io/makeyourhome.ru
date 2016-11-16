@@ -27,7 +27,9 @@ class Page extends React.Component {
                             history={p_.history}
                         />
                         <Sticky isActive={!isAppleDevice} className={`${page.menu}`}>
-                            <Menu />
+                            <Menu
+                                location={p_.location}
+                            />
                         </Sticky>
                     </div>
                     {p_.children}

@@ -3,6 +3,8 @@ import Link from 'blocks/link/link';
 import {Input} from 'blocks/text/_edit/text_edit';
 import L10n from 'blocks/l10n/l10n';
 import MenuButton from 'blocks/menu/__button/menu__button';
+import {getLang} from 'blocks/page/__lang/page__lang';
+import {createHref} from 'blocks/lang/lang';
 
 import menu from './menu.css';
 import item from 'blocks/item/item.css';
@@ -47,8 +49,8 @@ export const additionList = [
 ];
 
 class Menu extends React.Component {
-    constructor(p_) {
-        super(p_);
+    constructor(p_, context) {
+        super(p_, context);
         const items = [
             {
                 name: 'catalog',
@@ -79,10 +81,25 @@ class Menu extends React.Component {
         ];
 
         this.state = {
+            search: p_.location.query.search || '',
             isShowMenu: false,
             items: items,
             itemsMob: [{name: 'home', to: '/'}, ...items]
         };
+    }
+    componentWillReceiveProps(p_) {
+        this.setState({search: p_.location.query.search || ''});
+    }
+    onChangeSearch(value) {
+        const p_ =this.props;
+        let href;
+
+        if (p_.location.pathname === '/projects') {
+            href = createHref({search: value}, p_.location);
+            this.context.router.push(href);
+        } else {
+            this.setState({search: value});
+        }
     }
     onClickMobile() {
         this.setState({isShowMenu: !this.state.isShowMenu});
@@ -90,17 +107,36 @@ class Menu extends React.Component {
     onClickOutsideMobile() {
         this.setState({isShowMenu: false});
     }
+    onSubmit(e) {
+        const p_ =this.props;
+        const lang = getLang();
+        let href;
+        e.preventDefault();
+
+        if (p_.location.pathname !== '/projects') {
+            href = `/projects?lang=${lang}&search=${this.state.search}`;
+        } else {
+            href = createHref({search: this.state.search}, p_.location);
+        }
+
+        this.context.router.push(href);
+    }
     render() {
         const s_ = this.state;
 
         return (
             <div className={menu.wrapper}>
                 <div className={menu.content}>
-                    <div className={menu.search}>
+                    <form
+                        className={menu.search}
+                        onSubmit={(e) => this.onSubmit(e)}
+                    >
                         <Input
                             placeholder={L10n('menu.searchPlaceholder')}
+                            value={s_.search}
+                            onChange={(value) => this.onChangeSearch(value)}
                         />
-                    </div>
+                    </form>
 
                     <ul className={menu.items}>
                         {s_.items.map((item, index) => {
@@ -159,5 +195,8 @@ class Menu extends React.Component {
         );
     }
 }
+Menu.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default Menu;
