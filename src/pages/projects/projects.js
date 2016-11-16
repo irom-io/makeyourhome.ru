@@ -16,6 +16,7 @@ import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
 
 const step = 3;
+let items=[];
 class Projects extends React.Component {
     constructor(p_, context) {
         super(p_, context);
@@ -26,6 +27,13 @@ class Projects extends React.Component {
             items: [],
             visibleItems: step
         };
+        this.filterItems = this.filterItems.bind(this);
+    }
+    componentWillReceiveProps(p_) {
+        this.setState({
+            items: this.filterItems(p_.location.query),
+            visibleItems: step
+        });
     }
     componentDidMount() {
         const self = this;
@@ -34,8 +42,10 @@ class Projects extends React.Component {
         api.post('projects/view', {user: user})
             .then((response) => {
                 if (!response.error) {
+                    items = response;
+
                     self.setState({
-                        items: response,
+                        items: self.filterItems(self.props.location.query),
                         loading: false
                     });
                 } else {
@@ -44,6 +54,19 @@ class Projects extends React.Component {
                     });
                 }
             })
+    }
+    filterItems(query) {
+        let filteredItems = items;
+
+        if (query.collection) {
+            filteredItems = items.filter((item) => {
+                if (item.type === query.collection) {
+                    return item;
+                }
+            });
+        }
+
+        return filteredItems;
     }
     deleteProject(user, projectId) {
         const self = this;
