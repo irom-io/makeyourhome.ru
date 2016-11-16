@@ -15,14 +15,14 @@ class ProjectsFilters extends React.Component {
 
         this.state = {};
     }
-    onSelectType(selected) {
+    onSelect(selected, field) {
         const p_ = this.props;
         let href = '';
 
         if (selected) {
-            href = createHref({collection: selected.value}, p_.location);
+            href = createHref({[field]: selected.value}, p_.location);
         } else {
-            href = createHref({collection: null}, p_.location);
+            href = createHref({[field]: null}, p_.location);
         }
 
         this.context.router.push(href);
@@ -42,7 +42,7 @@ class ProjectsFilters extends React.Component {
                             searchable={false}
                             options={collections}
                             value={p_.location.query.collection}
-                            onChange={(selected) => this.onSelectType(selected)}
+                            onChange={(selected) => this.onSelect(selected, 'collection')}
                         />
                     </div>
                     <div className={projects.filter}>
@@ -50,6 +50,8 @@ class ProjectsFilters extends React.Component {
                             placeholder={L10n('project.style')}
                             searchable={false}
                             options={styles}
+                            value={p_.location.query.style}
+                            onChange={(selected) => this.onSelect(selected, 'style')}
                         />
                     </div>
                     <div className={projects.filter}>
@@ -57,6 +59,8 @@ class ProjectsFilters extends React.Component {
                             placeholder={L10n('project.floorsText')}
                             searchable={false}
                             options={floors}
+                            value={p_.location.query.floor}
+                            onChange={(selected) => this.onSelect(selected, 'floor')}
                         />
                     </div>
                 </div>
