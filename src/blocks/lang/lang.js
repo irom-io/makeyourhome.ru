@@ -21,6 +21,10 @@ export const createHref = (newQuery, location) => {
             if (typeof newQuery[key] === 'undefined') {
                 newQuery[key] = query[key];
             }
+            
+            if (!newQuery[key] && typeof newQuery[key] !== 'undefined') {
+                newQuery[key] = undefined;
+            }
         }
     }
     for (key in newQuery) {

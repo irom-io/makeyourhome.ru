@@ -10,8 +10,8 @@ import text from 'blocks/text/text.css';
 import projects from 'pages/projects/projects.css';
 
 class ProjectsFilters extends React.Component {
-    constructor(p_) {
-        super(p_);
+    constructor(p_, context) {
+        super(p_, context);
 
         this.state = {};
     }
@@ -22,12 +22,13 @@ class ProjectsFilters extends React.Component {
         if (selected) {
             href = createHref({collection: selected.value}, p_.location);
         } else {
-            href = createHref({collection: undefined}, p_.location);
+            href = createHref({collection: null}, p_.location);
         }
 
-        console.log(href);
+        this.context.router.push(href);
     }
     render() {
+        const p_ = this.props;
         const styles = styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`)}});
         const collections = collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`)}});
         const floors = numberList.map((number) => {return {value: number.name, label: L10n(`project.floors.${number.name}`)}});
@@ -40,6 +41,7 @@ class ProjectsFilters extends React.Component {
                             placeholder={L10n('project.type')}
                             searchable={false}
                             options={collections}
+                            value={p_.location.query.collection}
                             onChange={(selected) => this.onSelectType(selected)}
                         />
                     </div>
@@ -73,5 +75,8 @@ class ProjectsFilters extends React.Component {
         )
     }
 }
+ProjectsFilters.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default ProjectsFilters;
