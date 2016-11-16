@@ -47,7 +47,7 @@ class PageHeader extends React.Component {
                             </Link>
                         </div>
                         <div className={`${page.descr} ${grid.pbMicro}`}>
-                            <Link to="/">
+                            <Link href={`mailto:${L10n('mail')}`} target="blank">
                                 {L10n('mail')}
                             </Link>
                         </div>

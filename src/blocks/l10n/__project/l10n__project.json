@@ -170,6 +170,11 @@
       "ru": "Изменить проект",
       "en": "Change project",
       "esp": "Cambio proyecto"
+    },
+    "order": {
+      "ru": "Заказать",
+      "en": "To order",
+      "esp": "Para ordenar"
     }
   }
 }

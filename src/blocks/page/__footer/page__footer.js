@@ -32,8 +32,8 @@ class PageFooter extends React.Component {
                             </Link>
                         </div>
                         <div className={text.normal}>
-                            <Link to="/">
-                                makeyourhome.ru ©
+                            <Link href={`mailto:${L10n('mail')}`} target="blank">
+                                {L10n('mail')}
                             </Link>
                         </div>
                     </div>

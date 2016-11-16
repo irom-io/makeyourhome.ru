@@ -14,6 +14,7 @@ import Layout from 'blocks/layout/layout';
 import L10n from 'blocks/l10n/l10n';
 import Done from 'react-icons/lib/md/done';
 import Edit from 'react-icons/lib/md/edit';
+import Button from 'blocks/button/button';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -108,6 +109,8 @@ class Project extends React.Component {
         });
     }
     getButtons() {
+        const s_ = this.state;
+
         return (
             <div className={projectItem.iconWrapper}>
                 <div
@@ -118,14 +121,15 @@ class Project extends React.Component {
                     </div>
                     <Edit size={20} />
                 </div>
-                <div
+                <Button
                     className={projectItem.icon}
+                    disabled={(s_.total === 0)}
                 >
                     <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
-                        Заказать
+                        {L10n('project.order')}
                     </div>
                     <Done size={20} />
-                </div>
+                </Button>
             </div>
         );
     }

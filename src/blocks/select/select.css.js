@@ -26,7 +26,8 @@ const select = jcss({
             '&:hover': null
         },
         '&.Select--multi .Select-value-icon': {
-            ...item.colored
+            ...item.colored,
+            borderRight: `1px solid ${css.colors.main}`
         },
         '&.Select--multi .Select-value': {
             ...item.borderSmMain
