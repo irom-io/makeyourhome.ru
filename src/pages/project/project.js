@@ -161,9 +161,9 @@ class Project extends React.Component {
                     className={projectItem.icon}
                     disabled={(s_.total === 0)}
                 >
-                    <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
+                    <span className={`${grid.prMini} ${grid.prMicro_mob}`}>
                         {L10n('project.order')}
-                    </div>
+                    </span>
                     <Done size={20} />
                 </Button>
             </div>
