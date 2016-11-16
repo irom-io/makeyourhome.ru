@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const find = require('array-find');
+const mail = require('../mail/mail');
 
 const express = require('express');
 const router = express.Router();
@@ -69,6 +70,27 @@ router.delete('/', function(req, res) {
 
 router.post('/view', function(req, res) {
     res.send(favouriteModel.getProjects(req.body.user));
+});
+
+router.post('/order', function(req, res) {
+    var user = usersModel.get(req.body.user);
+    var body = '';
+
+    if (!user.error) {
+        req.body.orderList.forEach((item) => {
+            body += `${item.text}: ${item.value} р.;`;
+        });
+
+        body += `Итого: ${req.body.total}р.`;
+
+        mail({
+            to: 'makeyourhome.ru@gmail.com',
+            subject: `Заказ проекта от пользователя ${user.login}`,
+            body: body
+        });
+    }
+
+    res.send({});
 });
 
 module.exports = router;

@@ -108,6 +108,29 @@ class Project extends React.Component {
             totalList: totalList
         });
     }
+    order() {
+        const user = getUser();
+
+        if (user) {
+            let orderList = [];
+            const totalList = this.state.totalList;
+            let key;
+
+            for (key in totalList) {
+                if (totalList.hasOwnProperty(key)) {
+                    orderList.push({text: L10n(`project.${key}`, 'ru'), value: totalList[key]});
+                }
+            }
+
+            this.setState({loading: true});
+            api.post('projects/order', {user: user, orderList: orderList, total: this.state.total})
+                .then((response) => {
+                    this.setState({loading: false});
+                });
+        } else {
+
+        }
+    }
     getButtons() {
         const s_ = this.state;
 
@@ -122,6 +145,7 @@ class Project extends React.Component {
                     <Edit size={20} />
                 </div>
                 <Button
+                    onClick={() => this.order()}
                     className={projectItem.icon}
                     disabled={(s_.total === 0)}
                 >
