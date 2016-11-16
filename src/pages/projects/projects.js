@@ -56,6 +56,7 @@ class Projects extends React.Component {
             })
     }
     filterItems(query) {
+        const lang = getLang();
         let filteredItems = items;
 
         if (query.collection) {
@@ -72,6 +73,16 @@ class Projects extends React.Component {
         }
         if (query.max) {
             filteredItems = filteredItems.filter(item => (item.area <= (1*query.max)));
+        }
+        if (query.search) {
+            filteredItems = filteredItems.filter(item => {
+                let title = item[lang].title.toLowerCase();
+                let longText = item[lang].longText.toLowerCase();
+
+                return (
+                    (title.indexOf(query.search) !== -1) || (longText.indexOf(query.search) !== -1)
+                );
+            });
         }
 
         return filteredItems;
