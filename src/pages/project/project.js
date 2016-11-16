@@ -11,6 +11,7 @@ import {getLang} from 'blocks/page/__lang/page__lang';
 import {getUser} from 'blocks/auth/auth';
 import {createSrc} from 'blocks/item/item';
 import Layout from 'blocks/layout/layout';
+import Login from 'blocks/login/login';
 import L10n from 'blocks/l10n/l10n';
 import Done from 'react-icons/lib/md/done';
 import Edit from 'react-icons/lib/md/edit';
@@ -37,6 +38,7 @@ class Project extends React.Component {
     }
     componentWillReceiveProps(p_) {
         if (p_.params.projectId !== this.props.params.projectId) {
+            this.setState({showLogin: false, orderSuccess: false});
             this.findProject(this.state.projects, p_.params.projectId);
         }
     }
@@ -73,7 +75,7 @@ class Project extends React.Component {
     }
     onSelect(selected) {
         const s_ = this.state;
-        
+
         let totalList = {};
         let total = 0;
         let key;
@@ -96,13 +98,13 @@ class Project extends React.Component {
         selected.addition.forEach((additionKey) => {
             totalList[additionKey] = 1*coast.addition[additionKey];
         });
-        
+
         for (key in totalList) {
             if (totalList.hasOwnProperty(key)) {
                 total += totalList[key];
             }
         }
-        
+
         this.setState({
             total: total,
             totalList: totalList
@@ -125,10 +127,18 @@ class Project extends React.Component {
             this.setState({loading: true});
             api.post('projects/order', {user: user, orderList: orderList, total: this.state.total})
                 .then((response) => {
-                    this.setState({loading: false});
+                    this.setState({
+                        loading: false,
+                        orderSuccess: true
+                    });
+                    setTimeout(() => {
+                        this.setState({
+                            orderSuccess: false
+                        });
+                    }, 3000);
                 });
         } else {
-
+            this.setState({showLogin: true});
         }
     }
     getButtons() {
@@ -157,6 +167,13 @@ class Project extends React.Component {
             </div>
         );
     }
+    onResponseAuth(response) {
+        if (!response.error) {
+            this.setState({showLogin: false});
+        }
+
+        this.setState({loading: false});
+    }
     render() {
         const p_ = this.props;
         const s_ = this.state;
@@ -170,6 +187,21 @@ class Project extends React.Component {
                 loading={s_.loading}
                 isPage={true}
             >
+                {s_.showLogin &&
+                <div className={grid.mbMini}>
+                    <Login
+                        descr={`${L10n('project.toOrder')},`}
+                        onSubmit={() => {this.setState({loading: true})}}
+                        onResponseAuth={(response) => this.onResponseAuth(response)}
+                        onResponseRegistration={(response) => this.setState({loading: false})}
+                    />
+                </div>
+                }
+                {s_.orderSuccess &&
+                <div className={grid.mbMini}>
+                    {L10n('project.orderSuccess')}
+                </div>
+                }
                 {s_.project &&
                 <div>
                     <div className={grid.mbMicro}>

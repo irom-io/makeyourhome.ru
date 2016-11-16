@@ -81,7 +81,7 @@ router.post('/order', function(req, res) {
             body += `${item.text}: ${item.value} р.;`;
         });
 
-        body += `Итого: ${req.body.total}р.`;
+        body += `Итого: ${req.body.total}р.;`;
 
         mail({
             to: 'makeyourhome.ru@gmail.com',
