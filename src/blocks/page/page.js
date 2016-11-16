@@ -7,11 +7,23 @@ import isMobile from 'ismobilejs';
 import page from './page.css';
 import PageLang from 'blocks/page/__lang/page__lang';
 
+let prevRoute = {};
 class Page extends React.Component {
-    constructor(p_) {
-        super(p_);
+    constructor(p_, context) {
+        super(p_, context);
         
         this.state = {};
+    }
+    componentDidMount() {
+        this.context.router.listen((route) => {
+            const changeProjectsFilter = (route.pathname === '/projects' && route.pathname === prevRoute.pathname);
+
+            if (!changeProjectsFilter) {
+                window.scrollTo(0, 0);
+            }
+
+            prevRoute = route;
+        })
     }
     render() {
         const p_ = this.props;
@@ -44,5 +56,8 @@ class Page extends React.Component {
         );
     }
 }
+Page.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default Page;

@@ -24,7 +24,6 @@ window.__myapp_container = document.getElementById('root');
 ReactDOM.render(
     <Router
         history={browserHistory}
-        onUpdate={() => window.scrollTo(0, 0)}
     >
         <Route path="" component={Page}>
             <Route path="/" component={Main}/>
