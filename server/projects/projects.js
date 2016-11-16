@@ -93,4 +93,18 @@ router.post('/order', function(req, res) {
     res.send({});
 });
 
+router.post('/individualOrder', function(req, res) {
+    var user = usersModel.get(req.body.user);
+
+    if (!user.error) {
+        mail({
+            to: 'makeyourhome.ru@gmail.com',
+            subject: `Заказ на изменение от пользователя ${user.login}`,
+            body: req.body.order
+        });
+    }
+
+    res.send({});
+});
+
 module.exports = router;

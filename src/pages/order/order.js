@@ -58,7 +58,7 @@ class Order extends React.Component {
                 isPage={true}
             >
                 <div>
-                    <div className={grid.mbMini}>
+                    <div className={`${grid.mbMini} ${text.colored}`}>
                         {s_.msg}
                     </div>
                     <div className={`${grid.mbMini} ${text.preWrap}`}>

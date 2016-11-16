@@ -11,6 +11,7 @@ import {getLang} from 'blocks/page/__lang/page__lang';
 import {getUser} from 'blocks/auth/auth';
 import {createSrc} from 'blocks/item/item';
 import Layout from 'blocks/layout/layout';
+import Link from 'blocks/link/link';
 import Login from 'blocks/login/login';
 import L10n from 'blocks/l10n/l10n';
 import Done from 'react-icons/lib/md/done';
@@ -146,14 +147,15 @@ class Project extends React.Component {
 
         return (
             <div className={projectItem.iconWrapper}>
-                <div
+                <Link
+                    to="/order"
                     className={projectItem.icon}
                 >
                     <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
                         {L10n('project.change')}
                     </div>
                     <Edit size={20} />
-                </div>
+                </Link>
                 <Button
                     onClick={() => this.order()}
                     className={projectItem.icon}

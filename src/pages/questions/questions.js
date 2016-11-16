@@ -98,7 +98,11 @@ class Questions extends React.Component {
                 className={page.content}
             >
                 <div>
-                    {s_.msg}
+                    {s_.msg &&
+                    <div className={`${grid.mbMini} ${text.colored}`}>
+                        {s_.msg}
+                    </div>
+                    }
                     <div className={grid.mbMini}>
                         <Textarea 
                             placeholder={L10n('questions.yourQuestion')}
