@@ -220,6 +220,11 @@ export default {
             "ru": "Этажность",
             "en": "Number of floors",
             "esp": "Número de-Flores"
+        },
+        "area": {
+            "ru": "Площадь",
+            "en": "Area",
+            "esp": "Area"
         }
     }
 }

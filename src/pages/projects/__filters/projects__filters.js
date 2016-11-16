@@ -43,14 +43,14 @@ class ProjectsFilters extends React.Component {
                     </div>
                 </div>
 
-                <div className={`${grid.mbMicro} ${text.mdPlus}`}>Площадь, м<sup className={text.micro}>2</sup></div>
+                <div className={`${grid.mbMicro} ${text.mdPlus}`}>{L10n('project.area')}, м<sup className={text.micro}>2</sup></div>
 
                 <div>
                     <Range
                         range
                         min={15}
-                        max={300}
-                        defaultValue={[25, 120]}
+                        max={3000}
+                        defaultValue={[15, 500]}
                     />
                 </div>
             </div>
