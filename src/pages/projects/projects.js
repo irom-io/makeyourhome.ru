@@ -65,6 +65,13 @@ class Projects extends React.Component {
                 }
             });
         }
+        if (query.style) {
+            filteredItems = filteredItems.filter((item) => {
+                if (item.style === query.style) {
+                    return item;
+                }
+            });
+        }
 
         return filteredItems;
     }
