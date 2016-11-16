@@ -1,6 +1,9 @@
 import React from 'react';
 import Range from 'blocks/range/range';
 import Select from 'blocks/select/select';
+import L10n from 'blocks/l10n/l10n';
+import {styleList, collectionList} from 'blocks/menu/menu';
+
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
 import projects from 'pages/projects/projects.css';
@@ -18,15 +21,6 @@ class ProjectsFilters extends React.Component {
                 {value: 'cabin', label: 'Беседки'},
                 {value: 'other', label: 'Разное'}
             ],
-            styles: [
-                {value: 'modern', label: 'Современные'},
-                {value: 'classic', label: 'Классические'},
-                {value: 'countryside', label: 'Дачные'},
-                {value: 'european', label: 'Европейские'},
-                {value: 'american', label: 'Американские'},
-                {value: 'wooden', label: 'Деревянные'},
-                {value: 'bungalow', label: 'Бунгало'}
-            ],
             floors: [
                 {value: 1, label: 'Один этаж'},
                 {value: 2, label: 'Два этажа'},
@@ -37,6 +31,7 @@ class ProjectsFilters extends React.Component {
     }
     render() {
         const s_ = this.state;
+        const styles = styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`)}});
 
         return (
             <div>
@@ -49,8 +44,8 @@ class ProjectsFilters extends React.Component {
                     </div>
                     <div className={projects.filter}>
                         <Select
-                            placeholder="Стиль"
-                            options={s_.styles}
+                            placeholder={L10n('project.style')}
+                            options={styles}
                         />
                     </div>
                     <div className={projects.filter}>

@@ -10,6 +10,7 @@ import AdminEdit from 'blocks/admin/__edit/admin__edit';
 import L10n from 'blocks/l10n/l10n';
 import {getUser} from 'blocks/auth/auth';
 import ProjectsParams from 'pages/projects/__params/projects__params';
+import ProjectsFilters from 'pages/projects/__filters/projects__filters';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -84,6 +85,12 @@ class Projects extends React.Component {
                     </Link>
                 </div>
                 }
+
+                <div className={grid.mbMini}>
+                    <ProjectsFilters
+
+                    />
+                </div>
 
                 {s_.items &&
                 <div>

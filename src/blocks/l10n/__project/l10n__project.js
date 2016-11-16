@@ -205,6 +205,11 @@ export default {
             "ru": "Ваши изменения проекта",
             "en": "Your design changes",
             "esp": "Sus cambios de diseño"
+        },
+        "style": {
+            "ru": "Стиль",
+            "en": "Style",
+            "esp": "Estilo"
         }
     }
 }
