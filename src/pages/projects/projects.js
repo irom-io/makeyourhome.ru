@@ -67,6 +67,12 @@ class Projects extends React.Component {
         if (query.floor) {
             filteredItems = filteredItems.filter(item => (item.floor === query.floor));
         }
+        if (query.min) {
+            filteredItems = filteredItems.filter(item => (item.area >= (1*query.min)));
+        }
+        if (query.max) {
+            filteredItems = filteredItems.filter(item => (item.area <= (1*query.max)));
+        }
 
         return filteredItems;
     }
