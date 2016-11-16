@@ -225,6 +225,11 @@ export default {
             "ru": "Площадь",
             "en": "Area",
             "esp": "Area"
+        },
+        "notFound": {
+            "ru": "По данному запросу проектов не найдено",
+            "en": "According to this request projects found",
+            "esp": "De acuerdo con esta solicitud de proyectos que se encuentran"
         }
     }
 }

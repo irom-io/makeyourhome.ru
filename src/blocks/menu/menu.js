@@ -97,9 +97,9 @@ class Menu extends React.Component {
         if (p_.location.pathname === '/projects') {
             href = createHref({search: value}, p_.location);
             this.context.router.push(href);
-        } else {
-            this.setState({search: value});
         }
+
+        this.setState({search: value});
     }
     onClickMobile() {
         this.setState({isShowMenu: !this.state.isShowMenu});

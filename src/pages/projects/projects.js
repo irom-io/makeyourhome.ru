@@ -76,11 +76,12 @@ class Projects extends React.Component {
         }
         if (query.search) {
             filteredItems = filteredItems.filter(item => {
+                let search = query.search.toLowerCase();
                 let title = item[lang].title.toLowerCase();
                 let longText = item[lang].longText.toLowerCase();
 
                 return (
-                    (title.indexOf(query.search) !== -1) || (longText.indexOf(query.search) !== -1)
+                    (title.indexOf(search) !== -1) || (longText.indexOf(search) !== -1)
                 );
             });
         }
@@ -172,6 +173,12 @@ class Projects extends React.Component {
                             return '';
                         }
                     })}
+                </div>
+                }
+                
+                {(s_.items.length === 0) &&
+                <div className={`${text.center} ${text.md}`}>
+                    {L10n('project.notFound')}
                 </div>
                 }
 
