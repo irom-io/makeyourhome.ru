@@ -15,6 +15,7 @@ import Login from 'pages/login/login';
 import Posts from 'pages/posts/posts';
 import Post from 'pages/post/post';
 import Favourite from 'pages/favourite/favourite';
+import Order from 'pages/order/order';
 import NotFound from 'pages/notFound/notFound';
 
 renderStyles();
@@ -37,6 +38,7 @@ ReactDOM.render(
             <Route path="/posts" component={Posts}/>
             <Route path="/posts/:postId" component={Post}/>
             <Route path="/favourite" component={Favourite}/>
+            <Route path="/order" component={Order}/>
             <Route path="*" component={NotFound}/>
         </Route>
     </Router>,
