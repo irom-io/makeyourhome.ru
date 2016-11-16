@@ -215,6 +215,11 @@ export default {
             "ru": "Тип здания",
             "en": "Building type",
             "esp": "Tipo de edificio"
+        },
+        "floorsText": {
+            "ru": "Этажность",
+            "en": "Number of floors",
+            "esp": "Número de-Flores"
         }
     }
 }
