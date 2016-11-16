@@ -32,14 +32,16 @@ class ProjectsFilters extends React.Component {
     render() {
         const s_ = this.state;
         const styles = styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`)}});
+        const collections = collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`)}});
 
         return (
             <div>
                 <div className={projects.filters}>
                     <div className={projects.filter}>
                         <Select
-                            placeholder="Тип здания"
-                            options={s_.collections}
+                            placeholder={L10n('project.type')}
+                            searchable={false}
+                            options={collections}
                         />
                     </div>
                     <div className={projects.filter}>

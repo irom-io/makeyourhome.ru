@@ -210,6 +210,11 @@ export default {
             "ru": "Стиль",
             "en": "Style",
             "esp": "Estilo"
+        },
+        "type": {
+            "ru": "Тип здания",
+            "en": "Building type",
+            "esp": "Tipo de edificio"
         }
     }
 }
