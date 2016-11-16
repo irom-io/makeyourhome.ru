@@ -59,25 +59,13 @@ class Projects extends React.Component {
         let filteredItems = items;
 
         if (query.collection) {
-            filteredItems = items.filter((item) => {
-                if (item.type === query.collection) {
-                    return item;
-                }
-            });
+            filteredItems = items.filter((item) => (item.type === query.collection));
         }
         if (query.style) {
-            filteredItems = filteredItems.filter((item) => {
-                if (item.style === query.style) {
-                    return item;
-                }
-            });
+            filteredItems = filteredItems.filter(item => (item.style === query.style));
         }
         if (query.floor) {
-            filteredItems = filteredItems.filter((item) => {
-                if (item.floor === query.floor) {
-                    return item;
-                }
-            });
+            filteredItems = filteredItems.filter(item => (item.floor === query.floor));
         }
 
         return filteredItems;
