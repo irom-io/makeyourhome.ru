@@ -27,11 +27,21 @@ class ProjectsFilters extends React.Component {
 
         this.context.router.push(href);
     }
+    onChangeRange(range) {
+        const p_ = this.props;
+        let href;
+
+        href = createHref({min: range[0], max: range[1]}, p_.location);
+        this.context.router.push(href);
+    }
     render() {
         const p_ = this.props;
         const styles = styleList.map((style) => {return {value: style.name, label: L10n(`styles.${style.name}`)}});
         const collections = collectionList.map((type) => {return {value: type.name, label: L10n(`collections.${type.name}`)}});
         const floors = numberList.map((number) => {return {value: number.name, label: L10n(`project.floors.${number.name}`)}});
+
+        const min = 1*p_.location.query.min || 15;
+        const max = 1*p_.location.query.max || 500;
 
         return (
             <div>
@@ -72,7 +82,8 @@ class ProjectsFilters extends React.Component {
                         range
                         min={15}
                         max={3000}
-                        defaultValue={[15, 500]}
+                        defaultValue={[min, max]}
+                        onAfterChange={(range) => this.onChangeRange(range)}
                     />
                 </div>
             </div>
