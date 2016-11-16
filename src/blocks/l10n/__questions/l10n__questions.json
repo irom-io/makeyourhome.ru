@@ -14,6 +14,11 @@
       "ru": "Задать вопрос",
       "en": "Ask a question",
       "esp": "Haz una pregunta"
+    },
+    "successQuestion": {
+      "ru": "Вы успешно задали вопрос, мы обязательно на него ответим.",
+      "en": "You have successfully asked a question, we will answer.",
+      "esp": "Ha solicitado con éxito una pregunta, vamos a responder."
     }
   }
 }

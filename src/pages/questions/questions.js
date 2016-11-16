@@ -53,7 +53,7 @@ class Questions extends React.Component {
             .then(() => {
                 self.setState({
                     question: '',
-                    msg: 'Вы успешно задали вопрос, мы обязательно на него ответим.',
+                    msg: L10n('questions.successQuestion'),
                     loading: false
                 });
                 
