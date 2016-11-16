@@ -4,6 +4,38 @@ import grid from 'blocks/grid/grid.css';
 import Link from 'blocks/link/link';
 import queryString from 'query-string';
 
+export const createHref = (newQuery, location) => {
+    const query = location.query;
+    let current = '';
+    let key;
+    let index = 0;
+
+    if (location.pathname[0] !== '/') {
+        current = `/${location.pathname}`;
+    } else {
+        current = `${location.pathname}`;
+    }
+
+    for (key in query) {
+        if (query.hasOwnProperty(key)) {
+            if (typeof newQuery[key] === 'undefined') {
+                newQuery[key] = query[key];
+            }
+        }
+    }
+    for (key in newQuery) {
+        if (newQuery.hasOwnProperty(key) && newQuery[key]) {
+            index++;
+        }
+    }
+
+    if (index > 0) {
+        current = `${current}?${queryString.stringify(newQuery)}`;
+    }
+
+    return current;
+};
+
 class Lang extends React.Component {
     constructor(p_, context) {
         super(p_, context);
@@ -16,31 +48,9 @@ class Lang extends React.Component {
             ]
         };
     }
-    createHref(lang) {
-        let current = '';
-        const location = this.props.location;
-        const query = location.query;
-        let key;
-        let newQuery = {lang: lang};
-
-        if (location.pathname[0] !== '/') {
-            current = `/${location.pathname}`;
-        } else {
-            current = `${location.pathname}`;
-        }
-
-        for (key in query) {
-            if (query.hasOwnProperty(key) && key !== 'lang') {
-                newQuery[key] = query[key];
-            }
-        }
-
-        current = `${current}?${queryString.stringify(newQuery)}`;
-
-        return current;
-    }
     render() {
         const active = this.props.location.query.lang || 'ru';
+        const p_ = this.props;
         const s_ = this.state;
 
         return (
@@ -53,7 +63,7 @@ class Lang extends React.Component {
                                 className={(active === item.key)? lang.active : lang.item}
                             >
                                 <Link
-                                    to={this.createHref(item.key)}
+                                    to={createHref({lang: item.key}, p_.location)}
                                 >
                                     {item.name}
                                 </Link>

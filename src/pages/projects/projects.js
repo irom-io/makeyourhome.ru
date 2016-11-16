@@ -61,11 +61,12 @@ class Projects extends React.Component {
     }
     render() {
         const s_ = this.state;
+        const p_ = this.props;
         let user = localStorage.getItem('user');
         if (user) {user = JSON.parse(user);}
         const isAdmin = localStorage.getItem('isAdmin');
         const lang = getLang();
-
+        
         return (
             <Layout
                 loading={s_.loading}
@@ -88,7 +89,7 @@ class Projects extends React.Component {
 
                 <div className={grid.mbMini}>
                     <ProjectsFilters
-
+                        location={p_.location}
                     />
                 </div>
 
