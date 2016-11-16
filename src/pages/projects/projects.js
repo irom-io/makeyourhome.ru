@@ -176,7 +176,7 @@ class Projects extends React.Component {
                 </div>
                 }
                 
-                {(s_.items.length === 0) &&
+                {!s_.loading && (s_.items.length === 0) &&
                 <div className={`${text.center} ${text.md}`}>
                     {L10n('project.notFound')}
                 </div>
