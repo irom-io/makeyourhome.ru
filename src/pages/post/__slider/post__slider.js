@@ -17,8 +17,8 @@ class PostSlider extends React.Component {
         if (p_.images.length === 1) {
             content = (
                 <Rectangle
-                    width="2"
-                    height="1"
+                    width="5"
+                    height="2"
                     src={createSrc(p_.images[0])}
                 />
             )
@@ -36,8 +36,8 @@ class PostSlider extends React.Component {
                             return (
                                 <div key={`main__slider_${index}`}>
                                     <Rectangle
-                                        width="2"
-                                        height="1"
+                                        width="5"
+                                        height="2"
                                         src={createSrc(image)}
                                     />
                                 </div>
