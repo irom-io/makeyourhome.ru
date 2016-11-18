@@ -5,6 +5,11 @@ export default {
             "en": require('./html/en/changeText.html'),
             "esp": require('./html/esp/changeText.html')
         },
+        individualText: {
+            "ru": require('./html/ru/individualText.html'),
+            "en": require('./html/en/individualText.html'),
+            "esp": require('./html/esp/individualText.html')
+        },
         "floors": {
             "zero": {
                 "ru": "Не здание",
@@ -171,15 +176,15 @@ export default {
             "en": "In total",
             "esp": "En total"
         },
-        "change": {
-            "ru": "Изменить проект",
-            "en": "Change project",
-            "esp": "Cambio proyecto"
+        "send": {
+            "ru": "Отправить",
+            "en": "Send",
+            "esp": "Enviar"
         },
-        "toChange": {
-            "ru": "Чтобы изменить проект",
-            "en": "To change project",
-            "esp": "Para cambiar de proyecto"
+        "toSend": {
+            "ru": "Чтобы отправить",
+            "en": "To send",
+            "esp": "Para enviar"
         },
         "changeSuccess": {
             "ru": "Письмо с изменениями направлено нашим специалистам. Мы свяжемся с вами в ближайшее время.",
@@ -205,6 +210,11 @@ export default {
             "ru": "Ваши изменения проекта",
             "en": "Your design changes",
             "esp": "Sus cambios de diseño"
+        },
+        "yourIdea": {
+            "ru": "Идея Вашего проекта",
+            "en": "The idea of your project",
+            "esp": "La idea de su proyecto"
         },
         "style": {
             "ru": "Стиль",

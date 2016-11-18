@@ -49,9 +49,11 @@ class Order extends React.Component {
         this.setState({loading: false});
     }
     render() {
+        const p_ = this.props;
         const s_ = this.state;
         const user = getUser();
-        
+        const placeholder = (p_.location.query.type === 'individual') ? L10n('project.yourIdea') : L10n('project.yourOrder');
+
         return (
             <Layout
                 loading={s_.loading}
@@ -62,19 +64,26 @@ class Order extends React.Component {
                         {s_.msg}
                     </div>
                     <div className={`${grid.mbMini} ${text.preWrap}`}>
-                        {L10n('project.changeText')}
+                        {(() => {
+                            switch (p_.location.query.type) {
+                                case 'individual':
+                                    return L10n('project.individualText');
+                                default:
+                                    return L10n('project.changeText');
+                            }
+                        })()}
                     </div>
                     <div className={grid.mbMini}>
                         <Textarea
                             rows={15}
-                            placeholder={L10n('project.yourOrder')}
+                            placeholder={placeholder}
                             value={s_.order}
                             onChange={(value) => this.onChangeOrder(value)}
                         />
                     </div>
                     {!user &&
                     <Login
-                        descr={`${L10n('project.toChange')},`}
+                        descr={`${L10n('project.toSend')},`}
                         onSubmit={() => {this.setState({loading: true})}}
                         onResponseAuth={(response) => this.onResponseAuth(response)}
                         onResponseRegistration={(response) => this.onResponseRegistration(response)}
@@ -87,7 +96,7 @@ class Order extends React.Component {
                             onClick={() => this.sendOrder(user)}
                             className={grid.w100_mob}
                         >
-                            {L10n('project.change')}
+                            {L10n('project.send')}
                         </Button>
                     </div>
                     }
