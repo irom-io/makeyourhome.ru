@@ -21,7 +21,7 @@ class MainToggle extends React.Component {
                 {key: 'delivery'}
             ],
             individual: [
-                {key: 'tell', to: '/order'},
+                {key: 'tell', to: '/order?type=individual'},
                 {key: 'create'},
                 {key: 'acceptance'}
             ],

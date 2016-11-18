@@ -15,22 +15,22 @@ class Order extends React.Component {
         super(p_, context);
 
         this.state = {
-            order: '',
+            text: '',
             loading: false
         };
     }
-    onChangeOrder(value) {
-        this.setState({order: value})
+    onChange(value) {
+        this.setState({text: value})
     }
-    sendOrder(user) {
+    send(user) {
         const self = this;
         const s_ = this.state;
         
         self.setState({loading: true});
-        api.post('projects/individualOrder', {user: user, order: s_.order})
+        api.post('projects/individualOrder', {user: user, text: s_.text})
             .then(() => {
                 self.setState({
-                    order: '',
+                    text: '',
                     msg: L10n('project.changeSuccess'),
                     loading: false
                 });
@@ -77,8 +77,8 @@ class Order extends React.Component {
                         <Textarea
                             rows={15}
                             placeholder={placeholder}
-                            value={s_.order}
-                            onChange={(value) => this.onChangeOrder(value)}
+                            value={s_.text}
+                            onChange={(value) => this.onChange(value)}
                         />
                     </div>
                     {!user &&
@@ -92,8 +92,8 @@ class Order extends React.Component {
                     {user &&
                     <div className={text.center}>
                         <Button
-                            disabled={!s_.order}
-                            onClick={() => this.sendOrder(user)}
+                            disabled={!s_.text}
+                            onClick={() => this.send(user)}
                             className={grid.w100_mob}
                         >
                             {L10n('project.send')}

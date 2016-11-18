@@ -95,12 +95,13 @@ router.post('/order', function(req, res) {
 
 router.post('/individualOrder', function(req, res) {
     var user = usersModel.get(req.body.user);
+    var subject = (req.body.type === 'individual') ? 'Заказ на индивидуальный проект' : 'Заказ на изменение проекта';
 
     if (!user.error) {
         mail({
             to: 'makeyourhome.ru@gmail.com',
-            subject: `Заказ на изменение от пользователя ${user.login}`,
-            body: req.body.order
+            subject: `${subject} от пользователя ${user.login}`,
+            body: req.body.text
         });
     }
 

@@ -59,10 +59,10 @@
     "en": "Articles",
     "esp": "Artículos"
   },
-  "editProject": {
-    "ru": "Редактировать проект",
-    "en": "Edit project",
-    "esp": "Editar proyecto"
+  "individualProject": {
+    "ru": "Индивидуальный проект",
+    "en": "Individual project",
+    "esp": "Proyecto individual"
   },
   "partners": {
     "ru": "Партнеры",
