@@ -52,7 +52,7 @@ class ProjectSlider extends React.Component {
                         size={36}
                     />
                 </div>
-                <div className={`${grid.w90} ${grid.w85_tab} ${grid.w80_tabMini} ${grid.w70_mob}`}>
+                <div className={`${grid.w90} ${grid.w85_tab} ${grid.w80_tabMini} ${grid.w100_mob}`}>
                     <Slider
                         ref="slider"
                         dots={false}

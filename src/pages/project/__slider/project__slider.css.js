@@ -13,7 +13,8 @@ const projectSlider = jcss({
     arrow: {
         ...item.pointer,
         ...item.z4,
-        ...text.colored
+        ...text.colored,
+        ...item.none_mob
     },
     search: {
         ...item.pointer,
