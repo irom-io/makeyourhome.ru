@@ -30,7 +30,7 @@ class Order extends React.Component {
         const p_ = this.props;
 
         self.setState({loading: true});
-        api.post('projects/individualOrder', {user: user, text: s_.text, phone: s_.phone, projectName: p_.location.query.projectName})
+        api.post('projects/individualOrder', {user: user, text: s_.text, phone: s_.phone, projectId: p_.location.query.projectId})
             .then(() => {
                 self.setState({
                     msg: L10n('project.changeSuccess'),
@@ -54,7 +54,7 @@ class Order extends React.Component {
         const p_ = this.props;
         const s_ = this.state;
         const user = getUser();
-        const placeholder = (p_.location.query.projectName) ? L10n('project.yourOrder') : L10n('project.yourIdea');
+        const placeholder = (p_.location.query.projectId) ? L10n('project.yourOrder') : L10n('project.yourIdea');
 
         return (
             <Layout
@@ -67,7 +67,7 @@ class Order extends React.Component {
                     </div>
                     <div className={`${grid.mbMini} ${text.preWrap}`}>
                         {(() => {
-                            if (p_.location.query.projectName) {
+                            if (p_.location.query.projectId) {
                                 return L10n('project.changeText');
                             }
                             else {

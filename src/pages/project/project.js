@@ -150,10 +150,12 @@ class Project extends React.Component {
             });
     }
     getButtons() {
+        const s_ = this.state;
+
         return (
             <div className={projectItem.iconWrapper}>
                 <Link
-                    to="/order"
+                    to={`/order?projectId=${s_.project.id}`}
                     className={projectItem.icon}
                 >
                     <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
@@ -188,7 +190,6 @@ class Project extends React.Component {
         const s_ = this.state;
         const image = p_.location.query.image;
         const lang = getLang();
-        const Buttons = this.getButtons();
         let sameProjectsIndex = 0;
 
         return (
@@ -245,7 +246,7 @@ class Project extends React.Component {
                             <ProjectItem
                                 text={s_.project[lang].title}
                                 src={createSrc(s_.project.images[0])}
-                                buttons={Buttons}
+                                buttons={this.getButtons()}
                             >
                                 <ProjectSelect
                                     project={s_.project}

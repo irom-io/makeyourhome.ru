@@ -96,7 +96,7 @@ router.post('/order', function(req, res) {
 
 router.post('/individualOrder', function(req, res) {
     var user = usersModel.get(req.body.user);
-    var subject = (req.body.projectName) ? 'Заказ на изменение проекта' : 'Заказ на индивидуальный проект';
+    var subject = (req.body.projectId) ? 'Заказ на изменение проекта' : 'Заказ на индивидуальный проект';
 
     if (!user.error) {
         mail({
