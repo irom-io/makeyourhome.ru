@@ -34,6 +34,7 @@ const menu = jcss({
     itemsMob: {
         ...grid.col,
         ...grid.w60,
+        ...grid.w100_mob,
         ...item.abs,
         ...item.none,
         ...item.block_tabMini,
