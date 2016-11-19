@@ -158,7 +158,7 @@ class Project extends React.Component {
                     to={`/order?projectId=${s_.project.id}`}
                     className={projectItem.icon}
                 >
-                    <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
+                    <div className={`${grid.mrMini} ${grid.mrMicro_mob} ${text.micro_mob}`}>
                         {L10n('project.change')}
                     </div>
                     <Edit size={20} />
@@ -167,7 +167,7 @@ class Project extends React.Component {
                     onClick={() => this.order()}
                     className={projectItem.icon}
                 >
-                    <div className={`${grid.mrMini} ${grid.mrMicro_mob}`}>
+                    <div className={`${grid.mrMini} ${grid.mrMicro_mob} ${text.micro_mob}`}>
                         {L10n('project.order')}
                     </div>
                     <Done size={20} />
