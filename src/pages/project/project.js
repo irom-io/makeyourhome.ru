@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'blocks/button/button';
 import ProjectItem from 'pages/project/__item/project__item';
 import ProjectToolbar from 'pages/project/__toolbar/project__toolbar';
 import ProjectSlider from 'pages/project/__slider/project__slider';
@@ -16,6 +17,7 @@ import Login from 'blocks/login/login';
 import L10n from 'blocks/l10n/l10n';
 import Done from 'react-icons/lib/md/done';
 import Edit from 'react-icons/lib/md/edit';
+import TextPhone from 'blocks/text/_phone/text_phone';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -111,35 +113,41 @@ class Project extends React.Component {
         });
     }
     order() {
+        const s_ = this.state;
         const user = getUser();
 
         if (user) {
-            let orderList = [];
-            const totalList = this.state.totalList;
-            let key;
-
-            for (key in totalList) {
-                if (totalList.hasOwnProperty(key)) {
-                    orderList.push({text: L10n(`project.${key}`, 'ru'), value: totalList[key]});
-                }
+            if (!s_.orderSuccess) {
+                this.setState({showPhone: true});
+                window.scrollTo(0, 0);
             }
-
-            this.setState({loading: true});
-            api.post('projects/order', {user: user, orderList: orderList, total: this.state.total})
-                .then((response) => {
-                    this.setState({
-                        loading: false,
-                        orderSuccess: true
-                    });
-                    setTimeout(() => {
-                        this.setState({
-                            orderSuccess: false
-                        });
-                    }, 3000);
-                });
         } else {
             this.setState({showLogin: true});
         }
+    }
+    confirmOrder() {
+        const user = getUser();
+        const s_ = this.state;
+        let orderList = [];
+        const totalList = this.state.totalList;
+        let key;
+
+        for (key in totalList) {
+            if (totalList.hasOwnProperty(key)) {
+                orderList.push({text: L10n(`project.${key}`, 'ru'), value: totalList[key]});
+            }
+        }
+
+        this.setState({loading: true});
+        api.post('projects/order', {user: user, orderList: orderList, total: this.state.total, phone: s_.phone, title: s_.project['ru'].title, id: s_.project.id})
+            .then(() => {
+                this.setState({
+                    loading: false,
+                    orderSuccess: true,
+                    showPhone: false,
+                    phone: ''
+                });
+            });
     }
     getButtons() {
         return (
@@ -172,6 +180,9 @@ class Project extends React.Component {
 
         this.setState({loading: false});
     }
+    onChangePhone(phone) {
+        this.setState({phone});
+    }
     render() {
         const p_ = this.props;
         const s_ = this.state;
@@ -185,6 +196,29 @@ class Project extends React.Component {
                 loading={s_.loading}
                 isPage={true}
             >
+                {s_.orderSuccess &&
+                <div className={grid.mbMini}>
+                    {L10n('project.orderSuccess')}
+                </div>
+                }
+                {s_.showPhone &&
+                    <div className={`${grid.mbNormal}`}>
+                        <div className={`${grid.space} ${grid.mbMini}`}>
+                            <TextPhone
+                                onChange={(phone) => this.onChangePhone(phone)}
+                            />
+                        </div>
+                        <div className={text.center}>
+                            <Button
+                                disabled={!s_.phone}
+                                className={grid.w100_mob}
+                                onClick={() => this.confirmOrder()}
+                            >
+                                {L10n('project.confirmOrder')}
+                            </Button>
+                        </div>
+                    </div>
+                }
                 {s_.showLogin &&
                 <div className={grid.mbMini}>
                     <Login
@@ -193,11 +227,6 @@ class Project extends React.Component {
                         onResponseAuth={(response) => this.onResponseAuth(response)}
                         onResponseRegistration={(response) => this.setState({loading: false})}
                     />
-                </div>
-                }
-                {s_.orderSuccess &&
-                <div className={grid.mbMini}>
-                    {L10n('project.orderSuccess')}
                 </div>
                 }
                 {s_.project &&

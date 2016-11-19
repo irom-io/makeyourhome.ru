@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const find = require('array-find');
 const mail = require('../mail/mail');
+const config = require('../data/config.json');
 
 const express = require('express');
 const router = express.Router();
@@ -74,14 +75,14 @@ router.post('/view', function(req, res) {
 
 router.post('/order', function(req, res) {
     var user = usersModel.get(req.body.user);
-    var body = '';
+    var body = `<p>Заказ: <a href="http://${config.host}/projects/${req.body.id}" target="_blank">${req.body.title}</a></p><br />`;
 
     if (!user.error) {
         req.body.orderList.forEach((item) => {
-            body += `${item.text}: ${item.value} р.;`;
+            body += `${item.text}: ${item.value} р.;<br />`;
         });
 
-        body += `Итого: ${req.body.total}р.;`;
+        body += `<br />Итого: ${req.body.total}р.;`;
 
         mail({
             to: 'makeyourhome.ru@gmail.com',

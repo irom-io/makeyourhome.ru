@@ -17,6 +17,8 @@ export class TextPhone extends React.Component {
         
         if (isValidPhoneNumber(phone)) {
             this.props.onChange(phone);
+        } else {
+            this.props.onChange('');
         }
     }
     render() {

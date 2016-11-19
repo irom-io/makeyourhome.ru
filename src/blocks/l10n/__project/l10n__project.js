@@ -245,6 +245,11 @@ export default {
             "ru": "По данному запросу проектов не найдено",
             "en": "According to this request projects found",
             "esp": "De acuerdo con esta solicitud de proyectos que se encuentran"
+        },
+        "confirmOrder": {
+            "ru": "Подтвердить заказ",
+            "en": "Confirm order",
+            "esp": "De confirmar orden"
         }
     }
 }
