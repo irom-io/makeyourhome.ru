@@ -33,8 +33,6 @@ class Order extends React.Component {
         api.post('projects/individualOrder', {user: user, text: s_.text, phone: s_.phone, projectName: p_.location.query.projectName})
             .then(() => {
                 self.setState({
-                    text: '',
-                    phone: '',
                     msg: L10n('project.changeSuccess'),
                     loading: false
                 });

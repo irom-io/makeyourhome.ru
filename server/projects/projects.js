@@ -103,7 +103,7 @@ router.post('/individualOrder', function(req, res) {
             subject: `${subject} от пользователя ${user.login}`,
             body: `
                 Телефон: ${req.body.phone} <br /><br />
-                Описание: ${req.body.text}
+                Описание: <div style="white-space: pre-wrap;">${req.body.text}</div>
             `
         });
     }

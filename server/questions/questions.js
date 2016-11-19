@@ -17,7 +17,7 @@ router.post('/', function(req, res) {
         mail({
             to: 'makeyourhome.ru@gmail.com',
             subject: `Новый вопрос от пользователя ${user.login}`,
-            body: req.body.question
+            body: `<div style="white-space: pre-wrap;">${req.body.question}</div>`
         });
     }
 
