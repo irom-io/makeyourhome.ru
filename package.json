@@ -71,6 +71,7 @@
     "react-dropzone": "^3.7.3",
     "react-facebook-login": "^3.3.2",
     "react-icons": "^2.2.1",
+    "react-phone-number-input": "^0.5.3",
     "react-router": "^2.8.1",
     "react-select": "^1.0.0-rc.2",
     "react-share": "^1.10.0",

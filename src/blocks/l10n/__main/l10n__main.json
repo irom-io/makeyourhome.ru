@@ -118,5 +118,10 @@
     "ru": "Вернуться к проекту",
     "en": "Back to project",
     "esp": "Volver a proyectos"
+  },
+  "enterPhone": {
+    "ru": "Телефон для связи",
+    "en": "Contact phone",
+    "esp": "Teléfono de contacto"
   }
 }

@@ -6,6 +6,7 @@ import Button from 'blocks/button/button';
 import {getUser} from 'blocks/auth/auth';
 import api from 'blocks/api/api';
 import L10n from 'blocks/l10n/l10n';
+import TextPhone from 'blocks/text/_phone/text_phone';
 
 import grid from 'blocks/grid/grid.css';
 import text from 'blocks/text/text.css';
@@ -16,11 +17,12 @@ class Order extends React.Component {
 
         this.state = {
             text: '',
+            phone: '',
             loading: false
         };
     }
-    onChange(value) {
-        this.setState({text: value})
+    onChange(value, field) {
+        this.setState({[field]: value})
     }
     send(user) {
         const self = this;
@@ -31,6 +33,7 @@ class Order extends React.Component {
             .then(() => {
                 self.setState({
                     text: '',
+                    phone: '',
                     msg: L10n('project.changeSuccess'),
                     loading: false
                 });
@@ -78,7 +81,13 @@ class Order extends React.Component {
                             rows={15}
                             placeholder={placeholder}
                             value={s_.text}
-                            onChange={(value) => this.onChange(value)}
+                            onChange={(value) => this.onChange(value, 'text')}
+                        />
+                    </div>
+                    
+                    <div className={grid.mbMini}>
+                        <TextPhone
+                            onChange={(value) => this.onChange(value, 'phone')}
                         />
                     </div>
                     {!user &&
@@ -92,7 +101,7 @@ class Order extends React.Component {
                     {user &&
                     <div className={text.center}>
                         <Button
-                            disabled={!s_.text}
+                            disabled={(!s_.text || !s_.phone)}
                             onClick={() => this.send(user)}
                             className={grid.w100_mob}
                         >
