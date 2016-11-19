@@ -36,8 +36,6 @@ class Order extends React.Component {
                     msg: L10n('project.changeSuccess'),
                     loading: false
                 });
-
-                setTimeout(() => {self.setState({msg: ''})}, 1500);
             });
     }
     onResponseAuth(response) {

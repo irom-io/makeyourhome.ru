@@ -187,9 +187,9 @@ export default {
             "esp": "Para enviar"
         },
         "changeSuccess": {
-            "ru": "Письмо с изменениями направлено нашим специалистам. Мы свяжемся с вами в ближайшее время.",
-            "en": "The letter sent to the changes to our experts. We will contact you shortly.",
-            "esp": "La carta enviada a los cambios en nuestros expertos. Nos pondremos en contacto con usted en breve."
+            "ru": "Письмо направлено нашим специалистам. Мы свяжемся с вами в ближайшее время.",
+            "en": "Letter sent to our experts. We will contact you shortly.",
+            "esp": "Carta enviada a nuestros expertos. Nos pondremos en contacto con usted en breve."
         },
         "change": {
             "ru": "Изменить проект",

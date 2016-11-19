@@ -75,8 +75,12 @@ router.post('/view', function(req, res) {
 
 router.post('/order', function(req, res) {
     var user = usersModel.get(req.body.user);
-    var body = `<p>Заказ: <a href="http://${config.host}/projects/${req.body.id}" target="_blank">${req.body.title}</a></p><br />`;
+    var body;
 
+    body = `
+        <p>Заказ: <a href="http://${config.host}/projects/${req.body.id}" target="_blank">${req.body.title}</a></p>
+        <p>Номер заказа: ${req.body.id}</p><br />
+    `;
     if (!user.error) {
         req.body.orderList.forEach((item) => {
             body += `${item.text}: ${item.value} р.;<br />`;
@@ -97,15 +101,29 @@ router.post('/order', function(req, res) {
 router.post('/individualOrder', function(req, res) {
     var user = usersModel.get(req.body.user);
     var subject = (req.body.projectId) ? 'Заказ на изменение проекта' : 'Заказ на индивидуальный проект';
+    var body;
+    var base = `
+                Телефон: ${req.body.phone} <br /><br />
+                Описание: <div style="white-space: pre-wrap;">${req.body.text}</div>
+            `;
+
+    if (req.body.projectId) {
+        body = `
+            Номер проекта: ${req.body.projectId}.<br />
+            Ссылка на проект: <a href="http://${config.host}/projects/${req.body.projectId}" target="_blank">http://${config.host}/projects/${req.body.projectId}</a><br /><br />
+            `;
+
+        body += base;
+    } else {
+        body = base;
+    }
+
 
     if (!user.error) {
         mail({
             to: 'makeyourhome.ru@gmail.com',
             subject: `${subject} от пользователя ${user.login}`,
-            body: `
-                Телефон: ${req.body.phone} <br /><br />
-                Описание: <div style="white-space: pre-wrap;">${req.body.text}</div>
-            `
+            body: body
         });
     }
 
