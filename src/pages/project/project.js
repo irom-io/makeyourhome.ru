@@ -185,6 +185,18 @@ class Project extends React.Component {
     onChangePhone(phone) {
         this.setState({phone});
     }
+    getAdditionText(addition) {
+        let key;
+        let additionOptions = [];
+
+        for (key in addition) {
+            if (addition.hasOwnProperty(key)) {
+                additionOptions.push({title: L10n(`project.${key}`), description: 'Описание'})
+            }
+        }
+
+        return additionOptions;
+    }
     render() {
         const p_ = this.props;
         const s_ = this.state;
@@ -203,22 +215,22 @@ class Project extends React.Component {
                 </div>
                 }
                 {s_.showPhone &&
-                    <div className={`${grid.mbNormal}`}>
-                        <div className={`${grid.space} ${grid.mbMini}`}>
-                            <TextPhone
-                                onChange={(phone) => this.onChangePhone(phone)}
-                            />
-                        </div>
-                        <div className={text.center}>
-                            <Button
-                                disabled={!s_.phone}
-                                className={grid.w100_mob}
-                                onClick={() => this.confirmOrder()}
-                            >
-                                {L10n('project.confirmOrder')}
-                            </Button>
-                        </div>
+                <div className={`${grid.mbNormal}`}>
+                    <div className={`${grid.space} ${grid.mbMini}`}>
+                        <TextPhone
+                            onChange={(phone) => this.onChangePhone(phone)}
+                        />
                     </div>
+                    <div className={text.center}>
+                        <Button
+                            disabled={!s_.phone}
+                            className={grid.w100_mob}
+                            onClick={() => this.confirmOrder()}
+                        >
+                            {L10n('project.confirmOrder')}
+                        </Button>
+                    </div>
+                </div>
                 }
                 {s_.showLogin &&
                 <div className={grid.mbMini}>
@@ -232,7 +244,7 @@ class Project extends React.Component {
                 }
                 {s_.project &&
                 <div>
-                    <div className={grid.mbMicro}>
+                    <div>
                         {image &&
                         <ProjectImage
                             projectId={s_.project.id}
@@ -270,8 +282,41 @@ class Project extends React.Component {
                         />
                     </div>
 
-                    <div className={`${grid.mbNormal} ${text.normal} ${text.mini_tabMini} ${text.justify} ${text.preWrap}`}>
+                    <div className={`${grid.mbMini} ${text.normal} ${text.mini_tabMini} ${text.justify} ${text.preWrap}`}>
                         {s_.project[lang].longText}
+
+                        <div>
+                            {(() => {
+                                const additionTexts = this.getAdditionText(s_.project.addition);
+
+                                return (
+                                    <div>
+                                        {(additionTexts.length > 0) &&
+                                        <div className={`${text.md} ${grid.mbMini} ${grid.mtMini} ${text.colored}`}>
+                                            {L10n('project.text')}:
+                                        </div>
+                                        }
+
+                                        {
+                                            additionTexts.map((additionItem, index) => {
+                                                return (
+                                                    <div key={`addition__${index}`}>
+                                                        <div className={grid.mtMicro}>
+                                                            <div className={text.colored}>
+                                                                {additionItem.title}
+                                                            </div>
+                                                            <div className={grid.plMini}>
+                                                                {L10n('project.description')}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                )
+                            })()}
+                        </div>
                     </div>
 
                     <div className={`${grid.col_mob} ${grid.normalCenter_mob}`}>

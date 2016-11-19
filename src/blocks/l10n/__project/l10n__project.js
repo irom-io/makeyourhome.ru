@@ -250,6 +250,11 @@ export default {
             "ru": "Подтвердить заказ",
             "en": "Confirm order",
             "esp": "De confirmar orden"
+        },
+        "description": {
+            "ru": "Описание дополнительного параметра находится в разработке",
+            "en": "Description additional option is in development",
+            "esp": "Descripción opción adicional está en desarrollo"
         }
     }
 }
