@@ -191,6 +191,11 @@ export default {
             "en": "The letter sent to the changes to our experts. We will contact you shortly.",
             "esp": "La carta enviada a los cambios en nuestros expertos. Nos pondremos en contacto con usted en breve."
         },
+        "change": {
+            "ru": "Изменить проект",
+            "en": "Change project",
+            "esp": "Сambio proyecto"
+        },
         "order": {
             "ru": "Заказать",
             "en": "To order",
