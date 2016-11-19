@@ -8,6 +8,7 @@ import ArrowRight from 'react-icons/lib/md/keyboard-arrow-right';
 import {createSrc} from 'blocks/item/item';
 
 import grid from 'blocks/grid/grid.css';
+import item from 'blocks/item/item.css';
 import projectSlider from './project__slider.css';
 
 let timeoutId;
@@ -45,20 +46,28 @@ class ProjectSlider extends React.Component {
         return (
             <div className={projectSlider.wrapper}>
                 <div
-                    className={projectSlider.arrow}
+                    className={`${projectSlider.arrow} ${item.none_mob}`}
                     onClick={() => this.slickPrev()}
                 >
                     <ArrowLeft
                         size={36}
                     />
                 </div>
-                <div className={`${grid.w90} ${grid.w85_tab} ${grid.w80_tabMini} ${grid.w100_mob}`}>
+                <div
+                    className={`${projectSlider.arrow} ${item.none} ${item.block_mob}`}
+                    onClick={() => this.slickPrev()}
+                >
+                    <ArrowLeft
+                        size={26}
+                    />
+                </div>
+                <div className={`${grid.w90} ${grid.w85_tab} ${grid.w80_tabMini} ${grid.w70_mob}`}>
                     <Slider
                         ref="slider"
                         dots={false}
                         slidesToShow={4}
                         swipeToSlide={true}
-                        responsive={[{breakpoint: 700, settings: {slidesToShow: 2}}]}
+                        responsive={[{breakpoint: 700, settings: {slidesToShow: 2}}, {breakpoint: 450, settings: {slidesToShow: 1}}]}
                     >
                         {p_.images.map((src, index) => {
                             return (
@@ -85,7 +94,15 @@ class ProjectSlider extends React.Component {
                     </Slider>
                 </div>
                 <div
-                    className={projectSlider.arrow}
+                    className={`${projectSlider.arrow} ${item.none} ${item.block_mob}`}
+                    onClick={() => this.slickPrev()}
+                >
+                    <ArrowRight
+                        size={26}
+                    />
+                </div>
+                <div
+                    className={`${projectSlider.arrow} ${item.none_mob}`}
                     onClick={() => this.slickNext()}
                 >
                     <ArrowRight
