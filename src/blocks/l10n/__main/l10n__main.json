@@ -120,8 +120,8 @@
     "esp": "Volver a proyectos"
   },
   "enterPhone": {
-    "ru": "Телефон для связи",
-    "en": "Contact phone",
-    "esp": "Teléfono de contacto"
+    "ru": "Телефон: 1 234 567 89 00",
+    "en": "Phone: 1 234 567 89 00",
+    "esp": "Teléfono: 1 234 567 89 00"
   }
 }

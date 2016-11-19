@@ -8,6 +8,7 @@ const editItem = {
     ...grid.pMini,
     ...grid.w100,
     ...text.normal,
+    ...text.mini_mob,
     ...text.bold,
     ...item.transition,
     ...text.black,
