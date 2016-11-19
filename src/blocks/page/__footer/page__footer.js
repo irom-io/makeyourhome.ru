@@ -26,12 +26,12 @@ class PageFooter extends React.Component {
                         </Link>
                     </div>
                     <div className={`${text.center} ${grid.w100_mob} ${grid.mbMini_mob}`}>
-                        <div className={`${text.colored} ${text.bold} ${text.mdPlus} ${text.normal_mob} ${grid.mbMicro}`}>
+                        <div className={`${text.colored} ${text.bold} ${text.mdPlus} ${text.normal_tabMini} ${grid.mbMicro}`}>
                             <Link to="/">
                                 {L10n('phone')}
                             </Link>
                         </div>
-                        <div className={`${text.normal} ${text.micro_mob}`}>
+                        <div className={`${text.normal} ${text.micro_tabMini}`}>
                             <Link href={`mailto:${L10n('mail')}`} target="blank">
                                 {L10n('mail')}
                             </Link>
