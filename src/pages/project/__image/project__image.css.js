@@ -16,6 +16,10 @@ const projectImage = jcss({
         [css.media.tabMini]: {
             ...grid.pMicro,
             ...text.normal
+        },
+        [css.media.mob]: {
+            ...grid.pMicro,
+            ...text.micro
         }
     }
 });
