@@ -27,9 +27,10 @@ class Order extends React.Component {
     send(user) {
         const self = this;
         const s_ = this.state;
-        
+        const p_ = this.props;
+
         self.setState({loading: true});
-        api.post('projects/individualOrder', {user: user, text: s_.text})
+        api.post('projects/individualOrder', {user: user, text: s_.text, phone: s_.phone, projectName: p_.location.query.projectName})
             .then(() => {
                 self.setState({
                     text: '',
@@ -37,7 +38,7 @@ class Order extends React.Component {
                     msg: L10n('project.changeSuccess'),
                     loading: false
                 });
-                
+
                 setTimeout(() => {self.setState({msg: ''})}, 1500);
             });
     }
@@ -55,7 +56,7 @@ class Order extends React.Component {
         const p_ = this.props;
         const s_ = this.state;
         const user = getUser();
-        const placeholder = (p_.location.query.type === 'individual') ? L10n('project.yourIdea') : L10n('project.yourOrder');
+        const placeholder = (p_.location.query.projectName) ? L10n('project.yourOrder') : L10n('project.yourIdea');
 
         return (
             <Layout
@@ -68,11 +69,11 @@ class Order extends React.Component {
                     </div>
                     <div className={`${grid.mbMini} ${text.preWrap}`}>
                         {(() => {
-                            switch (p_.location.query.type) {
-                                case 'individual':
-                                    return L10n('project.individualText');
-                                default:
-                                    return L10n('project.changeText');
+                            if (p_.location.query.projectName) {
+                                return L10n('project.changeText');
+                            }
+                            else {
+                                return L10n('project.individualText');
                             }
                         })()}
                     </div>
@@ -84,7 +85,7 @@ class Order extends React.Component {
                             onChange={(value) => this.onChange(value, 'text')}
                         />
                     </div>
-                    
+
                     <div className={grid.mbMini}>
                         <TextPhone
                             onChange={(value) => this.onChange(value, 'phone')}

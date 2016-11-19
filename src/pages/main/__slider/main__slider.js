@@ -20,7 +20,7 @@ class MainSlider extends React.Component {
                 {
                     key: 'individualProjects',
                     src: require('./images/2.jpg'),
-                    to: '/order?type=individual',
+                    to: '/order',
                     style: {left: 0}
                 },
                 {
