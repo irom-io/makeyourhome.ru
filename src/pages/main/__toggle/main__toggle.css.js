@@ -28,9 +28,11 @@ const tab = {
         ...grid.pbMini
     },
     [css.media.mob]: {
-        ...text.mini,
+        ...text.micro,
         ...grid.col,
-        ...grid.center
+        ...grid.center,
+        ...grid.pMicro,
+        ...item.overNone
     }
 };
 
