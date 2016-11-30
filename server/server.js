@@ -10,6 +10,11 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+    console.log(req.get('host'));
+    
+    next();
+});
 routes(app);
 app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use('/images', express.static(path.resolve(__dirname, './data/images')));
