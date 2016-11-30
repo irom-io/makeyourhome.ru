@@ -14,7 +14,7 @@ app.use((req, res, next) => {
     if (config.host === req.get('host')) {
         next();
     } else {
-        res.send('Фиг вам');
+        res.send('Sorry, connection error.');
     }
 });
 
