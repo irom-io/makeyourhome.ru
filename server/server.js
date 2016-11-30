@@ -14,7 +14,7 @@ app.use((req, res, next) => {
     if (config.host === req.get('host')) {
         next();
     } else {
-        res.send('No');
+        res.send('Фиг вам');
     }
 });
 
